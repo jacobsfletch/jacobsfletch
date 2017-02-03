@@ -26,14 +26,15 @@ block appBody
                 each project, index in projects
                     .wall-body-part
                         .card-post
-                            a.card-media.square(href='/projects/' + ' ', style="background-image: url('/images/cover-photo-1.jpg')")
+                            a.card-media.square(href='/projects/' + project.slug, style="background-image: url('" + project.featuredImage + "')")
                                 h3 view project
                             header.card-header
                                 .card-subtitle
-                                    h3 illustration
+                                    each category, index in project.categories
+                                        h3 #{category}
                                 .card-title
-                                    a.btn-main(href='/projects/' + ' ')
-                                        h3.btn-title portraiture
+                                    a.btn-main(href='/projects/' + project.slug)
+                                        h3.btn-title #{project.title}
             footer.wall-footer
                 h3 sound good?
                 a.btn-main(href='/hire')

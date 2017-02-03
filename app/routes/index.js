@@ -76,10 +76,22 @@ exports = module.exports = function(app) {
 	app.all('/api/user/:id', keystone.middleware.api, routes.api.user.get);
 	app.all('/api/user/:id/update', keystone.middleware.api, routes.api.user.update);
 
+    //
     // URLs
+    //
+
+    // Landing
     app.get('/', routes.views.index);
+
+    // Documents
     app.get('/hire', routes.views.hire);
     app.get('/bio', routes.views.bio);
+
+    // Portfolio
+    app.get('/projects', routes.views.projects);
     app.get('/projects/:project', routes.views.project);
+
+    // Blog
+    app.get('/posts', routes.views.posts);
     app.get('/posts/:post', routes.views.post);
 };

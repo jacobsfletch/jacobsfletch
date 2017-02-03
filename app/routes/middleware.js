@@ -25,8 +25,8 @@ exports.initLocals = function(req, res, next) {
 	locals.navLinks = [
 		{ label: 'start',			key: 'start',		href: '/' },
 		{ label: 'my bio',		    key: 'bio',		    href: '/bio' },
-		{ label: 'my work',			key: 'work',		href: '/work' },
-		{ label: 'my blog',			key: 'work',		href: '/work' },
+		{ label: 'my work',			key: 'projects',	href: '/projects' },
+		{ label: 'my blog',			key: 'posts',		href: '/posts' },
 		{ label: 'hire me',			key: 'hire',		href: '/hire' },
 		{ label: 'follow me',		key: 'follow',		href: 'http://www.instagram.com/jacobsfletch' },
 	];

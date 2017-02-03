@@ -1,6 +1,19 @@
 extends ../layouts/default
 
 block appBody
-    .app-body
-        .app-body-part
-            p posts
+    .wall-blog
+        header.wall-header
+            .wall-title
+                h1 my blog
+        .wall-body
+            each post, index in posts
+                .wall-body-part
+                    .card-post
+                        a.card-media.square(href='/posts/' + post.slug, style="background-image: url('" + post.featuredImage + "')")
+                            h3 view post
+                        header.card-header
+                            .card-subtitle
+                                h3 #{post.categories}
+                            .card-title
+                                a.btn-main(href='/posts/' + post.slug)
+                                    h3.btn-title #{post.title}

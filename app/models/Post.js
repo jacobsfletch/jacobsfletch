@@ -37,7 +37,10 @@ Post.add({
         parseFormat: 'MM-DD-YYYY',
         format: 'MM-DD-YYYY'
     },
-    image: {
+    featuredImage: {
+        type: Types.CloudinaryImage
+    },
+    images: {
         type: Types.CloudinaryImages
     },
     tags: {

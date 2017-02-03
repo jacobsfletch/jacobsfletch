@@ -1,39 +1,31 @@
 extends ../layouts/default
 
 block appBody
-    .app-body
-        .app-body-part.start
-            .board-post
-                .board-subtitle
-                    h2 illustration
-                .board-title
-                    h1 portraiture
-                .board-body
-                    .board-body-part
-                        h3
-                            | Pellentesque consequat dapibus diam, quis sagittis lorem interdum quis. Nulla facilisi. Donec a accumsan lacus, sollicitudin posuere sem. Aliquam erat volutpat. Etiam sit amet tellus lobortis, varius dui vitae, vestibulum ipsum. Vivamus at magna id metus tempor pretium at vitae lacus. Fusce in metus et risus interdum gravida tincidunt at ipsum.
-                    .board-body-part
-                        p
-                            | Vestibulum ac ullamcorper turpis, vel pellentesque risus. Morbi id sapien nec orci blandit luctus et id risus. Pellentesque laoreet pulvinar pretium. Nulla lorem ante, porttitor et ultrices vel, bibendum ut elit. Sed interdum hendrerit dolor. Phasellus felis mi, fringilla vitae elit sed, congue tempor diam.
-                    .board-body-part
-                        p It takes a long time for a man to look like his portrait.
-                        h3 James Whistler
-                .board-footer
-                    a.tool-scroll(href='#work')
-                        .tool-media
-                            svg#Layer_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 11 7', style='enable-background:new 0 0 11 7;', xml:space='preserve')
-                                polyline(points='10,1.5 5.5,5.5 1,1.5 ')
-        #content.app-body-part.explore
-            .wall-post
-                .wall-header
-                    .wall-title
-                        h3
-                .wall-body
+    .app-body-part.start
+        .board-post
+            .board-subtitle
+                each category, index in project.categories
+                    h2 #{category}
+            .board-title
+                h1 #{project.title}
+            .board-body
+                .board-body-part
+                    h3 #{project.content.excerpt}
+                .board-body-part
+                    p #{project.content.full}
+                .board-body-part
+                    p another paragraph
+            .board-footer
+                a.tool-scroll(href='#work')
+                    .tool-media
+                        svg#Layer_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 11 7', style='enable-background:new 0 0 11 7;', xml:space='preserve')
+                            polyline(points='10,1.5 5.5,5.5 1,1.5 ')
+    #content.app-body-part.explore
+        .wall-post
+            .wall-header
+                .wall-title
+                    h3
+            .wall-body
+                each image, index in project.images
                     .wall-body-part
-                        img.square(style="background-image: url('/images/jacob-fletcher.jpg')")
-                    .wall-body-part
-                        img.square(style="background-image: url('/images/rebekah-fletcher.jpg')")
-                    .wall-body-part
-                        img.square(style="background-image: url('/images/joe-fletcher.jpg')")
-                    .wall-body-part
-                        img.square(style="background-image: url('/images/zac-sweet.jpg')")
+                        img.square(style="background-image: url('" + image + "')")

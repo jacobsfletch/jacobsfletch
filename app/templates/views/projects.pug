@@ -1,6 +1,19 @@
 extends ../layouts/default
 
 block appBody
-    .app-body
-        .app-body-part
-            p projects
+    .wall-work
+        header.wall-header
+            .wall-title
+                h1 my work
+        .wall-body
+            each project, index in projects
+                .wall-body-part
+                    .card-post
+                        a.card-media.square(href='/projects/' + project.slug, style="background-image: url('" + project.featuredImage + "')")
+                            h3 view project
+                        header.card-header
+                            .card-subtitle
+                                h3 #{project.categories}
+                            .card-title
+                                a.btn-main(href='/projects/' + project.slug)
+                                    h3.btn-title #{project.title}
