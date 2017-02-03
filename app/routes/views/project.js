@@ -1,12 +1,13 @@
 var keystone = require('keystone');
+
 exports = module.exports = function (req, res) {
+
+    // Define the variables
     var view = new keystone.View(req, res);
     var locals = res.locals;
-
-    // Grab data
     var project = req.params.project
 
-    // Load the current post
+    // Load the Project
     view.on('init', function (next) {
         var q = keystone.list('Project').model.findOne({
             state: 'published',
@@ -14,8 +15,8 @@ exports = module.exports = function (req, res) {
         }).populate('author categories tags');
 
         q.exec(function (err, result) {
-            if (results) {
-                locals.data.project = result;
+            if (result) {
+                locals.project = result;
             }
             next(err);
         });

@@ -5,14 +5,14 @@ var keystone = require('keystone');
  * ==================
  */
 
-var Tags = new keystone.List('Tags', {
+var Tag = new keystone.List('Tag', {
 	autokey: { from: 'name', path: 'key', unique: true }
 });
 
-Tags.add({
+Tag.add({
 	name: { type: String, required: true }
 });
 
-Tags.relationship({ ref: 'Post', path: 'categories' });
+Tag.relationship({ ref: 'Post', path: 'categories' });
 
-Tags.register();
+Tag.register();

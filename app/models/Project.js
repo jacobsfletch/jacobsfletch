@@ -23,11 +23,6 @@ Project.add({
         default: 'draft',
         index: true
     },
-    author: {
-        type: Types.Relationship,
-        ref: 'User',
-        index: true
-    },
     publishedDate: {
         type: Types.Date,
         index: true,
@@ -45,7 +40,7 @@ Project.add({
     },
     tags: {
         type: Types.Relationship,
-        ref: 'Tags',
+        ref: 'Tag',
         many: true
     },
     categories: {

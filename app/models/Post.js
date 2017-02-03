@@ -45,7 +45,7 @@ Post.add({
     },
     tags: {
         type: Types.Relationship,
-        ref: 'Tags',
+        ref: 'Tag',
         many: true
     },
     categories: {

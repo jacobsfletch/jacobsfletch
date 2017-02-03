@@ -17,6 +17,10 @@ User.add({
         required: true,
         index: true
     },
+    canAccessKeystone: {
+        type: Boolean,
+        initial: true
+    },
     user_type: {
         label: 'User Type',
         type: Types.Select,

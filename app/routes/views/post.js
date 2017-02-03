@@ -1,5 +1,7 @@
 var keystone = require('keystone');
+
 exports = module.exports = function (req, res) {
+
     var view = new keystone.View(req, res);
     var locals = res.locals;
 
@@ -14,8 +16,8 @@ exports = module.exports = function (req, res) {
         }).populate('author categories tags');
 
         q.exec(function (err, result) {
-            if (results) {
-                locals.data.post = result;
+            if (result) {
+                locals.post = result;
             }
             next(err);
         });

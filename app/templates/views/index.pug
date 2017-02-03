@@ -26,7 +26,7 @@ block appBody
                 each project, index in projects
                     .wall-body-part
                         .card-post
-                            a.card-media.square(href='/projects/' + project.slug, style="background-image: url('" + project.featuredImage + "')")
+                            a.card-media.square(href='/projects/' + project.slug, style="background-image: url('" + project.featuredImage.url + "')")
                                 h3 view project
                             header.card-header
                                 .card-subtitle
