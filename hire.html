@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="file:///Users/jacobfletcher/Commonground/jacobsfletch.com/app/public/styles/jacobsfletch.min.css">
+        <title></title>
+    </head>
+    <body>
+        <div class="app-main">
+            <header class="app-header">
+                <a class="app-title" href="file:///Users/jacobfletcher/Commonground/jacobsfletch.com/index.html">
+                    <h1>jacobsfletch</h1>
+                </a>
+                <a class="tool-toggle" href="#dock">
+                    <div class="hamburger hamburger--squeeze">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </div>
+                </a>
+                <div class="wall-dock" id="dock">
+                    <div class="board-dock">
+                        <div class="board-body">
+                            <nav class="menu-vertical">
+                                <ul class="menu-body">
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="file:///Users/jacobfletcher/Commonground/jacobsfletch.com/index.html">start</a>
+                                    </li>
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="file:///Users/jacobfletcher/Commonground/jacobsfletch.com/bio.html">my bio</a>
+                                    </li>
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="file:///Users/jacobfletcher/Commonground/jacobsfletch.com/index.html#work">my work</a>
+                                    </li>
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="file:///Users/jacobfletcher/Commonground/jacobsfletch.com/hire.html">hire me</a>
+                                    </li>
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="http://instagram.com/jacobsfletch">follow me</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <nav class="menu-vertical">
+                                <div class=menu-header>
+                                    <div class=menu-title>
+                                        <h6>coming soon</h6>
+                                    </div>
+                                </div>
+                                <ul class="menu-body">
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="#">shop</a>
+                                    </li>
+                                    <li class="menu-body-part btn-main shout">
+                                        <a class="btn-title" href="#">blog</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="app-body">
+                <div class="board-hire">
+                    <nav class="menu-vertical">
+                        <div class=menu-title>
+                            <h6>coming soon</h6>
+                        </div>
+                        <ul class="menu-body">
+                            <li class="menu-body-part btn-main">
+                                <a class="btn-title" href="#">shop</a>
+                            </li>
+                            <li class="menu-body-part btn-main">
+                                <a class="btn-title" href="#">blog</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="board-header">
+                        <div class="board-title">
+                            <h1>hire me</h1>
+                        </div>
+                        <div class="board-subtitle">
+                            <h3>or just say hi</h3>
+                        </div>
+                    </div>
+                    <div class="board-body">
+                        <form>
+                            <input class="input-text" type="text" placeholder="first name"></input>
+                            <input class="input-text" type="text" placeholder="last name"></input>
+                            <input class="input-text" type="email" placeholder="email address"></input>
+                            <textarea class="input-textarea" placeholder="message"></textarea>
+                            <button>
+                                <a class="btn-main">
+                                    <h3 class="btn-title">send</h3>
+                                </a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    var toolToggle = document.getElementsByClassName("tool-toggle");
+    var toggleTarget = document.getElementsByClassName("app-main");
+    for (var i = 0; i < toolToggle.length; i++) {
+        el = toolToggle[i];
+        el.addEventListener('click', function () {
+            if (el.classList.contains("is-active")) {
+                el.classList.remove("is-active");
+                for (var i = 0; i < toggleTarget.length; i++) {
+                    toggleTarget[i].classList.remove("is-active");
+                }
+            } else {
+                el.classList.add("is-active");
+                for (var i = 0; i < toggleTarget.length; i++) {
+                    toggleTarget[i].classList.add("is-active");
+                }
+            }
+        });
+    }
+</script>
