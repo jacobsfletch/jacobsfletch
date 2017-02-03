@@ -1,0 +1,30 @@
+extends ../layouts/default
+
+block appBody
+    .app-body
+        .board-hire
+            nav.menu-vertical
+                .menu-title
+                    h6 coming soon
+                ul.menu-body
+                    li.menu-body-part.btn-main
+                        a.btn-title(href='#') shop
+                    li.menu-body-part.btn-main
+                        a.btn-title(href='#') blog
+            .board-header
+                .board-title
+                    h1 hire me
+                .board-subtitle
+                    h3 or just say hi
+            .board-body
+                form
+                    input.input-text(type='text', placeholder='first name')
+                    |
+                    input.input-text(type='text', placeholder='last name')
+                    |
+                    input.input-text(type='email', placeholder='email address')
+                    textarea.input-textarea(placeholder='message')
+                    |
+                    button
+                        a.btn-main
+                            h3.btn-title send

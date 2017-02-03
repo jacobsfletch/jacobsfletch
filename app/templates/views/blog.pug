@@ -1,0 +1,9 @@
+extends ../layouts/default
+
+block appContent
+    h1
+        Blog
+    div.blog
+        article
+            each post, index in posts
+                #{post.content}

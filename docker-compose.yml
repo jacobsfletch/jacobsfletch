@@ -1,0 +1,14 @@
+version: '2'
+services:
+    web:
+        environment:
+          - DB_USERNAME=[APPLICATION_DB_USERNAME]
+          - DB_PASSWORD=[APPLICATION_DB_PWD]
+          - DB_URL=[APPLICATION_DB_HOST]/[APPLICATION_DB]
+        build:
+            context: .
+        image: [APPLICATION_IMAGE]:latest
+        ports:
+            - "3001:3000"
+        volumes:
+            - ./app/:/usr/src/app # Overwrites the one the build image created.

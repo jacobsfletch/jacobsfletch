@@ -1,0 +1,70 @@
+include ../mixins/flash-messages
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(charset="utf-8")
+        -var title = locals.title ? 'jacobsfletch: ' + locals.title : 'jacobsfletch'
+        -var description = locals.description ? locals.description : 'jacobsfletch'
+        title= title || 'jacobsfletch'
+        meta(name="description", content=description)
+        link(rel="shortcut icon", href="/favicon.png", type="image/x-icon")
+        link(rel='stylesheet', type='text/css', href='/styles/jacobsfletch.min.css')
+        if user && user.canAccessKeystone
+            link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
+        block css
+        block head
+    body
+        block intro
+        .app-main
+            header.app-header
+                a.app-title(href='/')
+                    h1 jacobsfletch
+                a.tool-toggle(href='#dock')
+                    .hamburger.hamburger--squeeze
+                        .hamburger-box
+                            .hamburger-inner
+                #dock.wall-dock
+                    .board-dock
+                        .board-body
+                            nav.menu-vertical
+                                ul.menu-body
+                                    each link in navLinks
+                                        li.menu-body-part.btn-main.shout(class=(section == link.key ? 'active' : null)): a.btn-title(href=link.href)= link.label
+                            nav.menu-vertical
+                                .menu-header
+                                    .menu-title
+                                        h6 coming soon
+                                ul.menu-body
+                                    li.menu-body-part.btn-main.shout
+                                        a.btn-title(href='#') shop
+            .app-body
+                block appBody
+
+            footer.app-footer
+
+        // JS includes
+        // script(src='/js/jacobsfletch.min.js')
+
+        block js
+        script.
+            var toolToggle = document.getElementsByClassName("tool-toggle");
+            var toggleTarget = document.getElementsByClassName("app-main");
+            for (var i = 0; i < toolToggle.length; i++) {
+                el = toolToggle[i];
+                el.addEventListener('click', function () {
+                    if (el.classList.contains("is-active")) {
+                        el.classList.remove("is-active");
+                        for (var i = 0; i < toggleTarget.length; i++) {
+                            toggleTarget[i].classList.remove("is-active");
+                        }
+                    } else {
+                        el.classList.add("is-active");
+                        for (var i = 0; i < toggleTarget.length; i++) {
+                            toggleTarget[i].classList.add("is-active");
+                        }
+                    }
+                });
+            }
