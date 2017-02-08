@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
-var Project = new keystone.List('Project', {
+var Product = new keystone.List('Product', {
     map: {
         name: 'title'
     },
@@ -12,7 +12,7 @@ var Project = new keystone.List('Project', {
     }
 });
 
-Project.add({
+Product.add({
     state: {
         type: Types.Select,
         options: 'draft, published, archived',
@@ -42,17 +42,32 @@ Project.add({
         many: true,
         initial: true,
     },
-    backlinks: {
-        post: {
+    backlink: {
+        projects: {
             type: Types.Relationship,
             ref: 'Project',
+            many: true,
             initial: true,
         },
-        product: {
+        posts: {
             type: Types.Relationship,
             ref: 'Product',
+            many: true,
             initial: true,
         }
+    },
+    sku: {
+        type: Types.Text
+    },
+    stock: {
+        type: Types.Number,
+        ref: 'Stock',
+    },
+    price: {
+        type: Types.Money,
+        format: '$0,0.00',
+        ref: 'Price',
+        initial: true,
     },
     featuredImage: {
         type: Types.CloudinaryImage
@@ -71,18 +86,8 @@ Project.add({
             wysiwyg: false,
             height: 400
         }
-    },
-    quote: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
-    },
-    quoteAuthor: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
     }
 });
 
-Project.defaultColumns = 'title, state';
-Project.register();
+Product.defaultColumns = 'title, state, price, sku, sku';
+Product.register();

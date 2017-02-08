@@ -8,7 +8,7 @@ exports = module.exports = function(req, res) {
     view.on('init', function (next) {
         var q = keystone.list('Project').model.find({
             state: 'published',
-        }).populate('author categories tags');
+        }).populate('author categories tags hashtags');
 
         q.exec(function (err, results) {
             if (results) {

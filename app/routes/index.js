@@ -84,7 +84,7 @@ exports = module.exports = function(app) {
     app.get('/', routes.views.index);
 
     // Documents
-    app.get('/hire', routes.views.hire);
+    app.get('/talk', routes.views.talk);
     app.get('/bio', routes.views.bio);
 
     // Portfolio
@@ -94,4 +94,8 @@ exports = module.exports = function(app) {
     // Blog
     app.get('/posts', routes.views.posts);
     app.get('/posts/:post', routes.views.post);
+
+    // Shop
+    app.get('/shop', routes.views.products);
+    app.get('/shop/:product', routes.views.product);
 };

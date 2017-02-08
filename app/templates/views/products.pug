@@ -3,11 +3,11 @@ extends ../layouts/default
 include ../mixins/components/cards
 
 block appBody
-    .wall-blog
+    .wall-work
         header.wall-header
             .wall-title
-                h1 my blog
+                h1 my shop
         .wall-body
-            each post, index in posts
+            each product, index in products
                 .wall-body-part
-                    +cardPost(post)
+                    +cardProduct(product)

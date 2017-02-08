@@ -26,22 +26,24 @@ html
                     .hamburger.hamburger--squeeze
                         .hamburger-box
                             .hamburger-inner
-                #dock.wall-dock
-                    .board-dock
-                        .board-body
-                            nav.menu-vertical
-                                ul.menu-body
-                                    each link in navLinks
-                                        li.menu-body-part.btn-main.shout(class=(section == link.key ? 'active' : null)): a.btn-title(href=link.href)= link.label
-                            nav.menu-vertical
-                                .menu-header
-                                    .menu-title
-                                        h6 coming soon
-                                ul.menu-body
-                                    li.menu-body-part.btn-main.shout
-                                        a.btn-title(href='#') shop
+                #dock.board-dock
+                    .board-body
+                        nav.menu-vertical
+                            ul.menu-body
+                                each link in navLinks
+                                    li.menu-body-part.btn-main.shout(class=(section == link.key ? 'active' : null)): a.btn-title(href=link.href)= link.label
+                        nav.menu-vertical
+                            .menu-header
+                                .menu-title
+                                    h6 coming soon
+                            ul.menu-body
+                                li.menu-body-part.btn-main.shout
+                                    a.btn-title(href='/#') my blog
+                                li.menu-body-part.btn-main.shout
+                                    a.btn-title(href='/#') my shop
             .app-body
-                block appBody
+                .container
+                    block appBody
 
             footer.app-footer
 

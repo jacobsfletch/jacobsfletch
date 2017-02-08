@@ -1,5 +1,7 @@
 extends ../layouts/default
 
+include ../mixins/media/downarrow
+
 block appBody
     .app-body
         .app-body-part.start
@@ -28,27 +30,57 @@ block appBody
                 .board-footer
                     a.tool-scroll(href='#credentials')
                         .tool-media
-                            svg#Layer_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 11 7', style='enable-background:new 0 0 11 7;', xml:space='preserve')
-                                polyline(points='10,1.5 5.5,5.5 1,1.5 ')
+                            +downArrow()
         #credentials.app-body-part.explore
             .wall-work
                 header.wall-header
                     .wall-title
-                        h1 my credentials
+                        h1 ok enough philosophy already! here are my credentials
                 .wall-body
                     .wall-body-part.collection-generic
                         h6 education
-                        p
-                            | maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo. Nulla ac ultrices nisi, at venenatis neque. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                        p spring arbor university, bachelor's degree in art with a concentration in graphic design
+                        p granted presidential acedemic scholarship and music scholarship upon entry
+                        p graduated magna cum laude with a 3.87 gpa
+                        p high participation in outside jurered competitions, both intermural and regional
+                        p awards and recognition while a student, 20 awards
+                            ul
+                                li first place
+                                li runner-up
+                                li best in show
+                        p participated in cross-cultural studies program to jamaica as part of my education
+                        .wall-body-part.collection-generic
+                            h6 print and web design technical skills
+                            p design software
+                                ul
+                                    li adobe creative suite
+                                    li mastery in illustrator, xd, sketch
+                                    li profficient in photoshop
                     .wall-body-part.collection-generic
-                        h6 technical skills
-                        p
-                            | maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo. Nulla ac ultrices nisi, at venenatis neque. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                        h6 web development technical skills
+                        p front-end development languages i am highly familier with
+                            ul
+                                li html
+                                li pug
+                                li css
+                                li scss
+                                li sass
+                                li js
+                                li git
+                                li command line
+                        p web development work-flow skills
+                            ul
+                                li github collaberation, integration
+                        p some, all-be-it limited, knowledge from dabbling in back-end web development
+                            ul
+                                li no-sql data modeling
+                                li server setup
+                                li node, mongo, and mongoose
                     .wall-body-part.collection-generic
                         h6 experience
                         p
                             | maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo. Nulla ac ultrices nisi, at venenatis neque. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
                 footer.wall-footer
                     h3 sound good?
-                    a.btn-main(href='/hire')
-                        h1 hire me
+                    a.btn-main(href='/talk')
+                        h1 talk to me

@@ -62,7 +62,11 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
     'users': 'users',
+    'categories': 'categories',
+    'tags': 'tags',
+    'hashtags': 'hashtags',
     'projects': 'projects',
+    'products': 'products',
     'posts': 'posts',
 });
 

@@ -1,41 +1,10 @@
 extends ../layouts/default
 
+include ../mixins/components/cards
+include ../mixins/media/downarrow
+
 block appBody
-    .app-body-part.start
-        .board-landing
-            .board-title
-                h1 hello, my name is jacob fletcher.
-            .board-subtitle
-                h2 i am an independent designer, illustrator, and front-end web developer.
-            .board-body
-                h3.type-h6
-                    | i specialize in branding, portraiture, layout, and experience design.maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo.maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo.
-                a.btn-main(href='/bio')
-                    h3.btn-title see what else i can do
-            .board-footer
-                a.tool-scroll(href='#work')
-                    .tool-media
-                        svg#Layer_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 11 7', style='enable-background:new 0 0 11 7;', xml:space='preserve')
-                            polyline(points='10,1.5 5.5,5.5 1,1.5 ')
-    #work.app-body-part.explore
-        .wall-work
-            header.wall-header
-                .wall-title
-                    h1 my work
-            .wall-body
-                each project, index in projects
-                    .wall-body-part
-                        .card-post
-                            a.card-media.square(href='/projects/' + project.slug, style="background-image: url('" + project.featuredImage.url + "')")
-                                h3 view project
-                            header.card-header
-                                .card-subtitle
-                                    each category, index in project.categories
-                                        h3 #{category}
-                                .card-title
-                                    a.btn-main(href='/projects/' + project.slug)
-                                        h3.btn-title #{project.title}
-            footer.wall-footer
-                h3 sound good?
-                a.btn-main(href='/hire')
-                    h1 hire me
+    .app-body-part
+        .collection-main
+            h1 hello, my name is jacob fletcher.
+            h2 i am an independent designer, illustrator, and front-end web developer.

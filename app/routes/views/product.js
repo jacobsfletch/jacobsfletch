@@ -5,18 +5,18 @@ exports = module.exports = function (req, res) {
     // Define the variables
     var view = new keystone.View(req, res);
     var locals = res.locals;
-    var project = req.params.project
+    var product = req.params.product
 
-    // Load the Project
+    // Load the Product
     view.on('init', function (next) {
-        var q = keystone.list('Project').model.findOne({
+        var q = keystone.list('Product').model.findOne({
             state: 'published',
-            slug: req.params.project
+            slug: req.params.product
         }).populate('author categories tags hashtags');
 
         q.exec(function (err, result) {
             if (result) {
-                locals.project = result;
+                locals.product = result;
             }
             next(err);
         });
@@ -24,6 +24,6 @@ exports = module.exports = function (req, res) {
     });
 
     // Render the view
-    view.render('project');
+    view.render('product');
 
 };
