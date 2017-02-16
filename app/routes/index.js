@@ -92,8 +92,8 @@ exports = module.exports = function(app) {
     app.get('/projects/:project', routes.views.project);
 
     // Blog
-    app.get('/posts', routes.views.posts);
-    app.get('/posts/:post', routes.views.post);
+    app.get('/blog', routes.views.posts);
+    app.get('/blog/:post', routes.views.post);
 
     // Shop
     app.get('/shop', routes.views.products);
