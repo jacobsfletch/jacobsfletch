@@ -88,14 +88,14 @@ exports = module.exports = function(app) {
     app.get('/bio', routes.views.bio);
 
     // Portfolio
-    app.get('/projects', routes.views.projects);
-    app.get('/projects/:project', routes.views.project);
+    app.get('/portfolio', routes.views.portfolio);
+    app.get('/portfolio/:project', routes.views.project);
 
     // Blog
-    app.get('/blog', routes.views.posts);
+    app.get('/blog', routes.views.blog);
     app.get('/blog/:post', routes.views.post);
 
     // Shop
-    app.get('/shop', routes.views.products);
+    app.get('/shop', routes.views.shop);
     app.get('/shop/:product', routes.views.product);
 };

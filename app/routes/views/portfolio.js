@@ -22,6 +22,6 @@ exports = module.exports = function (req, res) {
     });
 
     // Render the view
-    view.render('projects');
+    view.render('portfolio');
 
 };

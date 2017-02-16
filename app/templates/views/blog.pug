@@ -3,10 +3,7 @@ extends ../layouts/default
 include ../mixins/components/cards
 
 block appBody
-    .wall-blog
-        header.wall-header
-            .wall-title
-                h1 my blog
+    .app-body-part.wall-work
         .wall-body
             each post, index in posts
                 .wall-body-part
