@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
         var q = keystone.list('Post').model.findOne({
             state: 'published',
             slug: req.params.post
-        }).populate('author categories tags hashtags');
+        }).populate('categories tags hashtags');
 
         q.exec(function (err, result) {
             if (result) {

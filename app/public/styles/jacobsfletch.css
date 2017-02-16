@@ -45,7 +45,7 @@ html body {
 .font-light-2 {
   color: #e6e6e6; }
 
-.font-light-3, .checkbox-generic label::before, .checkbox-generic label::after, .range-generic output, .radio-generic label::before, .switch-generic label::before, .switch-generic label::after, .panel-sidebar {
+.font-light-3, .checkbox-generic label::before, .checkbox-generic label::after, .radio-generic label::before, .range-generic output, .switch-generic label::before, .switch-generic label::after, .panel-sidebar {
   color: #cccccc; }
 
 .font-neutral-1 {
@@ -1566,6 +1566,89 @@ select[multiple] {
   padding: 0.809rem;
   min-height: 3.236rem; }
 
+.radio-generic {
+  visibility: visible; }
+
+.radio-generic input {
+  display: none; }
+
+.radio-generic label {
+  display: block;
+  padding-left: calc(1.618rem + 0.4045rem);
+  position: relative;
+  cursor: pointer; }
+
+.radio-generic label::before {
+  position: relative;
+  border: 3px #cccccc solid;
+  padding: 0.4045rem;
+  position: absolute;
+  padding: 0;
+  left: 0;
+  top: 50%;
+  content: '';
+  height: 1.618rem;
+  width: 1.618rem;
+  transition: all 0.3s ease;
+  transform-origin: right bottom;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  transition-delay: 0.2s;
+  border-radius: 1.618rem; }
+  .radio-generic label::before > [class*='-header'] > [class*='tool']:first-child,
+  .radio-generic label::before > [class*='-footer'] > [class*='tool']:first-child {
+    margin-left: 0.4045rem; }
+  .radio-generic label::before > [class*='-header'] > [class*='tool']:last-child,
+  .radio-generic label::before > [class*='-footer'] > [class*='tool']:last-child {
+    margin-right: 0.4045rem; }
+  .radio-generic label::before > [class*='-header'],
+  .radio-generic label::before > [class*='-filter'],
+  .radio-generic label::before > [class*='-media'],
+  .radio-generic label::before > [class*='-body'],
+  .radio-generic label::before > [class*='-footer'] {
+    margin-bottom: 0.4045rem; }
+    .radio-generic label::before > [class*='-header']:last-child,
+    .radio-generic label::before > [class*='-filter']:last-child,
+    .radio-generic label::before > [class*='-media']:last-child,
+    .radio-generic label::before > [class*='-body']:last-child,
+    .radio-generic label::before > [class*='-footer']:last-child {
+      margin-bottom: 0; }
+  .radio-generic label::before [class*='-header'],
+  .radio-generic label::before [class*='-filter'],
+  .radio-generic label::before [class*='-body'],
+  .radio-generic label::before [class*='-footer'],
+  .radio-generic label::before [class*='-tooltip'],
+  .radio-generic label::before [class*='-media'] {
+    border: 2px #e6e6e6 solid;
+    padding: 0.4045rem; }
+  .radio-generic label::before [class*='-part'] {
+    border: 2px #e6e6e6 dashed;
+    padding: 0.4045rem; }
+  .radio-generic label::before .btn-circle {
+    padding: 0; }
+    .radio-generic label::before .btn-circle .btn-media {
+      padding: 0; }
+
+.radio-generic label::after {
+  content: '';
+  position: absolute;
+  padding: 0;
+  left: 0.809rem;
+  top: 50%;
+  width: 0.26967rem;
+  height: 0.26967rem;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 1.618rem;
+  box-sizing: border-box;
+  opacity: 0;
+  background: #cccccc; }
+
+.radio-generic input:checked + label::after {
+  width: 0.809rem;
+  height: 0.809rem;
+  opacity: 1; }
+
 .range-generic {
   opacity: 1; }
 
@@ -1678,89 +1761,6 @@ select[multiple] {
     display: block;
     padding-left: calc(1.618rem + 0.4045rem);
     cursor: pointer; }
-
-.radio-generic {
-  visibility: visible; }
-
-.radio-generic input {
-  display: none; }
-
-.radio-generic label {
-  display: block;
-  padding-left: calc(1.618rem + 0.4045rem);
-  position: relative;
-  cursor: pointer; }
-
-.radio-generic label::before {
-  position: relative;
-  border: 3px #cccccc solid;
-  padding: 0.4045rem;
-  position: absolute;
-  padding: 0;
-  left: 0;
-  top: 50%;
-  content: '';
-  height: 1.618rem;
-  width: 1.618rem;
-  transition: all 0.3s ease;
-  transform-origin: right bottom;
-  transform: translateY(-50%);
-  box-sizing: border-box;
-  transition-delay: 0.2s;
-  border-radius: 1.618rem; }
-  .radio-generic label::before > [class*='-header'] > [class*='tool']:first-child,
-  .radio-generic label::before > [class*='-footer'] > [class*='tool']:first-child {
-    margin-left: 0.4045rem; }
-  .radio-generic label::before > [class*='-header'] > [class*='tool']:last-child,
-  .radio-generic label::before > [class*='-footer'] > [class*='tool']:last-child {
-    margin-right: 0.4045rem; }
-  .radio-generic label::before > [class*='-header'],
-  .radio-generic label::before > [class*='-filter'],
-  .radio-generic label::before > [class*='-media'],
-  .radio-generic label::before > [class*='-body'],
-  .radio-generic label::before > [class*='-footer'] {
-    margin-bottom: 0.4045rem; }
-    .radio-generic label::before > [class*='-header']:last-child,
-    .radio-generic label::before > [class*='-filter']:last-child,
-    .radio-generic label::before > [class*='-media']:last-child,
-    .radio-generic label::before > [class*='-body']:last-child,
-    .radio-generic label::before > [class*='-footer']:last-child {
-      margin-bottom: 0; }
-  .radio-generic label::before [class*='-header'],
-  .radio-generic label::before [class*='-filter'],
-  .radio-generic label::before [class*='-body'],
-  .radio-generic label::before [class*='-footer'],
-  .radio-generic label::before [class*='-tooltip'],
-  .radio-generic label::before [class*='-media'] {
-    border: 2px #e6e6e6 solid;
-    padding: 0.4045rem; }
-  .radio-generic label::before [class*='-part'] {
-    border: 2px #e6e6e6 dashed;
-    padding: 0.4045rem; }
-  .radio-generic label::before .btn-circle {
-    padding: 0; }
-    .radio-generic label::before .btn-circle .btn-media {
-      padding: 0; }
-
-.radio-generic label::after {
-  content: '';
-  position: absolute;
-  padding: 0;
-  left: 0.809rem;
-  top: 50%;
-  width: 0.26967rem;
-  height: 0.26967rem;
-  transition: all 0.3s ease;
-  transform: translate(-50%, -50%);
-  border-radius: 1.618rem;
-  box-sizing: border-box;
-  opacity: 0;
-  background: #cccccc; }
-
-.radio-generic input:checked + label::after {
-  width: 0.809rem;
-  height: 0.809rem;
-  opacity: 1; }
 
 .select-generic {
   visibility: visible; }
@@ -2114,177 +2114,177 @@ select[multiple] {
   opacity: 1;
   flex: 1; }
 
-.board-bio, .board-gallery, .board-talk, .board-landing {
+.board-bio, .board-gallery, .board-post, .board-talk, .board-landing {
   visibility: visible;
   position: relative;
   flex-grow: 1;
   width: 100%;
   display: flex;
   flex-direction: column; }
-  .board-bio .board-header, .board-gallery .board-header, .board-talk .board-header, .board-landing .board-header {
+  .board-bio .board-header, .board-gallery .board-header, .board-post .board-header, .board-talk .board-header, .board-landing .board-header {
     color: #0d0d0d; }
-    .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
+    .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-post .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
       font-size: 2.36859rem;
       line-height: 1.618rem;
       margin-bottom: 0.809rem;
       font-family: 'GloberBold';
       line-height: 1; }
-      .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
+      .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
         text-align: center; }
-      .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
+      .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
         text-align: right; }
-      .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
+      .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-post .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
         font-weight: bold; }
-      .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
+      .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-post .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
         font-weight: 100; }
       @media (min-width: 48em) and (max-width: 63.9375em) {
-        .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
+        .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-post .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
           font-size: 1.77689rem;
           line-height: 1.618rem;
           margin-bottom: 0.809rem;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
+          .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
             text-align: center; }
-          .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
+          .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
             text-align: right; }
-          .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
+          .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-post .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
+          .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-post .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
             font-weight: 100; } }
       @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
+        .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-post .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
           font-size: 1.333rem;
           line-height: 1.618rem;
           margin-bottom: 0.809rem;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
+          .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
             text-align: center; }
-          .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
+          .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
             text-align: right; }
-          .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
+          .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-post .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
+          .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-post .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
             font-weight: 100; } }
-    .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
+    .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-post .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
       font-size: 1.77689rem;
       line-height: 1.618rem;
       margin-bottom: 0.809rem;
       font-family: 'GloberBold';
       line-height: 1; }
-      .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
+      .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-post .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
         text-align: center; }
-      .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
+      .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-post .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
         text-align: right; }
-      .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
+      .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-post .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
         font-weight: bold; }
-      .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
+      .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-post .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
         font-weight: 100; }
       @media (min-width: 48em) and (max-width: 63.9375em) {
-        .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
+        .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-post .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
           font-size: 1.333rem;
           line-height: 1.618rem;
           margin-bottom: 0.809rem;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
+          .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-post .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
             text-align: center; }
-          .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
+          .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-post .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
             text-align: right; }
-          .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
+          .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-post .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
+          .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-post .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
             font-weight: 100; } }
       @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
+        .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-post .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
           font-size: 1rem;
           line-height: 1.618rem;
           margin-bottom: 0.4045rem;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
+          .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-post .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
             text-align: center; }
-          .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
+          .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-post .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
             text-align: right; }
-          .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
+          .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-post .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
+          .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-post .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
             font-weight: 100; } }
-    .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
+    .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-post .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
       font-size: 4.20873rem;
       line-height: 1.618rem;
       margin-bottom: 1.618rem;
       font-family: 'GloberBold';
       line-height: 1; }
-      .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
+      .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
         text-align: center; }
-      .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
+      .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
         text-align: right; }
-      .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
+      .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-post .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
         font-weight: bold; }
-      .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
+      .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-post .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
         font-weight: 100; }
       @media (min-width: 48em) and (max-width: 63.9375em) {
-        .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
+        .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-post .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
           font-size: 3.15733rem;
           line-height: 1.618rem;
           margin-bottom: 0.809rem;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
+          .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
             text-align: center; }
-          .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
+          .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
             text-align: right; }
-          .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
+          .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-post .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
+          .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-post .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
             font-weight: 100; } }
       @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
+        .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-post .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
           font-size: 2.36859rem;
           line-height: 1.618rem;
           margin-bottom: 0.809rem;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
+          .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
             text-align: center; }
-          .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
+          .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
             text-align: right; }
-          .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
+          .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-post .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
+          .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-post .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
             font-weight: 100; } }
-    .board-bio .board-header .board-subtitle, .board-gallery .board-header .board-subtitle, .board-talk .board-header .board-subtitle, .board-landing .board-header .board-subtitle {
+    .board-bio .board-header .board-subtitle, .board-gallery .board-header .board-subtitle, .board-post .board-header .board-subtitle, .board-talk .board-header .board-subtitle, .board-landing .board-header .board-subtitle {
       font-size: 1.77689rem;
       line-height: 1.618rem;
       margin-bottom: 0;
       font-family: 'GloberBold';
       line-height: 1; }
-      .board-bio .board-header .board-subtitle.center, .board-gallery .board-header .board-subtitle.center, .board-talk .board-header .board-subtitle.center, .board-landing .board-header .board-subtitle.center {
+      .board-bio .board-header .board-subtitle.center, .board-gallery .board-header .board-subtitle.center, .board-post .board-header .board-subtitle.center, .board-talk .board-header .board-subtitle.center, .board-landing .board-header .board-subtitle.center {
         text-align: center; }
-      .board-bio .board-header .board-subtitle.right, .board-gallery .board-header .board-subtitle.right, .board-talk .board-header .board-subtitle.right, .board-landing .board-header .board-subtitle.right {
+      .board-bio .board-header .board-subtitle.right, .board-gallery .board-header .board-subtitle.right, .board-post .board-header .board-subtitle.right, .board-talk .board-header .board-subtitle.right, .board-landing .board-header .board-subtitle.right {
         text-align: right; }
-      .board-bio .board-header .board-subtitle.bold, .board-gallery .board-header .board-subtitle.bold, .board-talk .board-header .board-subtitle.bold, .board-landing .board-header .board-subtitle.bold {
+      .board-bio .board-header .board-subtitle.bold, .board-gallery .board-header .board-subtitle.bold, .board-post .board-header .board-subtitle.bold, .board-talk .board-header .board-subtitle.bold, .board-landing .board-header .board-subtitle.bold {
         font-weight: bold; }
-      .board-bio .board-header .board-subtitle.light, .board-gallery .board-header .board-subtitle.light, .board-talk .board-header .board-subtitle.light, .board-landing .board-header .board-subtitle.light {
+      .board-bio .board-header .board-subtitle.light, .board-gallery .board-header .board-subtitle.light, .board-post .board-header .board-subtitle.light, .board-talk .board-header .board-subtitle.light, .board-landing .board-header .board-subtitle.light {
         font-weight: 100; }
       @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-subtitle, .board-gallery .board-header .board-subtitle, .board-talk .board-header .board-subtitle, .board-landing .board-header .board-subtitle {
+        .board-bio .board-header .board-subtitle, .board-gallery .board-header .board-subtitle, .board-post .board-header .board-subtitle, .board-talk .board-header .board-subtitle, .board-landing .board-header .board-subtitle {
           font-size: 1rem;
           line-height: 1.618rem;
           margin-bottom: 0;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-header .board-subtitle.center, .board-gallery .board-header .board-subtitle.center, .board-talk .board-header .board-subtitle.center, .board-landing .board-header .board-subtitle.center {
+          .board-bio .board-header .board-subtitle.center, .board-gallery .board-header .board-subtitle.center, .board-post .board-header .board-subtitle.center, .board-talk .board-header .board-subtitle.center, .board-landing .board-header .board-subtitle.center {
             text-align: center; }
-          .board-bio .board-header .board-subtitle.right, .board-gallery .board-header .board-subtitle.right, .board-talk .board-header .board-subtitle.right, .board-landing .board-header .board-subtitle.right {
+          .board-bio .board-header .board-subtitle.right, .board-gallery .board-header .board-subtitle.right, .board-post .board-header .board-subtitle.right, .board-talk .board-header .board-subtitle.right, .board-landing .board-header .board-subtitle.right {
             text-align: right; }
-          .board-bio .board-header .board-subtitle.bold, .board-gallery .board-header .board-subtitle.bold, .board-talk .board-header .board-subtitle.bold, .board-landing .board-header .board-subtitle.bold {
+          .board-bio .board-header .board-subtitle.bold, .board-gallery .board-header .board-subtitle.bold, .board-post .board-header .board-subtitle.bold, .board-talk .board-header .board-subtitle.bold, .board-landing .board-header .board-subtitle.bold {
             font-weight: bold; }
-          .board-bio .board-header .board-subtitle.light, .board-gallery .board-header .board-subtitle.light, .board-talk .board-header .board-subtitle.light, .board-landing .board-header .board-subtitle.light {
+          .board-bio .board-header .board-subtitle.light, .board-gallery .board-header .board-subtitle.light, .board-post .board-header .board-subtitle.light, .board-talk .board-header .board-subtitle.light, .board-landing .board-header .board-subtitle.light {
             font-weight: 100; } }
-  .board-bio .board-body, .board-gallery .board-body, .board-talk .board-body, .board-landing .board-body {
+  .board-bio .board-body, .board-gallery .board-body, .board-post .board-body, .board-talk .board-body, .board-landing .board-body {
     overflow: hidden;
     position: relative;
     flex-grow: 1;
@@ -2292,93 +2292,93 @@ select[multiple] {
     flex-direction: column;
     padding-bottom: calc(6.472rem + 1.618rem); }
     @media (max-width: 47.9375em) {
-      .board-bio .board-body, .board-gallery .board-body, .board-talk .board-body, .board-landing .board-body {
+      .board-bio .board-body, .board-gallery .board-body, .board-post .board-body, .board-talk .board-body, .board-landing .board-body {
         padding-bottom: calc(3.236rem + 0.809rem); } }
-    .board-bio .board-body [class$="-header"] > *:first-child, .board-gallery .board-body [class$="-header"] > *:first-child, .board-talk .board-body [class$="-header"] > *:first-child, .board-landing .board-body [class$="-header"] > *:first-child {
+    .board-bio .board-body [class$="-header"] > *:first-child, .board-gallery .board-body [class$="-header"] > *:first-child, .board-post .board-body [class$="-header"] > *:first-child, .board-talk .board-body [class$="-header"] > *:first-child, .board-landing .board-body [class$="-header"] > *:first-child {
       padding-bottom: 0.809rem; }
-    .board-bio .board-body [class$="-header"] + *, .board-gallery .board-body [class$="-header"] + *, .board-talk .board-body [class$="-header"] + *, .board-landing .board-body [class$="-header"] + * {
+    .board-bio .board-body [class$="-header"] + *, .board-gallery .board-body [class$="-header"] + *, .board-post .board-body [class$="-header"] + *, .board-talk .board-body [class$="-header"] + *, .board-landing .board-body [class$="-header"] + * {
       font-family: "GloberBook", sans-serif;
       font-size: 1rem;
       line-height: 1.618rem;
       margin-bottom: 0;
       line-height: 1.25;
       flex-grow: 1; }
-      .board-bio .board-body [class$="-header"] + *.center, .board-gallery .board-body [class$="-header"] + *.center, .board-talk .board-body [class$="-header"] + *.center, .board-landing .board-body [class$="-header"] + *.center {
+      .board-bio .board-body [class$="-header"] + *.center, .board-gallery .board-body [class$="-header"] + *.center, .board-post .board-body [class$="-header"] + *.center, .board-talk .board-body [class$="-header"] + *.center, .board-landing .board-body [class$="-header"] + *.center {
         text-align: center; }
-      .board-bio .board-body [class$="-header"] + *.right, .board-gallery .board-body [class$="-header"] + *.right, .board-talk .board-body [class$="-header"] + *.right, .board-landing .board-body [class$="-header"] + *.right {
+      .board-bio .board-body [class$="-header"] + *.right, .board-gallery .board-body [class$="-header"] + *.right, .board-post .board-body [class$="-header"] + *.right, .board-talk .board-body [class$="-header"] + *.right, .board-landing .board-body [class$="-header"] + *.right {
         text-align: right; }
-      .board-bio .board-body [class$="-header"] + *.bold, .board-gallery .board-body [class$="-header"] + *.bold, .board-talk .board-body [class$="-header"] + *.bold, .board-landing .board-body [class$="-header"] + *.bold {
+      .board-bio .board-body [class$="-header"] + *.bold, .board-gallery .board-body [class$="-header"] + *.bold, .board-post .board-body [class$="-header"] + *.bold, .board-talk .board-body [class$="-header"] + *.bold, .board-landing .board-body [class$="-header"] + *.bold {
         font-weight: bold; }
-      .board-bio .board-body [class$="-header"] + *.light, .board-gallery .board-body [class$="-header"] + *.light, .board-talk .board-body [class$="-header"] + *.light, .board-landing .board-body [class$="-header"] + *.light {
+      .board-bio .board-body [class$="-header"] + *.light, .board-gallery .board-body [class$="-header"] + *.light, .board-post .board-body [class$="-header"] + *.light, .board-talk .board-body [class$="-header"] + *.light, .board-landing .board-body [class$="-header"] + *.light {
         font-weight: 100; }
       @media (orientation: landscape) and (max-width: 47.9375em) {
-        .board-bio .board-body [class$="-header"] + *, .board-gallery .board-body [class$="-header"] + *, .board-talk .board-body [class$="-header"] + *, .board-landing .board-body [class$="-header"] + * {
+        .board-bio .board-body [class$="-header"] + *, .board-gallery .board-body [class$="-header"] + *, .board-post .board-body [class$="-header"] + *, .board-talk .board-body [class$="-header"] + *, .board-landing .board-body [class$="-header"] + * {
           display: none; } }
-      .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
+      .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
         font-size: 2.36859rem;
         line-height: 1.618rem;
         margin-bottom: 0.809rem;
         font-family: 'GloberBold';
         line-height: 1; }
-        .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
+        .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
           text-align: center; }
-        .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
+        .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
           text-align: right; }
-        .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
+        .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-post .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
           font-weight: bold; }
-        .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
+        .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-post .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
           font-weight: 100; }
         @media (min-width: 48em) and (max-width: 63.9375em) {
-          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
+          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
             font-size: 1.77689rem;
             line-height: 1.618rem;
             margin-bottom: 0.809rem;
             font-family: 'GloberBold';
             line-height: 1; }
-            .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
+            .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
               text-align: center; }
-            .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
+            .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
               text-align: right; }
-            .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
+            .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-post .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
               font-weight: bold; }
-            .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
+            .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-post .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
               font-weight: 100; } }
         @media (max-width: 47.9375em) {
-          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
+          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
             font-size: 1.333rem;
             line-height: 1.618rem;
             margin-bottom: 0.809rem;
             font-family: 'GloberBold';
             line-height: 1; }
-            .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
+            .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
               text-align: center; }
-            .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
+            .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
               text-align: right; }
-            .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
+            .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-post .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
               font-weight: bold; }
-            .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
+            .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-post .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
               font-weight: 100; } }
         @media (orientation: landscape) and (max-width: 47.9375em) {
-          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
+          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
             display: none; } }
-        .board-bio .board-body [class$="-header"] + * + * footer, .board-gallery .board-body [class$="-header"] + * + * footer, .board-talk .board-body [class$="-header"] + * + * footer, .board-landing .board-body [class$="-header"] + * + * footer {
+        .board-bio .board-body [class$="-header"] + * + * footer, .board-gallery .board-body [class$="-header"] + * + * footer, .board-post .board-body [class$="-header"] + * + * footer, .board-talk .board-body [class$="-header"] + * + * footer, .board-landing .board-body [class$="-header"] + * + * footer {
           font-size: 1rem;
           line-height: 1.618rem;
           margin-bottom: 0;
           font-family: 'GloberBold';
           line-height: 1; }
-          .board-bio .board-body [class$="-header"] + * + * footer.center, .board-gallery .board-body [class$="-header"] + * + * footer.center, .board-talk .board-body [class$="-header"] + * + * footer.center, .board-landing .board-body [class$="-header"] + * + * footer.center {
+          .board-bio .board-body [class$="-header"] + * + * footer.center, .board-gallery .board-body [class$="-header"] + * + * footer.center, .board-post .board-body [class$="-header"] + * + * footer.center, .board-talk .board-body [class$="-header"] + * + * footer.center, .board-landing .board-body [class$="-header"] + * + * footer.center {
             text-align: center; }
-          .board-bio .board-body [class$="-header"] + * + * footer.right, .board-gallery .board-body [class$="-header"] + * + * footer.right, .board-talk .board-body [class$="-header"] + * + * footer.right, .board-landing .board-body [class$="-header"] + * + * footer.right {
+          .board-bio .board-body [class$="-header"] + * + * footer.right, .board-gallery .board-body [class$="-header"] + * + * footer.right, .board-post .board-body [class$="-header"] + * + * footer.right, .board-talk .board-body [class$="-header"] + * + * footer.right, .board-landing .board-body [class$="-header"] + * + * footer.right {
             text-align: right; }
-          .board-bio .board-body [class$="-header"] + * + * footer.bold, .board-gallery .board-body [class$="-header"] + * + * footer.bold, .board-talk .board-body [class$="-header"] + * + * footer.bold, .board-landing .board-body [class$="-header"] + * + * footer.bold {
+          .board-bio .board-body [class$="-header"] + * + * footer.bold, .board-gallery .board-body [class$="-header"] + * + * footer.bold, .board-post .board-body [class$="-header"] + * + * footer.bold, .board-talk .board-body [class$="-header"] + * + * footer.bold, .board-landing .board-body [class$="-header"] + * + * footer.bold {
             font-weight: bold; }
-          .board-bio .board-body [class$="-header"] + * + * footer.light, .board-gallery .board-body [class$="-header"] + * + * footer.light, .board-talk .board-body [class$="-header"] + * + * footer.light, .board-landing .board-body [class$="-header"] + * + * footer.light {
+          .board-bio .board-body [class$="-header"] + * + * footer.light, .board-gallery .board-body [class$="-header"] + * + * footer.light, .board-post .board-body [class$="-header"] + * + * footer.light, .board-talk .board-body [class$="-header"] + * + * footer.light, .board-landing .board-body [class$="-header"] + * + * footer.light {
             font-weight: 100; }
-    .board-bio .board-body .board-body-part, .board-gallery .board-body .board-body-part, .board-talk .board-body .board-body-part, .board-landing .board-body .board-body-part {
+    .board-bio .board-body .board-body-part, .board-gallery .board-body .board-body-part, .board-post .board-body .board-body-part, .board-talk .board-body .board-body-part, .board-landing .board-body .board-body-part {
       width: 100%;
       color: #0d0d0d; }
-  .board-bio .board-footer, .board-gallery .board-footer, .board-talk .board-footer, .board-landing .board-footer {
+  .board-bio .board-footer, .board-gallery .board-footer, .board-post .board-footer, .board-talk .board-footer, .board-landing .board-footer {
     height: 0;
     position: relative;
     padding-top: 6.472rem;
@@ -2386,10 +2386,10 @@ select[multiple] {
     display: flex;
     justify-content: center; }
     @media (max-width: 47.9375em) {
-      .board-bio .board-footer, .board-gallery .board-footer, .board-talk .board-footer, .board-landing .board-footer {
+      .board-bio .board-footer, .board-gallery .board-footer, .board-post .board-footer, .board-talk .board-footer, .board-landing .board-footer {
         padding-top: 3.236rem;
         margin-top: 0.809rem; } }
-    .board-bio .board-footer::before, .board-gallery .board-footer::before, .board-talk .board-footer::before, .board-landing .board-footer::before {
+    .board-bio .board-footer::before, .board-gallery .board-footer::before, .board-post .board-footer::before, .board-talk .board-footer::before, .board-landing .board-footer::before {
       position: absolute;
       content: '';
       top: 0;
@@ -2398,12 +2398,12 @@ select[multiple] {
       width: 100%;
       transition: background-color 0.33s linear;
       background-color: #0d0d0d; }
-    .board-bio .board-footer > *, .board-gallery .board-footer > *, .board-talk .board-footer > *, .board-landing .board-footer > * {
+    .board-bio .board-footer > *, .board-gallery .board-footer > *, .board-post .board-footer > *, .board-talk .board-footer > *, .board-landing .board-footer > * {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate3d(-50%, -50%, 0); }
-  .board-bio .board-media, .board-gallery .board-media, .board-talk .board-media, .board-landing .board-media, .board-bio .board-content, .board-gallery .board-content, .board-talk .board-content, .board-landing .board-content {
+  .board-bio .board-media, .board-gallery .board-media, .board-post .board-media, .board-talk .board-media, .board-landing .board-media, .board-bio .board-content, .board-gallery .board-content, .board-post .board-content, .board-talk .board-content, .board-landing .board-content {
     overflow: hidden;
     overflow-y: scroll;
     flex-grow: 1;
@@ -2541,6 +2541,9 @@ select[multiple] {
         .board-gallery .board-media > *:nth-child(even) {
           margin-left: calc(0.809rem / 2);
           margin-right: 0; } }
+
+.board-post .board-content {
+  flex-direction: column; }
 
 .board-talk .board-content {
   flex-direction: column; }

@@ -16,7 +16,6 @@ mixin cardProject(project)
 mixin cardPost(post)
     a(href='/blog/' + post.slug)
         .card-post
-            .card-media.square(style="background-image: url('" + post.featuredImage.url + "')")
             header.card-header
                 .card-subtitle
                     h2
@@ -27,6 +26,8 @@ mixin cardPost(post)
                 .card-title
                     .btn-main
                         h3.btn-title #{post.title}
+            .card-body
+                p #{post.content.excerpt}
 
 mixin cardProduct(product)
     a(href='/shop/' + product.slug)

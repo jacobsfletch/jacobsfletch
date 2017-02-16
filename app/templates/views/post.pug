@@ -3,16 +3,15 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .app-body-part.start
-        .board-post
+    .board-post
+        .board-body
             .board-header
-                .board-categories
+                .board-meta
                     h2
                         each category, index in post.categories
                             | #{category.key}
                             if (index + 1) < post.categories.length
                                 | , #{' '}
-                .board-tags
                     h2
                         each tag, index in post.tags
                             | #{tag.key}
@@ -20,34 +19,29 @@ block appBody
                                 | , #{' '}
                 .board-title
                     h1 #{post.title}
-                .board-meta
-                    h3 written by #{post.author.name.first} #{post.author.name.last}
-                    h3 published on #{post._.publishedDate.format()}
                 .board-subtitle
+                    h3 published on #{post._.publishedDate.format()}
                     h3 #{post.content.excerpt}
-            .board-body
-                .board-body-part
-                    blockquote.type-blockquote
+            .board-body-part
+                blockquote.type-blockquote
+                    header
                         p #{post.quote}
-                        footer
-                            p #{post.quoteAuthor}
-                .board-body-part
-                    h2 hashtags
-                    each hashtag, index in post.hashtags
-                        h2
-                            | ##{hashtag.key}
-                    h2 [...]
-            .board-footer
-                a.tool-scroll(href='#post')
-                    .tool-media
-                        +downArrow()
-    #post.app-body-part.explore
-        .wall-post
-            .wall-header
-                .wall-title
-                    h3 full post
-            .wall-body
-                .wall-body-part
-                    img.square(style="background-image: url('" + post.featuredImage.url + "')")
-                .wall-body-part
-                    p #{post.content.full}
+                    footer
+                        p #{post.quoteAuthor}
+            .board-body-part
+                h2 hashtags
+                each hashtag, index in post.hashtags
+                    h2
+                        | ##{hashtag.key}
+                h2 [...]
+            .panel-explore
+                .board-footer
+                    label.tool-scroll(for="explore")
+                        .tool-media
+                            +downArrow()
+                .board-content
+                    .wall-body-part
+                        img.square(style="background-image: url('" + post.featuredImage.url + "')")
+                    .collection-main
+                        h3 #{post.title}
+                        p !{post.content.full}
