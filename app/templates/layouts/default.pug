@@ -18,55 +18,39 @@ html
         block head
     body
         block intro
+        input#dock(type='checkbox')
+        input#explore(type='checkbox')
         .app-main
             header.app-header
-                a.app-title(href='/')
-                    h1 jacobsfletch
-                a.tool-toggle(href='#dock')
-                    .hamburger.hamburger--squeeze
-                        .hamburger-box
-                            .hamburger-inner
-                #dock.board-dock
-                    .board-body
-                        nav.menu-vertical
-                            ul.menu-body
-                                each link in navLinks
-                                    li.menu-body-part.btn-main.shout(class=(section == link.key ? 'active' : null)): a.btn-title(href=link.href)= link.label
-                        nav.menu-vertical
-                            .menu-header
-                                .menu-title
-                                    h6 coming soon
-                            ul.menu-body
-                                li.menu-body-part.btn-main.shout
-                                    a.btn-title(href='/#') my blog
-                                li.menu-body-part.btn-main.shout
-                                    a.btn-title(href='/#') my shop
-            .app-body
-                .container
-                    block appBody
-
+                .wrapper
+                    a.app-title(href='/')
+                        h1 jacobsfletch
+                    label.tool-toggle(for='dock')
+                        .hamburger.hamburger--squeeze
+                            .hamburger-box
+                                .hamburger-inner
             footer.app-footer
+                nav.menu-vertical
+                    ul.menu-body
+                        each link in navLinks
+                            li.menu-body-part.btn-main.shout(class=(section == link.key ? 'active' : null))
+                                if link.key == 'follow'
+                                    a.btn-title(target='_blank' href=link.href)= link.label
+                                else
+                                    a.btn-title(target=link.target href=link.href)= link.label
+                nav.menu-vertical
+                    .menu-header
+                        .menu-title
+                            h6 coming soon
+                    ul.menu-body
+                        li.menu-body-part.btn-main.shout
+                            a.btn-title my blog
+                        li.menu-body-part.btn-main.shout
+                            a.btn-title my shop
+            .app-body
+                block appBody
 
         // JS includes
-        // script(src='/js/jacobsfletch.min.js')
+        script(src='/js/jacobsfletch.min.js')
 
         block js
-        script.
-            var toolToggle = document.getElementsByClassName("tool-toggle");
-            var toggleTarget = document.getElementsByClassName("app-main");
-            for (var i = 0; i < toolToggle.length; i++) {
-                el = toolToggle[i];
-                el.addEventListener('click', function () {
-                    if (el.classList.contains("is-active")) {
-                        el.classList.remove("is-active");
-                        for (var i = 0; i < toggleTarget.length; i++) {
-                            toggleTarget[i].classList.remove("is-active");
-                        }
-                    } else {
-                        el.classList.add("is-active");
-                        for (var i = 0; i < toggleTarget.length; i++) {
-                            toggleTarget[i].classList.add("is-active");
-                        }
-                    }
-                });
-            }

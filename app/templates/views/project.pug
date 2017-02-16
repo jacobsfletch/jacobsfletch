@@ -3,16 +3,15 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .app-body-part.start
-        .board-project
+    .board-gallery
+        .board-body
             .board-header
-                .board-categories
+                .board-meta
                     h2
                         each category, index in project.categories
                             | #{category.key}
                             if (index + 1) < project.categories.length
                                 | , #{' '}
-                .board-tags
                     h2
                         each tag, index in project.tags
                             | #{tag.key}
@@ -20,34 +19,20 @@ block appBody
                                 | , #{' '}
                 .board-title
                     h1 #{project.title}
-                .board-subtitle
-                    h3 #{project.content.excerpt}
-            .board-body
-                .board-body-part
-                    p #{project.content.full}
-                .board-body-part
-                    blockquote.type-blockquote
+            .board-body-part
+                h3 #{project.content}
+            .board-body-part
+                blockquote.type-blockquote
+                    header
                         p #{project.quote}
-                        footer
-                            p #{project.quoteAuthor}
-                .board-body-part
-                    h2 hashtags
-                    each hashtag, index in project.hashtags
-                        h2
-                            | ##{hashtag.key}
-                    h2 [...]
-            .board-footer
-                a.tool-scroll(href='#project')
-                    .tool-media
-                        +downArrow()
-    #project.app-body-part.explore
-        .wall-post
-            .wall-header
-                .wall-title
-                    h3 project gallery
-            .wall-body
-                each image, index in project.images
-                    .wall-body-part
-                        .multimedia-lightbox
-                            a.multimedia-media.square(style="background-image: url('" + image.url + "')")
-                                p view image
+                    footer
+                        p #{project.quoteAuthor}
+            .panel-explore
+                .board-footer
+                    label.tool-scroll(for="explore")
+                        .tool-media
+                            +downArrow()
+                .board-media
+                    each image, index in project.images
+                        .image-square
+                            img(src=image.url)

@@ -4,7 +4,7 @@ include ../mixins/components/cards
 include ../mixins/media/downarrow
 
 block appBody
-    .app-body-part
-        .collection-main
-            h1 hello, my name is jacob fletcher.
-            h2 i am an independent designer, illustrator, and front-end web developer.
+    .app-body-part.start
+        .collection-shout
+            h1 #{user.title}
+            h2 #{user.subtitle}

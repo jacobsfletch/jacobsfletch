@@ -17,25 +17,6 @@ User.add({
         required: true,
         index: true
     },
-    canAccessKeystone: {
-        type: Boolean,
-        initial: true
-    },
-    user_type: {
-        label: 'User Type',
-        type: Types.Select,
-        options: [{
-            value: 'editor',
-            label: 'Editor'
-        }, {
-            value: 'staff',
-            label: 'Staff'
-        }, {
-            value: 'superadmin',
-            label: 'Super Admin'
-        }],
-        initial: true,
-    },
     email: {
         type: Types.Email,
         initial: true,
@@ -44,53 +25,84 @@ User.add({
     },
     password: {
         type: Types.Password,
-        initial: true
+        initial: true,
+        required: true
     },
-    address: {
-        label: 'Location',
-        type: Types.Location,
-        enableMapsAPI: true,
-        defaults: {
-            country: 'United States'
+    status: {
+        type: Types.Select,
+        options: [{
+            value: 'unavailable',
+            label: 'Unavailable'
+        }, {
+            value: 'available',
+            label: 'Available'
+        }]
+    },
+    title: {
+        type: String
+    },
+    subtitle: {
+        type: String
+    },
+    tagline: {
+        a: {
+            label: 'Tagline A',
+            type: String
+        },
+        b: {
+            label: 'Tagline B',
+            type: String
+        },
+    },
+    specialization: {
+        type: String,
+        wysiwyg: false,
+        height: 150
+    },
+    quote: {
+        type: String,
+        wysiwyg: false,
+        height: 150
+    },
+    philosophy: {
+        type: Types.Html,
+        wysiwyg: false,
+        height: 150
+    },
+    education: {
+        type: Types.Html,
+        wysiwyg:  false,
+        height: 500
+    },
+    experience: {
+        type: Types.Html,
+        wysiwyg: false,
+        height: 500
+    },
+    skills: {
+        design: {
+            label: 'Design Skills',
+            type: Types.Html,
+            wysiwyg:  false,
+            height: 500
+        },
+        development: {
+            label: 'Development Skills',
+            type: Types.Html,
+            wysiwyg: false,
+            height: 500
         }
     },
-    phone: {
-        label: 'Phone',
-        type: Types.Text
-    },
-    dob: {
-        label: 'Date of Birth',
-        type: Types.Date,
-        parseFormat: 'MM-DD-YYYY',
-        format: 'MM-DD-YYYY',
-        dependsOn: {
-            user_type: 'player'
-        },
-    },
-    age: {
-        type: Types.Number,
-        dependsOn: {
-            user_type: 'player'
-        },
-    },
-    bio: {
-        label: 'Bio',
+    more: {
         type: Types.Html,
-        wysiwyg: true,
-        height: 400
+        wysiwyg: false,
+        height: 500
     },
-    customer: {
-        type: Types.Text,
-        dependsOn: {
-            user_type: 'player'
-        },
-    },
-    inactive: {
-        type: Boolean
-    },
-    reset_password: {
-        type: Types.Text,
+    canAccessKeystone: {
+        type: Boolean,
+        initial: true
     }
 });
 
+User.defaultColumns = 'name';
 User.register();

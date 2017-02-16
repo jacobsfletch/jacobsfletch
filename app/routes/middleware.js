@@ -23,10 +23,10 @@ var UAParser = require('ua-parser-js');
 exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	locals.navLinks = [
-		{ label: 'more about me',   key: 'bio',		    href: '/bio' },
 		{ label: 'see my work',		key: 'projects',	href: '/projects' },
 		{ label: 'talk to me',		key: 'talk',		href: '/talk' },
 		{ label: 'follow me',		key: 'follow',		href: 'http://www.instagram.com/jacobsfletch' },
+    	{ label: 'more about me',   key: 'bio',		    href: '/bio' },
 	];
 
 	locals.user = req.user;

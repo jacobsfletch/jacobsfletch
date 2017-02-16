@@ -1,30 +1,30 @@
 extends ../layouts/default
 
 block appBody
-    .app-body
-        .board-talk
-            nav.menu-vertical
-                .menu-title
-                    h6 coming soon
-                ul.menu-body
-                    li.menu-body-part.btn-main
-                        a.btn-title(href='#') shop
-                    li.menu-body-part.btn-main
-                        a.btn-title(href='#') blog
+    .board-talk
+        .board-body
             .board-header
+                .board-subtitle
+                    if user.status == 'available'
+                        h3 i am currently available for work, let's chat
+                    else if user.status == 'unavailable'
+                        h3 i am currently unavailable for work, but i'd still love to chat
                 .board-title
                     h1 talk to me
-                .board-subtitle
-                    h3 or just say hi
-            .board-body
-                form
-                    input.input-text(type='text', placeholder='first name')
-                    |
-                    input.input-text(type='text', placeholder='last name')
-                    |
-                    input.input-text(type='email', placeholder='email address')
-                    textarea.input-textarea(placeholder='message')
-                    |
-                    button
-                        a.btn-main
-                            h3.btn-title send
+            .board-body-part
+                form#contact
+                    .input-text
+                        label.input-label(for="name-first")
+                        input#name-first(type='text', placeholder='first name')
+                    .input-text
+                        label.input-label(for="name-last")
+                        input#name-last.input-text(type='text', placeholder='last name')
+                    .input-text
+                        label.input-label(for="email")
+                        input#email.input-text(type='email', placeholder='email address')
+                    .input-textarea
+                        label.input-label(for="message")
+                        textarea#message.input-textarea(placeholder='message')
+                    button(type="submit")
+                        .btn-main
+                            a.btn-title submit

@@ -61,16 +61,9 @@ Project.add({
         type: Types.CloudinaryImages
     },
     content: {
-        excerpt: {
-            type: Types.Html,
-            wysiwyg: false,
-            height: 150
-        },
-        full: {
-            type: Types.Html,
-            wysiwyg: false,
-            height: 400
-        }
+        type: Types.Html,
+        wysiwyg: false,
+        height: 150
     },
     quote: {
         type: Types.Html,

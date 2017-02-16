@@ -3,84 +3,38 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .app-body
-        .app-body-part.start
-            .board-bio
-                .board-title
-                    h1 hello, my name is jacob fletcher.
+    .board-bio
+        .board-body
+            .board-header
                 .board-subtitle
-                    h2 i am an independent designer, illustrator, and front-end web developer.
-                .board-body
-                    .board-body-part
-                        h3.type-h6
-                            | i specialize in branding, portraiture, layout, and experience design. maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec estmaecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo. tincidunt tempor id et leo.
-                    .board-body-part
-                        .wrapper
-                            p
-                                | experience is the highest form of art, and is what excites me most about design. experience collectively influences our subconscious, and so the artist is a manifestation of the creativity in their lived-world, and their ability to filter that exposure with intention. art education is founded upon observation and critique; concepts that guide the artist&apos;s creative decision-making process &ndash; equipping them to make choices different from their previous.
-                            blockquote.type-blockquote
-                                | what excites me most is that while the elements and principles of design guide the artist into spatial obedience on a two or three dimension plane, they also act as a philosophical framework in which one can examine their life and guide it development.
-                            p
-                                | just as unity, harmony, balance,rhythm, emphasis, proportion, and scale all contribute to an eye-pleasing aesthetic, there are applicable parallels between them and the empirical world. In what ways could oneself be designed using the six principles of design?
-                        .wrapper
-                            p
-                                | it is through this understanding in which I approach art making. What is inevitable is that my artwork becomes the manifestation of the unique exposure of my experiences in the contemporary world. as a result, I actively practice, develop, and integrate the artistic processes into my decision-making insomuch as my creativity allows. therefore, the art that I produce is subject to the spectrum of contexts in which I can successfully translate from experience into visual form through the use of manual dexterity and digital medium.
-                                a.btn-main(href='#credentials')
-                                    h3.btn-title see my credentials
+                    h1 #{user.tagline.a}
+                .board-title
+                    h2 #{user.tagline.b}
+            .board-body-part
+                h3 #{user.specialization}
+            .board-body-part
+                h3 #{user.quote}
+            .panel-explore
                 .board-footer
-                    a.tool-scroll(href='#credentials')
+                    label.tool-scroll(for="explore")
                         .tool-media
                             +downArrow()
-        #credentials.app-body-part.explore
-            .wall-work
-                header.wall-header
-                    .wall-title
-                        h1 ok enough philosophy already! here are my credentials
-                .wall-body
-                    .wall-body-part.collection-generic
-                        h6 education
-                        p spring arbor university, bachelor's degree in art with a concentration in graphic design
-                        p granted presidential acedemic scholarship and music scholarship upon entry
-                        p graduated magna cum laude with a 3.87 gpa
-                        p high participation in outside jurered competitions, both intermural and regional
-                        p awards and recognition while a student, 20 awards
-                            ul
-                                li first place
-                                li runner-up
-                                li best in show
-                        p participated in cross-cultural studies program to jamaica as part of my education
-                        .wall-body-part.collection-generic
-                            h6 print and web design technical skills
-                            p design software
-                                ul
-                                    li adobe creative suite
-                                    li mastery in illustrator, xd, sketch
-                                    li profficient in photoshop
-                    .wall-body-part.collection-generic
-                        h6 web development technical skills
-                        p front-end development languages i am highly familier with
-                            ul
-                                li html
-                                li pug
-                                li css
-                                li scss
-                                li sass
-                                li js
-                                li git
-                                li command line
-                        p web development work-flow skills
-                            ul
-                                li github collaberation, integration
-                        p some, all-be-it limited, knowledge from dabbling in back-end web development
-                            ul
-                                li no-sql data modeling
-                                li server setup
-                                li node, mongo, and mongoose
-                    .wall-body-part.collection-generic
-                        h6 experience
-                        p
-                            | maecenas auctor efficitur libero, ac ullamcorper metus semper nec. donec dapibus nunc quis leo tempus, a porta est venenatis. praesent vitae nisl nec est tincidunt tempor id et leo. Nulla ac ultrices nisi, at venenatis neque. class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                footer.wall-footer
-                    h3 sound good?
-                    a.btn-main(href='/talk')
-                        h1 talk to me
+                .board-content
+                    .collection-main
+                        h3 philosophy
+                        div !{user.philosophy}
+                    .collection-main
+                        h3 education
+                        div !{user.education}
+                    .collection-main
+                        h3 experience
+                        p !{user.experience}
+                    .collection-main
+                        h3 design skills
+                        p !{user.skills.design}
+                    .collection-main
+                        h3 development skills
+                        p !{user.skills.development}
+                    .collection-main
+                        h3 more about me
+                        p !{user.more}

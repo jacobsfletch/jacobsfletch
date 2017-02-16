@@ -1,17 +1,17 @@
 mixin cardProject(project)
-    .card-post
-        a.card-media.square(href='/projects/' + project.slug, style="background-image: url('" + project.featuredImage.url + "')")
-            h3 view project
-        header.card-header
-            .card-subtitle
-                h2
-                    each category, index in project.categories
-                        | #{category.key}
-                        if (index + 1) < project.categories.length
-                            | , #{' '}
-            .card-title
-                a.btn-main(href='/projects/' + project.slug)
-                    h3.btn-title #{project.title}
+    a(href='/projects/' + project.slug)
+        .card-project
+            .card-media.square(style="background-image: url('" + project.featuredImage.url + "')")
+            header.card-header
+                .card-subtitle
+                    h2
+                        each category, index in project.categories
+                            | #{category.key}
+                            if (index + 1) < project.categories.length
+                                | , #{' '}
+                .card-title
+                    .btn-main
+                        h3.btn-title #{project.title}
 
 mixin cardPost(post)
     .card-post
@@ -29,7 +29,7 @@ mixin cardPost(post)
                     h3.btn-title #{post.title}
 
 mixin cardProduct(product)
-    .card-post
+    .card-product
         a.card-media.square(href='/shop/' + product.slug, style="background-image: url('" + product.featuredImage.url + "')")
             h3 view item
         header.card-header
