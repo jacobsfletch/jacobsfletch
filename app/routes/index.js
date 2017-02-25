@@ -78,7 +78,13 @@ exports = module.exports = function(app) {
 
     //
     // URLs
+    // Colons in the slug represent variables that can be passed through to the route
+    // They are renamed after the comma when assigned a route
     //
+
+    // Old Browser Check
+    app.all(/^(?!(\/update)).*$/, middleware.ensureLatestBrowser);
+    app.get('/update', routes.views.oldbrowser);
 
     // Landing
     app.get('/', routes.views.index);

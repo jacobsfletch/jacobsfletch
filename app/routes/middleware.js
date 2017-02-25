@@ -56,21 +56,21 @@ exports.flashMessages = function(req, res, next) {
 };
 
 
-//Check if user is on a modern browser
+// Check if user is on a modern browser
 exports.ensureLatestBrowser = function(req, res, next) {
-  var parser = new UAParser();
-  var ua = req.headers['user-agent'];
-  var browserName = parser.setUA(ua).getBrowser().name;
-  var fullBrowserVersion = parser.setUA(ua).getBrowser().version;
-  var browserVersion = typeof fullBrowserVersion == 'array' ? fullBrowserVersion.split(".",1).toString() : '';
-  var browserVersionNumber = Number(browserVersion);
+    var parser = new UAParser();
+    var ua = req.headers['user-agent'];
+    var browserName = parser.setUA(ua).getBrowser().name;
+    var fullBrowserVersion = parser.setUA(ua).getBrowser().version;
+    var browserVersion = typeof fullBrowserVersion == 'array' ? fullBrowserVersion.split(".",1).toString() : '';
+    var browserVersionNumber = Number(browserVersion);
 
-  if(browserName == 'IE' && fullBrowserVersion < 10) {
-  		res.redirect('/update/');
-  }
-  else{
-  		next();
-  }
+    if(browserName == 'IE' && fullBrowserVersion < 10) {
+        res.redirect('/update/');
+    }
+    else{
+        next();
+    }
 }
 
 
