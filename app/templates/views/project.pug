@@ -33,7 +33,9 @@ block appBody
                         .tool-media
                             +downArrow()
                 .board-media
-                    each image, index in project.images
+                    .image-square
+                        img(src=project.featuredImage.url)
+                    each image in project.images
                         .image-square
                             img(src=image.url)
                 .fallback
