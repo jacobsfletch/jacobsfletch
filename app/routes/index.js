@@ -1,22 +1,22 @@
-/**
- * This file is where you define your application routes and controllers.
- *
- * Start by including the middleware you want to run for every request;
- * you can attach middleware to the pre('routes') and pre('render') events.
- *
- * For simplicity, the default setup for route controllers is for each to be
- * in its own file, and we import all the files in the /routes/views directory.
- *
- * Each of these files is a route controller, and is responsible for all the
- * processing that needs to happen for the route (e.g. loading data, handling
- * form submissions, rendering the view template, etc).
- *
- * Bind each route pattern your application should respond to in the function
- * that is exported from this module, following the examples below.
- *
- * See the Express application routing documentation for more information:
- * http://expressjs.com/api.html#app.VERB
- */
+//
+// This file is where you define your application routes and controllers.
+//
+// Start by including the middleware you want to run for every request;
+// you can attach middleware to the pre('routes') and pre('render') events.
+//
+// For simplicity, the default setup for route controllers is for each to be
+// in its own file, and we import all the files in the /routes/views directory.
+//
+// Each of these files is a route controller, and is responsible for all the
+// processing that needs to happen for the route (e.g. loading data, handling
+// form submissions, rendering the view template, etc).
+//
+// Bind each route pattern your application should respond to in the function
+// that is exported from this module, following the examples below.
+//
+// See the Express application routing documentation for more information:
+// http://expressjs.com/api.html#app.VERB
+//
 
 var keystone = require('keystone');
 var middleware = require('./middleware');
@@ -32,12 +32,12 @@ keystone.pre('render', middleware.flashMessages);
 keystone.set('404', function(req, res, next) {
 	var view = new keystone.View(req, res);
     if(req.xhr) {
-	    return res.apiError('404. Sorry, we couldn\'t complete your request, there\'s a broken link here. Please reload and try again or notify us.');
+	    return res.apiError('404 Error.');
     }
     view.render('errors/404');
 });
 
-// Handle other errors
+// Handle 500 errors
 keystone.set('500', function(err, req, res, next) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
@@ -48,7 +48,7 @@ keystone.set('500', function(err, req, res, next) {
         locals.err = err.stack;
     }
     if(req.xhr) {
-	    return res.apiError('500. Sorry, looks like there was an internal server error.');
+	    return res.apiError('500 Error.');
     }
     view.render('errors/500');
 });
@@ -82,8 +82,7 @@ exports = module.exports = function(app) {
     // They are renamed after the comma when assigned a route
     //
 
-    // Old Browser Check
-    app.all(/^(?!(\/update)).*$/, middleware.ensureLatestBrowser);
+    // Old Browser
     app.get('/update', routes.views.oldbrowser);
 
     // Landing
@@ -91,7 +90,7 @@ exports = module.exports = function(app) {
 
     // Documents
     app.get('/talk', routes.views.talk);
-    app.get('/bio', routes.views.bio);
+    app.get('/more', routes.views.more);
 
     // Portfolio
     app.get('/portfolio', routes.views.portfolio);
