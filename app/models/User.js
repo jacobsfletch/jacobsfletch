@@ -38,66 +38,6 @@ User.add({
             label: 'Available'
         }]
     },
-    title: {
-        type: String
-    },
-    subtitle: {
-        type: String
-    },
-    tagline: {
-        a: {
-            label: 'Tagline A',
-            type: String
-        },
-        b: {
-            label: 'Tagline B',
-            type: String
-        },
-    },
-    specialization: {
-        type: String,
-        wysiwyg: false,
-        height: 150
-    },
-    quote: {
-        type: String,
-        wysiwyg: false,
-        height: 150
-    },
-    philosophy: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
-    },
-    education: {
-        type: Types.Html,
-        wysiwyg:  false,
-        height: 500
-    },
-    experience: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 500
-    },
-    skills: {
-        design: {
-            label: 'Design Skills',
-            type: Types.Html,
-            wysiwyg:  false,
-            height: 500
-        },
-        development: {
-            label: 'Development Skills',
-            type: Types.Html,
-            wysiwyg: false,
-            height: 500
-        }
-    },
-    more: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 500
-    },
     canAccessKeystone: {
         type: Boolean,
         initial: true

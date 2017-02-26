@@ -10,6 +10,7 @@
 
 var _ = require('underscore');
 var UAParser = require('ua-parser-js');
+var keystone = require('keystone');
 
 // Initializes the standard view locals
 // The included layout depends on the navLinks array to generate
@@ -29,6 +30,20 @@ exports.initLocals = function(req, res, next) {
 	next();
 
 };
+
+// Fetch global content
+exports.globals = function(req, res, next) {
+    var locals = res.locals;
+    var Global = keystone.list('Global').model;
+
+    Global.findOne({
+        slug: 'main'
+    })
+    .exec(function (err, doc) {
+        locals.global = doc;
+        next();
+    });
+}
 
 // Fetches and clears the flashMessages before a view is rendered
 exports.flashMessages = function(req, res, next) {
@@ -66,7 +81,7 @@ exports.ensureLatestBrowser = function(req, res, next) {
 exports.requireUser = function(req, res, next) {
 
 	if (!req.user) {
-		req.flash('error', 'Please sign in to access this page.');
+		req.flash('error', 'Sign in to access this page.');
 		res.redirect('/sign-in');
 	} else {
 		next();
@@ -77,7 +92,7 @@ exports.requireUser = function(req, res, next) {
 exports.requireAdmin = function(req, res, next) {
 
 	if (!req.user.canAccessKeystone) {
-		req.flash('error', 'Please sign in to access this page.');
+		req.flash('error', 'Sign in to access this page.');
 		res.redirect('/sign-in');
 	} else {
 		next();

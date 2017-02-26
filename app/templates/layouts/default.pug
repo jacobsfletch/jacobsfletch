@@ -5,22 +5,20 @@ html
         //- Initial HTML configuration
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
-        meta(charset="utf-8")
-        -var title = locals.title ? 'jacobsfletch: ' + locals.title : 'jacobsfletch'
-        -var description = locals.description ? locals.description : 'jacobsfletch'
-        title= title || 'jacobsfletch'
-        meta(name="description", content=description)
+        //- Link meta-data
+        title #{global.meta.description}
+        meta(name="description", content=global.meta.description)
         //- Define the viewport
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
         //- Fullscreen Safari on startup from home screen on Apple and Android devices
         meta(name="apple-mobile-web-app-capable" content="yes")
         meta(name="mobile-web-app-capable" content="yes")
         //- Link browser favicon
-        link(rel="shortcut icon", href="/favicon.png", type="image/x-icon")
+        link(rel="icon", type="image/png", href=global.favicon.url)
         //- Link home screen app icon on Apple devices
-        link(rel="apple-touch-icon" href="/touch-icon.png")
+        link(rel="apple-touch-icon" href=global.icon.url)
         //- Link startup image on Apple devices
-        link(rel="apple-touch-startup-image" href="/startup-image.png")
+        link(rel="apple-touch-startup-image" href=global.startupImg.url)
         //- Link Sassafras project styles
         link(rel='stylesheet', type='text/css', href='/styles/jacobsfletch.min.css')
         if user && user.canAccessKeystone

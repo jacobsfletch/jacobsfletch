@@ -7,8 +7,8 @@ exports = module.exports = function(req, res) {
     // Load the User Data
     view.on('init', function (next) {
         var q = keystone.list('User').model.findOne({
-            key: 'jacob-fletcher'
-        }).populate('email status');
+            slug: 'jacob-fletcher'
+        }).populate('status');
         q.exec(function (err, result) {
             if (result) {
                 locals.user = result;

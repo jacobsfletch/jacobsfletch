@@ -7,13 +7,13 @@ block appBody
         .board-body
             .board-header
                 .board-subtitle
-                    h1 #{user.tagline.a}
+                    h1 #{resume.intro.a}
                 .board-title
-                    h2 #{user.tagline.b}
+                    h2 #{resume.intro.b}
             .board-body-part
-                h3 #{user.specialization}
+                h3 #{resume.specialization}
             .board-body-part
-                h3 #{user.quote}
+                h3 #{resume.quote}
             .panel-explore
                 label.board-footer(for="explore")
                     .tool-scroll
@@ -22,19 +22,19 @@ block appBody
                 .board-content
                     .collection-main
                         h3 philosophy
-                        div !{user.philosophy}
+                        div !{resume.philosophy}
                     .collection-main
                         h3 education
-                        div !{user.education}
+                        div !{resume.education}
                     .collection-main
                         h3 experience
-                        p !{user.experience}
+                        p !{resume.experience}
                     .collection-main
                         h3 design skills
-                        p !{user.skills.design}
+                        p !{resume.skills.design}
                     .collection-main
                         h3 development skills
-                        p !{user.skills.development}
+                        p !{resume.skills.development}
                     .collection-main
                         h3 more about me
-                        p !{user.more}
+                        p !{resume.personal}

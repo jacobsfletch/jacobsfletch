@@ -18,22 +18,22 @@ block appBody
             .board-body-part
                 form#contact.form-main
                     .input-text
-                        input#name-first(type='text', data-message='Please enter a valid first name.', required)
+                        input#name-first(name='first' type='text', data-message='Please enter a valid first name.', required)
                         label.input-label(for="name-first")
                             .input-title
                                 p First Name
                     .input-text
-                        input#name-last(type='text', data-message='Please enter a valid last name.', required)
+                        input#name-last(name='last' type='text', data-message='Please enter a valid last name.', required)
                         label.input-label(for="name-last")
                             .input-title
                                 p Last Name
                     .input-text
-                        input#email(type='email', data-message='Please enter a valid email address.', required)
+                        input#email(name='email' type='email', data-message='Please enter a valid email address.', required)
                         label.input-label(for="email")
                             .input-title
                                 p Email Address
                     .input-textarea
-                        textarea#message(data-message='Please enter a valid message.', required)
+                        textarea#message(name='message' data-message='Please enter a valid message.', required)
                         label.input-label(for="message")
                             .input-title
                                 p Message

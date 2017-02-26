@@ -41,7 +41,6 @@ keystone.set('cloudinary config', process.env.CLOUDINARY);
 keystone.set('cloudinary secure', true);
 
 // Load your project's Models
-
 keystone.import('models');
 
 // Setup common locals for your templates. The following are required for the
@@ -55,21 +54,15 @@ keystone.set('locals', {
 });
 
 // Load your project's Routes
-
 keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
-
 keystone.set('nav', {
     'users': 'users',
-    'categories': 'categories',
-    'tags': 'tags',
-    'hashtags': 'hashtags',
-    'projects': 'projects',
-    'products': 'products',
-    'posts': 'posts',
+    'relationships': ['categories', 'tags', 'hashtags'],
+    'content': ['globals', 'resumes'],
+    'posts': ['projects','products', 'posts']
 });
 
-// Start Keystone to connect to your database and initialise the web server
-
+// Start Keystone to connect to your database and initialize the web server
 keystone.start();
