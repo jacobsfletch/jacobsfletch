@@ -2,16 +2,26 @@ include ../mixins/flash-messages
 doctype html
 html
     head
+        //- Initial HTML configuration
         meta(charset="utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
         meta(charset="utf-8")
-        meta(name="apple-mobile-web-app-capable" content="yes")
         -var title = locals.title ? 'jacobsfletch: ' + locals.title : 'jacobsfletch'
         -var description = locals.description ? locals.description : 'jacobsfletch'
         title= title || 'jacobsfletch'
         meta(name="description", content=description)
+        //- Define the viewport
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1")
+        //- Fullscreen Safari on startup from home screen on Apple and Android devices
+        meta(name="apple-mobile-web-app-capable" content="yes")
+        meta(name="mobile-web-app-capable" content="yes")
+        //- Link browser favicon
         link(rel="shortcut icon", href="/favicon.png", type="image/x-icon")
+        //- Link home screen app icon on Apple devices
+        link(rel="apple-touch-icon" href="/touch-icon.png")
+        //- Link startup image on Apple devices
+        link(rel="apple-touch-startup-image" href="/startup-image.png")
+        //- Link Sassafras project styles
         link(rel='stylesheet', type='text/css', href='/styles/jacobsfletch.min.css')
         if user && user.canAccessKeystone
             link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")

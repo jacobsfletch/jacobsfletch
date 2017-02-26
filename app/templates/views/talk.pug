@@ -8,7 +8,11 @@ block appBody
                     if user.status == 'available'
                         h3 i am currently available for work, let's chat
                     else if user.status == 'unavailable'
-                        h3 i am currently unavailable for work, but i'd still love to chat
+                        h3 i am currently unavailable for work, but let's still chat
+                .board-subtitle
+                    p you can reach me by email with the form below or
+                        .btn-main
+                            a.btn-title(href="mailto:" + user.email) by clicking here
                 .board-title
                     h1 talk to me
             .board-body-part
