@@ -26,6 +26,7 @@ var path = require('path');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('routes', middleware.globals);
 keystone.pre('render', middleware.flashMessages);
 
 // Handle 404 errors
