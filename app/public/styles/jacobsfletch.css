@@ -36,7 +36,7 @@ html body {
 .font-light-2 {
   color: #e6e6e6; }
 
-.font-light-3, .checkbox-generic label::before, .checkbox-generic label::after, .radio-generic label::before, .range-generic output, .switch-generic label::before, .switch-generic label::after, .panel-sidebar {
+.font-light-3, .checkbox-generic label::before, .checkbox-generic label::after, .range-generic output, .radio-generic label::before, .switch-generic label::before, .switch-generic label::after, .panel-sidebar {
   color: #cccccc; }
 
 .font-neutral-1 {
@@ -517,21 +517,6 @@ section {
 :focus {
   outline: none; }
 
-svg circle,
-svg ellipse,
-svg g,
-svg path,
-svg polyline,
-svg stroke {
-  fill: inherit;
-  stroke: inherit;
-  stroke-width: inherit;
-  stroke-linecap: inherit;
-  stroke-capoffset: inherit;
-  stroke-dasharray: inherit;
-  stroke-dashoffset: inherit;
-  vector-effect: inherit; }
-
 button {
   background: none;
   border: 0;
@@ -623,7 +608,9 @@ select[multiple] {
     font-family: "Dosis", sans-serif;
     font-size: 4.20873rem;
     line-height: 1.618rem;
-    margin-bottom: 1.618rem; }
+    margin-bottom: 1.618rem;
+    line-height: 1;
+    font-weight: 700; }
     .collection-landing h1.center {
       text-align: center; }
     .collection-landing h1.right {
@@ -637,7 +624,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 3.15733rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .collection-landing h1.center {
           text-align: center; }
         .collection-landing h1.right {
@@ -651,7 +639,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 2.36859rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .collection-landing h1.center {
           text-align: center; }
         .collection-landing h1.right {
@@ -664,7 +653,8 @@ select[multiple] {
     font-family: "Dosis", sans-serif;
     font-size: 3.15733rem;
     line-height: 1.618rem;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    line-height: 1; }
     .collection-landing h2.center {
       text-align: center; }
     .collection-landing h2.right {
@@ -678,7 +668,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 2.36859rem;
         line-height: 1.618rem;
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        line-height: 1; }
         .collection-landing h2.center {
           text-align: center; }
         .collection-landing h2.right {
@@ -707,7 +698,9 @@ select[multiple] {
   font-family: "Dosis", sans-serif;
   font-size: 4.20873rem;
   line-height: 1.618rem;
-  margin-bottom: 1.618rem; }
+  margin-bottom: 1.618rem;
+  line-height: 1;
+  font-weight: 700; }
   .collection-main h1.center {
     text-align: center; }
   .collection-main h1.right {
@@ -721,7 +714,8 @@ select[multiple] {
       font-family: "Dosis", sans-serif;
       font-size: 3.15733rem;
       line-height: 1.618rem;
-      margin-bottom: 0.809rem; }
+      margin-bottom: 0.809rem;
+      line-height: 1; }
       .collection-main h1.center {
         text-align: center; }
       .collection-main h1.right {
@@ -735,7 +729,8 @@ select[multiple] {
       font-family: "Dosis", sans-serif;
       font-size: 2.36859rem;
       line-height: 1.618rem;
-      margin-bottom: 0.809rem; }
+      margin-bottom: 0.809rem;
+      line-height: 1; }
       .collection-main h1.center {
         text-align: center; }
       .collection-main h1.right {
@@ -749,7 +744,8 @@ select[multiple] {
   font-family: "Dosis", sans-serif;
   font-size: 3.15733rem;
   line-height: 1.618rem;
-  margin-bottom: 0.809rem; }
+  margin-bottom: 0.809rem;
+  line-height: 1; }
   .collection-main h2.center {
     text-align: center; }
   .collection-main h2.right {
@@ -763,7 +759,8 @@ select[multiple] {
       font-family: "Dosis", sans-serif;
       font-size: 2.36859rem;
       line-height: 1.618rem;
-      margin-bottom: 0.809rem; }
+      margin-bottom: 0.809rem;
+      line-height: 1; }
       .collection-main h2.center {
         text-align: center; }
       .collection-main h2.right {
@@ -792,7 +789,8 @@ select[multiple] {
   font-family: "Dosis", sans-serif;
   font-size: 2.36859rem;
   line-height: 1.618rem;
-  margin-bottom: 0.809rem; }
+  margin-bottom: 0.809rem;
+  line-height: 1; }
   .collection-main h3.center {
     text-align: center; }
   .collection-main h3.right {
@@ -989,7 +987,9 @@ select[multiple] {
     font-family: "Dosis", sans-serif;
     font-size: 4.20873rem;
     line-height: 1.618rem;
-    margin-bottom: 1.618rem; }
+    margin-bottom: 1.618rem;
+    line-height: 1;
+    font-weight: 700; }
     .collection-shout h1.center {
       text-align: center; }
     .collection-shout h1.right {
@@ -1003,7 +1003,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 3.15733rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .collection-shout h1.center {
           text-align: center; }
         .collection-shout h1.right {
@@ -1017,7 +1018,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 2.36859rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .collection-shout h1.center {
           text-align: center; }
         .collection-shout h1.right {
@@ -1030,7 +1032,8 @@ select[multiple] {
     font-family: "Dosis", sans-serif;
     font-size: 3.15733rem;
     line-height: 1.618rem;
-    margin-bottom: 0.809rem; }
+    margin-bottom: 0.809rem;
+    line-height: 1; }
     .collection-shout h2.center {
       text-align: center; }
     .collection-shout h2.right {
@@ -1044,7 +1047,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 2.36859rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .collection-shout h2.center {
           text-align: center; }
         .collection-shout h2.right {
@@ -1118,7 +1122,8 @@ select[multiple] {
   font-family: "Dosis", sans-serif;
   font-size: 2.36859rem;
   line-height: 1.618rem;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  line-height: 1; }
   .btn-main.shout .btn-title.center {
     text-align: center; }
   .btn-main.shout .btn-title.right {
@@ -1524,89 +1529,6 @@ select[multiple] {
       .input-text input:focus + .input-label::after, .input-textarea input:focus + .input-label::after, .input-text input:valid + .input-label::after, .input-textarea input:valid + .input-label::after, .input-text textarea:focus + .input-label::after, .input-textarea textarea:focus + .input-label::after, .input-text textarea:valid + .input-label::after, .input-textarea textarea:valid + .input-label::after {
         width: calc(100% + 0.809rem); }
 
-.radio-generic {
-  visibility: visible; }
-
-.radio-generic input {
-  display: none; }
-
-.radio-generic label {
-  display: block;
-  padding-left: calc(1.618rem + 0.4045rem);
-  position: relative;
-  cursor: pointer; }
-
-.radio-generic label::before {
-  position: relative;
-  border: 3px #cccccc solid;
-  padding: 0.4045rem;
-  position: absolute;
-  padding: 0;
-  left: 0;
-  top: 50%;
-  content: '';
-  height: 1.618rem;
-  width: 1.618rem;
-  transition: all 0.3s ease;
-  transform-origin: right bottom;
-  transform: translateY(-50%);
-  box-sizing: border-box;
-  transition-delay: 0.2s;
-  border-radius: 1.618rem; }
-  .radio-generic label::before > [class*='-header'] > [class*='tool']:first-child,
-  .radio-generic label::before > [class*='-footer'] > [class*='tool']:first-child {
-    margin-left: 0.4045rem; }
-  .radio-generic label::before > [class*='-header'] > [class*='tool']:last-child,
-  .radio-generic label::before > [class*='-footer'] > [class*='tool']:last-child {
-    margin-right: 0.4045rem; }
-  .radio-generic label::before > [class*='-header'],
-  .radio-generic label::before > [class*='-filter'],
-  .radio-generic label::before > [class*='-media'],
-  .radio-generic label::before > [class*='-body'],
-  .radio-generic label::before > [class*='-footer'] {
-    margin-bottom: 0.4045rem; }
-    .radio-generic label::before > [class*='-header']:last-child,
-    .radio-generic label::before > [class*='-filter']:last-child,
-    .radio-generic label::before > [class*='-media']:last-child,
-    .radio-generic label::before > [class*='-body']:last-child,
-    .radio-generic label::before > [class*='-footer']:last-child {
-      margin-bottom: 0; }
-  .radio-generic label::before [class*='-header'],
-  .radio-generic label::before [class*='-filter'],
-  .radio-generic label::before [class*='-body'],
-  .radio-generic label::before [class*='-footer'],
-  .radio-generic label::before [class*='-tooltip'],
-  .radio-generic label::before [class*='-media'] {
-    border: 2px #e6e6e6 solid;
-    padding: 0.4045rem; }
-  .radio-generic label::before [class*='-part'] {
-    border: 2px #e6e6e6 dashed;
-    padding: 0.4045rem; }
-  .radio-generic label::before .btn-circle {
-    padding: 0; }
-    .radio-generic label::before .btn-circle .btn-media {
-      padding: 0; }
-
-.radio-generic label::after {
-  content: '';
-  position: absolute;
-  padding: 0;
-  left: 0.809rem;
-  top: 50%;
-  width: 0.26967rem;
-  height: 0.26967rem;
-  transition: all 0.3s ease;
-  transform: translate(-50%, -50%);
-  border-radius: 1.618rem;
-  box-sizing: border-box;
-  opacity: 0;
-  background: #cccccc; }
-
-.radio-generic input:checked + label::after {
-  width: 0.809rem;
-  height: 0.809rem;
-  opacity: 1; }
-
 .range-generic {
   opacity: 1; }
 
@@ -1719,6 +1641,89 @@ select[multiple] {
     display: block;
     padding-left: calc(1.618rem + 0.4045rem);
     cursor: pointer; }
+
+.radio-generic {
+  visibility: visible; }
+
+.radio-generic input {
+  display: none; }
+
+.radio-generic label {
+  display: block;
+  padding-left: calc(1.618rem + 0.4045rem);
+  position: relative;
+  cursor: pointer; }
+
+.radio-generic label::before {
+  position: relative;
+  border: 3px #cccccc solid;
+  padding: 0.4045rem;
+  position: absolute;
+  padding: 0;
+  left: 0;
+  top: 50%;
+  content: '';
+  height: 1.618rem;
+  width: 1.618rem;
+  transition: all 0.3s ease;
+  transform-origin: right bottom;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  transition-delay: 0.2s;
+  border-radius: 1.618rem; }
+  .radio-generic label::before > [class*='-header'] > [class*='tool']:first-child,
+  .radio-generic label::before > [class*='-footer'] > [class*='tool']:first-child {
+    margin-left: 0.4045rem; }
+  .radio-generic label::before > [class*='-header'] > [class*='tool']:last-child,
+  .radio-generic label::before > [class*='-footer'] > [class*='tool']:last-child {
+    margin-right: 0.4045rem; }
+  .radio-generic label::before > [class*='-header'],
+  .radio-generic label::before > [class*='-filter'],
+  .radio-generic label::before > [class*='-media'],
+  .radio-generic label::before > [class*='-body'],
+  .radio-generic label::before > [class*='-footer'] {
+    margin-bottom: 0.4045rem; }
+    .radio-generic label::before > [class*='-header']:last-child,
+    .radio-generic label::before > [class*='-filter']:last-child,
+    .radio-generic label::before > [class*='-media']:last-child,
+    .radio-generic label::before > [class*='-body']:last-child,
+    .radio-generic label::before > [class*='-footer']:last-child {
+      margin-bottom: 0; }
+  .radio-generic label::before [class*='-header'],
+  .radio-generic label::before [class*='-filter'],
+  .radio-generic label::before [class*='-body'],
+  .radio-generic label::before [class*='-footer'],
+  .radio-generic label::before [class*='-tooltip'],
+  .radio-generic label::before [class*='-media'] {
+    border: 2px #e6e6e6 solid;
+    padding: 0.4045rem; }
+  .radio-generic label::before [class*='-part'] {
+    border: 2px #e6e6e6 dashed;
+    padding: 0.4045rem; }
+  .radio-generic label::before .btn-circle {
+    padding: 0; }
+    .radio-generic label::before .btn-circle .btn-media {
+      padding: 0; }
+
+.radio-generic label::after {
+  content: '';
+  position: absolute;
+  padding: 0;
+  left: 0.809rem;
+  top: 50%;
+  width: 0.26967rem;
+  height: 0.26967rem;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 1.618rem;
+  box-sizing: border-box;
+  opacity: 0;
+  background: #cccccc; }
+
+.radio-generic input:checked + label::after {
+  width: 0.809rem;
+  height: 0.809rem;
+  opacity: 1; }
 
 .select-generic {
   visibility: visible; }
@@ -1948,6 +1953,7 @@ select[multiple] {
     font-size: 2.36859rem;
     line-height: 1.618rem;
     margin-bottom: 0;
+    line-height: 1;
     display: none; }
     .app-main .fallback.center {
       text-align: center; }
@@ -2085,7 +2091,8 @@ select[multiple] {
       font-family: "Dosis", sans-serif;
       font-size: 2.36859rem;
       line-height: 1.618rem;
-      margin-bottom: 0.809rem; }
+      margin-bottom: 0.809rem;
+      line-height: 1; }
       .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
         text-align: center; }
       .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
@@ -2172,7 +2179,9 @@ select[multiple] {
       font-family: "Dosis", sans-serif;
       font-size: 4.20873rem;
       line-height: 1.618rem;
-      margin-bottom: 1.618rem; }
+      margin-bottom: 1.618rem;
+      line-height: 1;
+      font-weight: 700; }
       .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
         text-align: center; }
       .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
@@ -2186,7 +2195,8 @@ select[multiple] {
           font-family: "Dosis", sans-serif;
           font-size: 3.15733rem;
           line-height: 1.618rem;
-          margin-bottom: 0.809rem; }
+          margin-bottom: 0.809rem;
+          line-height: 1; }
           .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
             text-align: center; }
           .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
@@ -2200,7 +2210,8 @@ select[multiple] {
           font-family: "Dosis", sans-serif;
           font-size: 2.36859rem;
           line-height: 1.618rem;
-          margin-bottom: 0.809rem; }
+          margin-bottom: 0.809rem;
+          line-height: 1; }
           .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
             text-align: center; }
           .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
@@ -2268,7 +2279,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 2.36859rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
           text-align: center; }
         .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
@@ -2383,7 +2395,8 @@ select[multiple] {
   font-family: "Dosis", sans-serif;
   font-size: 2.36859rem;
   line-height: 1.618rem;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  line-height: 1; }
   .board-gallery .board-meta > *:first-child.center {
     text-align: center; }
   .board-gallery .board-meta > *:first-child.right {
@@ -2640,7 +2653,9 @@ select[multiple] {
     font-family: "Dosis", sans-serif;
     font-size: 4.20873rem;
     line-height: 1.618rem;
-    margin-bottom: 1.618rem; }
+    margin-bottom: 1.618rem;
+    line-height: 1;
+    font-weight: 700; }
     .board-landing .board-title.center {
       text-align: center; }
     .board-landing .board-title.right {
@@ -2654,7 +2669,8 @@ select[multiple] {
         font-family: "Dosis", sans-serif;
         font-size: 2.36859rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem; }
+        margin-bottom: 0.809rem;
+        line-height: 1; }
         .board-landing .board-title.center {
           text-align: center; }
         .board-landing .board-title.right {
@@ -2667,7 +2683,8 @@ select[multiple] {
     font-family: "Dosis", sans-serif;
     font-size: 3.15733rem;
     line-height: 1.618rem;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    line-height: 1; }
     .board-landing .board-subtitle.center {
       text-align: center; }
     .board-landing .board-subtitle.right {
