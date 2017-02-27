@@ -3,6 +3,7 @@ config/logs/
 node_modules
 config/mongo/*
 *.log
+app/.env
 
 !config/mongo/*.conf
 
