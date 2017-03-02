@@ -8,35 +8,60 @@ block appBody
             .board-header
                 .board-meta
                     h2
-                        each category, index in project.categories
-                            | #{category.key}
-                            if (index + 1) < project.categories.length
-                                | , #{' '}
+                        if project.categories
+                            each category, index in project.categories
+                                | #{category.key}
+                                if (index + 1) < project.categories.length
+                                    | , #{' '}
+                        else
+                            | no categories
                     h2
-                        each tag, index in project.tags
-                            | #{tag.key}
-                            if (index + 1) < project.tags.length
-                                | , #{' '}
+                        if project.tags
+                            each tag, index in project.tags
+                                | #{tag.key}
+                                if (index + 1) < project.tags.length
+                                    | , #{' '}
+
+                        else
+                            | no tags
                 .board-title
                     h1 #{project.title}
             .board-body-part
-                h3 #{project.content}
+                h3
+                    if project.content
+                        | #{project.content}
+                    else
+                        | no content
             .board-body-part
                 blockquote.type-blockquote
                     header
-                        p #{project.quote}
+                        p
+                            if project.quote
+                                | #{project.quote}
+                            else
+                                | no quote
                     footer
-                        p #{project.quoteAuthor}
+                        p
+                            if project.quoteAuthor
+                                | #{project.quoteAuthor}
+                            else
+                                | no quote author
             .panel-explore
                 label.board-footer(for="explore")
                     .tool-scroll
                         .tool-media
                             +downArrow()
                 .board-media
-                    .image-square
-                        img(src=project.featuredImage.url)
-                    each image in project.images
+                    if project.featuredImage
                         .image-square
-                            img(src=image.url)
+                            img(src=project.featuredImage.url)
+                    else
+                        p no featured image
+                    if project.images
+                        each image in project.images
+                            .image-square
+                                img(src=image.url)
+                    else
+                        p no images
                 .fallback
                     h6 flip me back to portrait!

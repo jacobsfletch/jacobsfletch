@@ -3,11 +3,14 @@ extends ../layouts/default
 include ../mixins/components/cards
 
 block appBody
-    .wall-work
+    .app-body-part.wall-shop
         header.wall-header
             .wall-title
                 h1 my shop
         .wall-body
-            each product, index in products
-                .wall-body-part
-                    +cardProduct(product)
+            if product
+                each product in products
+                    .wall-body-part
+                        +cardProduct(product)
+            else
+                p no products

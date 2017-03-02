@@ -6,5 +6,13 @@ include ../mixins/media/downarrow
 block appBody
     .app-body-part.start
         .collection-landing
-            h1 #{global.tagline.a}
-            h2 #{global.tagline.b}
+            h1
+                if global.tagline.a
+                    | #{global.tagline.a}
+                else
+                    | no tagline a
+            h2
+                if global.tagline.b
+                    | #{global.tagline.b}
+                else
+                    | no tagline b

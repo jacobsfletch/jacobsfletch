@@ -3,8 +3,14 @@ extends ../layouts/default
 include ../mixins/components/cards
 
 block appBody
-    .app-body-part.wall-portfolio
+    .app-body-part.wall-blog
+        header.wall-header
+            .wall-title
+                h1 my blog
         .wall-body
-            each post, index in posts
-                .wall-body-part
-                    +cardPost(post)
+            if posts
+                each post in posts
+                    .wall-body-part
+                        +cardPost(post)
+            else
+                p no posts

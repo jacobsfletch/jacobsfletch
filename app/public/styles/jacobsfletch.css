@@ -1178,16 +1178,6 @@ select[multiple] {
       .btn-main.shout .btn-title.light {
         font-weight: 100; } }
 
-.form-main {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start; }
-
-.form-main > * {
-  margin-bottom: 1.618rem; }
-  .form-main > *:last-child {
-    margin-bottom: 0; }
-
 .card-post, .card-project {
   position: relative;
   display: block;
@@ -1239,6 +1229,16 @@ select[multiple] {
         font-weight: bold; }
       .card-post .card-header .card-subtitle.light, .card-project .card-header .card-subtitle.light {
         font-weight: 100; }
+
+.form-main {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start; }
+
+.form-main > * {
+  margin-bottom: 1.618rem; }
+  .form-main > *:last-child {
+    margin-bottom: 0; }
 
 .menu-vertical {
   visibility: visible; }
@@ -1612,6 +1612,39 @@ select[multiple] {
   height: 0.809rem;
   opacity: 1; }
 
+.select-generic {
+  visibility: visible; }
+
+.select-generic {
+  border: 3px solid #cccccc;
+  position: relative; }
+  .select-generic select {
+    position: relative;
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    padding: 0 1.618rem 0 0.809rem;
+    z-index: 2; }
+  .select-generic::before {
+    content: ' ';
+    position: absolute;
+    right: 2.427rem;
+    height: 100%;
+    border-right: 3px solid #cccccc; }
+  .select-generic::after {
+    content: ' ';
+    position: absolute;
+    right: 0.809rem;
+    top: 50%;
+    height: 0.4045rem;
+    width: 0.4045rem;
+    border-bottom: 3px solid #cccccc;
+    border-right: 3px solid #cccccc;
+    transform-origin: top center;
+    transform: rotate(45deg) translateY(-50%); }
+
 .range-generic {
   opacity: 1; }
 
@@ -1724,39 +1757,6 @@ select[multiple] {
     display: block;
     padding-left: calc(1.618rem + 0.4045rem);
     cursor: pointer; }
-
-.select-generic {
-  visibility: visible; }
-
-.select-generic {
-  border: 3px solid #cccccc;
-  position: relative; }
-  .select-generic select {
-    position: relative;
-    width: 100%;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    background: none;
-    padding: 0 1.618rem 0 0.809rem;
-    z-index: 2; }
-  .select-generic::before {
-    content: ' ';
-    position: absolute;
-    right: 2.427rem;
-    height: 100%;
-    border-right: 3px solid #cccccc; }
-  .select-generic::after {
-    content: ' ';
-    position: absolute;
-    right: 0.809rem;
-    top: 50%;
-    height: 0.4045rem;
-    width: 0.4045rem;
-    border-bottom: 3px solid #cccccc;
-    border-right: 3px solid #cccccc;
-    transform-origin: top center;
-    transform: rotate(45deg) translateY(-50%); }
 
 .switch-generic {
   visibility: visible; }
@@ -1939,10 +1939,14 @@ select[multiple] {
 .app-main {
   visibility: visible; }
 
+html,
+body {
+  height: 100%; }
+
 .app-main {
   border: solid #0d0d0d 0.809rem;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;

@@ -8,32 +8,53 @@ block appBody
             .board-header
                 .board-meta
                     h2
-                        each category, index in post.categories
-                            | #{category.key}
-                            if (index + 1) < post.categories.length
-                                | , #{' '}
+                        if post.categories
+                            each category, index in post.categories
+                                | #{category.key}
+                                if (index + 1) < post.categories.length
+                                    | , #{' '}
+                        else
+                            | no categories
                     h2
-                        each tag, index in post.tags
-                            | #{tag.key}
-                            if (index + 1) < post.tags.length
-                                | , #{' '}
+                        if post.tags
+                            each tag, index in post.tags
+                                | #{tag.key}
+                                if (index + 1) < post.tags.length
+                                    | , #{' '}
+                        else
+                            | no tags
                 .board-title
                     h1 #{post.title}
                 .board-subtitle
                     h3 published on #{post._.publishedDate.format()}
-                    h3 #{post.content.excerpt}
+                    h3
+                        if post.content.excerpt
+                            | #{post.content.excerpt}
+                        else
+                            | no excerpt
             .board-body-part
                 blockquote.type-blockquote
                     header
-                        p #{post.quote}
+                        p
+                            if post.quote
+                                | #{post.quote}
+                            else
+                                | no quote
                     footer
-                        p #{post.quoteAuthor}
+                        p
+                            if post.quoteAuthor
+                                | #{post.quoteAuthor}
+                            else
+                                | no quote author
             .board-body-part
                 h2 hashtags
-                each hashtag, index in post.hashtags
-                    h2
-                        | ##{hashtag.key}
-                h2 [...]
+                if post.hashtags
+                    each hashtag in post.hashtags
+                        h2
+                            | ##{hashtag.key}
+                    h2 [...]
+                else
+                    p no hashtags
             .panel-explore
                 label.board-footer(for="explore")
                     .tool-scroll
@@ -41,7 +62,14 @@ block appBody
                             +downArrow()
                 .board-content
                     .wall-body-part
-                        img.square(style="background-image: url('" + post.featuredImage.url + "')")
+                        if post.featuredImage
+                            img.square(style="background-image: url('" + post.featuredImage.url + "')")
+                        else
+                            p no featured image
                     .collection-main
                         h3 #{post.title}
-                        p !{post.content.full}
+                        p
+                            if post.content.full
+                                | !{post.content.full}
+                            else
+                                | no content

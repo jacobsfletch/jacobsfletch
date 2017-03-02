@@ -7,13 +7,29 @@ block appBody
         .board-body
             .board-header
                 .board-subtitle
-                    h1 #{resume.intro.a}
+                    h1
+                        if resume.intro.a
+                            | #{resume.intro.a}
+                        else
+                            | no intro a
                 .board-title
-                    h2 #{resume.intro.b}
+                    h2
+                        if resume.intro.b
+                            | #{resume.intro.b}
+                        else
+                            | no intro b
             .board-body-part
-                h3 #{resume.specialization}
+                h3
+                    if resume.specialization
+                        | #{resume.specialization}
+                    else
+                        | no specialization
             .board-body-part
-                h3 #{resume.quote}
+                h3
+                    if resume.quote
+                        | #{resume.quote}
+                    else
+                        | no quote
             .panel-explore
                 label.board-footer(for="explore")
                     .tool-scroll
@@ -22,19 +38,43 @@ block appBody
                 .board-content
                     .collection-main
                         h3 philosophy
-                        div !{resume.philosophy}
+                        p
+                            if resume.philosophy
+                                | !{resume.philosophy}
+                            else
+                                | no philosophy
                     .collection-main
                         h3 education
-                        div !{resume.education}
+                        p
+                            if resume.education
+                                | !{resume.education}
+                            else
+                                | no education
                     .collection-main
                         h3 experience
-                        p !{resume.experience}
+                        p
+                            if resume.experience
+                                | !{resume.experience}
+                            else
+                                | no experience
                     .collection-main
                         h3 design skills
-                        p !{resume.skills.design}
+                        p
+                            if resume.skills.design
+                                | !{resume.skills.design}
+                            else
+                                | no design skills
                     .collection-main
                         h3 development skills
-                        p !{resume.skills.development}
+                        p
+                            if resume.skills.development
+                                | !{resume.skills.development}
+                            else
+                                | no development skills
                     .collection-main
                         h3 more about me
-                        p !{resume.personal}
+                        p
+                            if resume.personal
+                                | !{resume.personal}
+                            else
+                                | no personals

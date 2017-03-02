@@ -4,7 +4,13 @@ include ../mixins/components/cards
 
 block appBody
     .app-body-part.wall-portfolio
+        header.wall-header
+            .wall-title
+                h1 my portfolio
         .wall-body
-            each project, index in projects
-                .wall-body-part
-                    +cardProject(project)
+            if projects
+                each project in projects
+                    .wall-body-part
+                        +cardProject(project)
+            else
+                p no projects
