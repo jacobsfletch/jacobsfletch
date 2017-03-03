@@ -3,10 +3,9 @@ extends ../layouts/default
 include ../mixins/components/cards
 
 block appBody
+    .app-body-part.header
+        h1 my blog
     .app-body-part.wall-blog
-        header.wall-header
-            .wall-title
-                h1 my blog
         .wall-body
             if posts
                 each post in posts

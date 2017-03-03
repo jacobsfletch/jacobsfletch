@@ -3,10 +3,9 @@ extends ../layouts/default
 include ../mixins/components/cards
 
 block appBody
+    .app-body-part.header
+        h1 my portfolio
     .app-body-part.wall-portfolio
-        header.wall-header
-            .wall-title
-                h1 my portfolio
         .wall-body
             if projects
                 each project in projects

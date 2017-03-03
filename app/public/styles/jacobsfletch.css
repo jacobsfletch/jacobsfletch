@@ -1636,12 +1636,32 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    overflow: scroll; }
-    .app-main .app-body .app-body-part.start {
-      width: 100%;
-      height: 100%;
-      flex-grow: 1;
-      display: flex; }
+    overflow: auto;
+    -ms-overflow-style: none; }
+    .app-main .app-body .app-body-part {
+      width: 100%; }
+      .app-main .app-body .app-body-part.start {
+        height: 100%;
+        flex-grow: 1;
+        display: flex; }
+      .app-main .app-body .app-body-part.header {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1rem;
+        line-height: 1.618rem;
+        margin-bottom: 0;
+        line-height: 1;
+        width: 100%;
+        padding-bottom: 0.809rem;
+        margin-bottom: 0.809rem;
+        border-bottom: solid #0d0d0d 4px; }
+        .app-main .app-body .app-body-part.header.center {
+          text-align: center; }
+        .app-main .app-body .app-body-part.header.right {
+          text-align: right; }
+        .app-main .app-body .app-body-part.header.bold {
+          font-weight: bold; }
+        .app-main .app-body .app-body-part.header.light {
+          font-weight: 100; }
 
 #dock,
 #explore {
@@ -2321,6 +2341,23 @@ body {
           font-weight: bold; }
         .board-landing .board-subtitle.light {
           font-weight: 100; } }
+
+.wall-portfolio .wall-header {
+  padding: 1.618rem 0; }
+  .wall-portfolio .wall-header .wall-title {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1rem;
+    line-height: 1.618rem;
+    margin-bottom: 0;
+    line-height: 1; }
+    .wall-portfolio .wall-header .wall-title.center {
+      text-align: center; }
+    .wall-portfolio .wall-header .wall-title.right {
+      text-align: right; }
+    .wall-portfolio .wall-header .wall-title.bold {
+      font-weight: bold; }
+    .wall-portfolio .wall-header .wall-title.light {
+      font-weight: 100; }
 
 .wall-portfolio .wall-footer {
   position: relative; }
