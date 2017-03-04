@@ -2380,10 +2380,11 @@ body {
             margin-right: 0; } }
       @media (min-width: 48em) and (max-width: 63.9375em) {
         .wall-portfolio .wall-body .wall-body-part {
-          width: calc(50% - (0.809rem / 2));
-          margin-right: 0.809rem; }
-          .wall-portfolio .wall-body .wall-body-part:nth-child(2n) {
-            margin-right: 0; }
+          width: calc(50% - (0.809rem / 2)); }
+          .wall-portfolio .wall-body .wall-body-part:nth-child(even) {
+            margin-left: calc(0.809rem / 2); }
+          .wall-portfolio .wall-body .wall-body-part:nth-child(odd) {
+            margin-right: calc(0.809rem / 2); }
           .wall-portfolio .wall-body .wall-body-part:nth-last-child(2) {
             margin-bottom: 1.618rem; } }
       @media (max-width: 47.9375em) {
