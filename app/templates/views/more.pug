@@ -25,11 +25,15 @@ block appBody
                     else
                         | no specialization
             .board-body-part
-                h3
-                    if resume.quote
-                        | #{resume.quote}
-                    else
-                        | no quote
+                blockquote.collection-blockquote
+                    header
+                        p
+                            if resume.quote
+                                | #{resume.quote}
+                            else
+                                | no quote
+                    footer
+                        p i said that
             .panel-explore
                 label.board-footer(for="explore")
                     .tool-scroll

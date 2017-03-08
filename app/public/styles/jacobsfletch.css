@@ -9,14 +9,14 @@ html body {
   background-color: #1f1f1f; }
 
 .tool-toggle, #dock:checked ~ .app-main,
-#explore:checked ~ .app-main, .wall-portfolio .wall-footer {
+#explore:checked ~ .app-main, .wall-cards .wall-footer {
   background-color: #0d0d0d; }
 
 .menu-vertical .menu-header .menu-title, .menu-vertical .menu-body-part a, .multimedia-lightbox .multimedia-title, .multimedia-lightbox::after, #dock:checked ~ .app-main .app-header .app-title,
-#explore:checked ~ .app-main .app-header .app-title, #explore:checked ~ .app-main .board-footer .tool-scroll, .wall-portfolio .wall-footer {
+#explore:checked ~ .app-main .app-header .app-title, #explore:checked ~ .app-main .board-footer .tool-scroll, .wall-cards .wall-footer {
   color: #fcfcfc; }
 
-.checkbox-generic label::before, .checkbox-generic label::after, .radio-generic label::before, .range-generic output, .switch-generic label::before, .switch-generic label::after, .panel-sidebar {
+.checkbox-generic label::before, .checkbox-generic label::after, .radio-generic label::before, .range-generic output, .switch-generic label::before, .switch-generic label::after {
   color: #cccccc; }
 
 .app-main .app-header .wrapper .app-title {
@@ -209,21 +209,61 @@ textarea {
 select[multiple] {
   vertical-align: top; }
 
-.type-blockquote header {
+.collection-blockquote header {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1.333rem;
+  line-height: 1.618rem;
+  line-height: 1;
   padding-bottom: 0.4045rem; }
+  .collection-blockquote header.center {
+    text-align: center; }
+  .collection-blockquote header.right {
+    text-align: right; }
+  .collection-blockquote header.bold {
+    font-weight: bold; }
+  .collection-blockquote header.light {
+    font-weight: 100; }
+  @media (max-width: 29.25em) {
+    .collection-blockquote header {
+      font-family: "Source Code Pro", monospace;
+      font-size: 1rem;
+      line-height: 1.618rem;
+      line-height: 1; }
+      .collection-blockquote header.center {
+        text-align: center; }
+      .collection-blockquote header.right {
+        text-align: right; }
+      .collection-blockquote header.bold {
+        font-weight: bold; }
+      .collection-blockquote header.light {
+        font-weight: 100; } }
 
-.type-blockquote footer {
-  width: 100%; }
+.collection-blockquote footer {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  line-height: 1.618rem;
+  line-height: 1;
+  width: 100%;
+  font-weight: 300; }
+  .collection-blockquote footer.center {
+    text-align: center; }
+  .collection-blockquote footer.right {
+    text-align: right; }
+  .collection-blockquote footer.bold {
+    font-weight: bold; }
+  .collection-blockquote footer.light {
+    font-weight: 100; }
 
 .collection-landing {
   align-self: flex-end;
   padding-bottom: 1.618rem; }
   .collection-landing h1 {
     font-family: "Source Code Pro", monospace;
-    font-size: 4.20873rem;
+    font-size: 2.36859rem;
     line-height: 1.618rem;
-    margin-bottom: 1.618rem;
-    line-height: 1; }
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 700; }
     .collection-landing h1.center {
       text-align: center; }
     .collection-landing h1.right {
@@ -232,12 +272,11 @@ select[multiple] {
       font-weight: bold; }
     .collection-landing h1.light {
       font-weight: 100; }
-    @media (min-width: 48em) and (max-width: 63.9375em) {
+    @media (min-width: 20.0625em) and (max-width: 29.25em) {
       .collection-landing h1 {
         font-family: "Source Code Pro", monospace;
-        font-size: 3.15733rem;
+        font-size: 1.77689rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem;
         line-height: 1; }
         .collection-landing h1.center {
           text-align: center; }
@@ -247,12 +286,11 @@ select[multiple] {
           font-weight: bold; }
         .collection-landing h1.light {
           font-weight: 100; } }
-    @media (max-width: 47.9375em) {
+    @media (max-width: 20em) {
       .collection-landing h1 {
         font-family: "Source Code Pro", monospace;
-        font-size: 2.36859rem;
+        font-size: 1.333rem;
         line-height: 1.618rem;
-        margin-bottom: 0.809rem;
         line-height: 1; }
         .collection-landing h1.center {
           text-align: center; }
@@ -264,10 +302,10 @@ select[multiple] {
           font-weight: 100; } }
   .collection-landing h2 {
     font-family: "Source Code Pro", monospace;
-    font-size: 3.15733rem;
+    font-size: 1.333rem;
     line-height: 1.618rem;
-    margin-bottom: 0;
-    line-height: 1; }
+    line-height: 1;
+    font-weight: 300; }
     .collection-landing h2.center {
       text-align: center; }
     .collection-landing h2.right {
@@ -276,27 +314,11 @@ select[multiple] {
       font-weight: bold; }
     .collection-landing h2.light {
       font-weight: 100; }
-    @media (min-width: 48em) and (max-width: 63.9375em) {
+    @media (max-width: 20em) {
       .collection-landing h2 {
         font-family: "Source Code Pro", monospace;
-        font-size: 2.36859rem;
+        font-size: 1rem;
         line-height: 1.618rem;
-        margin-bottom: 0;
-        line-height: 1; }
-        .collection-landing h2.center {
-          text-align: center; }
-        .collection-landing h2.right {
-          text-align: right; }
-        .collection-landing h2.bold {
-          font-weight: bold; }
-        .collection-landing h2.light {
-          font-weight: 100; } }
-    @media (max-width: 47.9375em) {
-      .collection-landing h2 {
-        font-family: "Source Code Pro", monospace;
-        font-size: 1.77689rem;
-        line-height: 1.618rem;
-        margin-bottom: 0;
         line-height: 1; }
         .collection-landing h2.center {
           text-align: center; }
@@ -307,382 +329,297 @@ select[multiple] {
         .collection-landing h2.light {
           font-weight: 100; } }
 
-.collection-main h1 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 4.20873rem;
-  line-height: 1.618rem;
-  margin-bottom: 1.618rem;
-  line-height: 1; }
-  .collection-main h1.center {
-    text-align: center; }
-  .collection-main h1.right {
-    text-align: right; }
-  .collection-main h1.bold {
-    font-weight: bold; }
-  .collection-main h1.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .collection-main h1 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 3.15733rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h1.center {
-        text-align: center; }
-      .collection-main h1.right {
-        text-align: right; }
-      .collection-main h1.bold {
-        font-weight: bold; }
-      .collection-main h1.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .collection-main h1 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 2.36859rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h1.center {
-        text-align: center; }
-      .collection-main h1.right {
-        text-align: right; }
-      .collection-main h1.bold {
-        font-weight: bold; }
-      .collection-main h1.light {
-        font-weight: 100; } }
-
-.collection-main h2 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 3.15733rem;
-  line-height: 1.618rem;
-  margin-bottom: 0.809rem;
-  line-height: 1; }
-  .collection-main h2.center {
-    text-align: center; }
-  .collection-main h2.right {
-    text-align: right; }
-  .collection-main h2.bold {
-    font-weight: bold; }
-  .collection-main h2.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .collection-main h2 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 2.36859rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h2.center {
-        text-align: center; }
-      .collection-main h2.right {
-        text-align: right; }
-      .collection-main h2.bold {
-        font-weight: bold; }
-      .collection-main h2.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .collection-main h2 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h2.center {
-        text-align: center; }
-      .collection-main h2.right {
-        text-align: right; }
-      .collection-main h2.bold {
-        font-weight: bold; }
-      .collection-main h2.light {
-        font-weight: 100; } }
-
-.collection-main h3 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 2.36859rem;
-  line-height: 1.618rem;
-  margin-bottom: 0.809rem;
-  line-height: 1; }
-  .collection-main h3.center {
-    text-align: center; }
-  .collection-main h3.right {
-    text-align: right; }
-  .collection-main h3.bold {
-    font-weight: bold; }
-  .collection-main h3.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .collection-main h3 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h3.center {
-        text-align: center; }
-      .collection-main h3.right {
-        text-align: right; }
-      .collection-main h3.bold {
-        font-weight: bold; }
-      .collection-main h3.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .collection-main h3 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.333rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h3.center {
-        text-align: center; }
-      .collection-main h3.right {
-        text-align: right; }
-      .collection-main h3.bold {
-        font-weight: bold; }
-      .collection-main h3.light {
-        font-weight: 100; } }
-
-.collection-main h4 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 1.77689rem;
-  line-height: 1.618rem;
-  margin-bottom: 0.809rem;
-  line-height: 1; }
-  .collection-main h4.center {
-    text-align: center; }
-  .collection-main h4.right {
-    text-align: right; }
-  .collection-main h4.bold {
-    font-weight: bold; }
-  .collection-main h4.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .collection-main h4 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.333rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .collection-main h4.center {
-        text-align: center; }
-      .collection-main h4.right {
-        text-align: right; }
-      .collection-main h4.bold {
-        font-weight: bold; }
-      .collection-main h4.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .collection-main h4 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.4045rem;
-      line-height: 1; }
-      .collection-main h4.center {
-        text-align: center; }
-      .collection-main h4.right {
-        text-align: right; }
-      .collection-main h4.bold {
-        font-weight: bold; }
-      .collection-main h4.light {
-        font-weight: 100; } }
-
-.collection-main h5 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 1.333rem;
-  line-height: 1.618rem;
-  margin-bottom: 0.809rem;
-  line-height: 1; }
-  .collection-main h5.center {
-    text-align: center; }
-  .collection-main h5.right {
-    text-align: right; }
-  .collection-main h5.bold {
-    font-weight: bold; }
-  .collection-main h5.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .collection-main h5 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.4045rem;
-      line-height: 1; }
-      .collection-main h5.center {
-        text-align: center; }
-      .collection-main h5.right {
-        text-align: right; }
-      .collection-main h5.bold {
-        font-weight: bold; }
-      .collection-main h5.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .collection-main h5 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.4045rem;
-      line-height: 1; }
-      .collection-main h5.center {
-        text-align: center; }
-      .collection-main h5.right {
-        text-align: right; }
-      .collection-main h5.bold {
-        font-weight: bold; }
-      .collection-main h5.light {
-        font-weight: 100; } }
-
-.collection-main h6 {
-  font-family: "Source Code Pro", monospace;
-  font-size: 1rem;
-  line-height: 1.618rem;
-  margin-bottom: 0.4045rem;
-  line-height: 1; }
-  .collection-main h6.center {
-    text-align: center; }
-  .collection-main h6.right {
-    text-align: right; }
-  .collection-main h6.bold {
-    font-weight: bold; }
-  .collection-main h6.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .collection-main h6 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.4045rem;
-      line-height: 1; }
-      .collection-main h6.center {
-        text-align: center; }
-      .collection-main h6.right {
-        text-align: right; }
-      .collection-main h6.bold {
-        font-weight: bold; }
-      .collection-main h6.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .collection-main h6 {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0.4045rem;
-      line-height: 1; }
-      .collection-main h6.center {
-        text-align: center; }
-      .collection-main h6.right {
-        text-align: right; }
-      .collection-main h6.bold {
-        font-weight: bold; }
-      .collection-main h6.light {
-        font-weight: 100; } }
-
-.collection-main p {
-  font-family: "Source Code Pro", monospace;
-  font-size: 1rem;
-  line-height: 1.618rem;
-  margin-bottom: 1.618rem;
-  line-height: 1.25; }
-  .collection-main p.center {
-    text-align: center; }
-  .collection-main p.right {
-    text-align: right; }
-  .collection-main p.bold {
-    font-weight: bold; }
-  .collection-main p.light {
-    font-weight: 100; }
-
-.collection-shout {
-  align-self: flex-end;
-  padding-bottom: 1.618rem; }
-  .collection-shout h1 {
+.collection-main {
+  margin-bottom: 1.618rem; }
+  .collection-main:last-child {
+    margin-bottom: 0; }
+  .collection-main h1 {
     font-family: "Source Code Pro", monospace;
     font-size: 4.20873rem;
     line-height: 1.618rem;
-    margin-bottom: 1.618rem;
-    line-height: 1; }
-    .collection-shout h1.center {
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 700; }
+    .collection-main h1.center {
       text-align: center; }
-    .collection-shout h1.right {
+    .collection-main h1.right {
       text-align: right; }
-    .collection-shout h1.bold {
+    .collection-main h1.bold {
       font-weight: bold; }
-    .collection-shout h1.light {
+    .collection-main h1.light {
       font-weight: 100; }
-    @media (min-width: 48em) and (max-width: 63.9375em) {
-      .collection-shout h1 {
+    @media (min-width: 29.3125em) and (max-width: 48em) {
+      .collection-main h1 {
         font-family: "Source Code Pro", monospace;
         font-size: 3.15733rem;
         line-height: 1.618rem;
         margin-bottom: 0.809rem;
         line-height: 1; }
-        .collection-shout h1.center {
+        .collection-main h1.center {
           text-align: center; }
-        .collection-shout h1.right {
+        .collection-main h1.right {
           text-align: right; }
-        .collection-shout h1.bold {
+        .collection-main h1.bold {
           font-weight: bold; }
-        .collection-shout h1.light {
+        .collection-main h1.light {
           font-weight: 100; } }
-    @media (max-width: 47.9375em) {
-      .collection-shout h1 {
+    @media (max-width: 29.25em) {
+      .collection-main h1 {
         font-family: "Source Code Pro", monospace;
         font-size: 2.36859rem;
         line-height: 1.618rem;
         margin-bottom: 0.809rem;
         line-height: 1; }
-        .collection-shout h1.center {
+        .collection-main h1.center {
           text-align: center; }
-        .collection-shout h1.right {
+        .collection-main h1.right {
           text-align: right; }
-        .collection-shout h1.bold {
+        .collection-main h1.bold {
           font-weight: bold; }
-        .collection-shout h1.light {
+        .collection-main h1.light {
           font-weight: 100; } }
-  .collection-shout h2 {
+  .collection-main h2 {
     font-family: "Source Code Pro", monospace;
     font-size: 3.15733rem;
     line-height: 1.618rem;
     margin-bottom: 0.809rem;
-    line-height: 1; }
-    .collection-shout h2.center {
+    line-height: 1;
+    font-weight: 700; }
+    .collection-main h2.center {
       text-align: center; }
-    .collection-shout h2.right {
+    .collection-main h2.right {
       text-align: right; }
-    .collection-shout h2.bold {
+    .collection-main h2.bold {
       font-weight: bold; }
-    .collection-shout h2.light {
+    .collection-main h2.light {
       font-weight: 100; }
-    @media (min-width: 48em) and (max-width: 63.9375em) {
-      .collection-shout h2 {
+    @media (min-width: 29.3125em) and (max-width: 48em) {
+      .collection-main h2 {
         font-family: "Source Code Pro", monospace;
         font-size: 2.36859rem;
         line-height: 1.618rem;
         margin-bottom: 0.809rem;
         line-height: 1; }
-        .collection-shout h2.center {
+        .collection-main h2.center {
           text-align: center; }
-        .collection-shout h2.right {
+        .collection-main h2.right {
           text-align: right; }
-        .collection-shout h2.bold {
+        .collection-main h2.bold {
           font-weight: bold; }
-        .collection-shout h2.light {
+        .collection-main h2.light {
           font-weight: 100; } }
-    @media (max-width: 47.9375em) {
-      .collection-shout h2 {
+    @media (max-width: 29.25em) {
+      .collection-main h2 {
         font-family: "Source Code Pro", monospace;
         font-size: 1.77689rem;
         line-height: 1.618rem;
         margin-bottom: 0.809rem;
         line-height: 1; }
-        .collection-shout h2.center {
+        .collection-main h2.center {
           text-align: center; }
-        .collection-shout h2.right {
+        .collection-main h2.right {
           text-align: right; }
-        .collection-shout h2.bold {
+        .collection-main h2.bold {
           font-weight: bold; }
-        .collection-shout h2.light {
+        .collection-main h2.light {
           font-weight: 100; } }
+  .collection-main h3 {
+    font-family: "Source Code Pro", monospace;
+    font-size: 2.36859rem;
+    line-height: 1.618rem;
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 700; }
+    .collection-main h3.center {
+      text-align: center; }
+    .collection-main h3.right {
+      text-align: right; }
+    .collection-main h3.bold {
+      font-weight: bold; }
+    .collection-main h3.light {
+      font-weight: 100; }
+    @media (min-width: 29.3125em) and (max-width: 48em) {
+      .collection-main h3 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1.77689rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h3.center {
+          text-align: center; }
+        .collection-main h3.right {
+          text-align: right; }
+        .collection-main h3.bold {
+          font-weight: bold; }
+        .collection-main h3.light {
+          font-weight: 100; } }
+    @media (max-width: 29.25em) {
+      .collection-main h3 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1.333rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h3.center {
+          text-align: center; }
+        .collection-main h3.right {
+          text-align: right; }
+        .collection-main h3.bold {
+          font-weight: bold; }
+        .collection-main h3.light {
+          font-weight: 100; } }
+  .collection-main h4 {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1.77689rem;
+    line-height: 1.618rem;
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 700; }
+    .collection-main h4.center {
+      text-align: center; }
+    .collection-main h4.right {
+      text-align: right; }
+    .collection-main h4.bold {
+      font-weight: bold; }
+    .collection-main h4.light {
+      font-weight: 100; }
+    @media (min-width: 29.3125em) and (max-width: 48em) {
+      .collection-main h4 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1.333rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h4.center {
+          text-align: center; }
+        .collection-main h4.right {
+          text-align: right; }
+        .collection-main h4.bold {
+          font-weight: bold; }
+        .collection-main h4.light {
+          font-weight: 100; } }
+    @media (max-width: 29.25em) {
+      .collection-main h4 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h4.center {
+          text-align: center; }
+        .collection-main h4.right {
+          text-align: right; }
+        .collection-main h4.bold {
+          font-weight: bold; }
+        .collection-main h4.light {
+          font-weight: 100; } }
+  .collection-main h5 {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1.333rem;
+    line-height: 1.618rem;
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 700; }
+    .collection-main h5.center {
+      text-align: center; }
+    .collection-main h5.right {
+      text-align: right; }
+    .collection-main h5.bold {
+      font-weight: bold; }
+    .collection-main h5.light {
+      font-weight: 100; }
+    @media (min-width: 29.3125em) and (max-width: 48em) {
+      .collection-main h5 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h5.center {
+          text-align: center; }
+        .collection-main h5.right {
+          text-align: right; }
+        .collection-main h5.bold {
+          font-weight: bold; }
+        .collection-main h5.light {
+          font-weight: 100; } }
+    @media (max-width: 29.25em) {
+      .collection-main h5 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h5.center {
+          text-align: center; }
+        .collection-main h5.right {
+          text-align: right; }
+        .collection-main h5.bold {
+          font-weight: bold; }
+        .collection-main h5.light {
+          font-weight: 100; } }
+  .collection-main h6 {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1rem;
+    line-height: 1.618rem;
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 700; }
+    .collection-main h6.center {
+      text-align: center; }
+    .collection-main h6.right {
+      text-align: right; }
+    .collection-main h6.bold {
+      font-weight: bold; }
+    .collection-main h6.light {
+      font-weight: 100; }
+    @media (min-width: 29.3125em) and (max-width: 48em) {
+      .collection-main h6 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h6.center {
+          text-align: center; }
+        .collection-main h6.right {
+          text-align: right; }
+        .collection-main h6.bold {
+          font-weight: bold; }
+        .collection-main h6.light {
+          font-weight: 100; } }
+    @media (max-width: 29.25em) {
+      .collection-main h6 {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1rem;
+        line-height: 1.618rem;
+        margin-bottom: 0.809rem;
+        line-height: 1; }
+        .collection-main h6.center {
+          text-align: center; }
+        .collection-main h6.right {
+          text-align: right; }
+        .collection-main h6.bold {
+          font-weight: bold; }
+        .collection-main h6.light {
+          font-weight: 100; } }
+  .collection-main p {
+    font-family: "Source Code Pro", monospace;
+    font-size: 1rem;
+    line-height: 1.618rem;
+    line-height: 1.25;
+    font-weight: 300;
+    margin-bottom: 0.809rem; }
+    .collection-main p.center {
+      text-align: center; }
+    .collection-main p.right {
+      text-align: right; }
+    .collection-main p.bold {
+      font-weight: bold; }
+    .collection-main p.light {
+      font-weight: 100; }
+    .collection-main p:last-child {
+      margin-bottom: 0; }
 
 .btn-main {
   height: auto;
@@ -693,13 +630,13 @@ select[multiple] {
   font-family: "Source Code Pro", monospace;
   font-size: 1.333rem;
   line-height: 1.618rem;
-  margin-bottom: 0;
   line-height: 1;
+  font-weight: 700;
   color: inherit;
   position: relative;
-  padding-bottom: calc(0.809rem + 4px);
   color: #0d0d0d;
-  transition: color 0.33s linear; }
+  transition: color 0.33s linear;
+  padding-bottom: 0.809rem; }
   .btn-main .btn-title.center {
     text-align: center; }
   .btn-main .btn-title.right {
@@ -719,75 +656,22 @@ select[multiple] {
     background-color: #0d0d0d; }
   .btn-main .btn-title:hover::after, .btn-main .btn-title:active::after {
     width: calc(100% + 0.809rem); }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
+  @media (max-width: 29.25em) {
     .btn-main .btn-title {
-      padding-bottom: 0.809rem; } }
-  @media (orientation: landscape) and (max-height: 47.9375em) {
-    .btn-main .btn-title {
-      padding-bottom: 0.809rem; } }
-  @media (max-width: 47.9375em) {
-    .btn-main .btn-title {
-      padding-bottom: calc(0.4045rem + 3px); } }
-
-.btn-main.shout .btn-title {
-  font-family: "Source Code Pro", monospace;
-  font-size: 2.36859rem;
-  line-height: 1.618rem;
-  margin-bottom: 0;
-  line-height: 1; }
-  .btn-main.shout .btn-title.center {
-    text-align: center; }
-  .btn-main.shout .btn-title.right {
-    text-align: right; }
-  .btn-main.shout .btn-title.bold {
-    font-weight: bold; }
-  .btn-main.shout .btn-title.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .btn-main.shout .btn-title {
       font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
+      font-size: 1rem;
       line-height: 1.618rem;
-      margin-bottom: 0;
       line-height: 1; }
-      .btn-main.shout .btn-title.center {
+      .btn-main .btn-title.center {
         text-align: center; }
-      .btn-main.shout .btn-title.right {
+      .btn-main .btn-title.right {
         text-align: right; }
-      .btn-main.shout .btn-title.bold {
+      .btn-main .btn-title.bold {
         font-weight: bold; }
-      .btn-main.shout .btn-title.light {
-        font-weight: 100; } }
-  @media (orientation: landscape) and (max-height: 47.9375em) {
-    .btn-main.shout .btn-title {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .btn-main.shout .btn-title.center {
-        text-align: center; }
-      .btn-main.shout .btn-title.right {
-        text-align: right; }
-      .btn-main.shout .btn-title.bold {
-        font-weight: bold; }
-      .btn-main.shout .btn-title.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .btn-main.shout .btn-title {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.333rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .btn-main.shout .btn-title.center {
-        text-align: center; }
-      .btn-main.shout .btn-title.right {
-        text-align: right; }
-      .btn-main.shout .btn-title.bold {
-        font-weight: bold; }
-      .btn-main.shout .btn-title.light {
-        font-weight: 100; } }
+      .btn-main .btn-title.light {
+        font-weight: 100; }
+      .btn-main .btn-title::after {
+        height: 3px; } }
 
 .card-post, .card-project {
   position: relative;
@@ -796,7 +680,8 @@ select[multiple] {
   padding: 0.809rem;
   transition: background-color 0.33s linear;
   background-color: #fcfcfc;
-  cursor: pointer; }
+  cursor: pointer;
+  height: 100%; }
   .card-post:hover, .card-project:hover, .card-post:active, .card-project:active {
     background-color: #0d0d0d; }
     .card-post:hover .card-header, .card-project:hover .card-header, .card-post:active .card-header, .card-project:active .card-header {
@@ -813,8 +698,6 @@ select[multiple] {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    width: 100%;
-    height: 100%;
     background-position: center; }
     .card-post .card-media img, .card-project .card-media img, .card-post .card-media svg, .card-project .card-media svg {
       width: 100%;
@@ -829,7 +712,7 @@ select[multiple] {
       font-family: "Source Code Pro", monospace;
       font-size: 1rem;
       line-height: 1.618rem;
-      margin-bottom: 0.4045rem;
+      margin-bottom: 0.809rem;
       line-height: 1;
       display: flex; }
       .card-post .card-header .card-subtitle.center, .card-project .card-header .card-subtitle.center {
@@ -861,8 +744,9 @@ select[multiple] {
     font-family: "Source Code Pro", monospace;
     font-size: 1rem;
     line-height: 1.618rem;
-    margin-bottom: 0.4045rem;
-    line-height: 1; }
+    margin-bottom: 0.809rem;
+    line-height: 1;
+    font-weight: 300; }
     .menu-vertical .menu-header .menu-title.center {
       text-align: center; }
     .menu-vertical .menu-header .menu-title.right {
@@ -873,14 +757,12 @@ select[multiple] {
       font-weight: 100; }
   .menu-vertical .menu-body {
     flex-direction: column;
-    align-items: stretch; }
+    align-items: stretch;
+    height: 100%; }
   .menu-vertical .menu-body-part {
     display: flex;
     text-align: left;
-    margin-bottom: 1.618rem; }
-    @media (max-width: 63.9375em) {
-      .menu-vertical .menu-body-part {
-        margin-bottom: 0.809rem; } }
+    margin-bottom: 0.809rem; }
     .menu-vertical .menu-body-part a {
       position: relative; }
       .menu-vertical .menu-body-part a::after {
@@ -903,9 +785,7 @@ select[multiple] {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
-    width: 100%;
-    height: 100%; }
+    position: relative; }
     .multimedia-lightbox .multimedia-media img,
     .multimedia-lightbox .multimedia-media svg {
       width: 100%;
@@ -916,7 +796,6 @@ select[multiple] {
     font-family: "Source Code Pro", monospace;
     font-size: 1.333rem;
     line-height: 1.618rem;
-    margin-bottom: 0;
     line-height: 1;
     position: absolute;
     top: 50%;
@@ -1111,7 +990,7 @@ select[multiple] {
       background-color: #0d0d0d;
       height: 4px;
       transition: width 0.33s ease; }
-      @media (max-width: 63.9375em) {
+      @media (min-width: 29.3125em) and (max-width: 48em) {
         .input-text .input-label::after, .input-textarea .input-label::after {
           height: 3px; } }
   .input-text:focus::after, .input-textarea:focus::after {
@@ -1320,7 +1199,6 @@ select[multiple] {
     font-family: "Source Code Pro", monospace;
     font-size: 1.333rem;
     line-height: 0.809rem;
-    margin-bottom: 1.618rem;
     width: 100%;
     text-align: center; }
     .range-generic output.center {
@@ -1513,9 +1391,23 @@ select[multiple] {
       left: 50%;
       top: 50%;
       transform: translate3d(-50%, -50%, 0); }
+      .tool-scroll .tool-media svg svg circle,
+      .tool-scroll .tool-media svg svg ellipse,
+      .tool-scroll .tool-media svg svg g,
+      .tool-scroll .tool-media svg svg path,
+      .tool-scroll .tool-media svg svg polyline,
+      .tool-scroll .tool-media svg svg stroke {
+        fill: inherit;
+        stroke: inherit;
+        stroke-width: inherit;
+        stroke-linecap: inherit;
+        stroke-capoffset: inherit;
+        stroke-dasharray: inherit;
+        stroke-dashoffset: inherit;
+        vector-effect: inherit; }
     .tool-scroll .tool-media polyline {
       fill: none;
-      stroke-width: 2px;
+      stroke-width: calc(4px / 2);
       stroke: #0d0d0d;
       transition: stroke 0.33s linear; }
     .tool-scroll .tool-media:hover {
@@ -1563,21 +1455,6 @@ body {
   position: relative;
   overflow: hidden;
   transition: background-color 0.33s ease, color 0.33s ease, border-color 0.33s ease; }
-  .app-main .fallback {
-    font-family: "Source Code Pro", monospace;
-    font-size: 2.36859rem;
-    line-height: 1.618rem;
-    margin-bottom: 0;
-    line-height: 1;
-    display: none; }
-    .app-main .fallback.center {
-      text-align: center; }
-    .app-main .fallback.right {
-      text-align: right; }
-    .app-main .fallback.bold {
-      font-weight: bold; }
-    .app-main .fallback.light {
-      font-weight: 100; }
   .app-main .app-header {
     padding: 0.809rem;
     padding-left: 1.618rem; }
@@ -1589,11 +1466,11 @@ body {
         font-family: "Source Code Pro", monospace;
         font-size: 1.77689rem;
         line-height: 1.618rem;
-        margin-bottom: 0;
         line-height: 1;
         transition: color 0.33s linear;
         display: flex;
-        align-items: center; }
+        align-items: center;
+        font-weight: 700; }
         .app-main .app-header .wrapper .app-title.center {
           text-align: center; }
         .app-main .app-header .wrapper .app-title.right {
@@ -1602,6 +1479,34 @@ body {
           font-weight: bold; }
         .app-main .app-header .wrapper .app-title.light {
           font-weight: 100; }
+        @media (min-width: 20.0625em) and (max-width: 29.25em) {
+          .app-main .app-header .wrapper .app-title {
+            font-family: "Source Code Pro", monospace;
+            font-size: 1.333rem;
+            line-height: 1.618rem;
+            line-height: 1; }
+            .app-main .app-header .wrapper .app-title.center {
+              text-align: center; }
+            .app-main .app-header .wrapper .app-title.right {
+              text-align: right; }
+            .app-main .app-header .wrapper .app-title.bold {
+              font-weight: bold; }
+            .app-main .app-header .wrapper .app-title.light {
+              font-weight: 100; } }
+        @media (max-width: 20em) {
+          .app-main .app-header .wrapper .app-title {
+            font-family: "Source Code Pro", monospace;
+            font-size: 1rem;
+            line-height: 1.618rem;
+            line-height: 1; }
+            .app-main .app-header .wrapper .app-title.center {
+              text-align: center; }
+            .app-main .app-header .wrapper .app-title.right {
+              text-align: right; }
+            .app-main .app-header .wrapper .app-title.bold {
+              font-weight: bold; }
+            .app-main .app-header .wrapper .app-title.light {
+              font-weight: 100; } }
   .app-main .app-footer {
     display: flex;
     align-self: center;
@@ -1619,12 +1524,6 @@ body {
       padding-bottom: 1.618rem; }
     .app-main .app-footer .menu-vertical .btn-title::after {
       background-color: #fcfcfc; }
-    @media (orientation: landscape) and (max-width: 47.9375em) {
-      .app-main .app-footer .menu-vertical {
-        display: none; }
-      .app-main .app-footer .fallback {
-        display: block;
-        color: #fcfcfc; } }
   .app-main .app-body {
     padding: 0 1.618rem;
     flex-grow: 1;
@@ -1633,7 +1532,6 @@ body {
     transition: opacity 0.33s linear;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     position: relative;
     overflow: auto;
@@ -1648,7 +1546,6 @@ body {
         font-family: "Source Code Pro", monospace;
         font-size: 1rem;
         line-height: 1.618rem;
-        margin-bottom: 0;
         line-height: 1;
         width: 100%;
         padding-bottom: 0.809rem;
@@ -1677,7 +1574,7 @@ body {
     #explore:checked ~ .app-main .panel-explore {
       height: 100%;
       top: 0; }
-      @media (orientation: landscape) and (max-width: 47.9375em) {
+      @media (orientation: landscape) and (min-width: 29.3125em) and (max-width: 64em) {
         #explore:checked ~ .app-main .panel-explore .fallback {
           display: flex;
           flex-direction: column;
@@ -1721,270 +1618,97 @@ body {
   display: flex;
   flex-direction: column; }
   .board-bio .board-header, .board-gallery .board-header, .board-post .board-header, .board-talk .board-header, .board-landing .board-header {
-    color: #0d0d0d; }
-    .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-post .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
+    color: #0d0d0d;
+    padding-bottom: 0.809rem; }
+    @media (max-width: 29.25em) {
+      .board-bio .board-header, .board-gallery .board-header, .board-post .board-header, .board-talk .board-header, .board-landing .board-header {
+        padding-bottom: 0.4045rem; } }
+    .board-bio .board-header > *:first-child, .board-gallery .board-header > *:first-child, .board-post .board-header > *:first-child, .board-talk .board-header > *:first-child, .board-landing .board-header > *:first-child {
       font-family: "Source Code Pro", monospace;
-      font-size: 2.36859rem;
+      font-size: 1rem;
       line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
+      line-height: 1;
+      font-weight: 300;
+      padding-bottom: 0.809rem; }
+      .board-bio .board-header > *:first-child.center, .board-gallery .board-header > *:first-child.center, .board-post .board-header > *:first-child.center, .board-talk .board-header > *:first-child.center, .board-landing .board-header > *:first-child.center {
         text-align: center; }
-      .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
+      .board-bio .board-header > *:first-child.right, .board-gallery .board-header > *:first-child.right, .board-post .board-header > *:first-child.right, .board-talk .board-header > *:first-child.right, .board-landing .board-header > *:first-child.right {
         text-align: right; }
-      .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-post .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
+      .board-bio .board-header > *:first-child.bold, .board-gallery .board-header > *:first-child.bold, .board-post .board-header > *:first-child.bold, .board-talk .board-header > *:first-child.bold, .board-landing .board-header > *:first-child.bold {
         font-weight: bold; }
-      .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-post .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
+      .board-bio .board-header > *:first-child.light, .board-gallery .board-header > *:first-child.light, .board-post .board-header > *:first-child.light, .board-talk .board-header > *:first-child.light, .board-landing .board-header > *:first-child.light {
         font-weight: 100; }
-      @media (min-width: 48em) and (max-width: 63.9375em) {
-        .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-post .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
-          font-family: "Source Code Pro", monospace;
-          font-size: 1.77689rem;
-          line-height: 1.618rem;
-          margin-bottom: 0.809rem;
-          line-height: 1; }
-          .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
-            text-align: center; }
-          .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
-            text-align: right; }
-          .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-post .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-post .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
-            font-weight: 100; } }
-      @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-categories, .board-gallery .board-header .board-categories, .board-post .board-header .board-categories, .board-talk .board-header .board-categories, .board-landing .board-header .board-categories {
-          font-family: "Source Code Pro", monospace;
-          font-size: 1.333rem;
-          line-height: 1.618rem;
-          margin-bottom: 0.809rem;
-          line-height: 1; }
-          .board-bio .board-header .board-categories.center, .board-gallery .board-header .board-categories.center, .board-post .board-header .board-categories.center, .board-talk .board-header .board-categories.center, .board-landing .board-header .board-categories.center {
-            text-align: center; }
-          .board-bio .board-header .board-categories.right, .board-gallery .board-header .board-categories.right, .board-post .board-header .board-categories.right, .board-talk .board-header .board-categories.right, .board-landing .board-header .board-categories.right {
-            text-align: right; }
-          .board-bio .board-header .board-categories.bold, .board-gallery .board-header .board-categories.bold, .board-post .board-header .board-categories.bold, .board-talk .board-header .board-categories.bold, .board-landing .board-header .board-categories.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-categories.light, .board-gallery .board-header .board-categories.light, .board-post .board-header .board-categories.light, .board-talk .board-header .board-categories.light, .board-landing .board-header .board-categories.light {
-            font-weight: 100; } }
-    .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-post .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
+    .board-bio .board-header + *, .board-gallery .board-header + *, .board-post .board-header + *, .board-talk .board-header + *, .board-landing .board-header + * {
       font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
+      font-size: 1rem;
       line-height: 1.618rem;
-      margin-bottom: 0.809rem;
-      line-height: 1; }
-      .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-post .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
+      line-height: 1.25; }
+      .board-bio .board-header + *.center, .board-gallery .board-header + *.center, .board-post .board-header + *.center, .board-talk .board-header + *.center, .board-landing .board-header + *.center {
         text-align: center; }
-      .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-post .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
+      .board-bio .board-header + *.right, .board-gallery .board-header + *.right, .board-post .board-header + *.right, .board-talk .board-header + *.right, .board-landing .board-header + *.right {
         text-align: right; }
-      .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-post .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
+      .board-bio .board-header + *.bold, .board-gallery .board-header + *.bold, .board-post .board-header + *.bold, .board-talk .board-header + *.bold, .board-landing .board-header + *.bold {
         font-weight: bold; }
-      .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-post .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
+      .board-bio .board-header + *.light, .board-gallery .board-header + *.light, .board-post .board-header + *.light, .board-talk .board-header + *.light, .board-landing .board-header + *.light {
         font-weight: 100; }
-      @media (min-width: 48em) and (max-width: 63.9375em) {
-        .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-post .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
-          font-family: "Source Code Pro", monospace;
-          font-size: 1.333rem;
-          line-height: 1.618rem;
-          margin-bottom: 0.809rem;
-          line-height: 1; }
-          .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-post .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
-            text-align: center; }
-          .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-post .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
-            text-align: right; }
-          .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-post .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-post .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
-            font-weight: 100; } }
-      @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-tags, .board-gallery .board-header .board-tags, .board-post .board-header .board-tags, .board-talk .board-header .board-tags, .board-landing .board-header .board-tags {
-          font-family: "Source Code Pro", monospace;
-          font-size: 1rem;
-          line-height: 1.618rem;
-          margin-bottom: 0.4045rem;
-          line-height: 1; }
-          .board-bio .board-header .board-tags.center, .board-gallery .board-header .board-tags.center, .board-post .board-header .board-tags.center, .board-talk .board-header .board-tags.center, .board-landing .board-header .board-tags.center {
-            text-align: center; }
-          .board-bio .board-header .board-tags.right, .board-gallery .board-header .board-tags.right, .board-post .board-header .board-tags.right, .board-talk .board-header .board-tags.right, .board-landing .board-header .board-tags.right {
-            text-align: right; }
-          .board-bio .board-header .board-tags.bold, .board-gallery .board-header .board-tags.bold, .board-post .board-header .board-tags.bold, .board-talk .board-header .board-tags.bold, .board-landing .board-header .board-tags.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-tags.light, .board-gallery .board-header .board-tags.light, .board-post .board-header .board-tags.light, .board-talk .board-header .board-tags.light, .board-landing .board-header .board-tags.light {
-            font-weight: 100; } }
-    .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-post .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
-      font-family: "Source Code Pro", monospace;
-      font-size: 4.20873rem;
-      line-height: 1.618rem;
-      margin-bottom: 1.618rem;
-      line-height: 1; }
-      .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
-        text-align: center; }
-      .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
-        text-align: right; }
-      .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-post .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
-        font-weight: bold; }
-      .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-post .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
-        font-weight: 100; }
-      @media (min-width: 48em) and (max-width: 63.9375em) {
-        .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-post .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
-          font-family: "Source Code Pro", monospace;
-          font-size: 3.15733rem;
-          line-height: 1.618rem;
-          margin-bottom: 0.809rem;
-          line-height: 1; }
-          .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
-            text-align: center; }
-          .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
-            text-align: right; }
-          .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-post .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-post .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
-            font-weight: 100; } }
-      @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-title, .board-gallery .board-header .board-title, .board-post .board-header .board-title, .board-talk .board-header .board-title, .board-landing .board-header .board-title {
-          font-family: "Source Code Pro", monospace;
-          font-size: 2.36859rem;
-          line-height: 1.618rem;
-          margin-bottom: 0.809rem;
-          line-height: 1; }
-          .board-bio .board-header .board-title.center, .board-gallery .board-header .board-title.center, .board-post .board-header .board-title.center, .board-talk .board-header .board-title.center, .board-landing .board-header .board-title.center {
-            text-align: center; }
-          .board-bio .board-header .board-title.right, .board-gallery .board-header .board-title.right, .board-post .board-header .board-title.right, .board-talk .board-header .board-title.right, .board-landing .board-header .board-title.right {
-            text-align: right; }
-          .board-bio .board-header .board-title.bold, .board-gallery .board-header .board-title.bold, .board-post .board-header .board-title.bold, .board-talk .board-header .board-title.bold, .board-landing .board-header .board-title.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-title.light, .board-gallery .board-header .board-title.light, .board-post .board-header .board-title.light, .board-talk .board-header .board-title.light, .board-landing .board-header .board-title.light {
-            font-weight: 100; } }
-    .board-bio .board-header .board-subtitle, .board-gallery .board-header .board-subtitle, .board-post .board-header .board-subtitle, .board-talk .board-header .board-subtitle, .board-landing .board-header .board-subtitle {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .board-bio .board-header .board-subtitle.center, .board-gallery .board-header .board-subtitle.center, .board-post .board-header .board-subtitle.center, .board-talk .board-header .board-subtitle.center, .board-landing .board-header .board-subtitle.center {
-        text-align: center; }
-      .board-bio .board-header .board-subtitle.right, .board-gallery .board-header .board-subtitle.right, .board-post .board-header .board-subtitle.right, .board-talk .board-header .board-subtitle.right, .board-landing .board-header .board-subtitle.right {
-        text-align: right; }
-      .board-bio .board-header .board-subtitle.bold, .board-gallery .board-header .board-subtitle.bold, .board-post .board-header .board-subtitle.bold, .board-talk .board-header .board-subtitle.bold, .board-landing .board-header .board-subtitle.bold {
-        font-weight: bold; }
-      .board-bio .board-header .board-subtitle.light, .board-gallery .board-header .board-subtitle.light, .board-post .board-header .board-subtitle.light, .board-talk .board-header .board-subtitle.light, .board-landing .board-header .board-subtitle.light {
-        font-weight: 100; }
-      @media (max-width: 47.9375em) {
-        .board-bio .board-header .board-subtitle, .board-gallery .board-header .board-subtitle, .board-post .board-header .board-subtitle, .board-talk .board-header .board-subtitle, .board-landing .board-header .board-subtitle {
-          font-family: "Source Code Pro", monospace;
-          font-size: 1rem;
-          line-height: 1.618rem;
-          margin-bottom: 0;
-          line-height: 1; }
-          .board-bio .board-header .board-subtitle.center, .board-gallery .board-header .board-subtitle.center, .board-post .board-header .board-subtitle.center, .board-talk .board-header .board-subtitle.center, .board-landing .board-header .board-subtitle.center {
-            text-align: center; }
-          .board-bio .board-header .board-subtitle.right, .board-gallery .board-header .board-subtitle.right, .board-post .board-header .board-subtitle.right, .board-talk .board-header .board-subtitle.right, .board-landing .board-header .board-subtitle.right {
-            text-align: right; }
-          .board-bio .board-header .board-subtitle.bold, .board-gallery .board-header .board-subtitle.bold, .board-post .board-header .board-subtitle.bold, .board-talk .board-header .board-subtitle.bold, .board-landing .board-header .board-subtitle.bold {
-            font-weight: bold; }
-          .board-bio .board-header .board-subtitle.light, .board-gallery .board-header .board-subtitle.light, .board-post .board-header .board-subtitle.light, .board-talk .board-header .board-subtitle.light, .board-landing .board-header .board-subtitle.light {
-            font-weight: 100; } }
+  .board-bio .board-title, .board-gallery .board-title, .board-post .board-title, .board-talk .board-title, .board-landing .board-title {
+    font-family: "Source Code Pro", monospace;
+    font-size: 2.36859rem;
+    line-height: 1.618rem;
+    line-height: 1;
+    font-weight: 700; }
+    .board-bio .board-title.center, .board-gallery .board-title.center, .board-post .board-title.center, .board-talk .board-title.center, .board-landing .board-title.center {
+      text-align: center; }
+    .board-bio .board-title.right, .board-gallery .board-title.right, .board-post .board-title.right, .board-talk .board-title.right, .board-landing .board-title.right {
+      text-align: right; }
+    .board-bio .board-title.bold, .board-gallery .board-title.bold, .board-post .board-title.bold, .board-talk .board-title.bold, .board-landing .board-title.bold {
+      font-weight: bold; }
+    .board-bio .board-title.light, .board-gallery .board-title.light, .board-post .board-title.light, .board-talk .board-title.light, .board-landing .board-title.light {
+      font-weight: 100; }
+    @media (max-width: 29.25em) {
+      .board-bio .board-title, .board-gallery .board-title, .board-post .board-title, .board-talk .board-title, .board-landing .board-title {
+        font-family: "Source Code Pro", monospace;
+        font-size: 1.77689rem;
+        line-height: 1.618rem;
+        line-height: 1; }
+        .board-bio .board-title.center, .board-gallery .board-title.center, .board-post .board-title.center, .board-talk .board-title.center, .board-landing .board-title.center {
+          text-align: center; }
+        .board-bio .board-title.right, .board-gallery .board-title.right, .board-post .board-title.right, .board-talk .board-title.right, .board-landing .board-title.right {
+          text-align: right; }
+        .board-bio .board-title.bold, .board-gallery .board-title.bold, .board-post .board-title.bold, .board-talk .board-title.bold, .board-landing .board-title.bold {
+          font-weight: bold; }
+        .board-bio .board-title.light, .board-gallery .board-title.light, .board-post .board-title.light, .board-talk .board-title.light, .board-landing .board-title.light {
+          font-weight: 100; } }
   .board-bio .board-body, .board-gallery .board-body, .board-post .board-body, .board-talk .board-body, .board-landing .board-body {
     overflow: hidden;
     position: relative;
     flex-grow: 1;
     display: flex;
-    flex-direction: column; }
-    .board-bio .board-body [class$="-header"] > *:first-child, .board-gallery .board-body [class$="-header"] > *:first-child, .board-post .board-body [class$="-header"] > *:first-child, .board-talk .board-body [class$="-header"] > *:first-child, .board-landing .board-body [class$="-header"] > *:first-child {
-      padding-bottom: 0.809rem; }
-    .board-bio .board-body [class$="-header"] + *, .board-gallery .board-body [class$="-header"] + *, .board-post .board-body [class$="-header"] + *, .board-talk .board-body [class$="-header"] + *, .board-landing .board-body [class$="-header"] + * {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1.25;
-      flex-grow: 1; }
-      .board-bio .board-body [class$="-header"] + *.center, .board-gallery .board-body [class$="-header"] + *.center, .board-post .board-body [class$="-header"] + *.center, .board-talk .board-body [class$="-header"] + *.center, .board-landing .board-body [class$="-header"] + *.center {
-        text-align: center; }
-      .board-bio .board-body [class$="-header"] + *.right, .board-gallery .board-body [class$="-header"] + *.right, .board-post .board-body [class$="-header"] + *.right, .board-talk .board-body [class$="-header"] + *.right, .board-landing .board-body [class$="-header"] + *.right {
-        text-align: right; }
-      .board-bio .board-body [class$="-header"] + *.bold, .board-gallery .board-body [class$="-header"] + *.bold, .board-post .board-body [class$="-header"] + *.bold, .board-talk .board-body [class$="-header"] + *.bold, .board-landing .board-body [class$="-header"] + *.bold {
-        font-weight: bold; }
-      .board-bio .board-body [class$="-header"] + *.light, .board-gallery .board-body [class$="-header"] + *.light, .board-post .board-body [class$="-header"] + *.light, .board-talk .board-body [class$="-header"] + *.light, .board-landing .board-body [class$="-header"] + *.light {
-        font-weight: 100; }
-      @media (orientation: landscape) and (max-width: 47.9375em) {
-        .board-bio .board-body [class$="-header"] + *, .board-gallery .board-body [class$="-header"] + *, .board-post .board-body [class$="-header"] + *, .board-talk .board-body [class$="-header"] + *, .board-landing .board-body [class$="-header"] + * {
-          display: none; } }
-      .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
-        font-family: "Source Code Pro", monospace;
-        font-size: 2.36859rem;
-        line-height: 1.618rem;
-        margin-bottom: 0.809rem;
-        line-height: 1; }
-        .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
-          text-align: center; }
-        .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
-          text-align: right; }
-        .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-post .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
-          font-weight: bold; }
-        .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-post .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
-          font-weight: 100; }
-        @media (min-width: 48em) and (max-width: 63.9375em) {
-          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
-            font-family: "Source Code Pro", monospace;
-            font-size: 1.77689rem;
-            line-height: 1.618rem;
-            margin-bottom: 0.809rem;
-            line-height: 1; }
-            .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
-              text-align: center; }
-            .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
-              text-align: right; }
-            .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-post .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
-              font-weight: bold; }
-            .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-post .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
-              font-weight: 100; } }
-        @media (max-width: 47.9375em) {
-          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
-            font-family: "Source Code Pro", monospace;
-            font-size: 1.333rem;
-            line-height: 1.618rem;
-            margin-bottom: 0.809rem;
-            line-height: 1; }
-            .board-bio .board-body [class$="-header"] + * + *.center, .board-gallery .board-body [class$="-header"] + * + *.center, .board-post .board-body [class$="-header"] + * + *.center, .board-talk .board-body [class$="-header"] + * + *.center, .board-landing .board-body [class$="-header"] + * + *.center {
-              text-align: center; }
-            .board-bio .board-body [class$="-header"] + * + *.right, .board-gallery .board-body [class$="-header"] + * + *.right, .board-post .board-body [class$="-header"] + * + *.right, .board-talk .board-body [class$="-header"] + * + *.right, .board-landing .board-body [class$="-header"] + * + *.right {
-              text-align: right; }
-            .board-bio .board-body [class$="-header"] + * + *.bold, .board-gallery .board-body [class$="-header"] + * + *.bold, .board-post .board-body [class$="-header"] + * + *.bold, .board-talk .board-body [class$="-header"] + * + *.bold, .board-landing .board-body [class$="-header"] + * + *.bold {
-              font-weight: bold; }
-            .board-bio .board-body [class$="-header"] + * + *.light, .board-gallery .board-body [class$="-header"] + * + *.light, .board-post .board-body [class$="-header"] + * + *.light, .board-talk .board-body [class$="-header"] + * + *.light, .board-landing .board-body [class$="-header"] + * + *.light {
-              font-weight: 100; } }
-        @media (orientation: landscape) and (max-width: 47.9375em) {
-          .board-bio .board-body [class$="-header"] + * + *, .board-gallery .board-body [class$="-header"] + * + *, .board-post .board-body [class$="-header"] + * + *, .board-talk .board-body [class$="-header"] + * + *, .board-landing .board-body [class$="-header"] + * + * {
-            display: none; } }
-        .board-bio .board-body [class$="-header"] + * + * footer, .board-gallery .board-body [class$="-header"] + * + * footer, .board-post .board-body [class$="-header"] + * + * footer, .board-talk .board-body [class$="-header"] + * + * footer, .board-landing .board-body [class$="-header"] + * + * footer {
-          font-family: "Source Code Pro", monospace;
-          font-size: 1rem;
-          line-height: 1.618rem;
-          margin-bottom: 0;
-          line-height: 1; }
-          .board-bio .board-body [class$="-header"] + * + * footer.center, .board-gallery .board-body [class$="-header"] + * + * footer.center, .board-post .board-body [class$="-header"] + * + * footer.center, .board-talk .board-body [class$="-header"] + * + * footer.center, .board-landing .board-body [class$="-header"] + * + * footer.center {
-            text-align: center; }
-          .board-bio .board-body [class$="-header"] + * + * footer.right, .board-gallery .board-body [class$="-header"] + * + * footer.right, .board-post .board-body [class$="-header"] + * + * footer.right, .board-talk .board-body [class$="-header"] + * + * footer.right, .board-landing .board-body [class$="-header"] + * + * footer.right {
-            text-align: right; }
-          .board-bio .board-body [class$="-header"] + * + * footer.bold, .board-gallery .board-body [class$="-header"] + * + * footer.bold, .board-post .board-body [class$="-header"] + * + * footer.bold, .board-talk .board-body [class$="-header"] + * + * footer.bold, .board-landing .board-body [class$="-header"] + * + * footer.bold {
-            font-weight: bold; }
-          .board-bio .board-body [class$="-header"] + * + * footer.light, .board-gallery .board-body [class$="-header"] + * + * footer.light, .board-post .board-body [class$="-header"] + * + * footer.light, .board-talk .board-body [class$="-header"] + * + * footer.light, .board-landing .board-body [class$="-header"] + * + * footer.light {
-            font-weight: 100; }
+    flex-direction: column;
+    padding-bottom: 6.472rem; }
+    @media (max-width: 64em) {
+      .board-bio .board-body, .board-gallery .board-body, .board-post .board-body, .board-talk .board-body, .board-landing .board-body {
+        padding-bottom: 3.236rem; } }
     .board-bio .board-body .board-body-part, .board-gallery .board-body .board-body-part, .board-post .board-body .board-body-part, .board-talk .board-body .board-body-part, .board-landing .board-body .board-body-part {
       width: 100%;
       color: #0d0d0d; }
+      .board-bio .board-body .board-body-part:nth-child(2), .board-gallery .board-body .board-body-part:nth-child(2), .board-post .board-body .board-body-part:nth-child(2), .board-talk .board-body .board-body-part:nth-child(2), .board-landing .board-body .board-body-part:nth-child(2) {
+        flex-grow: 1; }
+      .board-bio .board-body .board-body-part:nth-child(3), .board-gallery .board-body .board-body-part:nth-child(3), .board-post .board-body .board-body-part:nth-child(3), .board-talk .board-body .board-body-part:nth-child(3), .board-landing .board-body .board-body-part:nth-child(3) {
+        padding-bottom: 1.618rem; }
+        @media (max-width: 20em) {
+          .board-bio .board-body .board-body-part:nth-child(3), .board-gallery .board-body .board-body-part:nth-child(3), .board-post .board-body .board-body-part:nth-child(3), .board-talk .board-body .board-body-part:nth-child(3), .board-landing .board-body .board-body-part:nth-child(3) {
+            display: none; } }
   .board-bio .board-footer, .board-gallery .board-footer, .board-post .board-footer, .board-talk .board-footer, .board-landing .board-footer {
     cursor: pointer;
     height: 0;
     position: relative;
     padding-top: 6.472rem;
-    margin-top: 1.618rem;
     display: flex;
     justify-content: center; }
-    @media (max-width: 47.9375em) {
+    @media (max-width: 64em) {
       .board-bio .board-footer, .board-gallery .board-footer, .board-post .board-footer, .board-talk .board-footer, .board-landing .board-footer {
-        padding-top: 3.236rem;
-        margin-top: 0.809rem; } }
+        padding-top: 3.236rem; } }
     .board-bio .board-footer::before, .board-gallery .board-footer::before, .board-post .board-footer::before, .board-talk .board-footer::before, .board-landing .board-footer::before {
       position: absolute;
       content: '';
@@ -2007,119 +1731,20 @@ body {
     flex-grow: 1;
     margin-right: -1.618rem;
     padding-right: 1.618rem;
-    display: flex; }
-
-.board-bio .board-body {
-  padding-bottom: calc(6.472rem + 1.618rem); }
-  @media (max-width: 47.9375em) {
-    .board-bio .board-body {
-      padding-bottom: calc(3.236rem + 0.809rem); } }
+    display: flex;
+    align-items: flex-start; }
 
 .board-bio .board-content {
-  flex-direction: column; }
+  flex-direction: column;
+  padding-bottom: 1.618rem; }
 
-.board-gallery .board-body {
-  padding-bottom: calc(6.472rem + 1.618rem); }
-  @media (max-width: 47.9375em) {
-    .board-gallery .board-body {
-      padding-bottom: calc(3.236rem + 0.809rem); } }
-
-.board-gallery .board-meta > *:first-child {
-  padding-bottom: 0.4045rem;
-  font-family: "Source Code Pro", monospace;
-  font-size: 2.36859rem;
-  line-height: 1.618rem;
-  margin-bottom: 0;
-  line-height: 1; }
-  .board-gallery .board-meta > *:first-child.center {
-    text-align: center; }
-  .board-gallery .board-meta > *:first-child.right {
-    text-align: right; }
-  .board-gallery .board-meta > *:first-child.bold {
-    font-weight: bold; }
-  .board-gallery .board-meta > *:first-child.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .board-gallery .board-meta > *:first-child {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.77689rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .board-gallery .board-meta > *:first-child.center {
-        text-align: center; }
-      .board-gallery .board-meta > *:first-child.right {
-        text-align: right; }
-      .board-gallery .board-meta > *:first-child.bold {
-        font-weight: bold; }
-      .board-gallery .board-meta > *:first-child.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .board-gallery .board-meta > *:first-child {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.333rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .board-gallery .board-meta > *:first-child.center {
-        text-align: center; }
-      .board-gallery .board-meta > *:first-child.right {
-        text-align: right; }
-      .board-gallery .board-meta > *:first-child.bold {
-        font-weight: bold; }
-      .board-gallery .board-meta > *:first-child.light {
-        font-weight: 100; } }
-
-.board-gallery .board-meta > *:last-child {
-  font-family: "Source Code Pro", monospace;
-  font-size: 1.77689rem;
-  line-height: 1.618rem;
-  margin-bottom: 0;
-  line-height: 1; }
-  .board-gallery .board-meta > *:last-child.center {
-    text-align: center; }
-  .board-gallery .board-meta > *:last-child.right {
-    text-align: right; }
-  .board-gallery .board-meta > *:last-child.bold {
-    font-weight: bold; }
-  .board-gallery .board-meta > *:last-child.light {
-    font-weight: 100; }
-  @media (min-width: 48em) and (max-width: 63.9375em) {
-    .board-gallery .board-meta > *:last-child {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1.333rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .board-gallery .board-meta > *:last-child.center {
-        text-align: center; }
-      .board-gallery .board-meta > *:last-child.right {
-        text-align: right; }
-      .board-gallery .board-meta > *:last-child.bold {
-        font-weight: bold; }
-      .board-gallery .board-meta > *:last-child.light {
-        font-weight: 100; } }
-  @media (max-width: 47.9375em) {
-    .board-gallery .board-meta > *:last-child {
-      font-family: "Source Code Pro", monospace;
-      font-size: 1rem;
-      line-height: 1.618rem;
-      margin-bottom: 0;
-      line-height: 1; }
-      .board-gallery .board-meta > *:last-child.center {
-        text-align: center; }
-      .board-gallery .board-meta > *:last-child.right {
-        text-align: right; }
-      .board-gallery .board-meta > *:last-child.bold {
-        font-weight: bold; }
-      .board-gallery .board-meta > *:last-child.light {
-        font-weight: 100; } }
+@media (max-width: 20em) {
+  .board-gallery .board-header > *:first-child {
+    display: none; } }
 
 .board-gallery .board-media {
-  flex-wrap: wrap; }
-  @media (orientation: landscape) and (max-width: 47.9375em) {
-    .board-gallery .board-media {
-      display: none; } }
+  flex-wrap: wrap;
+  padding-bottom: 0.809rem; }
   .board-gallery .board-media > * {
     display: flex;
     align-items: center;
@@ -2128,8 +1753,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    width: 100%;
-    height: 100%;
     background-size: contain;
     margin-bottom: 0.809rem; }
     .board-gallery .board-media > * img,
@@ -2138,30 +1761,22 @@ body {
       height: auto; }
     .board-gallery .board-media > *.square {
       padding-top: 100%; }
-    .board-gallery .board-media > *:last-child {
-      margin-bottom: 1.618rem; }
-    @media (min-width: 64em) {
+    @media (min-width: 48.0625em) {
+      .board-gallery .board-media > * {
+        width: calc(33.33% - ((0.809rem * 2) / 3));
+        margin-right: 0.809rem; }
+        .board-gallery .board-media > *:nth-child(3n+3) {
+          margin-right: 0; } }
+    @media (min-width: 29.3125em) and (max-width: 48em) {
       .board-gallery .board-media > * {
         width: calc(50% - 0.809rem / 2);
         margin-right: calc(0.809rem / 2); }
         .board-gallery .board-media > *:nth-child(even) {
           margin-left: calc(0.809rem / 2);
           margin-right: 0; } }
-    @media (orientation: landscape) and (max-height: 47.9375em) {
+    @media (max-width: 29.25em) {
       .board-gallery .board-media > * {
-        width: calc(33.33% - ((0.809rem * 2) / 3));
-        margin-right: 0.809rem; }
-        .board-gallery .board-media > *:nth-child(3n+3) {
-          margin-right: 0; }
-        .board-gallery .board-media > *:nth-child(even) {
-          margin-left: 0;
-          margin-right: 0.809rem; } }
-
-.board-post .board-body {
-  padding-bottom: calc(6.472rem + 1.618rem); }
-  @media (max-width: 47.9375em) {
-    .board-post .board-body {
-      padding-bottom: calc(3.236rem + 0.809rem); } }
+        width: 100%; } }
 
 .board-post .board-content {
   flex-direction: column; }
@@ -2170,13 +1785,16 @@ body {
   flex-direction: column;
   max-width: 1200px; }
 
+.board-talk .board-body {
+  padding-bottom: 0; }
+
 .board-talk .board-body-part {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 1.618rem; }
 
-.panel-explore, .panel-sidebar {
+.panel-explore {
   visibility: visible; }
 
 .panel-explore {
@@ -2190,92 +1808,10 @@ body {
   transition: all 0.33s linear;
   position: absolute;
   left: 0;
-  top: calc(100% - (6.472rem + 1.618rem)); }
-  @media (max-width: 47.9375em) {
+  top: calc(100% - 6.472rem); }
+  @media (max-width: 64em) {
     .panel-explore {
-      top: calc(100% - (3.236rem + 0.809rem)); } }
-
-.panel-sidebar {
-  position: relative;
-  border: 3px #cccccc solid;
-  padding: 0.4045rem;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 20vw;
-  height: 100%; }
-  .panel-sidebar > [class*='-header'] > [class*='tool']:first-child,
-  .panel-sidebar > [class*='-footer'] > [class*='tool']:first-child {
-    margin-left: 0.4045rem; }
-  .panel-sidebar > [class*='-header'] > [class*='tool']:last-child,
-  .panel-sidebar > [class*='-footer'] > [class*='tool']:last-child {
-    margin-right: 0.4045rem; }
-  .panel-sidebar > [class*='-header'],
-  .panel-sidebar > [class*='-filter'],
-  .panel-sidebar > [class*='-media'],
-  .panel-sidebar > [class*='-body'],
-  .panel-sidebar > [class*='-footer'] {
-    margin-bottom: 0.4045rem; }
-    .panel-sidebar > [class*='-header']:last-child,
-    .panel-sidebar > [class*='-filter']:last-child,
-    .panel-sidebar > [class*='-media']:last-child,
-    .panel-sidebar > [class*='-body']:last-child,
-    .panel-sidebar > [class*='-footer']:last-child {
-      margin-bottom: 0; }
-  .panel-sidebar [class*='-header'],
-  .panel-sidebar [class*='-filter'],
-  .panel-sidebar [class*='-body'],
-  .panel-sidebar [class*='-footer'],
-  .panel-sidebar [class*='-tooltip'],
-  .panel-sidebar [class*='-media'] {
-    border: 2px #e6e6e6 solid;
-    padding: 0.4045rem; }
-  .panel-sidebar [class*='-part'] {
-    border: 2px #e6e6e6 dashed;
-    padding: 0.4045rem; }
-  .panel-sidebar .btn-circle {
-    padding: 0; }
-    .panel-sidebar .btn-circle .btn-media {
-      padding: 0; }
-  .panel-sidebar .panel-header > * {
-    margin-right: 0.809rem; }
-    .panel-sidebar .panel-header > *:last-child {
-      margin-right: 0; }
-  .panel-sidebar .panel-header [class*='tool']:last-child {
-    margin-right: 0; }
-  .panel-sidebar .panel-title {
-    font-family: "Source Code Pro", monospace;
-    font-size: 1.77689rem;
-    line-height: 1.618rem;
-    margin-bottom: 0;
-    line-height: 1; }
-    .panel-sidebar .panel-title.center {
-      text-align: center; }
-    .panel-sidebar .panel-title.right {
-      text-align: right; }
-    .panel-sidebar .panel-title.bold {
-      font-weight: bold; }
-    .panel-sidebar .panel-title.light {
-      font-weight: 100; }
-  .panel-sidebar .panel-subtitle {
-    font-family: "Source Code Pro", monospace;
-    font-size: 1.333rem;
-    line-height: 1.618rem;
-    margin-bottom: 0;
-    line-height: 1; }
-    .panel-sidebar .panel-subtitle.center {
-      text-align: center; }
-    .panel-sidebar .panel-subtitle.right {
-      text-align: right; }
-    .panel-sidebar .panel-subtitle.bold {
-      font-weight: bold; }
-    .panel-sidebar .panel-subtitle.light {
-      font-weight: 100; }
-  .panel-sidebar .panel-filter {
-    text-align: center; }
-  .panel-sidebar .panel-body {
-    height: 100%;
-    text-align: center;
-    overflow: auto; }
+      top: calc(100% - 3.236rem); } }
 
 .board-landing {
   display: flex;
@@ -2287,7 +1823,7 @@ body {
     font-family: "Source Code Pro", monospace;
     font-size: 4.20873rem;
     line-height: 1.618rem;
-    margin-bottom: 1.618rem;
+    margin-bottom: 0.809rem;
     line-height: 1; }
     .board-landing .board-title.center {
       text-align: center; }
@@ -2297,7 +1833,7 @@ body {
       font-weight: bold; }
     .board-landing .board-title.light {
       font-weight: 100; }
-    @media (max-width: 47.9375em) {
+    @media (max-width: 20em) {
       .board-landing .board-title {
         font-family: "Source Code Pro", monospace;
         font-size: 2.36859rem;
@@ -2316,7 +1852,6 @@ body {
     font-family: "Source Code Pro", monospace;
     font-size: 3.15733rem;
     line-height: 1.618rem;
-    margin-bottom: 0;
     line-height: 1; }
     .board-landing .board-subtitle.center {
       text-align: center; }
@@ -2326,12 +1861,11 @@ body {
       font-weight: bold; }
     .board-landing .board-subtitle.light {
       font-weight: 100; }
-    @media (max-width: 47.9375em) {
+    @media (max-width: 20em) {
       .board-landing .board-subtitle {
         font-family: "Source Code Pro", monospace;
         font-size: 1.77689rem;
         line-height: 1.618rem;
-        margin-bottom: 0;
         line-height: 1; }
         .board-landing .board-subtitle.center {
           text-align: center; }
@@ -2342,58 +1876,57 @@ body {
         .board-landing .board-subtitle.light {
           font-weight: 100; } }
 
-.wall-portfolio .wall-header {
+.wall-cards .wall-header {
   padding: 1.618rem 0; }
-  .wall-portfolio .wall-header .wall-title {
+  .wall-cards .wall-header .wall-title {
     font-family: "Source Code Pro", monospace;
     font-size: 1rem;
     line-height: 1.618rem;
-    margin-bottom: 0;
     line-height: 1; }
-    .wall-portfolio .wall-header .wall-title.center {
+    .wall-cards .wall-header .wall-title.center {
       text-align: center; }
-    .wall-portfolio .wall-header .wall-title.right {
+    .wall-cards .wall-header .wall-title.right {
       text-align: right; }
-    .wall-portfolio .wall-header .wall-title.bold {
+    .wall-cards .wall-header .wall-title.bold {
       font-weight: bold; }
-    .wall-portfolio .wall-header .wall-title.light {
+    .wall-cards .wall-header .wall-title.light {
       font-weight: 100; }
 
-.wall-portfolio .wall-footer {
+.wall-cards .wall-footer {
   position: relative; }
 
-.wall-portfolio {
+.wall-cards {
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch; }
-  .wall-portfolio .wall-body {
+  .wall-cards .wall-body {
     flex-wrap: wrap;
     display: flex; }
-    .wall-portfolio .wall-body .wall-body-part {
+    .wall-cards .wall-body .wall-body-part {
       margin-bottom: 0.809rem; }
-      @media (min-width: 64em) {
-        .wall-portfolio .wall-body .wall-body-part {
+      @media (min-width: 48.0625em) {
+        .wall-cards .wall-body .wall-body-part {
           width: calc(33.33% - (0.809rem * 2) / 3);
           margin-right: 0.809rem; }
-          .wall-portfolio .wall-body .wall-body-part:nth-child(3n+3) {
+          .wall-cards .wall-body .wall-body-part:nth-child(3n+3) {
             margin-right: 0; } }
-      @media (min-width: 48em) and (max-width: 63.9375em) {
-        .wall-portfolio .wall-body .wall-body-part {
+      @media (min-width: 29.3125em) and (max-width: 48em) {
+        .wall-cards .wall-body .wall-body-part {
           width: calc(50% - (0.809rem / 2)); }
-          .wall-portfolio .wall-body .wall-body-part:nth-child(even) {
+          .wall-cards .wall-body .wall-body-part:nth-child(even) {
             margin-left: calc(0.809rem / 2); }
-          .wall-portfolio .wall-body .wall-body-part:nth-child(odd) {
+          .wall-cards .wall-body .wall-body-part:nth-child(odd) {
             margin-right: calc(0.809rem / 2); }
-          .wall-portfolio .wall-body .wall-body-part:nth-last-child(2) {
+          .wall-cards .wall-body .wall-body-part:nth-last-child(2) {
             margin-bottom: 1.618rem; } }
-      @media (max-width: 47.9375em) {
-        .wall-portfolio .wall-body .wall-body-part {
+      @media (max-width: 29.25em) {
+        .wall-cards .wall-body .wall-body-part {
           width: 100%;
           margin-right: 0; } }
-      .wall-portfolio .wall-body .wall-body-part:last-child {
+      .wall-cards .wall-body .wall-body-part:last-child {
         margin-bottom: 1.618rem; }
-  .wall-portfolio .wall-footer {
+  .wall-cards .wall-footer {
     padding: 1.618rem 0; }
 
 .shout.image-square {
@@ -2447,9 +1980,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
-  width: 100%;
-  height: 100%; }
+  position: relative; }
   .image-square > * img,
   .image-square > * svg {
     width: 100%;
