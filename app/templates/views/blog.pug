@@ -1,15 +1,26 @@
 extends ../layouts/default
 
 include ../mixins/components/cards
+include ../mixins/media/chevron
 
 block appBody
-    .app-body-part.header
-        h1 my blog
-    .app-body-part.wall-cards
-        .wall-body
-            if posts
-                each post in posts
-                    .wall-body-part
-                        +cardPost(post)
-            else
-                p no posts
+    .screen-blog
+        .panel-filter
+            .panel-body
+                h1 categories form
+            label.panel-header(for="filter")
+                .wrapper
+                    .panel-title
+                        h1 my blog
+                    .tool-scroll
+                        .tool-media
+                            +chevron()
+        .screen-body
+            .wall-cards
+                .wall-body
+                    if posts
+                        each post in posts
+                            .wall-body-part
+                                +cardPost(post)
+                    else
+                        p no posts

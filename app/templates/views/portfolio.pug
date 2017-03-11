@@ -1,15 +1,26 @@
 extends ../layouts/default
 
 include ../mixins/components/cards
+include ../mixins/media/chevron
 
 block appBody
-    .app-body-part.header
-        h1 my portfolio
-    .app-body-part.wall-cards
-        .wall-body
-            if projects
-                each project in projects
-                    .wall-body-part
-                        +cardProject(project)
-            else
-                p no projects
+    .screen-portfolio
+        .panel-filter
+            .panel-body
+                h1 categories form
+            label.panel-header(for="filter")
+                .wrapper
+                    .panel-title
+                        h1 my portfolio
+                    .tool-scroll
+                        .tool-media
+                            +chevron()
+        .screen-body
+            .wall-cards
+                .wall-body
+                    if projects
+                        each project in projects
+                            .wall-body-part
+                                +cardProject(project)
+                    else
+                        p no projects

@@ -5,10 +5,11 @@ mixin cardProject(project)
             header.card-header
                 .card-subtitle
                     h2
-                        each category, index in project.categories
-                            | #{category.key}
-                            if (index + 1) < project.categories.length
-                                | , #{' '}
+                        if project.categories.length > 0
+                            each category, index in project.categories
+                                | #{category.key}
+                                if (index + 1) < project.categories.length
+                                    | , #{' '}
                 .card-title
                     .btn-main
                         h3.btn-title #{project.title}
@@ -19,10 +20,11 @@ mixin cardPost(post)
             header.card-header
                 .card-subtitle
                     h2
-                        each category, index in post.categories
-                            | #{category.key}
-                            if (index + 1) < post.categories.length
-                                | , #{' '}
+                        if post.categories.length > 0
+                            each category, index in post.categories
+                                | #{category.key}
+                                if (index + 1) < post.categories.length
+                                    | , #{' '}
                 .card-title
                     .btn-main
                         h3.btn-title #{post.title}
@@ -36,10 +38,11 @@ mixin cardProduct(product)
             header.card-header
                 .card-subtitle
                     h2
-                        each category, index in product.categories
-                            | #{category.key}
-                            if (index + 1) < product.categories.length
-                                | , #{' '}
+                        if product.categories.length > 0
+                            each category, index in product.categories
+                                | #{category.key}
+                                if (index + 1) < product.categories.length
+                                    | , #{' '}
                 .card-title
                     .btn-main
                         h3.btn-title #{product.title}

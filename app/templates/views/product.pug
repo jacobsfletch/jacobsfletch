@@ -8,16 +8,18 @@ block appBody
             .board-header
                 .board-categories
                     h2
-                        each category, index in product.categories
-                            | #{category.key}
-                            if (index + 1) < product.categories.length
-                                | , #{' '}
+                        if product.categories.length > 0
+                            each category, index in product.categories
+                                | #{category.key}
+                                if (index + 1) < product.categories.length
+                                    | , #{' '}
                 .board-tags
                     h2
-                        each tag, index in product.tags
-                            | #{tag.key}
-                            if (index + 1) < product.tags.length
-                                | , #{' '}
+                        if product.tags.length > 0
+                            each tag, index in product.tags
+                                | #{tag.key}
+                                if (index + 1) < product.tags.length
+                                    | , #{' '}
                 .board-title
                     h1 #{product.title}
             .board-body

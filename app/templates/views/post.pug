@@ -8,7 +8,7 @@ block appBody
             .board-header
                 .board-meta
                     h2
-                        if post.categories
+                        if post.categories.length > 0
                             each category, index in post.categories
                                 | #{category.key}
                                 if (index + 1) < post.categories.length
@@ -16,7 +16,7 @@ block appBody
                         else
                             | no categories
                     h2
-                        if post.tags
+                        if post.tags.length > 0
                             each tag, index in post.tags
                                 | #{tag.key}
                                 if (index + 1) < post.tags.length
@@ -47,8 +47,7 @@ block appBody
                             else
                                 | no quote author
             .board-body-part
-                h2 hashtags
-                if post.hashtags
+                if post.hashtags.length > 0
                     each hashtag in post.hashtags
                         h2
                             | ##{hashtag.key}
@@ -56,20 +55,21 @@ block appBody
                 else
                     p no hashtags
             .panel-explore
-                label.board-footer(for="explore")
+                label.panel-header(for="explore")
                     .tool-scroll
                         .tool-media
                             +downArrow()
-                .board-content
-                    .wall-body-part
-                        if post.featuredImage
+                .panel-body
+                    .panel-body-part
+                        if post.featuredImage.length > 0
                             img.square(style="background-image: url('" + post.featuredImage.url + "')")
                         else
                             p no featured image
-                    .collection-main
-                        h3 #{post.title}
-                        p
-                            if post.content.full
-                                | !{post.content.full}
-                            else
-                                | no content
+                    .panel-body-part
+                        .collection-main
+                            h3 #{post.title}
+                            p
+                                if post.content.full
+                                    | !{post.content.full}
+                                else
+                                    | no content

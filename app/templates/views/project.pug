@@ -3,12 +3,12 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .board-gallery
+    .board-project
         .board-body
             .board-header
                 .board-meta
                     h2
-                        if project.categories
+                        if project.categories.length > 0
                             each category, index in project.categories
                                 | #{category.key}
                                 if (index + 1) < project.categories.length
@@ -16,7 +16,7 @@ block appBody
                         else
                             | no categories
                     h2
-                        if project.tags
+                        if project.tags.length > 0
                             each tag, index in project.tags
                                 | #{tag.key}
                                 if (index + 1) < project.tags.length
@@ -47,17 +47,18 @@ block appBody
                             else
                                 | no quote author
             .panel-explore
-                label.board-footer(for="explore")
-                    .tool-scroll
-                        .tool-media
-                            +downArrow()
-                .board-media
-                    if project.featuredImage
+                label.panel-header(for="explore")
+                    .wrapper
+                        .tool-scroll
+                            .tool-media
+                                +downArrow()
+                .panel-media
+                    if project.featuredImage.length > 0
                         .image-square
                             img(src=project.featuredImage.url)
                     else
                         p no featured image
-                    if project.images
+                    if project.images.length > 0
                         each image in project.images
                             .image-square
                                 img(src=image.url)
