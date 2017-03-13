@@ -7,12 +7,26 @@ block appBody
     .screen-portfolio
         .panel-filter
             .panel-body
-                h1 categories form
+                .panel-body-part
+                    .panel-subtitle
+                        h3 select all that apply
+                .panel-body-part
+                    form#categories.form-filters
+                        each category in categories
+                            .checkbox-main
+                                input(id="category-" + category.key name="category-" + category.key type='checkbox' checked)
+                                label.checkbox-label(for="category-" + category.key)
+                                    .checkbox-input
+                                        .wrapper
+                                    .checkbox-title
+                                        p #{category.key}
             label.panel-header(for="filter")
                 .wrapper
                     .panel-title
-                        h1 my portfolio
-                    .tool-scroll
+                        h1 portfolio
+                    .tool-filter
+                        .tool-title
+                            p filter
                         .tool-media
                             +chevron()
         .screen-body

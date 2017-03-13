@@ -41,17 +41,16 @@ html
                 nav.menu-vertical
                     ul.menu-body
                         each link in navLinks
-                            li.menu-body-part.btn-main.shout(class=(section == link.key ? 'active' : null))
-                                if link.key == 'follow'
-                                    a.btn-title(target='_blank' href=link.href)= link.label
-                                else
-                                    a.btn-title(target=link.target href=link.href)= link.label
+                            li.menu-body-part.btn-main(class=(section == link.key ? 'active' : null))
+                                a.btn-title(target=link.target href=link.href)= link.label
                 nav.menu-vertical
                     .menu-header
                         .menu-title
                             h6 coming soon
                     ul.menu-body
-                        li.menu-body-part.btn-main.shout
+                        li.menu-body-part.btn-main
+                            a.btn-title my blog
+                        li.menu-body-part.btn-main
                             a.btn-title my shop
             .app-body
                 block appBody

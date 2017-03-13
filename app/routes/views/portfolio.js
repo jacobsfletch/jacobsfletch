@@ -21,6 +21,17 @@ exports = module.exports = function (req, res) {
         });
     });
 
+    view.on('init', function (next) {
+        var q = keystone.list('Category').model.find();
+
+        q.exec(function (err, result) {
+            if (result) {
+                locals.categories = result;
+            }
+            next(err);
+        });
+    });
+
     // Render the view
     view.render('portfolio');
 

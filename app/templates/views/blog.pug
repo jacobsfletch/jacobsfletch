@@ -7,11 +7,31 @@ block appBody
     .screen-blog
         .panel-filter
             .panel-body
-                h1 categories form
+                form#categories.form-main
+                    .input-text
+                        input#name-first(name='first' type='text', data-message='Please enter a valid first name.', required)
+                        label.input-label(for="name-first")
+                            .input-title
+                                p First Name
+                    .input-text
+                        input#name-last(name='last' type='text', data-message='Please enter a valid last name.', required)
+                        label.input-label(for="name-last")
+                            .input-title
+                                p Last Name
+                    .input-text
+                        input#email(name='email' type='email', data-message='Please enter a valid email address.', required)
+                        label.input-label(for="email")
+                            .input-title
+                                p Email Address
+                    .input-textarea
+                        textarea#message(name='message' data-message='Please enter a valid message.', required)
+                        label.input-label(for="message")
+                            .input-title
+                                p Message
             label.panel-header(for="filter")
                 .wrapper
                     .panel-title
-                        h1 my blog
+                        h1 blog
                     .tool-scroll
                         .tool-media
                             +chevron()

@@ -4,28 +4,28 @@ include ../mixins/media/downarrow
 
 block appBody
     .board-project
-        .board-body
-            .board-header
-                .board-meta
-                    h2
-                        if project.categories.length > 0
-                            each category, index in project.categories
-                                | #{category.key}
-                                if (index + 1) < project.categories.length
-                                    | , #{' '}
-                        else
-                            | no categories
-                    h2
-                        if project.tags.length > 0
-                            each tag, index in project.tags
-                                | #{tag.key}
-                                if (index + 1) < project.tags.length
-                                    | , #{' '}
+        .board-header
+            .board-meta
+                h2
+                    if project.categories.length > 0
+                        each category, index in project.categories
+                            | #{category.key}
+                            if (index + 1) < project.categories.length
+                                | , #{' '}
+                    else
+                        | no categories
+                h2
+                    if project.tags.length > 0
+                        each tag, index in project.tags
+                            | #{tag.key}
+                            if (index + 1) < project.tags.length
+                                | , #{' '}
 
-                        else
-                            | no tags
-                .board-title
-                    h1 #{project.title}
+                    else
+                        | no tags
+            .board-title
+                h1 #{project.title}
+        .board-body
             .board-body-part
                 h3
                     if project.content
@@ -46,21 +46,27 @@ block appBody
                                 | #{project.quoteAuthor}
                             else
                                 | no quote author
-            .panel-explore
-                label.panel-header(for="explore")
-                    .wrapper
-                        .tool-scroll
-                            .tool-media
-                                +downArrow()
-                .panel-media
-                    if project.featuredImage.length > 0
-                        .image-square
-                            img(src=project.featuredImage.url)
-                    else
-                        p no featured image
-                    if project.images.length > 0
-                        each image in project.images
-                            .image-square
-                                img(src=image.url)
-                    else
-                        p no images
+        .panel-explore
+            label.panel-header(for="explore")
+                .wrapper
+                    .tool-explore
+                        .tool-media
+                            +downArrow()
+            .panel-body
+                .wall-cards
+                    .wall-body
+                        if project.featuredImage.url
+                            .wall-body-part
+                                .image-square
+                                    img(src=project.featuredImage.url)
+                        else
+                            .wall-body-part
+                                p.type-p no featured image
+                        if project.images.length > 0
+                            each image in project.images
+                                .wall-body-part
+                                    .image-square
+                                        img(src=image.url)
+                        else
+                            .wall-body-part
+                                p.type-p no images
