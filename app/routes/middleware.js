@@ -20,10 +20,10 @@ exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	locals.navLinks = [
 		{ label: 'see my work',		key: 'portfolio',	href: '/portfolio' },
-    	{ label: 'read my blog',    key: 'blog',		href: '/blog' },
-		{ label: 'talk to me',		key: 'talk',		href: '/talk' },
-		{ label: 'follow me',		key: 'follow',		href: 'http://www.instagram.com/jacobsfletch' },
-    	{ label: 'more about me',   key: 'more',		href: '/more' },
+		{ label: 'contact me',		key: 'contact',		href: '/contact' },
+        { label: 'more about me',   key: 'about',		href: '/about' },
+		{ label: 'instagram',		key: 'instagram',	href: 'http://www.instagram.com/jacobsfletch', target:'_blank' },
+        { label: 'github',		    key: 'github',		href: 'http://www.github.com/jacobsfletch', target:'_blank'} ,
 	];
 
 	locals.user = req.user;

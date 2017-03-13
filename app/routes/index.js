@@ -76,6 +76,8 @@ exports = module.exports = function(app) {
 	app.all('/api/user/autofill/:name', keystone.middleware.api, routes.api.user.autofill);
 	app.all('/api/user/:id', keystone.middleware.api, routes.api.user.get);
 	app.all('/api/user/:id/update', keystone.middleware.api, routes.api.user.update);
+    // Email
+    app.all('/api/email/send', keystone.middleware.api, routes.api.email.send);
 
     //
     // URLs
@@ -90,8 +92,8 @@ exports = module.exports = function(app) {
     app.get('/', routes.views.index);
 
     // Documents
-    app.get('/talk', routes.views.talk);
-    app.get('/more', routes.views.more);
+    app.get('/contact', routes.views.contact);
+    app.get('/about', routes.views.about);
 
     // Portfolio
     app.get('/portfolio', routes.views.portfolio);

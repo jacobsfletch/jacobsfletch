@@ -26,8 +26,10 @@ keystone.init({
     'google server api key' : process.env.GOOGLE_SERVER_API,
     'google api key' : process.env.GOOGLE_API,
     'wysiwyg additional buttons': 'format',
-    'mandrill api key': process.env.MANDRIL,
+    'mandrill api key': process.env.MANDRIL_API,
     'mandrill username': process.env.MANDRIL_USERNAME,
+    'mailgun api key': process.env.MAILGUN_API_KEY,
+    'mailgun domain': process.env.MAILGUN_DOMAIN,
     'emails': 'templates/emails',
 });
 

@@ -1,0 +1,38 @@
+extends ../layouts/default
+
+block appBody
+    .board-contact
+        .board-body
+            .board-header
+                .board-subtitle
+                    if user.status == 'available'
+                        h3 i am currently available for work, let's chat
+                    else if user.status == 'unavailable'
+                        h3 i am currently unavailable for work, but let's still chat
+                .board-title
+                    h1 talk to me
+            .board-body-part
+                form#contact.form-contact(action="/api/email/send" method="POST")
+                    .input-text
+                        input#name-first(name='first' type='text', data-message='Please enter a valid first name.', required)
+                        label.input-label(for="name-first")
+                            .input-title
+                                p First Name
+                    .input-text
+                        input#name-last(name='last' type='text', data-message='Please enter a valid last name.', required)
+                        label.input-label(for="name-last")
+                            .input-title
+                                p Last Name
+                    .input-text
+                        input#email(name='email' type='email', data-message='Please enter a valid email address.', required)
+                        label.input-label(for="email")
+                            .input-title
+                                p Email Address
+                    .input-textarea
+                        textarea#message(name='message' data-message='Please enter a valid message.', required)
+                        label.input-label(for="message")
+                            .input-title
+                                p Message
+                    button(type="submit")
+                        .btn-main
+                            a.btn-title submit
