@@ -93,6 +93,7 @@ exports = module.exports = function(app) {
 
     // Documents
     app.get('/contact', routes.views.contact);
+    app.get('/contact/confirmation', routes.views.confirmation);
     app.get('/about', routes.views.about);
 
     // Portfolio
