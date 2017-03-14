@@ -350,36 +350,6 @@ select[multiple] {
   width: 100%;
   font-weight: 300; }
 
-.collection-landing {
-  align-self: flex-end;
-  padding-bottom: 1.333rem; }
-  .collection-landing h1 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.3225rem;
-    line-height: 1.333rem;
-    margin-bottom: 0.6665rem;
-    font-weight: 700; }
-    @media (min-width: 20.0625em) and (max-width: 29.25em) {
-      .collection-landing h1 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.3225rem;
-        line-height: 1.333rem; } }
-    @media (max-width: 20em) {
-      .collection-landing h1 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.15rem;
-        line-height: 1.333rem; } }
-  .collection-landing h2 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.15rem;
-    line-height: 1.333rem;
-    font-weight: 300; }
-    @media (max-width: 20em) {
-      .collection-landing h2 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.333rem; } }
-
 .collection-main {
   margin-bottom: 1.333rem; }
   .collection-main:last-child {
@@ -491,6 +461,40 @@ select[multiple] {
       .collection-main p {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.75614rem;
+        line-height: 1.333rem; } }
+
+.container-micro {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding-bottom: 1.333rem;
+  width: 100%; }
+  .container-micro .container-header .container-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.3225rem;
+    line-height: 1.333rem;
+    margin-bottom: 0.6665rem;
+    font-weight: 700; }
+    @media (min-width: 20.0625em) and (max-width: 29.25em) {
+      .container-micro .container-header .container-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.3225rem;
+        line-height: 1.333rem; } }
+    @media (max-width: 20em) {
+      .container-micro .container-header .container-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.333rem; } }
+  .container-micro .container-header .container-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.333rem;
+    font-weight: 300; }
+    @media (max-width: 20em) {
+      .container-micro .container-header .container-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
         line-height: 1.333rem; } }
 
 .form-contact, .form-filters {

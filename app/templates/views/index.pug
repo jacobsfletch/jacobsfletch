@@ -4,14 +4,14 @@ include ../mixins/components/cards
 include ../mixins/media/downarrow
 
 block appBody
-    .app-body-part.start
-        .collection-landing
-            h1
+    .container-micro
+        .container-header
+            h1.container-title
                 if global.tagline.a
                     | #{global.tagline.a}
                 else
                     | no tagline a
-            h2
+            h2.container-subtitle
                 if global.tagline.b
                     | #{global.tagline.b}
                 else
