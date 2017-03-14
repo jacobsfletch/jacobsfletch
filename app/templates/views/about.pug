@@ -62,15 +62,9 @@ block appBody
                         else
                             | no experience
                     .collection-main
-                        h3 design skills
-                        if resume.skills.design
-                            | !{resume.skills.design}
-                        else
-                            | no design skills
-                    .collection-main
-                        h3 development skills
-                        if resume.skills.development
-                            | !{resume.skills.development}
+                        h3 technical skills
+                        if resume.skills
+                            | !{resume.skills}
                         else
                             | no development skills
                     .collection-main

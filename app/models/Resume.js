@@ -54,18 +54,9 @@ Resume.add({
         height: 500
     },
     skills: {
-        design: {
-            label: 'Design Skills',
-            type: Types.Html,
-            wysiwyg:  false,
-            height: 500
-        },
-        development: {
-            label: 'Development Skills',
-            type: Types.Html,
-            wysiwyg: false,
-            height: 500
-        }
+        type: Types.Html,
+        wysiwyg:  false,
+        height: 500
     },
     personal: {
         type: Types.Html,
