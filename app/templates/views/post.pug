@@ -3,8 +3,8 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .board-post
-        .board-body
+    .screen-post
+        .board-gallery
             .board-header
                 .board-meta
                     h2
@@ -32,28 +32,29 @@ block appBody
                             | #{post.content.excerpt}
                         else
                             | no excerpt
-            .board-body-part
-                blockquote.type-blockquote
-                    header
-                        p
-                            if post.quote
-                                | #{post.quote}
-                            else
-                                | no quote
-                    footer
-                        p
-                            if post.quoteAuthor
-                                | #{post.quoteAuthor}
-                            else
-                                | no quote author
-            .board-body-part
-                if post.hashtags.length > 0
-                    each hashtag in post.hashtags
-                        h2
-                            | ##{hashtag.key}
-                    h2 [...]
-                else
-                    p no hashtags
+            .board-body
+                .board-body-part
+                    blockquote.type-blockquote
+                        header
+                            p
+                                if post.quote
+                                    | #{post.quote}
+                                else
+                                    | no quote
+                        footer
+                            p
+                                if post.quoteAuthor
+                                    | #{post.quoteAuthor}
+                                else
+                                    | no quote author
+                .board-body-part
+                    if post.hashtags.length > 0
+                        each hashtag in post.hashtags
+                            h2
+                                | ##{hashtag.key}
+                        h2 [...]
+                    else
+                        p no hashtags
             .panel-explore
                 label.panel-header(for="explore")
                     .tool-scroll

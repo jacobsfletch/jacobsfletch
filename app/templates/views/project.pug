@@ -3,70 +3,71 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .board-project
-        .board-header
-            .board-meta
-                h2
-                    if project.categories.length > 0
-                        each category, index in project.categories
-                            | #{category.key}
-                            if (index + 1) < project.categories.length
-                                | , #{' '}
-                    else
-                        | no categories
-                h2
-                    if project.tags.length > 0
-                        each tag, index in project.tags
-                            | #{tag.key}
-                            if (index + 1) < project.tags.length
-                                | , #{' '}
-
-                    else
-                        | no tags
-            .board-title
-                h1 #{project.title}
-        .board-body
-            .board-body-part
-                h3
-                    if project.content
-                        | #{project.content}
-                    else
-                        | no content
-            .board-body-part
-                blockquote.collection-blockquote
-                    header
-                        p
-                            if project.quote
-                                | #{project.quote}
-                            else
-                                | no quote
-                    footer
-                        p
-                            if project.quoteAuthor
-                                | #{project.quoteAuthor}
-                            else
-                                | no quote author
-        .panel-explore
-            label.panel-header(for="explore")
-                .wrapper
-                    .tool-explore
-                        .tool-media
-                            +downArrow()
-            .panel-body
-                .wall-cards
-                    .wall-body
-                        if project.featuredImage.url
-                            .wall-body-part
-                                .image-square
-                                    img(src=project.featuredImage.url)
+    .screen-project
+        .board-gallery
+            .board-header
+                .board-meta
+                    h2
+                        if project.categories.length > 0
+                            each category, index in project.categories
+                                | #{category.key}
+                                if (index + 1) < project.categories.length
+                                    | , #{' '}
                         else
-                            .wall-body-part
-                                p.type-p no featured image
-                        if project.images.length > 0
-                            each image in project.images
+                            | no categories
+                    h2
+                        if project.tags.length > 0
+                            each tag, index in project.tags
+                                | #{tag.key}
+                                if (index + 1) < project.tags.length
+                                    | , #{' '}
+
+                        else
+                            | no tags
+                .board-title
+                    h1 #{project.title}
+            .board-body
+                .board-body-part
+                    h3
+                        if project.content
+                            | #{project.content}
+                        else
+                            | no content
+                .board-body-part
+                    blockquote.collection-blockquote
+                        header
+                            p
+                                if project.quote
+                                    | #{project.quote}
+                                else
+                                    | no quote
+                        footer
+                            p
+                                if project.quoteAuthor
+                                    | #{project.quoteAuthor}
+                                else
+                                    | no quote author
+            .panel-explore
+                label.panel-header(for="explore")
+                    .wrapper
+                        .tool-explore
+                            .tool-media
+                                +downArrow()
+                .panel-body
+                    .wall-cards
+                        .wall-body
+                            if project.featuredImage.url
                                 .wall-body-part
                                     .image-square
-                                        img(src=image.url)
-                        else
-                            .wall-body-part
-                                p.type-p no images
+                                        img(src=project.featuredImage.url)
+                            else
+                                .wall-body-part
+                                    p.type-p no featured image
+                            if project.images.length > 0
+                                each image in project.images
+                                    .wall-body-part
+                                        .image-square
+                                            img(src=image.url)
+                            else
+                                .wall-body-part
+                                    p.type-p no images

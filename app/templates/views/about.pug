@@ -3,73 +3,74 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 
 block appBody
-    .board-bio
-        .board-header
-            .board-subtitle
-                h1
-                    if resume.intro.a
-                        | #{resume.intro.a}
-                    else
-                        | no intro a
-            .board-title
-                h2
-                    if resume.intro.b
-                        | #{resume.intro.b}
-                    else
-                        | no intro b
-        .board-body
-            .board-body-part
-                h3
-                    if resume.specialization
-                        | #{resume.specialization}
-                    else
-                        | no specialization
-            .board-body-part
-                blockquote.collection-blockquote
-                    header
-                        p
-                            if resume.quote
-                                | #{resume.quote}
-                            else
-                                | no quote
-                    footer
-                        p i said that
-        .panel-explore
-            label.panel-header(for="explore")
-                .wrapper
-                    .tool-explore
-                        .tool-media
-                            +downArrow()
-            .panel-body
-                .panel-content
-                    .collection-main
-                        h3 philosophy
-                        p
-                            if resume.philosophy
-                                | !{resume.philosophy}
-                            else
-                                | no philosophy
-                    .collection-main
-                        h3 education
-                        if resume.education
-                            | !{resume.education}
+    .screen-about
+        .board-gallery
+            .board-header
+                .board-subtitle
+                    h1
+                        if resume.intro.a
+                            | #{resume.intro.a}
                         else
-                            | no education
-                    .collection-main
-                        h3 experience
-                        if resume.experience
-                            | !{resume.experience}
+                            | no intro a
+                .board-title
+                    h2
+                        if resume.intro.b
+                            | #{resume.intro.b}
                         else
-                            | no experience
-                    .collection-main
-                        h3 technical skills
-                        if resume.skills
-                            | !{resume.skills}
+                            | no intro b
+            .board-body
+                .board-body-part
+                    h3
+                        if resume.specialization
+                            | #{resume.specialization}
                         else
-                            | no development skills
-                    .collection-main
-                        h3 more about me
-                        if resume.personal
-                            | !{resume.personal}
-                        else
-                            p no personals
+                            | no specialization
+                .board-body-part
+                    blockquote.collection-blockquote
+                        header
+                            p
+                                if resume.quote
+                                    | #{resume.quote}
+                                else
+                                    | no quote
+                        footer
+                            p i said that
+            .panel-explore
+                label.panel-header(for="explore")
+                    .wrapper
+                        .tool-explore
+                            .tool-media
+                                +downArrow()
+                .panel-body
+                    .panel-content
+                        .container-document
+                            .container-body-part
+                                h3 philosophy
+                                if resume.philosophy
+                                    | !{resume.philosophy}
+                                else
+                                    | no philosophy
+                            .container-body-part
+                                h3 education
+                                if resume.education
+                                    | !{resume.education}
+                                else
+                                    | no education
+                            .container-body-part
+                                h3 experience
+                                if resume.experience
+                                    | !{resume.experience}
+                                else
+                                    | no experience
+                            .container-body-part
+                                h3 technical skills
+                                if resume.skills
+                                    | !{resume.skills}
+                                else
+                                    | no development skills
+                            .container-body-part
+                                h3 more about me
+                                if resume.personal
+                                    | !{resume.personal}
+                                else
+                                    p no personals
