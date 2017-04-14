@@ -235,7 +235,7 @@ select[multiple] {
     color: #0d0d0d;
 }
 
-.btn-main {
+.btn-main, .btn-nav {
     height: auto;
     display: inline-flex;
     cursor: pointer;
@@ -278,6 +278,91 @@ select[multiple] {
 
     .btn-main .btn-title::after {
         height: 3px;
+    }
+}
+
+.btn-nav {
+    display: flex;
+}
+
+.btn-nav .btn-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.618rem;
+}
+
+.btn-nav .btn-title b {
+    font-weight: 700;
+}
+
+.card-post, .card-project {
+    position: relative;
+    display: block;
+    border: solid 4px #0d0d0d;
+    padding: 0.809rem;
+    transition: background-color 0.33s linear;
+    background-color: #fcfcfc;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card-post:hover, .card-project:hover, .card-post:active, .card-project:active {
+    background-color: #0d0d0d;
+}
+
+.card-post:hover .card-header, .card-project:hover .card-header, .card-post:active .card-header, .card-project:active .card-header {
+    color: #fcfcfc;
+}
+
+.card-post:hover .btn-title, .card-project:hover .btn-title, .card-post:active .btn-title, .card-project:active .btn-title {
+    color: #fcfcfc;
+}
+
+.card-post:hover .btn-title::after, .card-project:hover .btn-title::after, .card-post:active .btn-title::after, .card-project:active .btn-title::after {
+    background-color: #fcfcfc;
+}
+
+.card-post .card-media, .card-project .card-media {
+    background-position: center;
+    padding-bottom: 0.809rem;
+}
+
+.card-post .card-media > *, .card-project .card-media > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.card-post .card-media > * img, .card-project .card-media > * img, .card-post .card-media > * svg, .card-project .card-media > * svg {
+    width: 100%;
+    height: auto;
+}
+
+.card-post .card-media > *.square, .card-project .card-media > *.square {
+    padding-top: 100%;
+}
+
+.card-post .card-header, .card-project .card-header {
+    color: #0d0d0d;
+    transition: color 0.33s linear;
+}
+
+.card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.618rem;
+    display: flex;
+}
+
+@media (max-width: 29.25em) {
+    .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
+        line-height: 1.618rem;
     }
 }
 
@@ -519,77 +604,6 @@ select[multiple] {
     .container-micro .container-header .container-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
-    }
-}
-
-.card-post, .card-project {
-    position: relative;
-    display: block;
-    border: solid 4px #0d0d0d;
-    padding: 0.809rem;
-    transition: background-color 0.33s linear;
-    background-color: #fcfcfc;
-    cursor: pointer;
-    height: 100%;
-}
-
-.card-post:hover, .card-project:hover, .card-post:active, .card-project:active {
-    background-color: #0d0d0d;
-}
-
-.card-post:hover .card-header, .card-project:hover .card-header, .card-post:active .card-header, .card-project:active .card-header {
-    color: #fcfcfc;
-}
-
-.card-post:hover .btn-title, .card-project:hover .btn-title, .card-post:active .btn-title, .card-project:active .btn-title {
-    color: #fcfcfc;
-}
-
-.card-post:hover .btn-title::after, .card-project:hover .btn-title::after, .card-post:active .btn-title::after, .card-project:active .btn-title::after {
-    background-color: #fcfcfc;
-}
-
-.card-post .card-media, .card-project .card-media {
-    background-position: center;
-    padding-bottom: 0.809rem;
-}
-
-.card-post .card-media > *, .card-project .card-media > * {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.card-post .card-media > * img, .card-project .card-media > * img, .card-post .card-media > * svg, .card-project .card-media > * svg {
-    width: 100%;
-    height: auto;
-}
-
-.card-post .card-media > *.square, .card-project .card-media > *.square {
-    padding-top: 100%;
-}
-
-.card-post .card-header, .card-project .card-header {
-    color: #0d0d0d;
-    transition: color 0.33s linear;
-}
-
-.card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.618rem;
-    display: flex;
-}
-
-@media (max-width: 29.25em) {
-    .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.74316rem;
         line-height: 1.618rem;
     }
 }
@@ -1295,6 +1309,14 @@ select[multiple] {
     background: #cccccc;
 }
 
+.utility-generic {
+    visibility: visible;
+}
+
+.utility-generic img {
+    max-width: 100%;
+}
+
 .tool-explore, .tool-filter, .tool-toggle {
     cursor: pointer;
     display: inline-flex;
@@ -1440,14 +1462,6 @@ select[multiple] {
     height: inherit;
 }
 
-.utility-generic {
-    visibility: visible;
-}
-
-.utility-generic img {
-    max-width: 100%;
-}
-
 #dock,
 #explore,
 #filter {
@@ -1473,12 +1487,12 @@ select[multiple] {
     fill: #fcfcfc;
 }
 
-#filter:checked ~ .app-main .panel-header::before {
-    background-color: #fcfcfc;
-}
-
 #filter:checked ~ .app-main .screen-body {
     opacity: 0;
+}
+
+#explore:checked ~ .app-main .bar-navigate {
+    color: #fcfcfc;
 }
 
 #explore:checked ~ .app-main .panel-explore {
@@ -1539,6 +1553,7 @@ body {
 
 .app-main .app-header {
     padding: 1.618rem;
+    padding-bottom: 0;
 }
 
 .app-main .app-header .wrapper {
@@ -1635,7 +1650,24 @@ body {
     border-bottom: solid #0d0d0d 4px;
 }
 
+.bar-navigate {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 4px #0d0d0d solid;
+    padding: 0.809rem 0;
+    transition: color 0.33s linear;
+}
+
+.bar-navigate > *::first-child .btn-media {
+    transform: rotate(-90deg);
+}
+
+.bar-navigate > *::last-child .btn-media {
+    transform: rotate(-90deg);
+}
+
 .board-contact, .board-gallery {
+    padding-top: 1.618rem;
     visibility: visible;
     position: relative;
     flex-grow: 1;
@@ -1769,7 +1801,6 @@ body {
     height: 4px;
     width: 100%;
     transition: background-color 0.33s linear;
-    background-color: #0d0d0d;
 }
 
 .panel-explore .panel-header > .wrapper, .panel-filter .panel-header > .wrapper {
@@ -1831,6 +1862,10 @@ body {
     transform: translate3d(-50%, -50%, 0);
 }
 
+.panel-explore .panel-header::before {
+    background-color: #0d0d0d;
+}
+
 .panel-explore .panel-body {
     overflow-y: scroll;
     margin-right: -1.618rem;
@@ -1878,6 +1913,10 @@ body {
     margin-right: -1.618rem;
 }
 
+.panel-filter .panel-header::before {
+    background-color: #fcfcfc;
+}
+
 .panel-filter .panel-header > .wrapper {
     justify-content: space-between;
     align-items: center;
@@ -1915,7 +1954,7 @@ body {
     fill: #0d0d0d;
 }
 
-.screen-blog, .screen-portfolio {
+.screen-blog, .screen-portfolio, .screen-project {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -1923,7 +1962,7 @@ body {
     overflow: hidden;
 }
 
-.screen-blog .screen-body, .screen-portfolio .screen-body {
+.screen-blog .screen-body, .screen-portfolio .screen-body, .screen-project .screen-body {
     transition: opacity 0.33s linear;
     opacity: 1;
     flex-grow: 1;
@@ -1935,9 +1974,18 @@ body {
 }
 
 @media (max-width: 64em) {
-    .screen-blog .screen-body, .screen-portfolio .screen-body {
+    .screen-blog .screen-body, .screen-portfolio .screen-body, .screen-project .screen-body {
         margin-top: 3.236rem;
     }
+}
+
+.screen-project {
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-project:last-child {
+    flex-grow: 1;
 }
 
 .wall-cards .wall-header {
@@ -1967,6 +2015,7 @@ body {
 
 .wall-cards .wall-body .wall-body-part {
     margin-bottom: 0.809rem;
+    position: relative;
 }
 
 @media (min-width: 48.0625em) {
@@ -1998,6 +2047,32 @@ body {
     .wall-cards .wall-body .wall-body-part {
         width: 100%;
     }
+}
+
+.wall-cards .wall-body .wall-body-part .image-hover {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.618rem;
+    cursor: pointer;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d0d0d;
+    opacity: 0;
+    transition: opacity 0.33s linear;
+}
+
+.wall-cards .wall-body .wall-body-part .image-hover .image-title {
+    color: #fcfcfc;
+}
+
+.wall-cards .wall-body .wall-body-part:hover .image-hover {
+    opacity: 1;
 }
 
 .wall-cards .wall-footer {

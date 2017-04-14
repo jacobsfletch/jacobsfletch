@@ -4,6 +4,16 @@ include ../mixins/media/downarrow
 
 block appBody
     .screen-project
+        label.bar-navigate(for="navigate")
+            .btn-nav
+                .btn-title
+                    p
+                        b <
+                        |  previous
+            .btn-nav 
+                .btn-title
+                    p next
+                        b  >
         .board-gallery
             .board-header
                 .board-meta
@@ -56,18 +66,14 @@ block appBody
                 .panel-body
                     .wall-cards
                         .wall-body
-                            if project.featuredImage.url
-                                .wall-body-part
-                                    .image-square
-                                        img(src=project.featuredImage.url)
-                            else
-                                .wall-body-part
-                                    p.type-p no featured image
                             if project.images.length > 0
                                 each image in project.images
                                     .wall-body-part
                                         .image-square
                                             img(src=image.url)
+                                        .image-hover
+                                            .image-title
+                                                p enlarge
                             else
                                 .wall-body-part
                                     p.type-p no images
