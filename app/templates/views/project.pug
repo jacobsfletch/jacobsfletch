@@ -10,13 +10,14 @@ block appBody
             .bar-navigate
                 .btn-nav
                     .btn-title
-                        p
+                        a(href='/api/portfolio/' + project.slug + '/previous')
                             b <
                             |  previous
                 .btn-nav 
                     .btn-title
-                        p next
-                            b  >
+                        a(href='/api/portfolio/' + project.slug + '/next')
+                            p next
+                                b  >
             .board-header
                 .board-meta
                     h2

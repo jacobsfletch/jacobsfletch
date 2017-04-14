@@ -69,7 +69,11 @@ exports = module.exports = function(app) {
 	// Old Browser Check
 	app.all(/^(?!(\/update)).*$/, middleware.ensureLatestBrowser);
 
-	// API
+    //
+    // URLs
+    //
+
+	// Users
 	app.all('/api/user/create', keystone.middleware.api, routes.api.user.create);
 	app.all('/api/user/login', keystone.middleware.api, routes.api.user.login);
     app.all('/api/user/remove', keystone.middleware.api, routes.api.user.remove);
@@ -78,12 +82,15 @@ exports = module.exports = function(app) {
 	app.all('/api/user/:id/update', keystone.middleware.api, routes.api.user.update);
     // Email
     app.all('/api/email/send', keystone.middleware.api, routes.api.email.send);
+    // Portfolio
+    app.all('/api/portfolio/:slug/previous', keystone.middleware.api, routes.api.portfolio.previous);
+    app.all('/api/portfolio/:slug/next', keystone.middleware.api, routes.api.portfolio.next);
 
     //
     // URLs
     // Colons in the slug represent variables that can be passed through to the route
     // They are renamed after the comma when assigned a route
-    //
+
 
     // Old Browser
     app.get('/update', routes.views.oldbrowser);
