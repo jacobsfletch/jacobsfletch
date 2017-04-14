@@ -9,15 +9,13 @@ block appBody
         .board-gallery
             .bar-navigate
                 .btn-nav
-                    .btn-title
-                        a(href='/api/portfolio/' + project.slug + '/previous')
-                            b <
-                            |  previous
+                    a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
+                        b <
+                        |  previous
                 .btn-nav 
-                    .btn-title
-                        a(href='/api/portfolio/' + project.slug + '/next')
-                            p next
-                                b  >
+                    a.btn-title(href='/api/portfolio/' + project.slug + '/next')
+                        p next
+                            b  >
             .board-header
                 .board-meta
                     h2
