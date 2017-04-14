@@ -281,77 +281,6 @@ select[multiple] {
     }
 }
 
-.card-post, .card-project {
-    position: relative;
-    display: block;
-    border: solid 4px #0d0d0d;
-    padding: 0.809rem;
-    transition: background-color 0.33s linear;
-    background-color: #fcfcfc;
-    cursor: pointer;
-    height: 100%;
-}
-
-.card-post:hover, .card-project:hover, .card-post:active, .card-project:active {
-    background-color: #0d0d0d;
-}
-
-.card-post:hover .card-header, .card-project:hover .card-header, .card-post:active .card-header, .card-project:active .card-header {
-    color: #fcfcfc;
-}
-
-.card-post:hover .btn-title, .card-project:hover .btn-title, .card-post:active .btn-title, .card-project:active .btn-title {
-    color: #fcfcfc;
-}
-
-.card-post:hover .btn-title::after, .card-project:hover .btn-title::after, .card-post:active .btn-title::after, .card-project:active .btn-title::after {
-    background-color: #fcfcfc;
-}
-
-.card-post .card-media, .card-project .card-media {
-    background-position: center;
-    padding-bottom: 0.809rem;
-}
-
-.card-post .card-media > *, .card-project .card-media > * {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.card-post .card-media > * img, .card-project .card-media > * img, .card-post .card-media > * svg, .card-project .card-media > * svg {
-    width: 100%;
-    height: auto;
-}
-
-.card-post .card-media > *.square, .card-project .card-media > *.square {
-    padding-top: 100%;
-}
-
-.card-post .card-header, .card-project .card-header {
-    color: #0d0d0d;
-    transition: color 0.33s linear;
-}
-
-.card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.618rem;
-    display: flex;
-}
-
-@media (max-width: 29.25em) {
-    .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.74316rem;
-        line-height: 1.618rem;
-    }
-}
-
 .collection-blockquote header {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.16rem;
@@ -590,6 +519,77 @@ select[multiple] {
     .container-micro .container-header .container-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
+        line-height: 1.618rem;
+    }
+}
+
+.card-post, .card-project {
+    position: relative;
+    display: block;
+    border: solid 4px #0d0d0d;
+    padding: 0.809rem;
+    transition: background-color 0.33s linear;
+    background-color: #fcfcfc;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card-post:hover, .card-project:hover, .card-post:active, .card-project:active {
+    background-color: #0d0d0d;
+}
+
+.card-post:hover .card-header, .card-project:hover .card-header, .card-post:active .card-header, .card-project:active .card-header {
+    color: #fcfcfc;
+}
+
+.card-post:hover .btn-title, .card-project:hover .btn-title, .card-post:active .btn-title, .card-project:active .btn-title {
+    color: #fcfcfc;
+}
+
+.card-post:hover .btn-title::after, .card-project:hover .btn-title::after, .card-post:active .btn-title::after, .card-project:active .btn-title::after {
+    background-color: #fcfcfc;
+}
+
+.card-post .card-media, .card-project .card-media {
+    background-position: center;
+    padding-bottom: 0.809rem;
+}
+
+.card-post .card-media > *, .card-project .card-media > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.card-post .card-media > * img, .card-project .card-media > * img, .card-post .card-media > * svg, .card-project .card-media > * svg {
+    width: 100%;
+    height: auto;
+}
+
+.card-post .card-media > *.square, .card-project .card-media > *.square {
+    padding-top: 100%;
+}
+
+.card-post .card-header, .card-project .card-header {
+    color: #0d0d0d;
+    transition: color 0.33s linear;
+}
+
+.card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.618rem;
+    display: flex;
+}
+
+@media (max-width: 29.25em) {
+    .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
         line-height: 1.618rem;
     }
 }
@@ -1795,10 +1795,13 @@ body {
     flex-direction: column;
 }
 
+.panel-explore .panel-media, .panel-filter .panel-media {
+    align-self: center;
+}
+
 .panel-explore .panel-content, .panel-filter .panel-content, .panel-explore .panel-media, .panel-filter .panel-media {
     width: 100%;
     max-width: 1200px;
-    align-self: center;
     display: flex;
     transition: all 0.33s linear;
     align-items: flex-start;
@@ -1830,6 +1833,7 @@ body {
 
 .panel-explore .panel-body {
     overflow-y: scroll;
+    margin-right: -1.618rem;
 }
 
 .panel-explore .panel-content {
@@ -1854,6 +1858,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-bottom: 1.618rem;
+    overflow: hidden;
 }
 
 .panel-filter .panel-body .panel-body-part:first-child .panel-subtitle {
@@ -1869,6 +1874,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    -webkit-overflow-scrolling: touch;
+    margin-right: -1.618rem;
 }
 
 .panel-filter .panel-header > .wrapper {
@@ -1913,6 +1920,7 @@ body {
     flex-direction: column;
     position: relative;
     flex-grow: 1;
+    overflow: hidden;
 }
 
 .screen-blog .screen-body, .screen-portfolio .screen-body {
@@ -1923,6 +1931,7 @@ body {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     margin-top: 6.472rem;
+    margin-right: -1.618rem;
 }
 
 @media (max-width: 64em) {

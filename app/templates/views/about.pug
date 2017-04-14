@@ -51,11 +51,11 @@ block appBody
                                 else
                                     | no philosophy
                             .container-body-part
-                                h3 education
-                                if resume.education
-                                    | !{resume.education}
+                                h3 technical skills
+                                if resume.skills
+                                    | !{resume.skills}
                                 else
-                                    | no education
+                                    | no development skills
                             .container-body-part
                                 h3 experience
                                 if resume.experience
@@ -63,13 +63,13 @@ block appBody
                                 else
                                     | no experience
                             .container-body-part
-                                h3 technical skills
-                                if resume.skills
-                                    | !{resume.skills}
+                                h3 education
+                                if resume.education
+                                    | !{resume.education}
                                 else
-                                    | no development skills
+                                    | no education
                             .container-body-part
-                                h3 more about me
+                                h3 personals
                                 if resume.personal
                                     | !{resume.personal}
                                 else
