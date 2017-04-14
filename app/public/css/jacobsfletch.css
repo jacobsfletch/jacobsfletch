@@ -231,7 +231,7 @@ select[multiple] {
     color: #cccccc;
 }
 
-.tool-explore .tool-title, .tool-filter .tool-title, .tool-toggle .tool-title, .app-main .app-header .wrapper .app-title, .panel-filter .panel-header > .wrapper .panel-title {
+.tool-explore .tool-title, .tool-filter .tool-title, .tool-gallery .tool-title, .tool-toggle .tool-title, .app-main .app-header .wrapper .app-title, .panel-filter .panel-header > .wrapper .panel-title {
     color: #0d0d0d;
 }
 
@@ -293,6 +293,25 @@ select[multiple] {
 
 .btn-nav .btn-title b {
     font-weight: 700;
+}
+
+.belt-gallery {
+    display: flex;
+    align-items: center;
+}
+
+.belt-gallery > * {
+    padding-right: 1.618rem;
+}
+
+@media (max-width: 64em) {
+    .belt-gallery > * {
+        padding-right: 0.809rem;
+    }
+}
+
+.belt-gallery > *:last-child {
+    padding-right: 0;
 }
 
 .card-post, .card-project {
@@ -1309,21 +1328,13 @@ select[multiple] {
     background: #cccccc;
 }
 
-.utility-generic {
-    visibility: visible;
-}
-
-.utility-generic img {
-    max-width: 100%;
-}
-
-.tool-explore, .tool-filter, .tool-toggle {
+.tool-explore, .tool-filter, .tool-gallery, .tool-toggle {
     cursor: pointer;
     display: inline-flex;
     position: relative;
 }
 
-.tool-explore .tool-title, .tool-filter .tool-title, .tool-toggle .tool-title {
+.tool-explore .tool-title, .tool-filter .tool-title, .tool-gallery .tool-title, .tool-toggle .tool-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.74316rem;
     line-height: 1.618rem;
@@ -1433,6 +1444,63 @@ select[multiple] {
     transform: rotate(0deg), translateY(-0.4045rem);
 }
 
+.tool-gallery {
+    height: 100%;
+}
+
+.tool-gallery .tool-media {
+    width: 1.618rem;
+    position: relative;
+}
+
+@media (max-width: 64em) {
+    .tool-gallery .tool-media {
+        width: 0.809rem;
+    }
+}
+
+.tool-gallery .tool-media svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tool-gallery .tool-media svg svg circle,
+      .tool-gallery .tool-media svg svg ellipse,
+      .tool-gallery .tool-media svg svg g,
+      .tool-gallery .tool-media svg svg path,
+      .tool-gallery .tool-media svg svg polyline,
+      .tool-gallery .tool-media svg svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.tool-gallery .tool-media svg rect {
+    fill: #fcfcfc;
+}
+
+.tool-gallery .tool-media::after {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    bottom: -3px;
+    background-color: #fcfcfc;
+    height: 3px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.33s linear;
+}
+
+.tool-gallery .tool-media:hover::after {
+    opacity: 1;
+}
+
 .tool-toggle {
     padding: 0.809rem;
     width: 3.236rem;
@@ -1462,6 +1530,14 @@ select[multiple] {
     height: inherit;
 }
 
+.utility-generic {
+    visibility: visible;
+}
+
+.utility-generic img {
+    max-width: 100%;
+}
+
 #dock,
 #explore,
 #filter {
@@ -1472,6 +1548,11 @@ select[multiple] {
   #explore:checked ~ .app-main,
   #filter:checked ~ .app-main {
     border: solid #fcfcfc 0.809rem;
+}
+
+#grid-on,
+#grid-off {
+    display: none;
 }
 
 #filter:checked ~ .app-main .panel-filter {
@@ -1489,10 +1570,6 @@ select[multiple] {
 
 #filter:checked ~ .app-main .screen-body {
     opacity: 0;
-}
-
-#explore:checked ~ .app-main .bar-navigate {
-    color: #fcfcfc;
 }
 
 #explore:checked ~ .app-main .panel-explore {
@@ -1533,6 +1610,18 @@ select[multiple] {
     transform: translateX(0);
     opacity: 1;
     flex: 1;
+}
+
+#grid-on:checked ~ .app-main [for="grid-on"] .tool-media::after {
+    opacity: 1;
+}
+
+#grid-off:checked ~ .app-main [for="grid-off"] .tool-media::after {
+    opacity: 1;
+}
+
+#grid-off:checked ~ .app-main .wall-cards .wall-body-part {
+    width: 100%;
 }
 
 html,
@@ -1667,7 +1756,6 @@ body {
 }
 
 .board-contact, .board-gallery {
-    padding-top: 1.618rem;
     visibility: visible;
     position: relative;
     flex-grow: 1;
@@ -1685,6 +1773,7 @@ body {
 }
 
 .board-contact .board-header, .board-gallery .board-header {
+    padding-top: 1.618rem;
     color: #0d0d0d;
     padding-bottom: 0.809rem;
 }
@@ -1851,15 +1940,36 @@ body {
     }
 }
 
-.panel-explore .panel-header {
-    justify-content: center;
+.panel-explore .panel-header > .wrapper {
+    justify-content: flex-end;
 }
 
-.panel-explore .panel-header > .wrapper > * {
+.panel-explore .panel-header > .wrapper [for="explore"] {
+    width: 100%;
+    cursor: pointer;
+}
+
+.panel-explore .panel-header > .wrapper [for="explore"] .tool-explore {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
+}
+
+.panel-explore .panel-header > .wrapper .belt-gallery {
+    padding: 1.618rem 0;
+}
+
+@media (max-width: 64em) {
+    .panel-explore .panel-header > .wrapper .belt-gallery {
+        padding: 0.809rem 0;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .panel-explore .panel-header > .wrapper .belt-gallery {
+        display: none;
+    }
 }
 
 .panel-explore .panel-header::before {
@@ -2016,6 +2126,7 @@ body {
 .wall-cards .wall-body .wall-body-part {
     margin-bottom: 0.809rem;
     position: relative;
+    transition: all 0.33s linear;
 }
 
 @media (min-width: 48.0625em) {
@@ -2047,32 +2158,6 @@ body {
     .wall-cards .wall-body .wall-body-part {
         width: 100%;
     }
-}
-
-.wall-cards .wall-body .wall-body-part .image-hover {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.618rem;
-    cursor: pointer;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0d0d0d;
-    opacity: 0;
-    transition: opacity 0.33s linear;
-}
-
-.wall-cards .wall-body .wall-body-part .image-hover .image-title {
-    color: #fcfcfc;
-}
-
-.wall-cards .wall-body .wall-body-part:hover .image-hover {
-    opacity: 1;
 }
 
 .wall-cards .wall-footer {
