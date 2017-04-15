@@ -2071,6 +2071,7 @@ body {
     position: relative;
     flex-grow: 1;
     overflow: hidden;
+    width: 100%;
 }
 
 .screen-blog .screen-body, .screen-portfolio .screen-body, .screen-project .screen-body {
