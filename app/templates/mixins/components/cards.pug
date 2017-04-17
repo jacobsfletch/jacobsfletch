@@ -13,7 +13,8 @@ mixin cardProject(project)
                                     | , #{' '}
                 .card-title
                     .btn-main
-                        h3.btn-title #{project.title}
+                        .btn-title
+                            p #{project.title}&nbsp;>
 
 mixin cardPost(post)
     a(href='/blog/' + post.slug)

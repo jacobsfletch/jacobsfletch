@@ -45,6 +45,7 @@ html
                         each link in navLinks
                             li.menu-body-part.btn-main(class=(section == link.key ? 'active' : null))
                                 a.btn-title(target=link.target href=link.href)= link.label
+                                    |  >
                 nav.menu-vertical
                     .menu-header
                         .menu-title

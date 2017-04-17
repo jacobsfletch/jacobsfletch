@@ -215,7 +215,7 @@ select[multiple] {
     background-color: #1f1f1f;
 }
 
-.tool-toggle, #dock:checked ~ .app-main,
+#dock:checked ~ .app-main,
 #explore:checked ~ .app-main,
 #filter:checked ~ .app-main, .wall-cards .wall-footer {
     background-color: #0d0d0d;
@@ -244,40 +244,18 @@ select[multiple] {
 .btn-main .btn-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.16rem;
-    line-height: 1.618rem;
-    font-weight: 700;
-    color: inherit;
-    position: relative;
+    line-height: 1.3rem;
     color: #0d0d0d;
     transition: color 0.33s linear;
-    padding-bottom: calc(4px * 2);
-}
-
-.btn-main .btn-title::after {
-    transition: all 0.33s linear;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    content: '';
-    width: 100%;
-    height: 4px;
-    background-color: #0d0d0d;
-}
-
-.btn-main .btn-title:hover::after, .btn-main .btn-title:active::after {
-    width: calc(100% + 0.809rem);
+    font-weight: 700;
+    display: inline-flex;
 }
 
 @media (max-width: 29.25em) {
     .btn-main .btn-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
-        padding-bottom: calc(3px * 2);
-    }
-
-    .btn-main .btn-title::after {
-        height: 3px;
+        line-height: 1.3rem;
     }
 }
 
@@ -288,12 +266,16 @@ select[multiple] {
 .btn-nav .btn-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     color: #0d0d0d;
 }
 
-.btn-nav .btn-title b {
-    font-weight: 900;
+@media (max-width: 29.25em) {
+    .btn-nav .btn-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
+        line-height: 0.975rem;
+    }
 }
 
 .belt-gallery {
@@ -302,12 +284,12 @@ select[multiple] {
 }
 
 .belt-gallery > * {
-    padding-right: 1.618rem;
+    padding-right: 1.3rem;
 }
 
 @media (max-width: 64em) {
     .belt-gallery > * {
-        padding-right: 0.809rem;
+        padding-right: 0.65rem;
     }
 }
 
@@ -318,33 +300,14 @@ select[multiple] {
 .card-post, .card-project {
     position: relative;
     display: block;
-    border: solid 4px #0d0d0d;
-    padding: 0.809rem;
     transition: background-color 0.33s linear;
-    background-color: #fcfcfc;
     cursor: pointer;
     height: 100%;
 }
 
-.card-post:hover, .card-project:hover, .card-post:active, .card-project:active {
-    background-color: #0d0d0d;
-}
-
-.card-post:hover .card-header, .card-project:hover .card-header, .card-post:active .card-header, .card-project:active .card-header {
-    color: #fcfcfc;
-}
-
-.card-post:hover .btn-title, .card-project:hover .btn-title, .card-post:active .btn-title, .card-project:active .btn-title {
-    color: #fcfcfc;
-}
-
-.card-post:hover .btn-title::after, .card-project:hover .btn-title::after, .card-post:active .btn-title::after, .card-project:active .btn-title::after {
-    background-color: #fcfcfc;
-}
-
 .card-post .card-media, .card-project .card-media {
     background-position: center;
-    padding-bottom: 0.809rem;
+    padding-bottom: 0.65rem;
 }
 
 .card-post .card-media > *, .card-project .card-media > * {
@@ -374,15 +337,17 @@ select[multiple] {
 .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     display: flex;
+    padding-bottom: 0.325rem;
 }
 
 @media (max-width: 29.25em) {
     .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.74316rem;
-        line-height: 1.618rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.21667rem;
     }
 }
 
@@ -393,7 +358,7 @@ select[multiple] {
 }
 
 .form-contact > * {
-    margin-bottom: 1.618rem;
+    margin-bottom: 1.3rem;
 }
 
 .form-contact > *:last-child {
@@ -401,7 +366,7 @@ select[multiple] {
 }
 
 .form-filters > * {
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 .form-filters > *:last-child {
@@ -411,28 +376,28 @@ select[multiple] {
 .collection-blockquote header {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.16rem;
-    line-height: 1.618rem;
-    padding-bottom: 0.4045rem;
+    line-height: 1.3rem;
+    padding-bottom: 0.325rem;
 }
 
 @media (max-width: 29.25em) {
     .collection-blockquote header {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .collection-blockquote footer {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     width: 100%;
     font-weight: 300;
 }
 
 .container-document .container-body-part {
-    margin-bottom: 1.618rem;
+    margin-bottom: 1.3rem;
 }
 
 .container-document .container-body-part:last-child {
@@ -446,16 +411,16 @@ select[multiple] {
 .container-document h1 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.81064rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
     .container-document h1 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.5609rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -463,23 +428,23 @@ select[multiple] {
     .container-document h1 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.3456rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-document h2 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.5609rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
     .container-document h2 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.3456rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -487,23 +452,23 @@ select[multiple] {
     .container-document h2 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.3456rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-document h3 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.3456rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
     .container-document h3 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.3456rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -511,23 +476,23 @@ select[multiple] {
     .container-document h3 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.16rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-document h4 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.3456rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
     .container-document h4 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.16rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -535,23 +500,23 @@ select[multiple] {
     .container-document h4 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-document h5 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.16rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
     .container-document h5 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -559,14 +524,14 @@ select[multiple] {
     .container-document h5 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-document h6 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
 }
 
@@ -574,7 +539,7 @@ select[multiple] {
     .container-document h6 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -582,23 +547,23 @@ select[multiple] {
     .container-document h6 {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-document p {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 200;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 @media (max-width: 29.25em) {
     .container-document p {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.74316rem;
-        line-height: 1.618rem;
+        line-height: 0.975rem;
     }
 }
 
@@ -607,15 +572,15 @@ select[multiple] {
     flex-direction: column;
     flex-grow: 1;
     justify-content: flex-end;
-    padding-bottom: 1.618rem;
+    padding-bottom: 1.3rem;
     width: 100%;
 }
 
 .container-micro .container-header .container-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.3456rem;
-    line-height: 1.618rem;
-    margin-bottom: 0.809rem;
+    line-height: 1.3rem;
+    margin-bottom: 0.65rem;
     font-weight: 700;
 }
 
@@ -623,7 +588,7 @@ select[multiple] {
     .container-micro .container-header .container-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.3456rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -631,14 +596,14 @@ select[multiple] {
     .container-micro .container-header .container-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.16rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
 .container-micro .container-header .container-subtitle {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.16rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 300;
 }
 
@@ -646,7 +611,7 @@ select[multiple] {
     .container-micro .container-header .container-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -662,8 +627,8 @@ select[multiple] {
 .menu-vertical .menu-header .menu-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
-    margin-bottom: 0.809rem;
+    line-height: 1.3rem;
+    margin-bottom: 0.65rem;
     font-weight: 300;
 }
 
@@ -676,15 +641,11 @@ select[multiple] {
 .menu-vertical .menu-body-part {
     display: flex;
     text-align: left;
-    margin-bottom: 0.809rem;
+    margin-bottom: 0.65rem;
 }
 
 .menu-vertical .menu-body-part a {
     position: relative;
-}
-
-.menu-vertical .menu-body-part a::after {
-    background-color: #fcfcfc;
 }
 
 .menu-vertical .menu-body-part:last-child {
@@ -725,7 +686,7 @@ select[multiple] {
 .multimedia-lightbox .multimedia-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.16rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -761,8 +722,8 @@ select[multiple] {
 .checkbox-main .checkbox-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
-    padding-left: 0.809rem;
+    line-height: 1.3rem;
+    padding-left: 0.65rem;
 }
 
 .checkbox-main .checkbox-label {
@@ -774,8 +735,8 @@ select[multiple] {
 
 .checkbox-main .checkbox-input {
     position: relative;
-    width: 1.618rem;
-    height: 1.618rem;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 .checkbox-main .checkbox-input .wrapper {
@@ -785,7 +746,7 @@ select[multiple] {
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
-    width: 1.618rem;
+    width: 1.3rem;
     height: 4px;
 }
 
@@ -829,8 +790,8 @@ select[multiple] {
 .input-text .input-label .input-title, .input-textarea .input-label .input-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
-    padding-bottom: 0.4045rem;
+    line-height: 1.3rem;
+    padding-bottom: 0.325rem;
     position: absolute;
     left: 0;
     top: 0;
@@ -857,13 +818,13 @@ select[multiple] {
 }
 
 .input-text:focus::after, .input-textarea:focus::after {
-    width: calc(100% + 3.236rem);
+    width: calc(100% + 2.6rem);
 }
 
 .input-text input, .input-textarea input, .input-text textarea, .input-textarea textarea {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     width: 100%;
     color: transparent;
 }
@@ -875,12 +836,12 @@ select[multiple] {
 .input-text input:focus + .input-label .input-title, .input-textarea input:focus + .input-label .input-title, .input-text input:valid + .input-label .input-title, .input-textarea input:valid + .input-label .input-title, .input-text textarea:focus + .input-label .input-title, .input-textarea textarea:focus + .input-label .input-title, .input-text textarea:valid + .input-label .input-title, .input-textarea textarea:valid + .input-label .input-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.74316rem;
-    line-height: 1.618rem;
+    line-height: 0.975rem;
     transform: translateY(-50%);
 }
 
 .input-text input:focus + .input-label::after, .input-textarea input:focus + .input-label::after, .input-text input:valid + .input-label::after, .input-textarea input:valid + .input-label::after, .input-text textarea:focus + .input-label::after, .input-textarea textarea:focus + .input-label::after, .input-text textarea:valid + .input-label::after, .input-textarea textarea:valid + .input-label::after {
-    width: calc(100% + 0.809rem);
+    width: calc(100% + 0.65rem);
 }
 
 .radio-generic {
@@ -893,7 +854,7 @@ select[multiple] {
 
 .radio-generic label {
     display: block;
-    padding-left: calc(1.618rem + 0.4045rem);
+    padding-left: calc(1.3rem + 0.325rem);
     position: relative;
     cursor: pointer;
 }
@@ -901,30 +862,30 @@ select[multiple] {
 .radio-generic label::before {
     position: relative;
     border: 3px #cccccc solid;
-    padding: 0.4045rem;
+    padding: 0.325rem;
     position: absolute;
     padding: 0;
     left: 0;
     top: 50%;
     content: '';
-    height: 1.618rem;
-    width: 1.618rem;
+    height: 1.3rem;
+    width: 1.3rem;
     transition: all 0.3s ease;
     transform-origin: right bottom;
     transform: translateY(-50%);
     box-sizing: border-box;
     transition-delay: 0.2s;
-    border-radius: 1.618rem;
+    border-radius: 1.3rem;
 }
 
 .radio-generic label::before > [class*='-header'] > [class*='tool']:first-child,
   .radio-generic label::before > [class*='-footer'] > [class*='tool']:first-child {
-    margin-left: 0.4045rem;
+    margin-left: 0.325rem;
 }
 
 .radio-generic label::before > [class*='-header'] > [class*='tool']:last-child,
   .radio-generic label::before > [class*='-footer'] > [class*='tool']:last-child {
-    margin-right: 0.4045rem;
+    margin-right: 0.325rem;
 }
 
 .radio-generic label::before > [class*='-header'],
@@ -932,7 +893,7 @@ select[multiple] {
   .radio-generic label::before > [class*='-media'],
   .radio-generic label::before > [class*='-body'],
   .radio-generic label::before > [class*='-footer'] {
-    margin-bottom: 0.4045rem;
+    margin-bottom: 0.325rem;
 }
 
 .radio-generic label::before > [class*='-header']:last-child,
@@ -950,12 +911,12 @@ select[multiple] {
   .radio-generic label::before [class*='-tooltip'],
   .radio-generic label::before [class*='-media'] {
     border: 2px #e6e6e6 solid;
-    padding: 0.4045rem;
+    padding: 0.325rem;
 }
 
 .radio-generic label::before [class*='-part'] {
     border: 2px #e6e6e6 dashed;
-    padding: 0.4045rem;
+    padding: 0.325rem;
 }
 
 .radio-generic label::before .btn-circle {
@@ -970,21 +931,21 @@ select[multiple] {
     content: '';
     position: absolute;
     padding: 0;
-    left: 0.809rem;
+    left: 0.65rem;
     top: 50%;
-    width: 0.26967rem;
-    height: 0.26967rem;
+    width: 0.21667rem;
+    height: 0.21667rem;
     transition: all 0.3s ease;
     transform: translate(-50%, -50%);
-    border-radius: 1.618rem;
+    border-radius: 1.3rem;
     box-sizing: border-box;
     opacity: 0;
     background: #cccccc;
 }
 
 .radio-generic input:checked + label::after {
-    width: 0.809rem;
-    height: 0.809rem;
+    width: 0.65rem;
+    height: 0.65rem;
     opacity: 1;
 }
 
@@ -1001,14 +962,14 @@ select[multiple] {
 .range-generic .range-slider {
     display: inline-block;
     position: relative;
-    margin: 0 0.809rem;
+    margin: 0 0.65rem;
     flex: 1;
 }
 
 .range-generic input[type=range] {
     -webkit-appearance: none;
     background: transparent;
-    height: 3.236rem;
+    height: 2.6rem;
     width: 100%;
 }
 
@@ -1030,8 +991,8 @@ select[multiple] {
 
 .range-generic input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 1.618rem;
-    height: 1.618rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border: 3px solid #cccccc;
     transition: all 0.5s ease;
     transform: translateY(-50%);
@@ -1048,8 +1009,8 @@ select[multiple] {
 
 .range-generic input[type=range]::-moz-range-thumb {
     -webkit-appearance: none;
-    width: 1.618rem;
-    height: 1.618rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border: 3px solid #cccccc;
     transition: all 0.5s ease;
     transform: translateY(-50%);
@@ -1066,8 +1027,8 @@ select[multiple] {
 
 .range-generic input[type=range]::-ms-thumb {
     -webkit-appearance: none;
-    width: 1.618rem;
-    height: 1.618rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border: 3px solid #cccccc;
     transition: all 0.5s ease;
     transform: translateY(-50%);
@@ -1119,14 +1080,14 @@ select[multiple] {
 .range-generic output {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     width: 100%;
     text-align: center;
 }
 
 .range-generic label {
     display: block;
-    padding-left: calc(1.618rem + 0.4045rem);
+    padding-left: calc(1.3rem + 0.325rem);
     cursor: pointer;
 }
 
@@ -1146,14 +1107,14 @@ select[multiple] {
     -webkit-appearance: none;
     border: none;
     background: none;
-    padding: 0 1.618rem 0 0.809rem;
+    padding: 0 1.3rem 0 0.65rem;
     z-index: 2;
 }
 
 .select-generic::before {
     content: ' ';
     position: absolute;
-    right: 2.427rem;
+    right: 1.95rem;
     height: 100%;
     border-right: 3px solid #cccccc;
 }
@@ -1161,10 +1122,10 @@ select[multiple] {
 .select-generic::after {
     content: ' ';
     position: absolute;
-    right: 0.809rem;
+    right: 0.65rem;
     top: 50%;
-    height: 0.4045rem;
-    width: 0.4045rem;
+    height: 0.325rem;
+    width: 0.325rem;
     border-bottom: 3px solid #cccccc;
     border-right: 3px solid #cccccc;
     transform-origin: top center;
@@ -1181,7 +1142,7 @@ select[multiple] {
 
 .switch-generic label {
     display: block;
-    padding-left: calc(3.236rem + 0.4045rem);
+    padding-left: calc(2.6rem + 0.325rem);
     position: relative;
     cursor: pointer;
 }
@@ -1189,29 +1150,29 @@ select[multiple] {
 .switch-generic label::before {
     position: relative;
     border: 3px #cccccc solid;
-    padding: 0.4045rem;
+    padding: 0.325rem;
     position: absolute;
     padding: 0;
     left: 0;
     top: 50%;
     content: '';
-    height: 1.618rem;
-    width: 3.236rem;
+    height: 1.3rem;
+    width: 2.6rem;
     transition: all 0.3s ease;
     transform-origin: right bottom;
     transform: translateY(-50%);
     box-sizing: border-box;
-    border-radius: 1.618rem;
+    border-radius: 1.3rem;
 }
 
 .switch-generic label::before > [class*='-header'] > [class*='tool']:first-child,
   .switch-generic label::before > [class*='-footer'] > [class*='tool']:first-child {
-    margin-left: 0.4045rem;
+    margin-left: 0.325rem;
 }
 
 .switch-generic label::before > [class*='-header'] > [class*='tool']:last-child,
   .switch-generic label::before > [class*='-footer'] > [class*='tool']:last-child {
-    margin-right: 0.4045rem;
+    margin-right: 0.325rem;
 }
 
 .switch-generic label::before > [class*='-header'],
@@ -1219,7 +1180,7 @@ select[multiple] {
   .switch-generic label::before > [class*='-media'],
   .switch-generic label::before > [class*='-body'],
   .switch-generic label::before > [class*='-footer'] {
-    margin-bottom: 0.4045rem;
+    margin-bottom: 0.325rem;
 }
 
 .switch-generic label::before > [class*='-header']:last-child,
@@ -1237,12 +1198,12 @@ select[multiple] {
   .switch-generic label::before [class*='-tooltip'],
   .switch-generic label::before [class*='-media'] {
     border: 2px #e6e6e6 solid;
-    padding: 0.4045rem;
+    padding: 0.325rem;
 }
 
 .switch-generic label::before [class*='-part'] {
     border: 2px #e6e6e6 dashed;
-    padding: 0.4045rem;
+    padding: 0.325rem;
 }
 
 .switch-generic label::before .btn-circle {
@@ -1256,30 +1217,30 @@ select[multiple] {
 .switch-generic label::after {
     position: relative;
     border: 3px #cccccc solid;
-    padding: 0.4045rem;
+    padding: 0.325rem;
     position: absolute;
     padding: 0;
     left: 0;
     top: 50%;
     content: '';
-    width: 1.618rem;
-    height: 1.618rem;
+    width: 1.3rem;
+    height: 1.3rem;
     transition: all 0.3s ease;
     transform: translateY(-50%);
     transform-origin: top left;
     box-sizing: border-box;
-    border-radius: 1.618rem;
+    border-radius: 1.3rem;
     background: #fcfcfc;
 }
 
 .switch-generic label::after > [class*='-header'] > [class*='tool']:first-child,
   .switch-generic label::after > [class*='-footer'] > [class*='tool']:first-child {
-    margin-left: 0.4045rem;
+    margin-left: 0.325rem;
 }
 
 .switch-generic label::after > [class*='-header'] > [class*='tool']:last-child,
   .switch-generic label::after > [class*='-footer'] > [class*='tool']:last-child {
-    margin-right: 0.4045rem;
+    margin-right: 0.325rem;
 }
 
 .switch-generic label::after > [class*='-header'],
@@ -1287,7 +1248,7 @@ select[multiple] {
   .switch-generic label::after > [class*='-media'],
   .switch-generic label::after > [class*='-body'],
   .switch-generic label::after > [class*='-footer'] {
-    margin-bottom: 0.4045rem;
+    margin-bottom: 0.325rem;
 }
 
 .switch-generic label::after > [class*='-header']:last-child,
@@ -1305,12 +1266,12 @@ select[multiple] {
   .switch-generic label::after [class*='-tooltip'],
   .switch-generic label::after [class*='-media'] {
     border: 2px #e6e6e6 solid;
-    padding: 0.4045rem;
+    padding: 0.325rem;
 }
 
 .switch-generic label::after [class*='-part'] {
     border: 2px #e6e6e6 dashed;
-    padding: 0.4045rem;
+    padding: 0.325rem;
 }
 
 .switch-generic label::after .btn-circle {
@@ -1322,7 +1283,7 @@ select[multiple] {
 }
 
 .switch-generic input:checked + label::after {
-    left: calc(3.236rem - 1.618rem);
+    left: calc(2.6rem - 1.3rem);
 }
 
 .switch-generic input:checked + label::before {
@@ -1338,11 +1299,11 @@ select[multiple] {
 .tool-explore .tool-title, .tool-gallery .tool-title, .tool-toggle .tool-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.74316rem;
-    line-height: 1.618rem;
+    line-height: 0.975rem;
 }
 
 .tool-explore {
-    padding: 0.809rem 0;
+    padding: 0.65rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1350,8 +1311,8 @@ select[multiple] {
 
 .tool-explore .tool-media {
     transition: all 0.33s linear;
-    width: 1.618rem;
-    height: 1.618rem;
+    width: 1.3rem;
+    height: 1.3rem;
     position: relative;
     transition: transform 0.33s linear;
     transform: rotate(0deg);
@@ -1393,7 +1354,7 @@ select[multiple] {
 }
 
 .tool-explore .tool-media:hover {
-    transform: rotate(0deg), translateY(-0.4045rem);
+    transform: rotate(0deg), translateY(-0.325rem);
 }
 
 .tool-gallery {
@@ -1401,13 +1362,13 @@ select[multiple] {
 }
 
 .tool-gallery .tool-media {
-    width: 1.618rem;
+    width: 1.3rem;
     position: relative;
 }
 
 @media (max-width: 64em) {
     .tool-gallery .tool-media {
-        width: 0.809rem;
+        width: 0.65rem;
     }
 }
 
@@ -1460,24 +1421,26 @@ select[multiple] {
 }
 
 .tool-toggle {
-    padding: 0.809rem;
-    width: 3.236rem;
-    height: 3.236rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    background: #0d0d0d;
+    border: 4px solid transparent;
+    transition: all 0.33s linear;
 }
 
 .tool-toggle .tool-media {
     background-color: transparent;
-    content: '';
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
-    width: 1.618rem;
+    width: 1.3rem;
     height: 4px;
 }
 
 .tool-toggle .tool-media::before, .tool-toggle .tool-media::after {
-    transition: transform 0.33s linear;
+    content: '';
+    transition: all 0.33s linear;
     background-color: #fcfcfc;
     content: '';
     position: inherit;
@@ -1505,7 +1468,13 @@ select[multiple] {
 #dock:checked ~ .app-main,
   #explore:checked ~ .app-main,
   #filter:checked ~ .app-main {
-    border: solid #fcfcfc 0.809rem;
+    border: solid #fcfcfc 0.65rem;
+}
+
+#dock:checked ~ .app-main .app-header .tool-toggle,
+    #explore:checked ~ .app-main .app-header .tool-toggle,
+    #filter:checked ~ .app-main .app-header .tool-toggle {
+    border-color: #fcfcfc;
 }
 
 #grid-on,
@@ -1520,6 +1489,10 @@ select[multiple] {
 
 #filter:checked ~ .app-main .panel-header {
     color: #fcfcfc;
+}
+
+#filter:checked ~ .app-main .panel-header::before {
+    border-color: #fcfcfc;
 }
 
 #filter:checked ~ .app-main .panel-header .panel-subtitle::after {
@@ -1547,6 +1520,10 @@ select[multiple] {
     transform: rotate(-90deg);
 }
 
+#dock:checked ~ .app-main .app-header .tool-toggle {
+    border-color: #fcfcfc;
+}
+
 #dock:checked ~ .app-main .app-header .tool-toggle .tool-media::before {
     transform: translate3d(-50%, -50%, 0) rotate(-45deg);
 }
@@ -1564,7 +1541,7 @@ select[multiple] {
 }
 
 #dock:checked ~ .app-main .app-footer {
-    padding: 1.618rem;
+    padding: 1.3rem;
     transform: translateX(0);
     opacity: 1;
     flex: 1;
@@ -1588,7 +1565,7 @@ body {
 }
 
 .app-main {
-    border: solid #0d0d0d 0.809rem;
+    border: solid #0d0d0d 0.65rem;
     width: 100vw;
     height: 100%;
     display: flex;
@@ -1599,7 +1576,7 @@ body {
 }
 
 .app-main .app-header {
-    padding: 1.618rem;
+    padding: 1.3rem;
     padding-bottom: 0;
 }
 
@@ -1612,7 +1589,7 @@ body {
 .app-main .app-header .wrapper .app-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.3456rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     transition: color 0.33s linear;
     display: flex;
     align-items: center;
@@ -1623,7 +1600,7 @@ body {
     .app-main .app-header .wrapper .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.16rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -1631,7 +1608,7 @@ body {
     .app-main .app-header .wrapper .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -1651,15 +1628,11 @@ body {
 }
 
 .app-main .app-footer .menu-vertical:first-child {
-    padding-bottom: 1.618rem;
-}
-
-.app-main .app-footer .menu-vertical .btn-title::after {
-    background-color: #fcfcfc;
+    padding-bottom: 1.3rem;
 }
 
 .app-main .app-body {
-    padding: 0 1.618rem;
+    padding: 0 1.3rem;
     flex-grow: 1;
     opacity: 1;
     width: 100%;
@@ -1690,10 +1663,10 @@ body {
 .app-main .app-body .app-body-part.header {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     width: 100%;
-    padding-bottom: 0.809rem;
-    margin-bottom: 0.809rem;
+    padding-bottom: 0.65rem;
+    margin-bottom: 0.65rem;
     border-bottom: solid #0d0d0d 4px;
 }
 
@@ -1701,7 +1674,7 @@ body {
     display: flex;
     justify-content: space-between;
     border-bottom: 4px #0d0d0d solid;
-    padding: 0.809rem 0;
+    padding: 0.65rem 0;
     transition: color 0.33s linear;
 }
 
@@ -1721,37 +1694,60 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding-bottom: 6.472rem;
+    padding-bottom: 5.2rem;
 }
 
 @media (max-width: 64em) {
     .board-contact, .board-gallery {
-        padding-bottom: 3.236rem;
+        padding-bottom: 2.6rem;
     }
 }
 
 .board-contact .board-header, .board-gallery .board-header {
-    padding-top: 1.618rem;
+    padding-top: 1.3rem;
     color: #0d0d0d;
-    padding-bottom: 0.809rem;
+    padding-bottom: 0.65rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .board-contact .board-header, .board-gallery .board-header {
+        padding-top: 0.65rem;
+    }
 }
 
 @media (max-width: 29.25em) {
     .board-contact .board-header, .board-gallery .board-header {
-        padding-bottom: 0.4045rem;
+        padding-top: 0.325rem;
+        padding-bottom: 0.325rem;
     }
 }
 
-.board-contact .board-header > *:first-child, .board-gallery .board-header > *:first-child {
+.board-contact .board-header .board-subtitle, .board-gallery .board-header .board-subtitle {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 300;
-    padding-bottom: 0.809rem;
+    padding-bottom: 1.3rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .board-contact .board-header .board-subtitle, .board-gallery .board-header .board-subtitle {
+        padding-bottom: 0.65rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .board-contact .board-header .board-subtitle, .board-gallery .board-header .board-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.325rem;
+        padding-top: 0.325rem;
+    }
 }
 
 @media (max-width: 20em) {
-    .board-contact .board-header > *:first-child, .board-gallery .board-header > *:first-child {
+    .board-contact .board-header .board-subtitle, .board-gallery .board-header .board-subtitle {
         display: none;
     }
 }
@@ -1759,13 +1755,13 @@ body {
 .board-contact .board-header + *, .board-gallery .board-header + * {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
 }
 
 .board-contact .board-title, .board-gallery .board-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.81064rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     font-weight: 700;
 }
 
@@ -1773,7 +1769,7 @@ body {
     .board-contact .board-title, .board-gallery .board-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.3456rem;
-        line-height: 1.618rem;
+        line-height: 1.3rem;
     }
 }
 
@@ -1793,7 +1789,20 @@ body {
 }
 
 .board-contact .board-body .board-body-part:last-child, .board-gallery .board-body .board-body-part:last-child {
-    padding-bottom: 1.618rem;
+    padding-bottom: 1.3rem;
+}
+
+.board-contact .board-body .board-body-part:last-child footer, .board-gallery .board-body .board-body-part:last-child footer {
+    font-weight: 700;
+}
+
+@media (max-width: 29.25em) {
+    .board-contact .board-body .board-body-part:last-child, .board-gallery .board-body .board-body-part:last-child {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.65rem;
+    }
 }
 
 @media (max-width: 20em) {
@@ -1816,7 +1825,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-bottom: 1.618rem;
+    padding-bottom: 1.3rem;
 }
 
 .panel-explore, .panel-filter {
@@ -1831,12 +1840,12 @@ body {
     cursor: pointer;
     height: 0;
     position: relative;
-    padding-top: 6.472rem;
+    padding-top: 5.2rem;
 }
 
 @media (max-width: 64em) {
     .panel-explore .panel-header, .panel-filter .panel-header {
-        padding-top: 3.236rem;
+        padding-top: 2.6rem;
     }
 }
 
@@ -1889,13 +1898,13 @@ body {
     color: #fcfcfc;
     width: 100%;
     left: 0;
-    top: calc(100% - 6.472rem);
+    top: calc(100% - 5.2rem);
     overflow: hidden;
 }
 
 @media (max-width: 64em) {
     .panel-explore {
-        top: calc(100% - 3.236rem);
+        top: calc(100% - 2.6rem);
     }
 }
 
@@ -1909,15 +1918,23 @@ body {
 .panel-explore .panel-header [for="explore"] .panel-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     position: relative;
     flex-grow: 1;
     color: #0d0d0d;
     display: inline-flex;
 }
 
+@media (max-width: 29.25em) {
+    .panel-explore .panel-header [for="explore"] .panel-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
+        line-height: 0.975rem;
+    }
+}
+
 .panel-explore .panel-header [for="explore"] .panel-title > * {
-    padding: 0 0.4045rem;
+    padding: 0 0.325rem;
 }
 
 .panel-explore .panel-header [for="explore"] .panel-title::before {
@@ -1925,19 +1942,18 @@ body {
 }
 
 .panel-explore .panel-header [for="explore"] .panel-title::after {
-    font-weight: 900;
     content: '>';
     transform: rotate(90deg);
     transition: transform 0.33s linear;
 }
 
 .panel-explore .panel-header .belt-gallery {
-    padding: 1.618rem 0;
+    padding: 1.3rem 0;
 }
 
 @media (max-width: 64em) {
     .panel-explore .panel-header .belt-gallery {
-        padding: 0.809rem 0;
+        padding: 0.65rem 0;
     }
 }
 
@@ -1953,13 +1969,9 @@ body {
 
 .panel-explore .panel-body {
     overflow-y: scroll;
-    margin-right: -1.618rem;
-    padding-right: 1.618rem;
+    margin-right: -1.3rem;
+    padding-right: 1.3rem;
     -webkit-overflow-scrolling: touch;
-}
-
-.panel-explore .panel-content {
-    padding-bottom: 1.618rem;
 }
 
 .panel-filter {
@@ -1967,27 +1979,27 @@ body {
     width: 100%;
     left: 0;
     flex-grow: 1;
-    bottom: calc(100% - 6.472rem);
+    bottom: calc(100% - 5.2rem);
 }
 
 @media (max-width: 64em) {
     .panel-filter {
-        bottom: calc(100% - 3.236rem);
+        bottom: calc(100% - 2.6rem);
     }
 }
 
 .panel-filter .panel-body {
     display: flex;
     flex-direction: column;
-    padding-bottom: 1.618rem;
+    padding-bottom: 1.3rem;
     overflow: hidden;
 }
 
 .panel-filter .panel-body .panel-body-part:first-child .panel-subtitle {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
-    padding-bottom: 1.618rem;
+    line-height: 1.3rem;
+    padding-bottom: 1.3rem;
 }
 
 .panel-filter .panel-body .panel-body-part:last-child {
@@ -1997,7 +2009,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     -webkit-overflow-scrolling: touch;
-    margin-right: -1.618rem;
+    margin-right: -1.3rem;
 }
 
 .panel-filter .panel-body .panel-body-part:last-child ::-webkit-scrollbar {
@@ -2007,12 +2019,20 @@ body {
 .panel-filter .panel-header {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
     color: #0d0d0d;
 }
 
+@media (max-width: 29.25em) {
+    .panel-filter .panel-header {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.74316rem;
+        line-height: 0.975rem;
+    }
+}
+
 .panel-filter .panel-header::before {
-    border-color: #fcfcfc;
+    border-color: transparent;
 }
 
 .panel-filter .panel-header > .wrapper {
@@ -2030,11 +2050,10 @@ body {
 }
 
 .panel-filter .panel-header > .wrapper .panel-subtitle > * {
-    padding-right: 0.4045rem;
+    padding-right: 0.325rem;
 }
 
 .panel-filter .panel-header > .wrapper .panel-subtitle::after {
-    font-weight: 900;
     content: '>';
     transform: rotate(90deg);
     transition: transform 0.33s linear;
@@ -2050,20 +2069,20 @@ body {
 }
 
 .screen-blog .screen-body, .screen-portfolio .screen-body, .screen-project .screen-body {
-    margin-right: -1.618rem;
-    padding-right: 1.618rem;
+    margin-right: -1.3rem;
+    padding-right: 1.3rem;
     transition: opacity 0.33s linear;
     opacity: 1;
     flex-grow: 1;
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    margin-top: 6.472rem;
+    margin-top: 5.2rem;
 }
 
 @media (max-width: 64em) {
     .screen-blog .screen-body, .screen-portfolio .screen-body, .screen-project .screen-body {
-        margin-top: 3.236rem;
+        margin-top: 2.6rem;
     }
 }
 
@@ -2077,13 +2096,13 @@ body {
 }
 
 .wall-cards .wall-header {
-    padding: 1.618rem 0;
+    padding: 1.3rem 0;
 }
 
 .wall-cards .wall-header .wall-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
-    line-height: 1.618rem;
+    line-height: 1.3rem;
 }
 
 .wall-cards .wall-footer {
@@ -2098,19 +2117,19 @@ body {
 .wall-cards .wall-body {
     flex-wrap: wrap;
     display: flex;
-    padding-bottom: 0.809rem;
+    padding-bottom: 1.3rem;
 }
 
 .wall-cards .wall-body .wall-body-part {
-    margin-bottom: 0.809rem;
+    margin-bottom: 1.3rem;
     position: relative;
     transition: all 0.33s linear;
 }
 
 @media (min-width: 48.0625em) {
     .wall-cards .wall-body .wall-body-part {
-        width: calc(33.33% - (0.809rem * 2) / 3);
-        margin-right: 0.809rem;
+        width: calc(33.33% - (1.3rem * 2) / 3);
+        margin-right: 1.3rem;
     }
 
     .wall-cards .wall-body .wall-body-part:nth-child(3n+3) {
@@ -2120,15 +2139,15 @@ body {
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
     .wall-cards .wall-body .wall-body-part {
-        width: calc((50% - (0.809rem / 2)));
+        width: calc((50% - (1.3rem / 2)));
     }
 
     .wall-cards .wall-body .wall-body-part:nth-child(even) {
-        margin-left: calc(0.809rem / 2);
+        margin-left: calc(1.3rem / 2);
     }
 
     .wall-cards .wall-body .wall-body-part:nth-child(odd) {
-        margin-right: calc(0.809rem / 2);
+        margin-right: calc(1.3rem / 2);
     }
 }
 
@@ -2139,23 +2158,23 @@ body {
 }
 
 .wall-cards .wall-footer {
-    padding: 1.618rem 0;
+    padding: 1.3rem 0;
 }
 
 .shout.image-square {
-    width: 6.472rem;
+    width: 5.2rem;
 }
 
 .call.image-square {
-    width: 3.236rem;
+    width: 2.6rem;
 }
 
 .nudge.image-square {
-    width: 0.809rem;
+    width: 0.65rem;
 }
 
 .hint.image-square {
-    width: 0.4045rem;
+    width: 0.325rem;
 }
 
 .r-1x1.image-square {

@@ -19,11 +19,11 @@ var keystone = require('keystone');
 exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	locals.navLinks = [
-		{ label: 'see my work',		key: 'portfolio',	href: '/portfolio' },
-		{ label: 'contact me',		key: 'contact',		href: '/contact' },
-        { label: 'more about me',   key: 'about',		href: '/about' },
-		{ label: 'instagram',		key: 'instagram',	href: 'http://www.instagram.com/jacobsfletch', target:'_blank' },
-        { label: 'github',		    key: 'github',		href: 'http://www.github.com/jacobsfletch', target:'_blank'} ,
+		{ label: 'work',		key: 'portfolio',	href: '/portfolio' },
+		{ label: 'contact',		key: 'contact',		href: '/contact' },
+        { label: 'about',       key: 'about',		href: '/about' },
+		{ label: 'instagram',	key: 'instagram',	href: 'http://www.instagram.com/jacobsfletch', target:'_blank' },
+        { label: 'github',		key: 'github',		href: 'http://www.github.com/jacobsfletch', target:'_blank'} ,
 	];
 
 	locals.user = req.user;
