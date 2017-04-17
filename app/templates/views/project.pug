@@ -11,7 +11,7 @@ block appBody
                 .btn-nav
                     a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
                         b <
-                        |  previous
+                        |  prev
                 .btn-nav 
                     a.btn-title(href='/api/portfolio/' + project.slug + '/next')
                         p next
@@ -62,9 +62,8 @@ block appBody
                 .panel-header
                     .wrapper
                         label(for="explore")
-                            .tool-explore
-                                .tool-media
-                                    +downArrow()
+                            .panel-title
+                                p gallery
                         .belt-gallery
                             label.tool-gallery(for="grid-on")
                                 .tool-media
