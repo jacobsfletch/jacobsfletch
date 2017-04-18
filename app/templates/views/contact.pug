@@ -2,15 +2,17 @@ extends ../layouts/default
 
 block appBody
     .board-contact
+        .board-header
+            .board-subtitle
+                if user.status == 'available'
+                    h3 i am currently available for work, let's chat
+                else if user.status == 'unavailable'
+                    h3 i am currently unavailable for work, but let's still chat
+            .board-title
+                h1 talk to me
         .board-body
-            .board-header
-                .board-subtitle
-                    if user.status == 'available'
-                        h3 i am currently available for work, let's chat
-                    else if user.status == 'unavailable'
-                        h3 i am currently unavailable for work, but let's still chat
-                .board-title
-                    h1 talk to me
+            .board-body-part
+                p start by filling out the form below so that i know how to best reach you.
             .board-body-part
                 form#contact.form-contact(action="/api/email/send" method="POST")
                     .input-text
@@ -35,4 +37,4 @@ block appBody
                                 p Message
                     button(type="submit")
                         .btn-main
-                            a.btn-title submit
+                            a.btn-title submit >
