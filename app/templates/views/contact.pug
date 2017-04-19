@@ -5,8 +5,10 @@ block appBody
         .board-header
             .board-subtitle
                 if user.status == 'available'
+                    .available
                     h3 i am currently available for work, let's chat
                 else if user.status == 'unavailable'
+                    .unavailable
                     h3 i am currently unavailable for work, but let's still chat
             .board-title
                 h1 talk to me
