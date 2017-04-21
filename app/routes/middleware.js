@@ -19,7 +19,7 @@ var keystone = require('keystone');
 exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	locals.navLinks = [
-		{ label: 'work',		key: 'portfolio',	href: '/portfolio' },
+		{ label: 'portfolio',	key: 'portfolio',	href: '/portfolio' },
 		{ label: 'contact',		key: 'contact',		href: '/contact' },
         { label: 'about',       key: 'about',		href: '/about' },
 		{ label: 'instagram',	key: 'instagram',	href: 'http://www.instagram.com/jacobsfletch', target:'_blank' },
