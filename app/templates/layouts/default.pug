@@ -41,21 +41,26 @@ html
                     label.tool-toggle(for='dock')
                         .tool-media
             footer.app-footer
-                nav.menu-vertical
-                    ul.menu-body
-                        each link in navLinks
-                            li.menu-body-part.btn-main(class=(section == link.key ? 'active' : null))
-                                a.btn-title(target=link.target href=link.href)= link.label
-                                    |  >
-                nav.menu-vertical
-                    .menu-header
-                        .menu-title
-                            h6 coming soon
-                    ul.menu-body
-                        li.menu-body-part.btn-main
-                            a.btn-title my blog
-                        li.menu-body-part.btn-main
-                            a.btn-title my shop
+                .container-dock
+                    .container-header
+                        .container-title
+                            p this website is 100% handmade
+                    .container-body
+                        nav.menu-vertical
+                            ul.menu-body
+                                each link in navLinks
+                                    li.menu-body-part.btn-main(class=(section == link.key ? 'active' : null))
+                                        a.btn-title(target=link.target href=link.href)= link.label
+                                            |  >
+                        nav.menu-vertical
+                            .menu-header
+                                .menu-title
+                                    h6 coming soon
+                            ul.menu-body
+                                li.menu-body-part.btn-main
+                                    a.btn-title my blog
+                                li.menu-body-part.btn-main
+                                    a.btn-title my shop
             .app-body
                 block appBody
 
