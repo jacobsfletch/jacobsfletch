@@ -1,4 +1,6 @@
 include ../mixins/flash-messages
+include ../mixins/media/lightswitch
+
 doctype html
 html
     head
@@ -40,6 +42,7 @@ html
                         h1 jacobsfletch
                     label.tool-toggle(for='dock')
                         .tool-media
+                            +lightSwitch()
             footer.app-footer
                 .container-dock
                     .container-header
@@ -65,14 +68,56 @@ html
                 block appBody
 
         // JS includes
-        script(src='/js/jacobsfletch.min.js')
+        // script(src='/js/jacobsfletch.min.js')
 
         block js
+            script.
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-72591985-3', 'auto');
+                ga('send', 'pageview');
 
-        script.
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-72591985-3', 'auto');
-            ga('send', 'pageview');
+                scrollAnimate = function(selector) {
+                    var panel = document.getElementById(selector);
+                    var originalOffset = panel.offsetTop;
+                    var panelBody = document.getElementById("panelBody");
+
+                    if (window.addEventListener) {
+                        window.addEventListener("mousewheel", wheelHandler, false);
+                        window.addEventListener("DOMMouseScroll", wheelHandler, false);
+                        window.addEventListener("touchstart", startHandler, false);
+                        window.addEventListener("touchmove", wheelHandler, false);
+                    }
+                    else window.attachEvent("onmousewheel", wheelHandler);
+
+                    var maxOffset = panel.offsetTop;
+                    var minOffset = 0;
+                    var touchDistance = 0;
+                    var desktopThreshold = 300;
+                    var mobileThreshold = 50;
+                    var start = 0;
+
+                    function startHandler(event) {
+                        start = event.touches[0].pageY;
+                        wheelHandler(event);
+                    }
+
+                    function wheelHandler(event) {
+                        panelBodyScroll = panelBody.scrollTop;
+                        if (event.touches) {
+                            touchDistance = (start - event.touches[0].pageY);
+                        }
+                        if (event.wheelDelta) {
+                            var wheelDistance = event.wheelDelta || -event.detail;
+                        }
+                        if((wheelDistance < 0) || (touchDistance > 0)) {
+                            document.getElementById("explore").checked = true;
+                        } else if((wheelDistance > 0 || touchDistance < 0) && panelBodyScroll <= 0) {
+                            document.getElementById("explore").checked = false;
+                        }
+                    }
+                }
+
+                scrollAnimate("panelExplore");

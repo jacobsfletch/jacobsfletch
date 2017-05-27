@@ -56,7 +56,7 @@ block appBody
                                     | #{project.quoteAuthor}
                                 else
                                     | no quote author
-            .panel-explore
+            #panelExplore.panel-explore
                 .panel-header
                     .wrapper
                         label(for="explore")
@@ -69,7 +69,7 @@ block appBody
                         label.tool-gallery(for="grid-off")
                             .tool-media
                                 +fullScreen()
-                .panel-body
+                #panelBody.panel-body
                     .wall-cards
                         .wall-body
                             if project.images.length > 0
