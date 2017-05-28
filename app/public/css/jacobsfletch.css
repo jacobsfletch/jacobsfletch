@@ -1262,6 +1262,36 @@ select[multiple] {
     background: #cccccc;
 }
 
+.utility-loader {
+    visibility: visible;
+}
+
+.utility-loader {
+    display: none;
+}
+
+.utility-loader svg svg circle,
+  .utility-loader svg svg ellipse,
+  .utility-loader svg svg g,
+  .utility-loader svg svg path,
+  .utility-loader svg svg polyline,
+  .utility-loader svg svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.utility-loader svg circle {
+    stroke-width: 4px;
+    stroke: #0d0d0d;
+    fill: none;
+}
+
 .tool-explore, .tool-gallery, .tool-toggle {
     cursor: pointer;
     display: inline-flex;
@@ -1433,36 +1463,6 @@ select[multiple] {
     stroke-width: 6px;
 }
 
-.utility-loader {
-    visibility: visible;
-}
-
-.utility-loader {
-    display: none;
-}
-
-.utility-loader svg svg circle,
-  .utility-loader svg svg ellipse,
-  .utility-loader svg svg g,
-  .utility-loader svg svg path,
-  .utility-loader svg svg polyline,
-  .utility-loader svg svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.utility-loader svg circle {
-    stroke-width: 4px;
-    stroke: #0d0d0d;
-    fill: none;
-}
-
 #dock,
 #explore,
 #filter {
@@ -1528,6 +1528,10 @@ select[multiple] {
 
 #explore:checked ~ .app-main .panel-header [for="explore"] .panel-title::after {
     transform: rotate(-90deg);
+}
+
+#explore:checked ~ .app-main .utility-loader svg circle {
+    stroke: #fcfcfc;
 }
 
 #dock:checked ~ .app-main .app-header .tool-toggle .tool-media {
@@ -1971,26 +1975,6 @@ body {
     border-bottom: #fcfcfc 4px solid;
 }
 
-.panel-explore .panel-header [for="explore"] .panel-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
-    position: relative;
-    display: inline-flex;
-}
-
-@media (max-width: 29.25em) {
-    .panel-explore .panel-header [for="explore"] .panel-title {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-    }
-}
-
-.panel-explore .panel-header [for="explore"] .panel-title > * {
-    padding: 0 0.325rem;
-}
-
 .panel-explore .panel-header [for="explore"] .panel-title::before {
     content: 'enter ';
 }
@@ -2001,10 +1985,27 @@ body {
     transition: transform 0.33s linear;
 }
 
-.panel-explore .panel-header [for="explore"] .panel-subtitle {
+.panel-explore .panel-header [for="explore"] .panel-title,
+      .panel-explore .panel-header [for="explore"] .panel-subtitle {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
     line-height: 1.3rem;
+    position: relative;
+    display: inline-flex;
+}
+
+@media (max-width: 29.25em) {
+    .panel-explore .panel-header [for="explore"] .panel-title,
+          .panel-explore .panel-header [for="explore"] .panel-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+    }
+}
+
+.panel-explore .panel-header [for="explore"] .panel-title > *,
+        .panel-explore .panel-header [for="explore"] .panel-subtitle > * {
+    padding: 0 0.325rem;
 }
 
 .panel-explore .panel-header .belt-gallery {

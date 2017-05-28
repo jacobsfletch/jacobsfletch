@@ -118,38 +118,24 @@ html
                                 if(moveDistance > mobileThreshold) { // Threshold Met
                                     checkbox.checked = true; // Check Checkbox
                                     panel.style.top = ""; // Reset offsetTop
-                                    panelSubtitle.innerHTML = ""; // Remove Subtitle
+                                    panelSubtitle.innerHTML = "<p>close</p>";
                                     panelLoader.style.display = ""; // Remove Loader
+                                    panelBackground.style.display = ""; // Reset Background
                                 } else { // Threshold Not Met
                                     panel.style.top = currentOffset + "px"; // Animate Panel
                                     panelBackground.style.display = "none"; // Remove Background
                                     panelLoader.style.display = "block"; // Add Loader
                                 }
                             }
-                        } else if(checkbox.checked) { // Checkbox Checked
-                            panelBodyScroll = document.getElementById("panelBody").scrollTop; // panelBody Scroll Amount from Parent
-                            if((moveDistance < 0) && (panelBodyScroll <= 0)) { // If Moving Down and panelBody is Fully Scrolled Up
-                                panelSubtitle.innerHTML = "<p>" + (currentPercentage * -1) + "%</p>";
-                                currentOffset = ((moveDistance * -1) * ratio); // Calculate Animation
-                                if((moveDistance * -1) > mobileThreshold) { // Threshold Met
-                                    checkbox.checked = false; // Uncheck Checkbox
-                                    panel.style.top = ""; // Reset topOffset
-                                    panelSubtitle.innerHTML = ""; // Remove Subtitle
-                                    panelBackground.style.display = ""; // Reset Background
-                                    panelLoader.style.display = ""; // Reset Loader
-                                } else { // Threshold Not Met
-                                    panel.style.top = currentOffset + "px"; // Animate Panel
-                                }
-                            }
                         }
                     }
 
                     function endHandler(event) { // End of Event
-                        panel.style.top = ""; // Reset Panel offsetTop
-                        panelSubtitle.innerHTML = ""; // Remove Subtitle
-                        panelLoader.style.display = ""; // Remove Loader
                         if(!checkbox.checked) { // Checkbox Unchecked
+                            panel.style.top = ""; // Reset Panel offsetTop
+                            panelLoader.style.display = ""; // Remove Loader
                             panelBackground.style.display = ""; // Reset Background
+                            panelSubtitle.innerHTML = ""; // Remove Subtitle
                         }
                     }
 
