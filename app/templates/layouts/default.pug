@@ -87,8 +87,8 @@ html
                     var panelLoader = document.getElementById("panelLoader");
 
                     if (window.addEventListener) {
-                        window.addEventListener("mousewheel", wheelHandler, false);
-                        window.addEventListener("DOMMouseScroll", wheelHandler, false);
+                        window.addEventListener("mousewheel", moveHandler, false);
+                        window.addEventListener("DOMMouseScroll", moveHandler, false);
                         window.addEventListener("touchstart", startHandler, false);
                         window.addEventListener("touchmove", moveHandler, false);
                         window.addEventListener("touchend", endHandler, false);
@@ -98,10 +98,22 @@ html
                     var originalOffset = panel.offsetTop;
                     var desktopThreshold = 300;
                     var mobileThreshold = 66;
-                    var moveDistance = 0;
+                    var touchDistance = 0;
+                    var wheelDistance = 0;
                     var currentPercentage = 0;
-                    var ratio = 3;
+                    var wheelRatio = 1;
+                    var touchRatio = 3;
                     var start = 0;
+                    var timeOut = 1;
+                    var elapsedTime = 0;
+
+                    function resetStyles() {
+                        panel.style.top = ""; // Reset Panel offsetTop
+                        panelLoader.style.display = ""; // Remove Loader
+                        panelBackground.style.display = ""; // Reset Background
+                        panelSubtitle.innerHTML = ""; // Remove Subtitle
+                        wheelDistance = 0; // Reset wheelDistance
+                    }
 
                     function startHandler(event) {
                         start = event.touches[0].pageY;
@@ -109,22 +121,32 @@ html
 
                     function moveHandler(event) {
                         checkbox = document.getElementById("explore"); // The Checkbox
-                        moveDistance = (start - event.touches[0].pageY); // Scroll Amount
-                        currentPercentage = Math.floor((moveDistance / mobileThreshold) * 100); // Calculate Respective Percentage
                         if(!checkbox.checked) { // Checkbox Unchecked
-                            if(moveDistance > 0) { // Moving Up
+                            if(event.touches) {
+                                touchDistance = (start - event.touches[0].pageY); // Scroll Amount
+                                currentPercentage = Math.floor((touchDistance / mobileThreshold) * 100); // Calculate Respective Percentage
+                                currentOffset = (originalOffset - (touchDistance * touchRatio)); // Calculate Animation
+                            }
+                            if(event.wheelDelta) {
+                                wheelDistance = wheelDistance + (event.wheelDelta * -1);
+                                currentPercentage = Math.floor((wheelDistance / desktopThreshold) * 100); // Calculate Respective Percentage
+                                currentOffset = (originalOffset - (wheelDistance * wheelRatio)); // Calculate Animation
+                                if(currentPercentage <= 0) {
+                                    resetStyles();
+                                }
+                                console.log(currentPercentage + "%");
+                                console.log(currentOffset + "px");
+                                console.log(wheelDistance + "px");
+                            }
+                            if(currentPercentage > 0) { // Moving Up
                                 panelSubtitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
-                                currentOffset = (originalOffset - (moveDistance * ratio)); // Calculate Animation
-                                if(moveDistance > mobileThreshold) { // Threshold Met
-                                    checkbox.checked = true; // Check Checkbox
-                                    panel.style.top = ""; // Reset offsetTop
-                                    panelSubtitle.innerHTML = "<p>close</p>";
-                                    panelLoader.style.display = ""; // Remove Loader
-                                    panelBackground.style.display = ""; // Reset Background
-                                } else { // Threshold Not Met
+                                if((currentPercentage < 100 || elapsedTime >= timeOut)) { // Threshold Not Met
                                     panel.style.top = currentOffset + "px"; // Animate Panel
                                     panelBackground.style.display = "none"; // Remove Background
                                     panelLoader.style.display = "block"; // Add Loader
+                                } else { // Threshold Met
+                                    checkbox.checked = true; // Check Checkbox
+                                    resetStyles();
                                 }
                             }
                         }
@@ -132,19 +154,10 @@ html
 
                     function endHandler(event) { // End of Event
                         if(!checkbox.checked) { // Checkbox Unchecked
-                            panel.style.top = ""; // Reset Panel offsetTop
-                            panelLoader.style.display = ""; // Remove Loader
-                            panelBackground.style.display = ""; // Reset Background
-                            panelSubtitle.innerHTML = ""; // Remove Subtitle
+                            resetStyles();
                         }
                     }
 
-                    function wheelHandler(event) {
-                        wheelDistance = event.wheelDelta || -event.detail;
-                        if(wheelDistance < 0) { // Scrolling Up
-
-                        }
-                    }
                 }
 
                 scrollAnimate("panelExplore");
