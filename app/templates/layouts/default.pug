@@ -11,7 +11,7 @@ html
         title #{global.meta.description}
         meta(name="description" content=global.meta.description)
         //- Define the viewport
-        meta(name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
         meta(name="apple-mobile-web-app-title" content=global.meta.title)
         //- Fullscreen Safari on startup from home screen on Apple and Android devices
         //- meta(name="apple-mobile-web-app-capable" content="yes")
@@ -82,40 +82,79 @@ html
                 scrollAnimate = function(selector) {
                     var panel = document.getElementById(selector);
                     var originalOffset = panel.offsetTop;
-                    var panelBody = document.getElementById("panelBody");
+                    var panelSubtitle = document.getElementById("panelSubtitle");
+                    var panelBackground = document.getElementById("panelBackground");
+                    var panelLoader = document.getElementById("panelLoader");
 
                     if (window.addEventListener) {
                         window.addEventListener("mousewheel", wheelHandler, false);
                         window.addEventListener("DOMMouseScroll", wheelHandler, false);
                         window.addEventListener("touchstart", startHandler, false);
-                        window.addEventListener("touchmove", wheelHandler, false);
+                        window.addEventListener("touchmove", moveHandler, false);
+                        window.addEventListener("touchend", endHandler, false);
                     }
                     else window.attachEvent("onmousewheel", wheelHandler);
 
-                    var maxOffset = panel.offsetTop;
-                    var minOffset = 0;
-                    var touchDistance = 0;
+                    var originalOffset = panel.offsetTop;
                     var desktopThreshold = 300;
-                    var mobileThreshold = 50;
+                    var mobileThreshold = 66;
+                    var moveDistance = 0;
+                    var currentPercentage = 0;
+                    var ratio = 3;
                     var start = 0;
 
                     function startHandler(event) {
                         start = event.touches[0].pageY;
-                        wheelHandler(event);
+                    }
+
+                    function moveHandler(event) {
+                        checkbox = document.getElementById("explore");
+                        moveDistance = (start - event.touches[0].pageY);
+                        currentPercentage = Math.floor((moveDistance / mobileThreshold) * 100);
+                        if(!checkbox.checked) {
+                            if(moveDistance > 0) {
+                                panelSubtitle.innerHTML = "<p>" + currentPercentage + "%</p>";
+                                currentOffset = (originalOffset - (moveDistance * ratio));
+                                if(moveDistance > mobileThreshold) {
+                                    checkbox.checked = true;
+                                    panel.style.top = "";
+                                    panelSubtitle.innerHTML = "";
+                                    panelBackground.style.opacity = 0;
+                                } else {
+                                    panel.style.top = currentOffset + "px";
+                                    panelBackground.style.display = "none";
+                                }
+                            }
+                        } else if(checkbox.checked){
+                            panelBodyScroll = document.getElementById("panelBody").scrollTop;
+                            if((moveDistance < 0) && (panelBodyScroll <= 0)) {
+                                panelSubtitle.innerHTML = "<p>" + (currentPercentage * -1) + "%</p>";
+                                currentOffset = ((moveDistance * -1) * ratio);
+                                if((moveDistance * -1) > mobileThreshold) {
+                                    checkbox.checked = false;
+                                    panel.style.top = "";
+                                    panelSubtitle.innerHTML = "";
+                                    panelBackground.style.opacity = "";
+                                } else {
+                                    panel.style.top = currentOffset + "px";
+                                }
+                            }
+                        }
+                    }
+
+                    function endHandler(event) {
+                        panel.style.top = "";
+                        panelSubtitle.innerHTML = "";
+                        panelBackground.style.opacity = "";
+                        if(!checkbox.checked) {
+                            panelBackground.style.display = "";
+                        }
                     }
 
                     function wheelHandler(event) {
-                        panelBodyScroll = panelBody.scrollTop;
-                        if (event.touches) {
-                            touchDistance = (start - event.touches[0].pageY);
-                        }
-                        if (event.wheelDelta) {
-                            var wheelDistance = event.wheelDelta || -event.detail;
-                        }
-                        if((wheelDistance < 0) || (touchDistance > 0)) {
-                            document.getElementById("explore").checked = true;
-                        } else if((wheelDistance > 0 || touchDistance < 0) && panelBodyScroll <= 0) {
-                            document.getElementById("explore").checked = false;
+                        wheelDistance = event.wheelDelta || -event.detail;
+                        if(wheelDistance < 0) { // Scrolling Up
+
                         }
                     }
                 }

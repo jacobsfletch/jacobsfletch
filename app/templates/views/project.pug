@@ -3,65 +3,70 @@ extends ../layouts/default
 include ../mixins/media/downarrow
 include ../mixins/media/fullscreen
 include ../mixins/media/grid
+include ../mixins/media/loader
 
 block appBody
     .screen-project
         .board-gallery
-            .bar-navigate
-                .btn-nav
-                    a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
-                        p < prev
-                .btn-nav 
-                    a.btn-title(href='/api/portfolio/' + project.slug + '/next')
-                        p next >
-            .board-header
-                .board-subtitle
-                    h2
-                        if project.categories.length > 0
-                            each category, index in project.categories
-                                | #{category.key}
-                                if (index + 1) < project.categories.length
-                                    | , #{' '}
-                        else
-                            | no categories
-                    h2
-                        if project.tags.length > 0
-                            each tag, index in project.tags
-                                | #{tag.key}
-                                if (index + 1) < project.tags.length
-                                    | , #{' '}
+            #panelBackground
+                .bar-navigate
+                    .btn-nav
+                        a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
+                            p < prev
+                    .btn-nav 
+                        a.btn-title(href='/api/portfolio/' + project.slug + '/next')
+                            p next >
+                .board-header
+                    .board-subtitle
+                        h2
+                            if project.categories.length > 0
+                                each category, index in project.categories
+                                    | #{category.key}
+                                    if (index + 1) < project.categories.length
+                                        | , #{' '}
+                            else
+                                | no categories
+                        h2
+                            if project.tags.length > 0
+                                each tag, index in project.tags
+                                    | #{tag.key}
+                                    if (index + 1) < project.tags.length
+                                        | , #{' '}
 
-                        else
-                            | no tags
-                .board-title
-                    h1 #{project.title}
-            .board-body
-                .board-body-part
-                    h3
-                        if project.content
-                            | #{project.content}
-                        else
-                            | no content
-                .board-body-part
-                    blockquote
-                        header
-                            p
-                                if project.quote
-                                    | #{project.quote}
-                                else
-                                    | no quote
-                        footer
-                            p
-                                if project.quoteAuthor
-                                    | #{project.quoteAuthor}
-                                else
-                                    | no quote author
+                            else
+                                | no tags
+                    .board-title
+                        h1 #{project.title}
+                .board-body
+                    .board-body-part
+                        h3
+                            if project.content
+                                | #{project.content}
+                            else
+                                | no content
+                    .board-body-part
+                        blockquote
+                            header
+                                p
+                                    if project.quote
+                                        | #{project.quote}
+                                    else
+                                        | no quote
+                            footer
+                                p
+                                    if project.quoteAuthor
+                                        | #{project.quoteAuthor}
+                                    else
+                                        | no quote author
+            #panelLoader.utility-loader
+                +loader()
             #panelExplore.panel-explore
                 .panel-header
                     .wrapper
                         label(for="explore")
                             .panel-title
                                 p gallery
+                            #panelSubtitle.panel-subtitle
                     //  .belt-gallery
                         label.tool-gallery(for="grid-on")
                             .tool-media
