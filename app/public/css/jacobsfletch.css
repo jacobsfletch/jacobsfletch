@@ -297,46 +297,6 @@ select[multiple] {
     padding-right: 0;
 }
 
-.card-post, .card-project {
-    position: relative;
-    display: block;
-    transition: background-color 0.33s linear;
-    cursor: pointer;
-    height: 100%;
-}
-
-.card-post .card-media, .card-project .card-media {
-    background-position: center;
-    padding-bottom: 0.65rem;
-}
-
-.card-post .card-media > *, .card-project .card-media > * {
-    width: 100%;
-    height: auto;
-}
-
-.card-post .card-header, .card-project .card-header {
-    color: #0d0d0d;
-    transition: color 0.33s linear;
-}
-
-.card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    display: flex;
-    padding-bottom: 0.325rem;
-}
-
-@media (max-width: 29.25em) {
-    .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-        padding-bottom: 0.21667rem;
-    }
-}
-
 .container-dock {
     justify-content: space-between;
     flex-direction: column;
@@ -585,6 +545,46 @@ select[multiple] {
     }
 }
 
+.card-post, .card-project {
+    position: relative;
+    display: block;
+    transition: background-color 0.33s linear;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card-post .card-media, .card-project .card-media {
+    background-position: center;
+    padding-bottom: 0.65rem;
+}
+
+.card-post .card-media > *, .card-project .card-media > * {
+    width: 100%;
+    height: auto;
+}
+
+.card-post .card-header, .card-project .card-header {
+    color: #0d0d0d;
+    transition: color 0.33s linear;
+}
+
+.card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    display: flex;
+    padding-bottom: 0.325rem;
+}
+
+@media (max-width: 29.25em) {
+    .card-post .card-header .card-subtitle, .card-project .card-header .card-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.21667rem;
+    }
+}
+
 .form-contact, .form-filters {
     display: inline-flex;
     flex-direction: column;
@@ -766,56 +766,6 @@ select[multiple] {
     transform: translate3d(-50%, -50%, 0) rotate(45deg);
 }
 
-.input-text, .input-textarea {
-    position: relative;
-    display: inline-flex;
-}
-
-.input-text .input-label, .input-textarea .input-label {
-    position: absolute;
-    white-space: nowrap;
-    left: 0;
-    top: 0;
-    height: 100%;
-}
-
-.input-text .input-label .input-title, .input-textarea .input-label .input-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    padding-bottom: 0.325rem;
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translateY(0);
-    transition: all 0.33s linear;
-}
-
-.input-text:focus::after, .input-textarea:focus::after {
-    width: 100%;
-}
-
-.input-text input, .input-textarea input, .input-text textarea, .input-textarea textarea {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
-    color: transparent;
-    opacity: 0;
-    transition: opacity 0.33s linear;
-}
-
-.input-text input:focus, .input-textarea input:focus, .input-text input:valid, .input-textarea input:valid, .input-text textarea:focus, .input-textarea textarea:focus, .input-text textarea:valid, .input-textarea textarea:valid {
-    opacity: 1;
-    color: #0d0d0d;
-}
-
-.input-text input:focus + .input-label .input-title, .input-textarea input:focus + .input-label .input-title, .input-text input:valid + .input-label .input-title, .input-textarea input:valid + .input-label .input-title, .input-text textarea:focus + .input-label .input-title, .input-textarea textarea:focus + .input-label .input-title, .input-text textarea:valid + .input-label .input-title, .input-textarea textarea:valid + .input-label .input-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 0.82645rem;
-    line-height: 0.975rem;
-    transform: translateY(-75%);
-}
-
 .radio-generic {
     visibility: visible;
 }
@@ -919,6 +869,56 @@ select[multiple] {
     width: 0.65rem;
     height: 0.65rem;
     opacity: 1;
+}
+
+.input-text, .input-textarea {
+    position: relative;
+    display: inline-flex;
+}
+
+.input-text .input-label, .input-textarea .input-label {
+    position: absolute;
+    white-space: nowrap;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+.input-text .input-label .input-title, .input-textarea .input-label .input-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    padding-bottom: 0.325rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(0);
+    transition: all 0.33s linear;
+}
+
+.input-text:focus::after, .input-textarea:focus::after {
+    width: 100%;
+}
+
+.input-text input, .input-textarea input, .input-text textarea, .input-textarea textarea {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    color: transparent;
+    opacity: 0;
+    transition: opacity 0.33s linear;
+}
+
+.input-text input:focus, .input-textarea input:focus, .input-text input:valid, .input-textarea input:valid, .input-text textarea:focus, .input-textarea textarea:focus, .input-text textarea:valid, .input-textarea textarea:valid {
+    opacity: 1;
+    color: #0d0d0d;
+}
+
+.input-text input:focus + .input-label .input-title, .input-textarea input:focus + .input-label .input-title, .input-text input:valid + .input-label .input-title, .input-textarea input:valid + .input-label .input-title, .input-text textarea:focus + .input-label .input-title, .input-textarea textarea:focus + .input-label .input-title, .input-text textarea:valid + .input-label .input-title, .input-textarea textarea:valid + .input-label .input-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.82645rem;
+    line-height: 0.975rem;
+    transform: translateY(-75%);
 }
 
 .range-generic {
@@ -1262,36 +1262,6 @@ select[multiple] {
     background: #cccccc;
 }
 
-.utility-loader {
-    visibility: visible;
-}
-
-.utility-loader {
-    display: none;
-}
-
-.utility-loader svg svg circle,
-  .utility-loader svg svg ellipse,
-  .utility-loader svg svg g,
-  .utility-loader svg svg path,
-  .utility-loader svg svg polyline,
-  .utility-loader svg svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.utility-loader svg circle {
-    stroke-width: 4px;
-    stroke: #0d0d0d;
-    fill: none;
-}
-
 .tool-explore, .tool-gallery, .tool-toggle {
     cursor: pointer;
     display: inline-flex;
@@ -1463,6 +1433,50 @@ select[multiple] {
     stroke-width: 6px;
 }
 
+.utility-loader {
+    visibility: visible;
+}
+
+.utility-loader {
+    display: none;
+    position: relative;
+    width: 6.5rem;
+    stroke-width: 4px;
+    stroke: #0d0d0d;
+    fill: none;
+}
+
+.utility-loader svg {
+    width: 100%;
+    height: 100%;
+}
+
+.utility-loader svg svg circle,
+    .utility-loader svg svg ellipse,
+    .utility-loader svg svg g,
+    .utility-loader svg svg path,
+    .utility-loader svg svg polyline,
+    .utility-loader svg svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.utility-loader .utility-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
 #dock,
 #explore,
 #filter {
@@ -1514,6 +1528,7 @@ select[multiple] {
 }
 
 #explore:checked ~ .app-main .panel-explore {
+    background-color: transparent;
     height: 100%;
     top: 0;
 }
@@ -1828,8 +1843,11 @@ body {
 }
 
 .board-gallery {
-    display: flex;
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .board-gallery > *:first-child {
@@ -1870,7 +1888,7 @@ body {
     z-index: 8888;
     display: flex;
     flex-direction: column;
-    transition: all 0.33s linear;
+    transition: top 0.33s linear;
     position: absolute;
 }
 
@@ -1933,6 +1951,7 @@ body {
 }
 
 .panel-explore {
+    background-color: #fcfcfc;
     color: #fcfcfc;
     width: 100%;
     left: 0;

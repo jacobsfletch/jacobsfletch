@@ -82,9 +82,10 @@ html
                 scrollAnimate = function(selector) {
                     var panel = document.getElementById(selector);
                     var originalOffset = panel.offsetTop;
-                    var panelSubtitle = document.getElementById("panelSubtitle");
+                    var loaderTitle = document.getElementById("loaderTitle");
                     var panelBackground = document.getElementById("panelBackground");
                     var panelLoader = document.getElementById("panelLoader");
+                    var circle = document.getElementById("circle");
 
                     if (window.addEventListener) {
                         window.addEventListener("mousewheel", moveHandler, false);
@@ -106,13 +107,26 @@ html
                     var start = 0;
                     var timeOut = 1;
                     var elapsedTime = 0;
+                    var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2;
+                    var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10);
+                    var panelHeight = parseInt(getComputedStyle(panelBackground).getPropertyValue("height"), 10);
 
                     function resetStyles() {
                         panel.style.top = ""; // Reset Panel offsetTop
                         panelLoader.style.display = ""; // Remove Loader
                         panelBackground.style.display = ""; // Reset Background
-                        panelSubtitle.innerHTML = ""; // Remove Subtitle
+                        loaderTitle.innerHTML = ""; // Remove Subtitle
+                        circle.style.strokeDasharray = "";
+                        circle.style.strokeDashoffset = "";
                         wheelDistance = 0; // Reset wheelDistance
+                    }
+
+                    function initSpinner(currentPercentage) {
+                        array = (loaderWidth - strokeWidth) * Math.PI; // Add Loader
+                        currentRatio = 1 - (currentPercentage / 100);
+                        circle.style.strokeDasharray = array;
+                        circle.style.strokeDashoffset = array * currentRatio;
+                        panelLoader.style.transform = "translateY(" + currentRatio + ")";
                     }
 
                     function startHandler(event) {
@@ -134,16 +148,15 @@ html
                                 if(currentPercentage <= 0) {
                                     resetStyles();
                                 }
-                                console.log(currentPercentage + "%");
-                                console.log(currentOffset + "px");
-                                console.log(wheelDistance + "px");
                             }
                             if(currentPercentage > 0) { // Moving Up
-                                panelSubtitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+                                loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
                                 if((currentPercentage < 100 || elapsedTime >= timeOut)) { // Threshold Not Met
                                     panel.style.top = currentOffset + "px"; // Animate Panel
                                     panelBackground.style.display = "none"; // Remove Background
-                                    panelLoader.style.display = "block"; // Add Loader
+                                    panelLoader.style.display = "inline-block"; // Add Loader
+                                    initSpinner(currentPercentage);
+
                                 } else { // Threshold Met
                                     checkbox.checked = true; // Check Checkbox
                                     resetStyles();
