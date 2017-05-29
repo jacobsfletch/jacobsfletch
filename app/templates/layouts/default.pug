@@ -79,17 +79,18 @@ html
                 ga('create', 'UA-72591985-3', 'auto');
                 ga('send', 'pageview');
 
-                scrollAnimate = function(selector) {
+                scrollAnimate = function(selector, parent) {
                     var panel = document.getElementById(selector);
                     var originalOffset = panel.offsetTop;
                     var loaderTitle = document.getElementById("loaderTitle");
-                    var panelBackground = document.getElementById("panelBackground");
+                    var panelBackground = document.getElementById(parent);
                     var panelLoader = document.getElementById("panelLoader");
                     var circle = document.getElementById("circle");
+                    var loaderContainer = document.getElementById("loaderContainer");
 
                     if (window.addEventListener) {
-                        window.addEventListener("mousewheel", moveHandler, false);
-                        window.addEventListener("DOMMouseScroll", moveHandler, false);
+                        // window.addEventListener("mousewheel", moveHandler, false);
+                        window.addEventListener("wheel", moveHandler, false);
                         window.addEventListener("touchstart", startHandler, false);
                         window.addEventListener("touchmove", moveHandler, false);
                         window.addEventListener("touchend", endHandler, false);
@@ -102,6 +103,7 @@ html
                     var touchDistance = 0;
                     var wheelDistance = 0;
                     var currentPercentage = 0;
+                    var displacement = 0;
                     var wheelRatio = 1;
                     var touchRatio = 3;
                     var start = 0;
@@ -110,23 +112,29 @@ html
                     var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2;
                     var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10);
                     var panelHeight = parseInt(getComputedStyle(panelBackground).getPropertyValue("height"), 10);
+                    var deltaY = 0;
 
-                    function resetStyles() {
+                    function reset() {
                         panel.style.top = ""; // Reset Panel offsetTop
                         panelLoader.style.display = ""; // Remove Loader
+                        loaderContainer.style.cssText = ""; // Remove Loader
                         panelBackground.style.display = ""; // Reset Background
                         loaderTitle.innerHTML = ""; // Remove Subtitle
                         circle.style.strokeDasharray = "";
                         circle.style.strokeDashoffset = "";
+                        loaderContainer.style.height = "";
+                        panel.style.transition = "";
                         wheelDistance = 0; // Reset wheelDistance
+                        deltaY = 0; // Reset FireFox Delta
                     }
 
-                    function initSpinner(currentPercentage) {
+                    function initSpinner(currentPercentage, displacement) {
                         array = (loaderWidth - strokeWidth) * Math.PI; // Add Loader
                         currentRatio = 1 - (currentPercentage / 100);
                         circle.style.strokeDasharray = array;
                         circle.style.strokeDashoffset = array * currentRatio;
                         panelLoader.style.transform = "translateY(" + currentRatio + ")";
+                        loaderContainer.style.height = parseInt(loaderContainer.offsetHeight, 10) - displacement + "px";
                     }
 
                     function startHandler(event) {
@@ -136,30 +144,38 @@ html
                     function moveHandler(event) {
                         checkbox = document.getElementById("explore"); // The Checkbox
                         if(!checkbox.checked) { // Checkbox Unchecked
-                            if(event.touches) {
+                            if(event.touches) { // Touch Event
                                 touchDistance = (start - event.touches[0].pageY); // Scroll Amount
                                 currentPercentage = Math.floor((touchDistance / mobileThreshold) * 100); // Calculate Respective Percentage
-                                currentOffset = (originalOffset - (touchDistance * touchRatio)); // Calculate Animation
+                                displacement = touchDistance * touchRatio;
+                                currentOffset = (originalOffset - displacement); // Calculate Animation
                             }
-                            if(event.wheelDelta) {
-                                wheelDistance = wheelDistance + (event.wheelDelta * -1);
+                            if(event.wheelDeltaY || event.deltaY) { // Wheel Event
+                                wheelDelta = event.wheelDeltaY || event.deltaY;
+                                if(event.wheelDeltaY) {
+                                    wheelDistance = wheelDistance + (wheelDelta * -1);
+                                } else { // FireFox Desktop Support
+                                    deltaY = deltaY + wheelDelta;
+                                    wheelDistance = deltaY;
+                                }
                                 currentPercentage = Math.floor((wheelDistance / desktopThreshold) * 100); // Calculate Respective Percentage
+                                displacement = wheelDistance * wheelRatio;
                                 currentOffset = (originalOffset - (wheelDistance * wheelRatio)); // Calculate Animation
                                 if(currentPercentage <= 0) {
-                                    resetStyles();
+                                    reset();
                                 }
                             }
-                            if(currentPercentage > 0) { // Moving Up
+                            if(currentPercentage >= 0) { // Moving Up
+                                panel.style.transition = "none";
                                 loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
                                 if((currentPercentage < 100 || elapsedTime >= timeOut)) { // Threshold Not Met
                                     panel.style.top = currentOffset + "px"; // Animate Panel
                                     panelBackground.style.display = "none"; // Remove Background
-                                    panelLoader.style.display = "inline-block"; // Add Loader
-                                    initSpinner(currentPercentage);
-
+                                    loaderContainer.style.cssText = "display: flex; display: -webkit-flex;";
+                                    initSpinner(currentPercentage, displacement);
                                 } else { // Threshold Met
                                     checkbox.checked = true; // Check Checkbox
-                                    resetStyles();
+                                    reset();
                                 }
                             }
                         }
@@ -167,10 +183,10 @@ html
 
                     function endHandler(event) { // End of Event
                         if(!checkbox.checked) { // Checkbox Unchecked
-                            resetStyles();
+                            reset();
                         }
                     }
 
                 }
 
-                scrollAnimate("panelExplore");
+            block pageJs
