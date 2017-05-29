@@ -1181,47 +1181,6 @@ select[multiple] {
     cursor: pointer;
 }
 
-.select-generic {
-    visibility: visible;
-}
-
-.select-generic {
-    border: 3px solid #cccccc;
-    position: relative;
-}
-
-.select-generic select {
-    position: relative;
-    width: 100%;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    background: none;
-    padding: 0 1.3rem 0 0.65rem;
-    z-index: 2;
-}
-
-.select-generic::before {
-    content: ' ';
-    position: absolute;
-    right: 1.95rem;
-    height: 100%;
-    border-right: 3px solid #cccccc;
-}
-
-.select-generic::after {
-    content: ' ';
-    position: absolute;
-    right: 0.65rem;
-    top: 50%;
-    height: 0.325rem;
-    width: 0.325rem;
-    border-bottom: 3px solid #cccccc;
-    border-right: 3px solid #cccccc;
-    transform-origin: top center;
-    transform: rotate(45deg) translateY(-50%);
-}
-
 .switch-generic {
     visibility: visible;
 }
@@ -1380,47 +1339,45 @@ select[multiple] {
     background: #cccccc;
 }
 
-.utility-loader {
+.select-generic {
     visibility: visible;
 }
 
-.utility-loader {
+.select-generic {
+    border: 3px solid #cccccc;
     position: relative;
-    width: 6.5rem;
-    stroke-width: 4px;
-    stroke: #0d0d0d;
-    fill: none;
 }
 
-.utility-loader svg {
+.select-generic select {
+    position: relative;
     width: 100%;
-    height: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    padding: 0 1.3rem 0 0.65rem;
+    z-index: 2;
 }
 
-.utility-loader svg svg circle,
-    .utility-loader svg svg ellipse,
-    .utility-loader svg svg g,
-    .utility-loader svg svg path,
-    .utility-loader svg svg polyline,
-    .utility-loader svg svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.utility-loader .utility-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
+.select-generic::before {
+    content: ' ';
     position: absolute;
-    left: 50%;
+    right: 1.95rem;
+    height: 100%;
+    border-right: 3px solid #cccccc;
+}
+
+.select-generic::after {
+    content: ' ';
+    position: absolute;
+    right: 0.65rem;
     top: 50%;
-    transform: translate3d(-50%, -50%, 0);
+    height: 0.325rem;
+    width: 0.325rem;
+    border-bottom: 3px solid #cccccc;
+    border-right: 3px solid #cccccc;
+    transform-origin: top center;
+    transform: rotate(45deg) translateY(-50%);
 }
 
 .tool-explore, .tool-gallery, .tool-toggle {
@@ -1592,6 +1549,49 @@ select[multiple] {
     height: 100%;
     stroke: #0d0d0d;
     stroke-width: 6px;
+}
+
+.utility-loader {
+    visibility: visible;
+}
+
+.utility-loader {
+    position: relative;
+    width: 6.5rem;
+    stroke-width: 4px;
+    stroke: #0d0d0d;
+    fill: none;
+}
+
+.utility-loader svg {
+    width: 100%;
+    height: 100%;
+}
+
+.utility-loader svg svg circle,
+    .utility-loader svg svg ellipse,
+    .utility-loader svg svg g,
+    .utility-loader svg svg path,
+    .utility-loader svg svg polyline,
+    .utility-loader svg svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.utility-loader .utility-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
 }
 
 #dock,
@@ -1851,6 +1851,7 @@ body {
 .bar-navigate::after {
     position: absolute;
     bottom: 0;
+    left: 0;
     content: "";
     border-bottom: 4px #0d0d0d solid;
     width: 100%;
