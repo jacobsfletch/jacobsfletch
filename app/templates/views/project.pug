@@ -7,80 +7,77 @@ include ../mixins/media/loader
 
 block appBody
     .screen-project
-        .board-gallery
-            #panelBackground
-                .bar-navigate
-                    .btn-nav
-                        a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
-                            p < prev
-                    .btn-nav 
-                        a.btn-title(href='/api/portfolio/' + project.slug + '/next')
-                            p next >
-                .board-header
-                    .board-subtitle
-                        h2
-                            if project.categories.length > 0
-                                each category, index in project.categories
-                                    | #{category.key}
-                                    if (index + 1) < project.categories.length
-                                        | , #{' '}
-                            else
-                                | no categories
-                        h2
-                            if project.tags.length > 0
-                                each tag, index in project.tags
-                                    | #{tag.key}
-                                    if (index + 1) < project.tags.length
-                                        | , #{' '}
+        #galleryStart.board-project
+            .bar-navigate
+                .bar-title.btn-nav
+                    a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
+                        p < prev
+                .bar-subtitle.btn-nav 
+                    a.btn-title(href='/api/portfolio/' + project.slug + '/next')
+                        p next >
+            .board-header
+                .board-subtitle
+                    h2
+                        if project.categories.length > 0
+                            each category, index in project.categories
+                                | #{category.key}
+                                if (index + 1) < project.categories.length
+                                    | , #{' '}
+                        else
+                            | no categories
+                    h2
+                        if project.tags.length > 0
+                            each tag, index in project.tags
+                                | #{tag.key}
+                                if (index + 1) < project.tags.length
+                                    | , #{' '}
 
-                            else
-                                | no tags
-                    .board-title
-                        h1 #{project.title}
-                .board-body
-                    .board-body-part
-                        h3
-                            if project.content
-                                | #{project.content}
-                            else
-                                | no content
-                    .board-body-part
-                        blockquote
-                            header
-                                p
-                                    if project.quote
-                                        | #{project.quote}
-                                    else
-                                        | no quote
-                            footer
-                                p
-                                    if project.quoteAuthor
-                                        | #{project.quoteAuthor}
-                                    else
-                                        | no quote author
+                        else
+                            | no tags
+                .board-title
+                    h1 #{project.title}
+            .board-body
+                .board-body-part
+                    h3
+                        if project.content
+                            | #{project.content}
+                        else
+                            | no content
+                .board-body-part
+                    blockquote
+                        header
+                            p
+                                if project.quote
+                                    | #{project.quote}
+                                else
+                                    | no quote
+                        footer
+                            p
+                                if project.quoteAuthor
+                                    | #{project.quoteAuthor}
+                                else
+                                    | no quote author
+        #loaderContainer.container-loader
             #panelLoader.utility-loader
                 +loader()
-            #panelExplore.panel-explore
-                .panel-header
-                    .wrapper
-                        label(for="explore")
-                            .panel-title
-                                p gallery
-                    //  .belt-gallery
-                        label.tool-gallery(for="grid-on")
-                            .tool-media
-                                +grid()
-                        label.tool-gallery(for="grid-off")
-                            .tool-media
-                                +fullScreen()
-                #panelBody.panel-body
-                    .wall-cards
-                        .wall-body
-                            if project.images.length > 0
-                                each image in project.images
-                                    .wall-body-part
-                                        .image-square
-                                            img(src=image.url)
-                            else
+        #panelExplore.panel-gallery
+            .panel-header
+                label(for="explore").panel-header
+                    .bar-navigate
+                        .bar-title
+                            p &nbsp;gallery
+                        .bar-subtitle
+            #panelBody.panel-body
+                .wall-cards
+                    .wall-body
+                        if project.images.length > 0
+                            each image in project.images
                                 .wall-body-part
-                                    p.type-p no images
+                                    .image-square
+                                        img(src=image.url)
+                        else
+                            .wall-body-part
+                                p.type-p no images
+block pageJs
+    script.
+        scrollAnimate("panelExplore", "galleryStart", "explore");

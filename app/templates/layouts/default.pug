@@ -33,6 +33,7 @@ html
         input#dock(type='checkbox')
         input#explore(type='checkbox')
         input#filter(type='checkbox')
+        input#portfolio(type='checkbox')
         input#grid-on(name="grid" type='radio' checked)
         input#grid-off(name="grid" type='radio')
         .app-main
@@ -79,23 +80,18 @@ html
                 ga('create', 'UA-72591985-3', 'auto');
                 ga('send', 'pageview');
 
-                scrollAnimate = function(selector, parent) {
+                scrollAnimate = function(selector, parent, input) {
                     var panel = document.getElementById(selector);
                     var originalOffset = panel.offsetTop;
                     var loaderTitle = document.getElementById("loaderTitle");
                     var panelBackground = document.getElementById(parent);
-                    var panelLoader = document.getElementById("panelLoader");
                     var circle = document.getElementById("circle");
                     var loaderContainer = document.getElementById("loaderContainer");
 
-                    if (window.addEventListener) {
-                        // window.addEventListener("mousewheel", moveHandler, false);
-                        window.addEventListener("wheel", moveHandler, false);
-                        window.addEventListener("touchstart", startHandler, false);
-                        window.addEventListener("touchmove", moveHandler, false);
-                        window.addEventListener("touchend", endHandler, false);
-                    }
-                    else window.attachEvent("onmousewheel", wheelHandler);
+                    window.addEventListener("wheel", moveHandler, false);
+                    window.addEventListener("touchstart", startHandler, false);
+                    window.addEventListener("touchmove", moveHandler, false);
+                    window.addEventListener("touchend", endHandler, false);
 
                     var originalOffset = panel.offsetTop;
                     var desktopThreshold = 300;
@@ -107,12 +103,16 @@ html
                     var wheelRatio = 1;
                     var touchRatio = 3;
                     var start = 0;
-                    var timeOut = 1;
+                    var timeout = 1000;
                     var elapsedTime = 0;
-                    var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2;
-                    var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10);
-                    var panelHeight = parseInt(getComputedStyle(panelBackground).getPropertyValue("height"), 10);
+                    var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
+                    var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10); // Parse Two Decimals In
+                    var panelHeight = parseInt(getComputedStyle(panelBackground).getPropertyValue("height"), 10); // Parse Two Decimals In
                     var deltaY = 0;
+
+                    function timer() {
+                        reset();
+                    }
 
                     function reset() {
                         panel.style.top = ""; // Reset Panel offsetTop
@@ -120,20 +120,19 @@ html
                         loaderContainer.style.cssText = ""; // Remove Loader
                         panelBackground.style.display = ""; // Reset Background
                         loaderTitle.innerHTML = ""; // Remove Subtitle
-                        circle.style.strokeDasharray = "";
-                        circle.style.strokeDashoffset = "";
-                        loaderContainer.style.height = "";
-                        panel.style.transition = "";
+                        circle.style.strokeDasharray = ""; // Reset dash-array
+                        circle.style.strokeDashoffset = ""; // Reset dash-offset
+                        loaderContainer.style.height = ""; // Reset Loader Container Height
+                        panel.style.transition = ""; // Reset Panel Position
                         wheelDistance = 0; // Reset wheelDistance
                         deltaY = 0; // Reset FireFox Delta
                     }
 
                     function initSpinner(currentPercentage, displacement) {
-                        array = (loaderWidth - strokeWidth) * Math.PI; // Add Loader
-                        currentRatio = 1 - (currentPercentage / 100);
-                        circle.style.strokeDasharray = array;
-                        circle.style.strokeDashoffset = array * currentRatio;
-                        panelLoader.style.transform = "translateY(" + currentRatio + ")";
+                        array = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
+                        currentRatio = 1 - (currentPercentage / 100); // Calculate Ratio Difference
+                        circle.style.strokeDasharray = array; // Style dash-array
+                        circle.style.strokeDashoffset = array * currentRatio; // Style dash-offset
                         loaderContainer.style.height = parseInt(loaderContainer.offsetHeight, 10) - displacement + "px";
                     }
 
@@ -142,40 +141,41 @@ html
                     }
 
                     function moveHandler(event) {
-                        checkbox = document.getElementById("explore"); // The Checkbox
+                        checkbox = document.getElementById(input); // The Checkbox
+                        console.log(checkbox);
                         if(!checkbox.checked) { // Checkbox Unchecked
                             if(event.touches) { // Touch Event
                                 touchDistance = (start - event.touches[0].pageY); // Scroll Amount
                                 currentPercentage = Math.floor((touchDistance / mobileThreshold) * 100); // Calculate Respective Percentage
-                                displacement = touchDistance * touchRatio;
-                                currentOffset = (originalOffset - displacement); // Calculate Animation
+                                displacement = touchDistance * touchRatio; // Integrate Ratio
+                                currentOffset = (originalOffset - displacement); // Calculate Offset
                             }
                             if(event.wheelDeltaY || event.deltaY) { // Wheel Event
-                                wheelDelta = event.wheelDeltaY || event.deltaY;
-                                if(event.wheelDeltaY) {
-                                    wheelDistance = wheelDistance + (wheelDelta * -1);
-                                } else { // FireFox Desktop Support
-                                    deltaY = deltaY + wheelDelta;
-                                    wheelDistance = deltaY;
+                                wheelDelta = event.wheelDeltaY || event.deltaY; // Conditional Variable to Accomodate FireFox
+                                if(event.wheelDeltaY) { // If Not Firefox
+                                    wheelDistance = wheelDistance + (wheelDelta * -1); // Calculate Wheel Distance
+                                } else { // If Firefox
+                                    deltaY = deltaY + wheelDelta; // Delta Ticker
+                                    wheelDistance = deltaY * 10; // Multiply by a Number - FireFox Increments by Only One
                                 }
                                 currentPercentage = Math.floor((wheelDistance / desktopThreshold) * 100); // Calculate Respective Percentage
-                                displacement = wheelDistance * wheelRatio;
-                                currentOffset = (originalOffset - (wheelDistance * wheelRatio)); // Calculate Animation
-                                if(currentPercentage <= 0) {
-                                    reset();
+                                displacement = wheelDistance * wheelRatio; // Integrate Ratio
+                                currentOffset = (originalOffset - (wheelDistance * wheelRatio)); // Calculate Offset
+                                if(currentPercentage <= 0) { // If Fully Scrolled Down
+                                    reset(); // Reset Styles
                                 }
                             }
-                            if(currentPercentage >= 0) { // Moving Up
+                            if(currentPercentage > 0) { // If Not Fully Scrolled Down
                                 panel.style.transition = "none";
                                 loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
-                                if((currentPercentage < 100 || elapsedTime >= timeOut)) { // Threshold Not Met
+                                if(currentPercentage < 100) { // Threshold Not Met
                                     panel.style.top = currentOffset + "px"; // Animate Panel
                                     panelBackground.style.display = "none"; // Remove Background
-                                    loaderContainer.style.cssText = "display: flex; display: -webkit-flex;";
+                                    loaderContainer.style.cssText = "display: flex; display: -webkit-flex;"; // Insert Display Style
                                     initSpinner(currentPercentage, displacement);
                                 } else { // Threshold Met
                                     checkbox.checked = true; // Check Checkbox
-                                    reset();
+                                    reset(); // Reset Styles
                                 }
                             }
                         }
@@ -183,7 +183,7 @@ html
 
                     function endHandler(event) { // End of Event
                         if(!checkbox.checked) { // Checkbox Unchecked
-                            reset();
+                            reset(); // Reset Styles
                         }
                     }
 

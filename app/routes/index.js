@@ -96,7 +96,7 @@ exports = module.exports = function(app) {
     app.get('/update', routes.views.oldbrowser);
 
     // Landing
-    app.get('/', routes.views.index);
+    app.get('/', routes.views.portfolio);
 
     // Documents
     app.get('/contact', routes.views.contact);
