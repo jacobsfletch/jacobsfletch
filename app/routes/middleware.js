@@ -19,6 +19,7 @@ var keystone = require('keystone');
 exports.initLocals = function(req, res, next) {
 	var locals = res.locals;
 	locals.navLinks = [
+		{ label: 'start',	    key: 'start',	    href: '/' },
 		{ label: 'portfolio',	key: 'portfolio',	href: '/portfolio' },
 		{ label: 'contact',		key: 'contact',		href: '/contact' },
         { label: 'about',       key: 'about',		href: '/about' },

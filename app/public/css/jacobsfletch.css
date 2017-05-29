@@ -1181,6 +1181,47 @@ select[multiple] {
     cursor: pointer;
 }
 
+.select-generic {
+    visibility: visible;
+}
+
+.select-generic {
+    border: 3px solid #cccccc;
+    position: relative;
+}
+
+.select-generic select {
+    position: relative;
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    padding: 0 1.3rem 0 0.65rem;
+    z-index: 2;
+}
+
+.select-generic::before {
+    content: ' ';
+    position: absolute;
+    right: 1.95rem;
+    height: 100%;
+    border-right: 3px solid #cccccc;
+}
+
+.select-generic::after {
+    content: ' ';
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    height: 0.325rem;
+    width: 0.325rem;
+    border-bottom: 3px solid #cccccc;
+    border-right: 3px solid #cccccc;
+    transform-origin: top center;
+    transform: rotate(45deg) translateY(-50%);
+}
+
 .switch-generic {
     visibility: visible;
 }
@@ -1337,47 +1378,6 @@ select[multiple] {
 
 .switch-generic input:checked + label::before {
     background: #cccccc;
-}
-
-.select-generic {
-    visibility: visible;
-}
-
-.select-generic {
-    border: 3px solid #cccccc;
-    position: relative;
-}
-
-.select-generic select {
-    position: relative;
-    width: 100%;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    background: none;
-    padding: 0 1.3rem 0 0.65rem;
-    z-index: 2;
-}
-
-.select-generic::before {
-    content: ' ';
-    position: absolute;
-    right: 1.95rem;
-    height: 100%;
-    border-right: 3px solid #cccccc;
-}
-
-.select-generic::after {
-    content: ' ';
-    position: absolute;
-    right: 0.65rem;
-    top: 50%;
-    height: 0.325rem;
-    width: 0.325rem;
-    border-bottom: 3px solid #cccccc;
-    border-right: 3px solid #cccccc;
-    transform-origin: top center;
-    transform: rotate(45deg) translateY(-50%);
 }
 
 .tool-explore, .tool-gallery, .tool-toggle {
@@ -1658,6 +1658,7 @@ select[multiple] {
 #explore:checked ~ .app-main .panel-gallery,
 #portfolio:checked ~ .app-main .panel-gallery {
     background-color: transparent;
+    color: #fcfcfc;
 }
 
 #explore:checked ~ .app-main .panel-gallery,
@@ -1673,14 +1674,14 @@ select[multiple] {
     color: #fcfcfc;
 }
 
-#explore:checked ~ .app-main .panel-header [for="explore"] .bar-title::before,
-  #portfolio:checked ~ .app-main .panel-header [for="explore"] .bar-title::before {
-    content: 'exit';
+#explore:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::before,
+  #portfolio:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::before {
+    content: "close";
 }
 
 #explore:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::after,
   #portfolio:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::after {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
 }
 
 #explore:checked ~ .app-main .utility-loader svg circle,
@@ -1837,7 +1838,6 @@ body {
     position: relative;
     display: flex;
     justify-content: space-between;
-    transition: all 0.33s linear;
     padding: 2.6rem 0;
     color: #0d0d0d;
 }
@@ -2116,7 +2116,7 @@ body {
 
 .panel-gallery {
     background-color: #fcfcfc;
-    color: #fcfcfc;
+    color: #0d0d0d;
     width: 100%;
     left: 0;
     overflow: hidden;
@@ -2148,13 +2148,13 @@ body {
     border-bottom: #fcfcfc 4px solid;
 }
 
-.panel-gallery .panel-header [for="explore"] .bar-title::before {
-    content: 'enter';
+.panel-gallery .panel-header [for="explore"] .bar-subtitle::before {
+    content: "open";
 }
 
 .panel-gallery .panel-header [for="explore"] .bar-subtitle::after {
     content: '>';
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
     transition: transform 0.33s linear;
 }
 
@@ -2252,6 +2252,17 @@ body {
 
 .screen-about .screen-body::-webkit-scrollbar, .screen-portfolio .screen-body::-webkit-scrollbar, .screen-project .screen-body::-webkit-scrollbar {
     display: none;
+}
+
+.screen-about {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screen-about:last-child {
+    flex-grow: 1;
 }
 
 .screen-project {

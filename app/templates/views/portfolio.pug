@@ -1,57 +1,14 @@
 extends ../layouts/default
 
 include ../mixins/components/cards
+include ../mixins/layouts/screens
 include ../mixins/media/chevron
 include ../mixins/media/loader
 
 block appBody
-    .screen-portfolio
-        #portfolioStart.container-micro
-            .container-header
-                h1.container-title
-                    if global.tagline.a
-                        | #{global.tagline.a}
-                    else
-                        | no tagline a
-                h2.container-subtitle
-                    if global.tagline.b
-                        | #{global.tagline.b}
-                    else
-                        | no tagline b
-        #loaderContainer.container-loader
-            #panelLoader.utility-loader
-                +loader()
-        #panelPortfolio.panel-portfolio
-            .widget-filter
-                .widget-body
-                    .widget-body-part
-                        .widget-subtitle
-                            h3 select all that apply
-                    .widget-body-part
-                        form#categories.form-filters
-                            each category in categories
-                                .checkbox-main
-                                    input(id="category-" + category.key name="category-" + category.key type='checkbox' checked)
-                                    label.checkbox-label(for="category-" + category.key)
-                                        .checkbox-input
-                                            .wrapper
-                                        .checkbox-title
-                                            p #{category.key}
-                label.widget-header(for="filter")
-                    .bar-navigate
-                        .bar-title
-                            p portfolio
-                        .bar-subtitle
-                            p filter
-            #panelBody.panel-body
-                .wall-cards
-                    .wall-body
-                        if projects
-                            each project in projects
-                                .wall-body-part
-                                    +cardProject(project)
-                        else
-                            p no projects
+    +screenPortfolio()
+
 block pageJs
     script.
         scrollAnimate("panelPortfolio", "portfolioStart", "portfolio");
+        document.getElementById("portfolio").checked = "true";

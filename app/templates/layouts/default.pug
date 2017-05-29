@@ -142,7 +142,6 @@ html
 
                     function moveHandler(event) {
                         checkbox = document.getElementById(input); // The Checkbox
-                        console.log(checkbox);
                         if(!checkbox.checked) { // Checkbox Unchecked
                             if(event.touches) { // Touch Event
                                 touchDistance = (start - event.touches[0].pageY); // Scroll Amount
@@ -189,4 +188,4 @@ html
 
                 }
 
-            block pageJs
+        block pageJs
