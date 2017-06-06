@@ -42,10 +42,10 @@ Project.add({
         many: true,
         initial: true,
     },
-    backlinks: {
+    related: {
         post: {
             type: Types.Relationship,
-            ref: 'Project',
+            ref: 'Post',
             initial: true,
         },
         product: {
@@ -58,7 +58,10 @@ Project.add({
         type: Types.CloudinaryImage
     },
     images: {
-        type: Types.CloudinaryImages
+        type: Types.CloudinaryImages,
+    },
+    videos: {
+        type: Types.TextArray
     },
     content: {
         type: Types.Html,

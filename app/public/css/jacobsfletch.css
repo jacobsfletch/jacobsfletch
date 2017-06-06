@@ -325,6 +325,28 @@ select[multiple] {
     }
 }
 
+.form-contact, .form-filters {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-contact > * {
+    margin-bottom: 1.3rem;
+}
+
+.form-contact > *:last-child {
+    margin-bottom: 0;
+}
+
+.form-filters > * {
+    margin-bottom: 0.65rem;
+}
+
+.form-filters > *:last-child {
+    margin-bottom: 0;
+}
+
 .container-dock {
     justify-content: space-between;
     flex-direction: column;
@@ -588,28 +610,6 @@ select[multiple] {
         font-size: 1rem;
         line-height: 1.3rem;
     }
-}
-
-.form-contact, .form-filters {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.form-contact > * {
-    margin-bottom: 1.3rem;
-}
-
-.form-contact > *:last-child {
-    margin-bottom: 0;
-}
-
-.form-filters > * {
-    margin-bottom: 0.65rem;
-}
-
-.form-filters > *:last-child {
-    margin-bottom: 0;
 }
 
 .menu-vertical {
@@ -2441,4 +2441,13 @@ body {
 
 .image-square > *.square {
     padding-top: 100%;
+}
+
+.video-square {
+    visibility: visible;
+}
+
+.video-square video {
+    width: 100%;
+    height: auto;
 }

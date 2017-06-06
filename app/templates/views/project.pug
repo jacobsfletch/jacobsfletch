@@ -71,14 +71,20 @@ block appBody
             #panelBody.panel-body
                 .wall-cards
                     .wall-body
-                        if project.images.length > 0
-                            each image in project.images
-                                .wall-body-part
-                                    .image-square
-                                        img(src=image.url)
+                        if project.images.length || project.videos.length
+                            if project.videos.length
+                                each video in project.videos
+                                    .wall-body-part
+                                        .video-square
+                                            video(src=video autoplay loop muted)
+                            if project.images.length
+                                each image in project.images
+                                    .wall-body-part
+                                        .image-square
+                                            img(src=image.url)
                         else
                             .wall-body-part
-                                p.type-p no images
+                                p.type-p no media
 block pageJs
     script.
         scrollAnimate("panelExplore", "galleryStart", "explore");
