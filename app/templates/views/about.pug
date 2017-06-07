@@ -1,8 +1,5 @@
 extends ../layouts/default
 
-include ../mixins/media/downarrow
-include ../mixins/media/fullscreen
-include ../mixins/media/grid
 include ../mixins/media/loader
 
 block appBody
@@ -81,6 +78,6 @@ block appBody
                             | !{resume.personal}
                         else
                             p no personals
-block pageJs
+block js
     script.
         scrollAnimate("panelExplore", "aboutStart", "explore");

@@ -1600,32 +1600,27 @@ select[multiple] {
 
 #dock,
 #explore,
-#filter {
+#filter,
+#portfolio {
     display: none;
 }
 
 #dock:checked ~ .app-main,
-  #explore:checked ~ .app-main,
-  #filter:checked ~ .app-main {
+#explore:checked ~ .app-main,
+#filter:checked ~ .app-main {
     border: solid #fcfcfc 0.65rem;
 }
 
 #dock:checked ~ .app-main .app-header .tool-toggle,
-    #explore:checked ~ .app-main .app-header .tool-toggle,
-    #filter:checked ~ .app-main .app-header .tool-toggle {
+  #explore:checked ~ .app-main .app-header .tool-toggle,
+  #filter:checked ~ .app-main .app-header .tool-toggle {
     border-color: #fcfcfc;
 }
 
 #dock:checked ~ .app-main .app-header .tool-toggle .tool-media svg,
-      #explore:checked ~ .app-main .app-header .tool-toggle .tool-media svg,
-      #filter:checked ~ .app-main .app-header .tool-toggle .tool-media svg {
+    #explore:checked ~ .app-main .app-header .tool-toggle .tool-media svg,
+    #filter:checked ~ .app-main .app-header .tool-toggle .tool-media svg {
     stroke: #fcfcfc;
-}
-
-#portfolio,
-#grid-on,
-#grid-off {
-    display: none;
 }
 
 #filter:checked ~ .app-main .panel-portfolio {
@@ -1711,20 +1706,6 @@ select[multiple] {
     transform: translateX(0);
     opacity: 1;
     flex: 1;
-}
-
-#grid-on:checked ~ .app-main [for="grid-on"] .tool-media::after {
-    opacity: 1;
-}
-
-#grid-off:checked ~ .app-main [for="grid-off"] .tool-media::after {
-    opacity: 1;
-}
-
-#grid-off:checked ~ .app-main .wall-cards .wall-body-part {
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
 }
 
 html,
