@@ -98,25 +98,40 @@ block js
         scrollAnimate("panelExplore", "galleryStart", "explore");
 
         var wallBodyPart = document.querySelectorAll('.wall-body-part');
-        var toggler = document.querySelectorAll('.tool-expand');
+        var toolExpand = document.querySelectorAll('.tool-expand');
+        var toolShrink = document.querySelectorAll('.tool-shrink');
         var array = [];
 
-        shrinkMedia = function(i) {
-
+        shrinkMedia = function(i, array) {
+            for (var j = 0; j <= array.length; j++) {
+                if (wallBodyPart[j] !== wallBodyPart[i]) {
+                    wallBodyPart[j].style.display = '';
+                }
+            }
+            wallBodyPart[i].style.width = '';
+            wallBodyPart[i].style.marginRight = '';
+            toolExpand[i].style.display = '';
+            toolShrink[i].style.display = '';
+            array.splice(i, 0, i);
+            console.log(array);
         }
 
         expandMedia = function(i, array) {
             array.splice(i, 1);
+            console.log(array);
             for (var j = 0; j <= array.length; j++) {
                 if (wallBodyPart[j] !== wallBodyPart[i]) {
                     wallBodyPart[j].style.display = 'none';
                 }
             }
             wallBodyPart[i].style.width = '100%';
-            wallBodyPart[i].style.margin = '0';
+            wallBodyPart[i].style.marginRight = '0';
+            toolExpand[i].style.display = 'none';
+            toolShrink[i].style.display = 'block';
+            toolShrink[i].addEventListener('click', shrinkMedia.bind(this, i, array));
         }
 
-        for (var i = 0; i < toggler.length; i++) {
+        for (var i = 0; i < toolExpand.length; i++) {
             array.push(i);
-            toggler[i].addEventListener('click', expandMedia.bind(this, i, array));
+            toolExpand[i].addEventListener('click', expandMedia.bind(this, i, array));
         }
