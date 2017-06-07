@@ -1,8 +1,7 @@
 extends ../layouts/default
 
-include ../mixins/media/downarrow
-include ../mixins/media/fullscreen
-include ../mixins/media/grid
+include ../mixins/media/expand
+include ../mixins/media/shrink
 include ../mixins/media/loader
 
 block appBody
@@ -31,7 +30,6 @@ block appBody
                                 | #{tag.key}
                                 if (index + 1) < project.tags.length
                                     | , #{' '}
-
                         else
                             | no tags
                 .board-title
@@ -77,14 +75,48 @@ block appBody
                                     .wall-body-part
                                         .video-square
                                             video(src=video autoplay loop muted)
+                                            .tool-expand
+                                                +expand()
+                                            .tool-shrink
+                                                +shrink()
                             if project.images.length
                                 each image in project.images
                                     .wall-body-part
                                         .image-square
                                             img(src=image.url)
+                                            .tool-expand
+                                                .tool-media
+                                                    +expand()
+                                            .tool-shrink
+                                                .tool-media
+                                                    +shrink()
                         else
                             .wall-body-part
                                 p.type-p no media
-block pageJs
+block js
     script.
         scrollAnimate("panelExplore", "galleryStart", "explore");
+
+        var wallBodyPart = document.querySelectorAll('.wall-body-part');
+        var toggler = document.querySelectorAll('.tool-expand');
+        var array = [];
+
+        shrinkMedia = function(i) {
+
+        }
+
+        expandMedia = function(i, array) {
+            array.splice(i, 1);
+            for (var j = 0; j <= array.length; j++) {
+                if (wallBodyPart[j] !== wallBodyPart[i]) {
+                    wallBodyPart[j].style.display = 'none';
+                }
+            }
+            wallBodyPart[i].style.width = '100%';
+            wallBodyPart[i].style.margin = '0';
+        }
+
+        for (var i = 0; i < toggler.length; i++) {
+            array.push(i);
+            toggler[i].addEventListener('click', expandMedia.bind(this, i, array));
+        }
