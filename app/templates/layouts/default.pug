@@ -80,18 +80,14 @@ html
             ga('send', 'pageview');
 
             scrollAnimate = function(selector, parent, input) {
+                // Init Element Queries
                 var panel = document.getElementById(selector);
                 var originalOffset = panel.offsetTop;
                 var loaderTitle = document.getElementById("loaderTitle");
                 var panelBackground = document.getElementById(parent);
                 var circle = document.getElementById("circle");
                 var loaderContainer = document.getElementById("loaderContainer");
-
-                window.addEventListener("wheel", moveHandler, false);
-                window.addEventListener("touchstart", startHandler, false);
-                window.addEventListener("touchmove", moveHandler, false);
-                window.addEventListener("touchend", endHandler, false);
-
+                // Init Variables
                 var originalOffset = panel.offsetTop;
                 var desktopThreshold = 300;
                 var mobileThreshold = 66;
@@ -109,20 +105,24 @@ html
                 var panelHeight = parseInt(getComputedStyle(panelBackground).getPropertyValue("height"), 10); // Parse Two Decimals In
                 var deltaY = 0;
 
+                // Init Event Listeners
+                window.addEventListener("wheel", moveHandler, false);
+                window.addEventListener("touchstart", startHandler, false);
+                window.addEventListener("touchmove", moveHandler, false);
+                window.addEventListener("touchend", endHandler, false);
+
                 function timer() {
                     reset();
                 }
 
                 function reset() {
-                    panel.style.top = ""; // Reset Panel offsetTop
-                    panelLoader.style.display = ""; // Remove Loader
-                    loaderContainer.style.cssText = ""; // Remove Loader
-                    panelBackground.style.display = ""; // Reset Background
+                    panel.removeAttribute('style'); // Reset panel Styles
+                    panelLoader.removeAttribute('style'); // Remove panelLoader Styles
+                    loaderContainer.removeAttribute('style'); // Reset loaderContainer Styles
+                    panelBackground.removeAttribute('style'); // Reset panelBackground Styles
+                    circle.removeAttribute('style'); // Reset circle Styles
+                    loaderContainer.removeAttribute('style'); // Reset loaderContainer Styles
                     loaderTitle.innerHTML = ""; // Remove Subtitle
-                    circle.style.strokeDasharray = ""; // Reset dash-array
-                    circle.style.strokeDashoffset = ""; // Reset dash-offset
-                    loaderContainer.style.height = ""; // Reset Loader Container Height
-                    panel.style.transition = ""; // Reset Panel Position
                     wheelDistance = 0; // Reset wheelDistance
                     deltaY = 0; // Reset FireFox Delta
                 }
@@ -185,6 +185,46 @@ html
                     }
                 }
 
+            }
+
+            mediaToggler = function() {
+                // Init variables
+                var array = [];
+                // Init Element Queries
+                var wallBodyPart = document.querySelectorAll('.wall-body-part');
+                var toolExpand = document.querySelectorAll('.tool-expand');
+                var toolShrink = document.querySelectorAll('.tool-shrink');
+
+                shrinkMedia = function(i, array) { // Shrink the media
+                    for (var j = 0; j <= array.length; j++) { // Loop through the spliced array
+                        if (wallBodyPart[j] !== wallBodyPart[i]) { // Select all in array except [i]
+                            wallBodyPart[j].removeAttribute('style'); // Remove styles from all except [i]
+                        }
+                    }
+                    wallBodyPart[i].removeAttribute('style'); // Remove styles from wallBodyPart
+                    toolExpand[i].removeAttribute('style'); // Remove styles from toolExpand
+                    toolShrink[i].removeAttribute('style'); // Remove styles from toolShrink
+                    array.splice(i, 0, i); // Splice i back into the array
+                }
+
+                expandMedia = function(i, array) { // Expand the media
+                    array.splice(i, 1); // Splice i from the array
+                    for (var j = 0; j <= array.length; j++) { // Loop through the spliced array
+                        if (wallBodyPart[j] !== wallBodyPart[i]) { // Select all in array except [i]
+                            wallBodyPart[j].style.display = 'none'; // Hide all except [i]
+                        }
+                    }
+                    wallBodyPart[i].style.width = '100%'; // Full width [i]
+                    wallBodyPart[i].style.marginRight = '0'; // Remove margins from [i]
+                    toolExpand[i].style.display = 'none'; // Hide toolExpand
+                    toolShrink[i].style.display = 'block'; // Make visible toolShrink
+                }
+
+                for (var i = 0; i < toolExpand.length; i++) { // Loop all toolExpand elements
+                    array.push(i); // Create numbered array of total toolExpand elements
+                    toolExpand[i].addEventListener('click', expandMedia.bind(this, i, array)); // Add click event to toolExpand and bind index
+                    toolShrink[i].addEventListener('click', shrinkMedia.bind(this, i, array)); // Add click event to toolShrink and bind index
+                }
             }
 
         block js
