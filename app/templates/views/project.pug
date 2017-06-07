@@ -76,9 +76,11 @@ block appBody
                                         .video-square
                                             video(src=video autoplay loop muted)
                                             .tool-expand
-                                                +expand()
+                                                .tool-media
+                                                    +expand()
                                             .tool-shrink
-                                                +shrink()
+                                                .tool-media
+                                                    +shrink()
                             if project.images.length
                                 each image in project.images
                                     .wall-body-part
