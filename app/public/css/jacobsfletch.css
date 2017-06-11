@@ -521,12 +521,11 @@ select[multiple] {
 .container-loader {
     display: none;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
+    padding-bottom: 5.2rem;
+    top: 0;
+    left: 0;
 }
 
 @media (max-width: 64em) {
@@ -1560,7 +1559,10 @@ select[multiple] {
 }
 
 .utility-loader {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
     width: 6.5rem;
     stroke-width: 4px;
     stroke: #0d0d0d;
@@ -1681,11 +1683,6 @@ select[multiple] {
 #explore:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::after,
   #portfolio:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::after {
     transform: rotate(90deg);
-}
-
-#explore:checked ~ .app-main .utility-loader svg circle,
-#portfolio:checked ~ .app-main .utility-loader svg circle {
-    stroke: #fcfcfc;
 }
 
 #dock:checked ~ .app-main .app-header .tool-toggle .tool-media {
@@ -2169,7 +2166,6 @@ body {
 }
 
 .panel-gallery .panel-body {
-    overflow-y: scroll;
     margin-right: -1.3rem;
     padding-right: 1.3rem;
     padding-top: 1.3rem;
@@ -2212,7 +2208,7 @@ body {
     flex-direction: column;
     position: relative;
     flex-grow: 1;
-    overflow: hidden;
+    overflow: scroll;
     width: 100%;
 }
 
@@ -2259,6 +2255,10 @@ body {
 
 .screen-project:last-child {
     flex-grow: 1;
+}
+
+.screen-project::-webkit-scrollbar {
+    display: none;
 }
 
 .wall-cards .wall-header {

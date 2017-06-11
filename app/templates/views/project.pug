@@ -5,7 +5,7 @@ include ../mixins/media/shrink
 include ../mixins/media/loader
 
 block appBody
-    .screen-project
+    #screenProject.screen-project
         #galleryStart.board-project
             .bar-navigate
                 .bar-title.btn-nav
@@ -97,5 +97,68 @@ block appBody
                                 p.type-p no media
 block js
     script.
-        scrollAnimate("panelExplore", "galleryStart", "explore");
+        // scrollAnimate("panelExplore", "galleryStart", "explore");
         mediaToggler();
+        var screenEl = document.getElementById('screenProject');
+        var panelBody = document.getElementById('panelBody');
+        var galleryStart = document.getElementById('galleryStart');
+        var loaderContainer = document.getElementById('loaderContainer');
+        var circle = document.getElementById("circle");
+        var loaderTitle = document.getElementById("loaderTitle");
+        var scrollTop = 0;
+        var offsetHeight = galleryStart.offsetHeight;
+        var paddingBottom = parseInt(window.getComputedStyle(galleryStart, null).getPropertyValue('padding-bottom'), 10);
+        var height = offsetHeight - paddingBottom;
+        var checkbox = document.getElementById('explore'); // The Checkbox
+        var currentPercentage = 0;
+        var displacement = 0;
+        var threshold = 150;
+        var currentRatio = 0;
+        var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
+        var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10); // Parse Two Decimals In
+        //var panelHeight = parseInt(getComputedStyle(panelBackground).getPropertyValue("height"), 10); // Parse Two Decimals In
+
+        screenEl.addEventListener('touchend', endHandler, false);
+        screenEl.addEventListener('touchcancel', endHandler, false);
+        screenEl.addEventListener('scroll', scrollHandler, false);
+        
+        function resetStyles() {
+            galleryStart.removeAttribute('style');
+            loaderContainer.removeAttribute('style'); // Remove panelLoader Styles
+        }
+        
+        function initSpinner(currentRatio, scrollTop) {
+            circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
+            loaderContainer.style.display = 'block';
+            loaderContainer.style.height = offsetHeight - scrollTop + 'px';
+            loaderContainer.style.transform = 'translateY(' + scrollTop + 'px)';
+            circle.style.strokeDasharray = circumference; // Style dash-array
+            circle.style.strokeDashoffset = circumference * (1 - currentRatio); // Style dash-offset
+            if (currentRatio > 0) {
+                currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
+                loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+            }
+        }
+
+        function scrollHandler() {
+            //setTimeout(endHandler, 3000);
+            scrollTop = screenEl.scrollTop;
+            if (scrollTop >= threshold) {
+                panelBody.style.overflow = 'scroll';
+                checkbox.checked = 'true';
+            } else if (scrollTop < 1) {
+                resetStyles();
+            } else {
+                galleryStart.style.visibility = 'hidden';
+                currentRatio = scrollTop / threshold;
+                initSpinner(currentRatio, scrollTop);
+            }
+        }
+
+        function endHandler() {
+            if (scrollTop <= threshold) {
+                screenEl.scrollTop = 0;
+            } else {
+                resetStyles();
+            }
+        }
