@@ -3,7 +3,7 @@ extends ../layouts/default
 include ../mixins/media/loader
 
 block appBody
-    .screen-about
+    #screenAbout.screen-about
         #aboutStart.board-project
             .board-header
                 .board-subtitle
@@ -80,4 +80,4 @@ block appBody
                             p no personals
 block js
     script.
-        scrollAnimate("panelExplore", "aboutStart", "explore");
+        scrollAnimate('screenAbout', 'aboutStart', 'explore');

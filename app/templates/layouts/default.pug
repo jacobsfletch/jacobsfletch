@@ -76,6 +76,84 @@ html
             ga('create', 'UA-72591985-3', 'auto');
             ga('send', 'pageview');
 
+            scrollAnimate = function(screenElement, startElement, checkboxElement) {
+                var screenEl = document.getElementById(screenElement);
+                var panelBody = document.getElementById('panelBody');
+                var startEl = document.getElementById(startElement);
+                var loaderContainer = document.getElementById('loaderContainer');
+                var circle = document.getElementById("circle");
+                var loaderTitle = document.getElementById("loaderTitle");
+                var scrollTop = 0;
+                var offsetHeight = startEl.offsetHeight;
+                var paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
+                var height = offsetHeight - paddingBottom;
+                var checkbox = document.getElementById(checkboxElement); // The Checkbox
+                var currentPercentage = 0;
+                var displacement = 0;
+                var threshold = 150;
+                var currentRatio = 0;
+                var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
+                var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10); // Parse Two Decimals In
+
+                window.addEventListener('resize', updateVariables, false);
+                screenEl.addEventListener('touchend', endHandler, false);
+                screenEl.addEventListener('touchcancel', endHandler, false);
+                screenEl.addEventListener('scroll', scrollHandler, false);
+                
+                    
+                function updateVariables() {
+                    offsetHeight = startEl.offsetHeight;
+                    paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
+                }
+                
+                function resetStyles() {
+                    screenEl.scrollTop = 0;
+                    startEl.removeAttribute('style');
+                    loaderContainer.removeAttribute('style'); // Remove panelLoader Styles
+                }
+                
+                function initSpinner(currentRatio, scrollTop) {
+                    circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
+                    loaderContainer.style.display = 'block';
+                    loaderContainer.style.height = offsetHeight - scrollTop + 'px';
+                    loaderContainer.style.transform = 'translateY(' + scrollTop + 'px)';
+                    circle.style.strokeDasharray = circumference; // Style dash-array
+                    circle.style.strokeDashoffset = circumference * (1 - currentRatio); // Style dash-offset
+                    if (currentRatio > 0) {
+                        currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
+                        loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+                    }
+                }
+
+                function scrollHandler() {
+                    //setTimeout(endHandler, 3000);
+                    if (!checkbox.checked) {
+                        scrollTop = screenEl.scrollTop;
+                        if (scrollTop >= threshold) {
+                            panelBody.style.overflow = 'scroll';
+                            checkbox.checked = 'true';
+                            resetStyles();
+                        } else if (scrollTop < 1) {
+                            resetStyles();
+                        } else {
+                            startEl.style.visibility = 'hidden';
+                            currentRatio = scrollTop / threshold;
+                            initSpinner(currentRatio, scrollTop);
+                        }
+                    } else {
+                        resetStyles();
+                    }
+                }
+
+                function endHandler() {
+                    if (scrollTop <= threshold) {
+                        screenEl.scrollTop = 0;
+                    } else {
+                        resetStyles();
+                    }
+                }
+            }
+
             mediaToggler = function() {
                 // Init variables
                 var array = [];
