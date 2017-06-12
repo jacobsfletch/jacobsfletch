@@ -113,22 +113,24 @@ html
                 }
                 
                 function initSpinner(currentRatio, scrollTop) {
-                    circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
-                    loaderContainer.style.display = 'block';
-                    loaderContainer.style.height = offsetHeight - scrollTop + 'px';
-                    loaderContainer.style.transform = 'translateY(' + scrollTop + 'px)';
-                    circle.style.strokeDasharray = circumference; // Style dash-array
-                    circle.style.strokeDashoffset = circumference * (1 - currentRatio); // Style dash-offset
-                    if (currentRatio > 0) {
-                        currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
-                        loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
-                    }
+                    //window.requestAnimationFrame(function() {
+                        circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
+                        loaderContainer.style.display = 'flex';
+                        loaderContainer.style.height = offsetHeight - scrollTop + 'px';
+                        loaderContainer.style.transform = 'translateY(' + scrollTop + 'px)';
+                        circle.style.strokeDasharray = circumference; // Style dash-array
+                        circle.style.strokeDashoffset = circumference * (1 - currentRatio); // Style dash-offset
+                        if (currentRatio > 0) {
+                            currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
+                            loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+                        }
+                    //});
                 }
 
                 function scrollHandler() {
                     //setTimeout(endHandler, 3000);
                     if (!checkbox.checked) {
-                        scrollTop = screenEl.scrollTop;
+                    scrollTop = screenEl.scrollTop;
                         if (scrollTop >= threshold) {
                             panelBody.style.overflow = 'scroll';
                             checkbox.checked = 'true';
