@@ -85,7 +85,7 @@ block appBody
                                 each image in project.images
                                     .wall-body-part
                                         .image-square
-                                            img(src=image.url)
+                                            img(data-src=image.url)
                                             .tool-expand
                                                 .tool-media
                                                     +expand()
@@ -99,3 +99,4 @@ block js
     script.
         mediaToggler();
         scrollAnimate('screenProject', 'galleryStart', 'explore');
+        responsiveImages();

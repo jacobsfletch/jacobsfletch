@@ -2,7 +2,7 @@ mixin cardProject(project)
     a(href='/portfolio/' + project.slug)
         .card-project
             .card-media
-                img.square(src=project.featuredImage.url)
+                img.square(data-src=project.featuredImage.url)
             header.card-header
                 .card-subtitle
                     h2

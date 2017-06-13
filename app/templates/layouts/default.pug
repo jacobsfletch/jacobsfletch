@@ -65,9 +65,7 @@ html
                                     a.btn-title my shop
             .app-body
                 block appBody
-
         // script(src='/js/jacobsfletch.min.js')
-
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -174,6 +172,7 @@ html
                     toolExpand[i].removeAttribute('style'); // Remove styles from toolExpand
                     toolShrink[i].removeAttribute('style'); // Remove styles from toolShrink
                     array.splice(i, 0, i); // Splice i back into the array
+                    responsiveImages();
                 }
 
                 expandMedia = function(i, array) { // Expand the media
@@ -184,9 +183,11 @@ html
                         }
                     }
                     wallBodyPart[i].style.width = '100%'; // Full width [i]
-                    wallBodyPart[i].style.margin = '0'; // Remove margins from [i]
+                    wallBodyPart[i].style.marginRight = '0'; // Remove margins from [i]
+                    wallBodyPart[i].style.marginLeft = '0'; // Remove margins from [i]
                     toolExpand[i].style.display = 'none'; // Hide toolExpand
                     toolShrink[i].style.display = 'block'; // Make visible toolShrink
+                    responsiveImages();
                 }
 
                 for (var i = 0; i < toolExpand.length; i++) { // Loop all toolExpand elements
@@ -195,5 +196,29 @@ html
                     toolShrink[i].addEventListener('click', shrinkMedia.bind(this, i, array)); // Add click event to toolShrink and bind index
                 }
             }
+            
+            responsiveImages = function(callImmediately) {
+                                                            
+                reloadImage = function() {
+                    imgs = document.getElementsByTagName('img');
+                    for (var i = 0; i < imgs.length; i++) {
+                        imgWidth = Math.ceil(parseInt(window.getComputedStyle(imgs[i], null).getPropertyValue('width'), 10));
+                        console.log(imgWidth);
+                        imgSrc = imgs[i].dataset.src;
+                        srcParse = imgSrc.split('upload/');
+                        for (var j = 0; j < srcParse.length; j++) {
+                            srcFirst = srcParse[0];
+                            srcLast = srcParse[1];
+                            newSrc = srcFirst + 'upload/w_' + imgWidth + '/' + srcLast;
+                            imgs[i].setAttribute('src', newSrc);
+                        }
+                    }
+                }
+                
+                window.addEventListener('resize', reloadImage, false);
 
+                reloadImage();
+                
+            }
+            
         block js
