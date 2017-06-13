@@ -1,8 +1,12 @@
+include ../media/loader
+
 mixin cardProject(project)
     a(href='/portfolio/' + project.slug)
-        .card-project
+        .card-portfolio
             .card-media
                 img.square(data-src=project.featuredImage.url)
+                .utility-loader
+                    +loader()
             header.card-header
                 .card-subtitle
                     h2
@@ -15,37 +19,3 @@ mixin cardProject(project)
                     .btn-main
                         .btn-title
                             p #{project.title}&nbsp;>
-
-mixin cardPost(post)
-    a(href='/blog/' + post.slug)
-        .card-post
-            header.card-header
-                .card-subtitle
-                    h2
-                        if post.categories.length > 0
-                            each category, index in post.categories
-                                | #{category.key}
-                                if (index + 1) < post.categories.length
-                                    | , #{' '}
-                .card-title
-                    .btn-main
-                        h3.btn-title #{post.title}
-            .card-body
-                p #{post.content.excerpt}
-
-mixin cardProduct(product)
-    a(href='/shop/' + product.slug)
-        .card-product
-            .card-media
-                div.square(style="background-image: url('" + product.featuredImage.url + "')")
-            header.card-header
-                .card-subtitle
-                    h2
-                        if product.categories.length > 0
-                            each category, index in product.categories
-                                | #{category.key}
-                                if (index + 1) < product.categories.length
-                                    | , #{' '}
-                .card-title
-                    .btn-main
-                        h3.btn-title #{product.title}

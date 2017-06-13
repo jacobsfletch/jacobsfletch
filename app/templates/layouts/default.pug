@@ -78,9 +78,9 @@ html
                 var screenEl = document.getElementById(screenElement);
                 var panelBody = document.getElementById('panelBody');
                 var startEl = document.getElementById(startElement);
-                var loaderContainer = document.getElementById('loaderContainer');
-                var circle = document.getElementById("circle");
-                var loaderTitle = document.getElementById("loaderTitle");
+                var scrollerContainer = document.getElementsByClassName('container-scroller')[0];
+                var circle = scrollerContainer.getElementsByTagName('circle')[0];
+                var scrollerTitle = scrollerContainer.getElementsByClassName('utility-title')[0];
                 var scrollTop = 0;
                 var offsetHeight = startEl.offsetHeight;
                 var paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
@@ -91,7 +91,7 @@ html
                 var threshold = 150;
                 var currentRatio = 0;
                 var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
-                var loaderWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10); // Parse Two Decimals In
+                var scrollerWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10); // Parse Two Decimals In
 
                 window.addEventListener('resize', updateVariables, false);
                 screenEl.addEventListener('touchend', endHandler, false);
@@ -107,20 +107,20 @@ html
                 function resetStyles() {
                     screenEl.scrollTop = 0;
                     startEl.removeAttribute('style');
-                    loaderContainer.removeAttribute('style'); // Remove panelLoader Styles
+                    scrollerContainer.removeAttribute('style'); // Remove panelLoader Styles
                 }
                 
                 function initSpinner(currentRatio, scrollTop) {
                     //window.requestAnimationFrame(function() {
-                        circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
-                        loaderContainer.style.display = 'flex';
-                        loaderContainer.style.height = offsetHeight - scrollTop + 'px';
-                        loaderContainer.style.transform = 'translateY(' + scrollTop + 'px)';
+                        circumference = (scrollerWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
+                        scrollerContainer.style.display = 'flex';
+                        scrollerContainer.style.height = offsetHeight - scrollTop + 'px';
+                        scrollerContainer.style.transform = 'translateY(' + scrollTop + 'px)';
                         circle.style.strokeDasharray = circumference; // Style dash-array
                         circle.style.strokeDashoffset = circumference * (1 - currentRatio); // Style dash-offset
                         if (currentRatio > 0) {
                             currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
-                            loaderTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+                            scrollerTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
                         }
                     //});
                 }
@@ -197,28 +197,66 @@ html
                 }
             }
             
-            responsiveImages = function(callImmediately) {
-                                                            
-                reloadImage = function() {
+            responsiveImages = function() {  
+                
+                loadImage = function() {
                     imgs = document.getElementsByTagName('img');
+                    
+                    resetStyles = function(i) {
+                        imgs[i].removeAttribute('style');
+                    }
+                    
                     for (var i = 0; i < imgs.length; i++) {
+                        imgs[i].style.visibility = 'hidden';
                         imgWidth = Math.ceil(parseInt(window.getComputedStyle(imgs[i], null).getPropertyValue('width'), 10));
-                        console.log(imgWidth);
-                        imgSrc = imgs[i].dataset.src;
-                        srcParse = imgSrc.split('upload/');
-                        for (var j = 0; j < srcParse.length; j++) {
-                            srcFirst = srcParse[0];
-                            srcLast = srcParse[1];
-                            newSrc = srcFirst + 'upload/w_' + imgWidth + '/' + srcLast;
-                            imgs[i].setAttribute('src', newSrc);
+                        if (imgs[i].dataset.src) {
+                            imgSrc = imgs[i].dataset.src;
+                            srcParse = imgSrc.split('upload/');
+                            for (var j = 0; j < srcParse.length; j++) {
+                                srcFirst = srcParse[0];
+                                srcLast = srcParse[1];
+                                newSrc = srcFirst + 'upload/w_' + imgWidth + '/' + srcLast;
+                                imgs[i].addEventListener('load', resetStyles.bind(this, i), false);
+                                imgs[i].setAttribute('src', newSrc);
+                            }
                         }
                     }
                 }
                 
-                window.addEventListener('resize', reloadImage, false);
+                window.addEventListener('resize', loadImage, false);
 
-                reloadImage();
+                loadImage();
                 
+            }
+            
+            loaderAnimate = function() {
+                initLoader = function() {
+                    var loaders = document.getElementsByClassName('utility-loader');
+                    var strokeWidth = parseInt(getComputedStyle(loaders[0]).getPropertyValue('stroke-width'), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
+                    var loaderWidth = parseInt(getComputedStyle(loaders[0]).getPropertyValue('width'), 10); // Parse Two Decimals In
+                    var dashLength = parseInt(getComputedStyle(loaders[0]).getPropertyValue("stroke-dasharray"), 10); // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
+                    var circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
+                    var difference = circumference - dashLength;
+                    var ticker = circumference;
+                    
+                    startLoader = function(firstLoader, callback) {
+                        for (i = 0; i < loaders.length; i++) {
+                            loaders[i].style.strokeDasharray = dashLength + ',' + difference;
+                            loaders[i].style.strokeDashoffset = ticker;
+                        }
+                        firstLoader.addEventListener('transitionend', callback);
+                    }
+                    
+                    finishLoader = function() {
+                        ticker = ticker + circumference;
+                        startLoader(loaders[0], finishLoader);
+                        console.log(ticker);
+                    }
+                    
+                    startLoader(loaders[0], finishLoader);
+                    
+                }
+                initLoader();
             }
             
         block js

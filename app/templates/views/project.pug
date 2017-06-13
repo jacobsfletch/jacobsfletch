@@ -2,6 +2,7 @@ extends ../layouts/default
 
 include ../mixins/media/expand
 include ../mixins/media/shrink
+include ../mixins/media/scroller
 include ../mixins/media/loader
 
 block appBody
@@ -55,9 +56,9 @@ block appBody
                                     | #{project.quoteAuthor}
                                 else
                                     | no quote author
-        #loaderContainer.container-loader
-            #panelLoader.utility-loader
-                +loader()
+        #loaderContainer.container-scroller
+            #panelLoader.utility-scroller
+                +scroller()
         #panelExplore.panel-gallery
             .panel-header
                 label(for="explore").panel-header
@@ -73,8 +74,11 @@ block appBody
                             if project.videos.length
                                 each video in project.videos
                                     .wall-body-part
-                                        .video-square
-                                            video(src=video autoplay loop muted)
+                                        .card-project
+                                            .card-media
+                                                video(src=video autoplay loop muted)
+                                                .utility-loader
+                                                    +loader()
                                             .tool-expand
                                                 .tool-media
                                                     +expand()
@@ -84,8 +88,11 @@ block appBody
                             if project.images.length
                                 each image in project.images
                                     .wall-body-part
-                                        .image-square
-                                            img(data-src=image.url)
+                                        .card-project
+                                            .card-media
+                                                img(data-src=image.url)
+                                                .utility-loader
+                                                    +loader()
                                             .tool-expand
                                                 .tool-media
                                                     +expand()
@@ -100,3 +107,4 @@ block js
         mediaToggler();
         scrollAnimate('screenProject', 'galleryStart', 'explore');
         responsiveImages();
+        loaderAnimate();

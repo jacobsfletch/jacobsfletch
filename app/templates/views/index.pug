@@ -3,7 +3,7 @@ extends ../layouts/default
 include ../mixins/components/cards
 include ../mixins/layouts/screens
 include ../mixins/media/chevron
-include ../mixins/media/loader
+include ../mixins/media/scroller
 
 block appBody
     +screenPortfolio()
@@ -12,3 +12,4 @@ block js
     script.
         scrollAnimate('screenPortfolio', 'portfolioStart', 'portfolio');
         responsiveImages();
+        loaderAnimate();

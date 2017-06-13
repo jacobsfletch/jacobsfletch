@@ -12,9 +12,9 @@ mixin screenPortfolio()
                         | #{global.tagline.b}
                     else
                         | no tagline b
-        #loaderContainer.container-loader
-            #panelLoader.utility-loader
-                +loader()
+        #loaderContainer.container-scroller
+            #panelLoader.utility-scroller
+                +scroller()
         #panelPortfolio.panel-portfolio
             .widget-filter
                 .widget-body

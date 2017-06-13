@@ -1,6 +1,6 @@
 extends ../layouts/default
 
-include ../mixins/media/loader
+include ../mixins/media/scroller
 
 block appBody
     #screenAbout.screen-about
@@ -35,9 +35,9 @@ block appBody
                                     | no quote
                         footer
                             p i said that
-        #loaderContainer.container-loader
-            #panelLoader.utility-loader
-                +loader()
+        #loaderContainer.container-scroller
+            #panelLoader.utility-scroller
+                +scroller()
         #panelExplore.panel-gallery
             .panel-header
                 label(for="explore").panel-header
