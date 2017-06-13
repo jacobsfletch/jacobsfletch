@@ -75,23 +75,30 @@ html
             ga('send', 'pageview');
 
             scrollAnimate = function(screenElement, startElement, checkboxElement) {
+                // Query Elements
                 var screenEl = document.getElementById(screenElement);
                 var panelBody = document.getElementById('panelBody');
                 var startEl = document.getElementById(startElement);
                 var scrollerContainer = document.getElementsByClassName('container-scroller')[0];
-                var circle = scrollerContainer.getElementsByTagName('circle')[0];
+                var utilityScroller = scrollerContainer.getElementsByClassName('utility-scroller')[0];                
                 var scrollerTitle = scrollerContainer.getElementsByClassName('utility-title')[0];
-                var scrollTop = 0;
+                var checkbox = document.getElementById(checkboxElement);
+                // Initiate Constants
                 var offsetHeight = startEl.offsetHeight;
                 var paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
                 var height = offsetHeight - paddingBottom;
-                var checkbox = document.getElementById(checkboxElement); // The Checkbox
+                // Calculate Circumference
+                var path = scrollerContainer.getElementsByTagName('path')[0];
+                var originalWidth = parseInt(utilityScroller.getElementsByTagName('svg')[0].getAttribute('width'), 10);
+                var transformedWidth = parseInt(getComputedStyle(utilityScroller).getPropertyValue('width'), 10);
+                var differenceRatio = transformedWidth / originalWidth;
+                var circumference = path.getTotalLength() * differenceRatio;
+                // Initiate variables
                 var currentPercentage = 0;
                 var displacement = 0;
                 var threshold = 150;
                 var currentRatio = 0;
-                var strokeWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("stroke-width"), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
-                var scrollerWidth = parseInt(getComputedStyle(panelLoader).getPropertyValue("width"), 10); // Parse Two Decimals In
+                var scrollTop = 0;
 
                 window.addEventListener('resize', updateVariables, false);
                 screenEl.addEventListener('touchend', endHandler, false);
@@ -112,12 +119,11 @@ html
                 
                 function initSpinner(currentRatio, scrollTop) {
                     //window.requestAnimationFrame(function() {
-                        circumference = (scrollerWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
                         scrollerContainer.style.display = 'flex';
                         scrollerContainer.style.height = offsetHeight - scrollTop + 'px';
                         scrollerContainer.style.transform = 'translateY(' + scrollTop + 'px)';
-                        circle.style.strokeDasharray = circumference; // Style dash-array
-                        circle.style.strokeDashoffset = circumference * (1 - currentRatio); // Style dash-offset
+                        path.style.strokeDasharray = circumference; // Style dash-array
+                        path.style.strokeDashoffset = circumference * (1 - -currentRatio); // Style dash-offset
                         if (currentRatio > 0) {
                             currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
                             scrollerTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
@@ -203,7 +209,7 @@ html
                     imgs = document.getElementsByTagName('img');
                     
                     resetStyles = function(i) {
-                        imgs[i].removeAttribute('style');
+                        this.removeAttribute('style');
                     }
                     
                     for (var i = 0; i < imgs.length; i++) {
@@ -216,7 +222,7 @@ html
                                 srcFirst = srcParse[0];
                                 srcLast = srcParse[1];
                                 newSrc = srcFirst + 'upload/w_' + imgWidth + '/' + srcLast;
-                                imgs[i].addEventListener('load', resetStyles.bind(this, i), false);
+                                imgs[i].addEventListener('load', resetStyles, false);
                                 imgs[i].setAttribute('src', newSrc);
                             }
                         }
@@ -231,11 +237,15 @@ html
             
             loaderAnimate = function() {
                 initLoader = function() {
+                    // Query Elements
                     var loaders = document.getElementsByClassName('utility-loader');
-                    var strokeWidth = parseInt(getComputedStyle(loaders[0]).getPropertyValue('stroke-width'), 10) * 2; // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
-                    var loaderWidth = parseInt(getComputedStyle(loaders[0]).getPropertyValue('width'), 10); // Parse Two Decimals In
+                    // Calculate for Circumference
+                    var originalWidth = parseInt(loaders[0].getElementsByTagName('svg')[0].getAttribute('width'), 10);
+                    var transformedWidth = parseInt(getComputedStyle(loaders[0]).getPropertyValue('width'), 10);
+                    var differenceRatio = transformedWidth / originalWidth;
+                    var circumference = loaders[0].getElementsByTagName('path')[0].getTotalLength() * differenceRatio;
+                    // Initiate Variables
                     var dashLength = parseInt(getComputedStyle(loaders[0]).getPropertyValue("stroke-dasharray"), 10); // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
-                    var circumference = (loaderWidth - strokeWidth) * Math.PI; // Calculate Loader Circumference
                     var difference = circumference - dashLength;
                     var ticker = circumference;
                     
@@ -250,7 +260,6 @@ html
                     finishLoader = function() {
                         ticker = ticker + circumference;
                         startLoader(loaders[0], finishLoader);
-                        console.log(ticker);
                     }
                     
                     startLoader(loaders[0], finishLoader);
