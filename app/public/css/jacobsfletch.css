@@ -301,6 +301,10 @@ select[multiple] {
     top: 0;
 }
 
+.card-portfolio .card-media > img.is-inactive, .card-project .card-media > img.is-inactive, .card-portfolio .card-media > video.is-inactive, .card-project .card-media > video.is-inactive {
+    visibility: hidden;
+}
+
 .card-portfolio {
     position: relative;
     display: block;
@@ -1502,6 +1506,16 @@ select[multiple] {
     stroke: #0d0d0d;
 }
 
+.tool-expand.is-inactive,
+  .tool-shrink.is-inactive {
+    display: none;
+}
+
+.tool-expand.is-active,
+  .tool-shrink.is-active {
+    display: block;
+}
+
 .tool-gallery {
     height: 100%;
 }
@@ -2398,6 +2412,19 @@ body {
 
 .wall-cards .wall-body .wall-body-part:hover .tool-expand {
     display: block;
+}
+
+.wall-cards .wall-body .wall-body-part.is-inactive {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+}
+
+.wall-cards .wall-body .wall-body-part.is-active {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .wall-cards .wall-footer {
