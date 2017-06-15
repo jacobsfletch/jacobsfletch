@@ -267,6 +267,101 @@ select[multiple] {
     color: #0d0d0d;
 }
 
+.belt-gallery {
+    display: flex;
+    align-items: center;
+}
+
+.belt-gallery > * {
+    padding-right: 1.3rem;
+}
+
+@media (max-width: 64em) {
+    .belt-gallery > * {
+        padding-right: 0.65rem;
+    }
+}
+
+.belt-gallery > *:last-child {
+    padding-right: 0;
+}
+
+.card-portfolio, .card-project {
+    display: block;
+}
+
+.card-portfolio .card-media, .card-project .card-media {
+    background-position: center;
+    padding-top: 100%;
+    height: 0;
+}
+
+.card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
+    z-index: 3333;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.card-portfolio .card-media > img.is-inactive, .card-project .card-media > img.is-inactive, .card-portfolio .card-media > video.is-inactive, .card-project .card-media > video.is-inactive {
+    visibility: hidden;
+}
+
+.card-portfolio {
+    position: relative;
+    transition: background-color 0.33s linear;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card-portfolio:hover .card-header {
+    display: flex;
+}
+
+.card-portfolio .card-header {
+    z-index: 5555;
+    color: #fcfcfc;
+    display: none;
+    position: absolute;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.3rem;
+    background-color: #0d0d0d;
+}
+
+.card-portfolio .card-header .card-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    display: flex;
+    padding-bottom: 0.325rem;
+}
+
+@media (max-width: 29.25em) {
+    .card-portfolio .card-header .card-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.21667rem;
+    }
+}
+
+.card-project video {
+    width: 100%;
+    height: auto;
+}
+
+.card-project .utility-loader {
+    stroke: #fcfcfc;
+}
+
 .container-dock {
     justify-content: space-between;
     flex-direction: column;
@@ -531,101 +626,6 @@ select[multiple] {
     .container-scroller {
         padding-bottom: 2.6rem;
     }
-}
-
-.belt-gallery {
-    display: flex;
-    align-items: center;
-}
-
-.belt-gallery > * {
-    padding-right: 1.3rem;
-}
-
-@media (max-width: 64em) {
-    .belt-gallery > * {
-        padding-right: 0.65rem;
-    }
-}
-
-.belt-gallery > *:last-child {
-    padding-right: 0;
-}
-
-.card-portfolio, .card-project {
-    display: block;
-}
-
-.card-portfolio .card-media, .card-project .card-media {
-    background-position: center;
-    padding-top: 100%;
-    height: 0;
-}
-
-.card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
-    z-index: 3333;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.card-portfolio .card-media > img.is-inactive, .card-project .card-media > img.is-inactive, .card-portfolio .card-media > video.is-inactive, .card-project .card-media > video.is-inactive {
-    visibility: hidden;
-}
-
-.card-portfolio {
-    position: relative;
-    transition: background-color 0.33s linear;
-    cursor: pointer;
-    height: 100%;
-}
-
-.card-portfolio:hover .card-header {
-    display: flex;
-}
-
-.card-portfolio .card-header {
-    z-index: 5555;
-    color: #fcfcfc;
-    display: none;
-    position: absolute;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex-wrap: wrap;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 1.3rem;
-    background-color: #0d0d0d;
-}
-
-.card-portfolio .card-header .card-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    display: flex;
-    padding-bottom: 0.325rem;
-}
-
-@media (max-width: 29.25em) {
-    .card-portfolio .card-header .card-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-        padding-bottom: 0.21667rem;
-    }
-}
-
-.card-project video {
-    width: 100%;
-    height: auto;
-}
-
-.card-project .utility-loader {
-    stroke: #fcfcfc;
 }
 
 .form-contact, .form-filters {
@@ -1460,6 +1460,7 @@ select[multiple] {
     width: 100%;
     height: 100%;
     transform: translate3d(-50%, -50%, 0);
+    overflow: visible;
 }
 
 .tool-expand .tool-media svg svg circle,
@@ -1488,7 +1489,7 @@ select[multiple] {
     .tool-shrink .tool-media polyline {
     vector-effect: non-scaling-stroke;
     fill: none;
-    stroke-width: 4px;
+    stroke-width: 3px;
     stroke: #0d0d0d;
 }
 
@@ -1778,8 +1779,8 @@ select[multiple] {
 }
 
 #dock:checked ~ .app-main .app-footer {
-    padding: 1.3rem;
     padding-top: 0.65rem;
+    padding-bottom: 1.3rem;
     transform: translateX(0);
     opacity: 1;
     flex: 1;
@@ -1791,6 +1792,8 @@ body {
 }
 
 .app-main {
+    padding: 0 1.3rem;
+    padding-top: 1.3rem;
     border: solid #0d0d0d 0.65rem;
     width: 100vw;
     height: 100%;
@@ -1798,11 +1801,6 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-}
-
-.app-main .app-header {
-    padding: 1.3rem;
-    padding-bottom: 0;
 }
 
 .app-main .app-header .wrapper {
@@ -1855,7 +1853,6 @@ body {
 }
 
 .app-main .app-body {
-    padding: 0 1.3rem;
     flex-grow: 1;
     opacity: 1;
     width: 100%;
@@ -2281,7 +2278,7 @@ body {
     flex-direction: column;
     position: relative;
     flex-grow: 1;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100%;
 }
 

@@ -136,7 +136,7 @@ html
                     if (!checkbox.checked) {
                     scrollTop = screenEl.scrollTop;
                         if (scrollTop >= threshold) {
-                            panelBody.style.overflow = 'scroll';
+                            panelBody.style.overflowY = 'scroll';
                             checkbox.checked = 'true';
                             resetStyles();
                         } else if (scrollTop < 1) {
@@ -257,7 +257,16 @@ html
                     img = cardMedia.getElementsByTagName('img')[0];
                     imgWidth = Math.ceil(parseInt(getComputedStyle(img, null).getPropertyValue('width'), 10));
                     newWidth = imgWidth * dppi;
-                    img.addEventListener('load', callback);
+                    img.addEventListener('load', function() {
+                        self = this;
+                        result = 'success';
+                        callback(self, result);
+                    });
+                    img.addEventListener('error', function() {
+                        self = this
+                        result = 'error';
+                        callback(self, result)
+                    });
                     // img.classList.add('is-inactive');
                     if (img.dataset.src) {
                         imgSrc = img.dataset.src;
@@ -276,8 +285,12 @@ html
                         cardMedia = cardMedias[i];
                         video = cardMedia.getElementsByTagName('video');
                         if (!video.length) {
-                            loadImage(cardMedia, function() {
-                                console.log('calledback');
+                            loadImage(cardMedia, function(self, result) {
+                                if (result = 'error') {
+                                    console.log('error loading image');
+                                } else if (result = 'success') {
+                                    console.log('successful');
+                                }
                             });
                         }
                     }
@@ -288,8 +301,12 @@ html
                     
                     video = cardMedia.getElementsByTagName('video');
                     if (!video.length) {
-                        loadImage(cardMedia, function() {
-                            console.log('calledback');
+                        loadImage(cardMedia, function(self, error) {
+                            if (result = 'error') {
+                                console.log('error loading image');
+                            } else if (result = 'success') {
+                                console.log('successful');
+                            }
                         });
                     }
                     status = 'single';

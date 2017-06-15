@@ -55,10 +55,10 @@ Project.add({
         }
     },
     featuredImage: {
-        type: Types.CloudinaryImage
+        type: Types.Text
     },
     images: {
-        type: Types.CloudinaryImages,
+        type: Types.TextArray
     },
     videos: {
         type: Types.TextArray
