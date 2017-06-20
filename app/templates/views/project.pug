@@ -70,35 +70,20 @@ block appBody
             #panelBody.panel-body
                 .wall-cards
                     .wall-body
-                        if project.images.length || project.videos.length
-                            if project.videos.length
-                                each video in project.videos
-                                    .wall-body-part
-                                        .card-project
-                                            .card-media
-                                                video(src=video autoplay loop muted)
-                                                .utility-loader
-                                                    +loader()
-                                            .tool-expand.is-inactive
-                                                .tool-media
-                                                    +expand()
-                                            .tool-shrink.is-inactive
-                                                .tool-media
-                                                    +shrink()
-                            if project.images.length
-                                each image in project.images
-                                    .wall-body-part
-                                        .card-project
-                                            .card-media
-                                                img(data-src=image)
-                                                .utility-loader
-                                                    +loader()
-                                            .tool-expand.is-inactive
-                                                .tool-media
-                                                    +expand()
-                                            .tool-shrink.is-inactive
-                                                .tool-media
-                                                    +shrink()
+                        if project.images.length
+                            each image in project.images
+                                .wall-body-part
+                                    .card-project
+                                        .card-media
+                                            img(data-src=image)
+                                            .utility-loader
+                                                +loader()
+                                        .tool-expand.is-inactive
+                                            .tool-media
+                                                +expand()
+                                        .tool-shrink.is-inactive
+                                            .tool-media
+                                                +shrink()
                         else
                             .wall-body-part
                                 p.type-p no media

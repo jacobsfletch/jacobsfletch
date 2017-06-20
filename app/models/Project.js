@@ -60,9 +60,6 @@ Project.add({
     images: {
         type: Types.TextArray
     },
-    videos: {
-        type: Types.TextArray
-    },
     content: {
         type: Types.Html,
         wysiwyg: false,
