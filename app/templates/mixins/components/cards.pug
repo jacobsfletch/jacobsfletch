@@ -4,7 +4,7 @@ mixin cardProject(project)
     a(href='/portfolio/' + project.slug)
         .card-portfolio
             .card-media
-                img(data-src=project.featuredImage)
+                img(data-src=project.featuredImage alt='portfolio image')
                 .utility-loader
                     +loader()
             header.card-header
