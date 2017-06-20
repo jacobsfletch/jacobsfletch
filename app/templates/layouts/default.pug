@@ -74,6 +74,12 @@ html
             ga('create', 'UA-72591985-3', 'auto');
             ga('send', 'pageview');
 
+            ////////////////////////////////////////////////////////////////////////////
+
+            // scrollAnimate
+
+            ////////////////////////////////////////////////////////////////////////////
+
             scrollAnimate = function(screenElement, startElement, checkboxElement) {
                 // Query Elements
                 var screenEl = document.getElementById(screenElement);
@@ -118,21 +124,18 @@ html
                 }
 
                 function initSpinner(currentRatio, scrollTop) {
-                    //window.requestAnimationFrame(function() {
-                        scrollerContainer.style.display = 'flex';
-                        scrollerContainer.style.height = offsetHeight - scrollTop + 'px';
-                        scrollerContainer.style.transform = 'translateY(' + scrollTop + 'px)';
-                        path.style.strokeDasharray = circumference; // Style dash-array
-                        path.style.strokeDashoffset = circumference * (1 - -currentRatio); // Style dash-offset
-                        if (currentRatio > 0) {
-                            currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
-                            scrollerTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
-                        }
-                    //});
+                    scrollerContainer.style.display = 'flex';
+                    scrollerContainer.style.height = offsetHeight - scrollTop + 'px';
+                    scrollerContainer.style.transform = 'translateY(' + scrollTop + 'px)';
+                    path.style.strokeDasharray = circumference; // Style dash-array
+                    path.style.strokeDashoffset = circumference * (1 - -currentRatio); // Style dash-offset
+                    if (currentRatio > 0) {
+                        currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
+                        scrollerTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+                    }
                 }
 
                 function scrollHandler() {
-                    //setTimeout(endHandler, 3000);
                     if (!checkbox.checked) {
                     scrollTop = screenEl.scrollTop;
                         if (scrollTop >= threshold) {
@@ -162,68 +165,11 @@ html
 
             ////////////////////////////////////////////////////////////////////////////
 
-            // mediaToggler
+            // initLoader
 
             ////////////////////////////////////////////////////////////////////////////
 
-            mediaToggler = function() {
-                // Init variables
-                var array = [];
-                // Init Element Queries
-                var wallBodyPart = document.querySelectorAll('.wall-body-part');
-                var toolExpand = document.querySelectorAll('.tool-expand');
-                var toolShrink = document.querySelectorAll('.tool-shrink');
-
-                shrinkMedia = function(i, array) { // Shrink the media
-                    for (var j = 0; j <= array.length; j++) { // Loop through the spliced array
-                        if (wallBodyPart[j] !== wallBodyPart[i]) { // Select all in array except [i]
-                            wallBodyPart[j].removeAttribute('style'); // Remove styles from all except [i]
-                        }
-                    }
-                    wallBodyPart[i].removeAttribute('style'); // Remove styles from wallBodyPart
-                    toolExpand[i].removeAttribute('style'); // Remove styles from toolExpand
-                    toolShrink[i].removeAttribute('style'); // Remove styles from toolShrink
-                    array.splice(i, 0, i); // Splice i back into the array
-                    responsiveImages();
-                }
-
-                expandMedia = function(i, array) { // Expand the media
-                    array.splice(i, 1); // Splice i from the array
-                    for (var j = 0; j <= array.length; j++) { // Loop through the spliced array
-                        if (wallBodyPart[j] !== wallBodyPart[i]) { // Select all in array except [i]
-                            wallBodyPart[j].style.display = 'none'; // Hide all except [i]
-                        }
-                    }
-                    wallBodyPart[i].style.width = '100%'; // Full width [i]
-                    wallBodyPart[i].style.marginRight = '0'; // Remove margins from [i]
-                    wallBodyPart[i].style.marginLeft = '0'; // Remove margins from [i]
-                    toolExpand[i].style.display = 'none'; // Hide toolExpand
-                    toolShrink[i].style.display = 'block'; // Make visible toolShrink
-                    responsiveImages();
-                }
-
-                for (var i = 0; i < toolExpand.length; i++) { // Loop all toolExpand elements
-                    array.push(i); // Create numbered array of total toolExpand elements
-                    toolExpand[i].addEventListener('click', expandMedia.bind(this, i, array)); // Add click event to toolExpand and bind index
-                    toolShrink[i].addEventListener('click', shrinkMedia.bind(this, i, array)); // Add click event to toolShrink and bind index
-                }
-
-            }
-
-            ////////////////////////////////////////////////////////////////////////////
-
-            // responsiveImages
-
-            ////////////////////////////////////////////////////////////////////////////
-
-            responsiveImages = function(cardName) { 
-                var dppi = window.devicePixelRatio; 
-                // Query Every Card and Image into Respective Arrays
-                var cards = document.getElementsByClassName(cardName);
-
-                var status = 'all';    
-                var currentImg = null;
-
+            initLoader = function() {
                 // Initiate Global Reference Variables via the First element
                 // Calculate for Circumference
                 var loaders = document.getElementsByClassName('utility-loader');
@@ -244,31 +190,61 @@ html
 
                 startLoader = function(callback) {
                     for (i = 0; i < loaders.length; i++) {
-                        loader = loaders[i];
+                        var loader = loaders[i];
                         loader.style.strokeDasharray = strokeDasharray + ',' + difference;
                         loader.style.strokeDashoffset = ticker;
                     }
                     firstLoader.addEventListener('transitionend', callback);
                 }
+                startLoader(repeatLoader);
+            }
 
-                loadImage = function(cardImg, callback) {
-                    imgWidth = Math.ceil(parseInt(getComputedStyle(cardImg, null).getPropertyValue('width'), 10));
-                    newWidth = imgWidth * dppi;
-                    if (cardImg.dataset.src) {
-                        imgSrc = cardImg.dataset.src;
-                        srcParse = imgSrc.split('upload/');
-                        for (var j = 0; j < srcParse.length; j++) {
-                            srcFirst = srcParse[0];
-                            srcLast = srcParse[1];
-                            newSrc = srcFirst + 'upload/w_' + newWidth + '/' + srcLast;
-                            cardImg.src = newSrc;
+            ////////////////////////////////////////////////////////////////////////////
+
+            // responsiveImages
+
+            ////////////////////////////////////////////////////////////////////////////
+
+            responsiveImages = function(cardName) { 
+                var dppi = window.devicePixelRatio; 
+                var cards = document.getElementsByClassName(cardName);
+                var status = 'all';    
+                var currentImg = null;
+                var prevImgWidth = 0;
+                var scrollContainer = document.querySelector('.panel-body');
+                var scrollPosition = 0;
+
+                finish = function(cardImg) {
+                    setTimeout(function() {
+                        cardImg.classList.remove('is-inactive');
+                    }, 750)
+                }
+
+                loadImage = function(cardImg, otherCardImgs) {
+                    var imgWidth = Math.ceil(parseInt(getComputedStyle(cardImg, null).getPropertyValue('width'), 10));
+                    if (imgWidth != prevImgWidth) { // Skip the image transormation if it is the same size as the prior
+                        var newWidth = imgWidth * dppi;
+                        if (cardImg.dataset.src) {
+                            var imgSrc = cardImg.dataset.src;
+                            var srcParse = imgSrc.split('upload/');
+                            for (var j = 0; j < srcParse.length; j++) {
+                                var srcFirst = srcParse[0];
+                                var srcLast = srcParse[1];
+                                var newSrc = srcFirst + 'upload/w_' + newWidth + '/' + srcLast;
+                                cardImg.src = newSrc;
+                            }
+                        }
+                    } else {
+                        finish(cardImg);
+                        for (var k = 0; k < otherCardImgs.length; k++) {
+                            finish(otherCardImgs[k]);
                         }
                     }
                 }
 
                 hoverReplicate = function() {
                     for (var i = 0; i < cards.length; i++) {
-                        card = cards[i];
+                        var card = cards[i];
                         if(card.classList.contains('hover')) {
                             card.classList.toggle('hover');
                         }
@@ -276,28 +252,34 @@ html
                     this.classList.toggle('hover');
                 }
 
-                queryMedia = function(cardImg) {
+                queryMedia = function(cardImg, otherCardImgs) {
                     if (status === 'all') {
                         for (var i = 0; i < cards.length; i++) {
                             var card = cards[i];
                             var cardImg = card.querySelector('img');
-                            if (cardImg) {
-                                loadImage(cardImg);
+                            if (cardImg) { // If not a video
+                                cardImg.classList.add('is-inactive');
+                                loadImage(cardImg, otherCardImgs);
                             }
                         }
                     } else if (status === 'single') {
-                        if (cardImg) {
-                            loadImage(cardImg);
+                        if (cardImg) { // If not a video
+                            cardImg.classList.add('is-inactive');
+                            loadImage(cardImg, otherCardImgs);
                         }
                     }
                 }
 
-                toggleMedia = function(card, cardImg, cardParent, otherCards) {
+                toggleMedia = function(card, cardImg, cardParent, otherCards, otherCardImgs) {
+                    prevImgWidth = Math.ceil(parseInt(getComputedStyle(cardImg, null).getPropertyValue('width'), 10));
+                    if (!cardParent.classList.contains('is-active')) {
+                        scrollPosition = scrollContainer.scrollTop;
+                    }
                     for (var i = 0; i < otherCards.length; i++) {
                         otherCards[i].parentNode.classList.toggle('is-inactive');
+                        otherCards[i].classList.add('is-inactive');
                     }
                     cardParent.classList.toggle('is-active');
-                    card.classList.toggle('is-active');
                     card.querySelector('.tool-shrink').classList.toggle('is-inactive');
                     if (status === 'all') {
                         status = 'single';
@@ -306,17 +288,29 @@ html
                         status = 'all';
                         currentImg = null;
                     }
-                    //cardImg.classList.add('is-inactive');
-                    queryMedia(cardImg);
+                    for (var k = 0; k < otherCardImgs.length; k++) {
+                        otherCardImgs[k].classList.add('is-inactive');
+                    }
+                    if (!cardParent.classList.contains('is-active')) {
+                        scrollContainer.scrollTop = scrollPosition;
+                    } else {
+                        scrollContainer.scrollTop = 0;
+                    }
+                    queryMedia(cardImg, otherCardImgs);
                 }
 
                 for (var i = 0; i < cards.length; i++) {
                     (function() {
                         var card = cards[i];
                         var otherCards = [];
+                        var otherCardImgs = [];
                         for (var j = 0; j < cards.length; j++) {
                             if (!cards[j].isSameNode(card)) {
                                 otherCards.push(cards[j]);
+                                var otherCardImg = cards[j].querySelector('img');
+                                if (otherCardImg) {
+                                    otherCardImgs.push(otherCardImg);
+                                }
                             }
                         }
                         var cardImg = card.querySelector('img');
@@ -329,15 +323,18 @@ html
                         }
                         if (cardImg) {
                             cardImg.addEventListener('load', function() {
-                                cardImg.classList.remove('is-inactive');
+                                finish(cardImg);
+                                for (var k = 0; k < otherCardImgs.length; k++) {
+                                    finish(otherCardImgs[k]);
+                                }
                             });
                         }
                         card.addEventListener('touchstart', hoverReplicate);
                         if (tools) {
                             for(var t = 0; t < tools.length; t++) {
-                                tool = tools[t];
+                                var tool = tools[t];
                                 tool.addEventListener('click', function() {
-                                    toggleMedia(card, cardImg, cardParent, otherCards);
+                                    toggleMedia(card, cardImg, cardParent, otherCards, otherCardImgs);
                                 });
                             }
                         }
@@ -348,7 +345,7 @@ html
                     queryMedia(currentImg);
                 });
 
-                startLoader(repeatLoader);
+                initLoader();
                 queryMedia(status);
             }
 
