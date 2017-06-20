@@ -281,20 +281,24 @@ html
                         for (var i = 0; i < cards.length; i++) {
                             var card = cards[i];
                             var cardImg = card.querySelector('img');
-                            loadImage(cardImg);
+                            if (cardImg) {
+                                loadImage(cardImg);
+                            }
                         }
                     } else if (status === 'single') {
-                        loadImage(cardImg);
+                        if (cardImg) {
+                            loadImage(cardImg);
+                        }
                     }
                 }
 
-                toggleMedia = function(card, cardImg, cardParent, otherCards, tool) {
+                toggleMedia = function(card, cardImg, cardParent, otherCards) {
                     for (var i = 0; i < otherCards.length; i++) {
                         otherCards[i].parentNode.classList.toggle('is-inactive');
                     }
                     cardParent.classList.toggle('is-active');
                     card.classList.toggle('is-active');
-                    tool.classList.toggle('is-inactive');
+                    card.querySelector('.tool-shrink').classList.toggle('is-inactive');
                     if (status === 'all') {
                         status = 'single';
                         currentImg = cardImg;
@@ -323,16 +327,17 @@ html
                         if (toolExpand && toolShrink) {
                             tools.push(toolExpand, toolShrink);
                         }
+                        if (cardImg) {
+                            cardImg.addEventListener('load', function() {
+                                cardImg.classList.remove('is-inactive');
+                            });
+                        }
                         card.addEventListener('touchstart', hoverReplicate);
-                        cardImg.addEventListener('load', function() {
-                            cardImg.classList.remove('is-inactive');
-                        });
                         if (tools) {
                             for(var t = 0; t < tools.length; t++) {
-                                var tool = tools[t];
+                                tool = tools[t];
                                 tool.addEventListener('click', function() {
-                                    var tool = this;
-                                    toggleMedia(card, cardImg, cardParent, otherCards, tool);
+                                    toggleMedia(card, cardImg, cardParent, otherCards);
                                 });
                             }
                         }
