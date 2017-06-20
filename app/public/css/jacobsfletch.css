@@ -316,7 +316,7 @@ select[multiple] {
     height: 100%;
 }
 
-.card-portfolio:hover .card-header {
+.card-portfolio:hover .card-header, .card-portfolio.hover .card-header {
     display: flex;
 }
 
@@ -687,69 +687,6 @@ select[multiple] {
     margin-bottom: 0;
 }
 
-.multimedia-lightbox {
-    visibility: visible;
-}
-
-.multimedia-lightbox {
-    position: relative;
-    cursor: pointer;
-    transition: opacity 0.33s linear;
-    display: block;
-}
-
-.multimedia-lightbox .multimedia-media {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-.multimedia-lightbox .multimedia-media img,
-    .multimedia-lightbox .multimedia-media svg {
-    width: 100%;
-    height: auto;
-}
-
-.multimedia-lightbox .multimedia-media.square {
-    padding-top: 100%;
-}
-
-.multimedia-lightbox .multimedia-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.43rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    transition: opacity 0.33s linear;
-    opacity: 0;
-    z-index: 5555;
-}
-
-.multimedia-lightbox:hover .multimedia-title {
-    opacity: 1;
-}
-
-.multimedia-lightbox:hover::after {
-    opacity: 1;
-}
-
-.multimedia-lightbox::after {
-    transition: opacity 0.33s linear;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-}
-
 .widget-filter {
     z-index: 8888;
     display: flex;
@@ -861,6 +798,69 @@ select[multiple] {
     content: '>';
     transform: rotate(90deg);
     transition: transform 0.33s linear;
+}
+
+.multimedia-lightbox {
+    visibility: visible;
+}
+
+.multimedia-lightbox {
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.33s linear;
+    display: block;
+}
+
+.multimedia-lightbox .multimedia-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.multimedia-lightbox .multimedia-media img,
+    .multimedia-lightbox .multimedia-media svg {
+    width: 100%;
+    height: auto;
+}
+
+.multimedia-lightbox .multimedia-media.square {
+    padding-top: 100%;
+}
+
+.multimedia-lightbox .multimedia-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.43rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.33s linear;
+    opacity: 0;
+    z-index: 5555;
+}
+
+.multimedia-lightbox:hover .multimedia-title {
+    opacity: 1;
+}
+
+.multimedia-lightbox:hover::after {
+    opacity: 1;
+}
+
+.multimedia-lightbox::after {
+    transition: opacity 0.33s linear;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
 }
 
 .checkbox-main {
@@ -1435,7 +1435,7 @@ select[multiple] {
 .tool-expand,
 .tool-shrink {
     z-index: 7777;
-    display: none;
+    display: block;
     padding: 0.65rem;
     margin: 0.65rem;
     background-color: #fcfcfc;
@@ -1460,7 +1460,6 @@ select[multiple] {
     width: 100%;
     height: 100%;
     transform: translate3d(-50%, -50%, 0);
-    overflow: visible;
 }
 
 .tool-expand .tool-media svg svg circle,
@@ -1489,18 +1488,13 @@ select[multiple] {
     .tool-shrink .tool-media polyline {
     vector-effect: non-scaling-stroke;
     fill: none;
-    stroke-width: 3px;
+    stroke-width: 4px;
     stroke: #0d0d0d;
 }
 
 .tool-expand.is-inactive,
   .tool-shrink.is-inactive {
     display: none;
-}
-
-.tool-expand.is-active,
-  .tool-shrink.is-active {
-    display: block;
 }
 
 .tool-gallery {
@@ -1779,8 +1773,8 @@ select[multiple] {
 }
 
 #dock:checked ~ .app-main .app-footer {
+    padding: 1.3rem;
     padding-top: 0.65rem;
-    padding-bottom: 1.3rem;
     transform: translateX(0);
     opacity: 1;
     flex: 1;
@@ -1792,8 +1786,6 @@ body {
 }
 
 .app-main {
-    padding: 0 1.3rem;
-    padding-top: 1.3rem;
     border: solid #0d0d0d 0.65rem;
     width: 100vw;
     height: 100%;
@@ -1801,6 +1793,11 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
+}
+
+.app-main .app-header {
+    padding: 1.3rem;
+    padding-bottom: 0;
 }
 
 .app-main .app-header .wrapper {
@@ -1853,6 +1850,7 @@ body {
 }
 
 .app-main .app-body {
+    padding: 0 1.3rem;
     flex-grow: 1;
     opacity: 1;
     width: 100%;
@@ -2278,7 +2276,7 @@ body {
     flex-direction: column;
     position: relative;
     flex-grow: 1;
-    overflow-y: scroll;
+    overflow: scroll;
     width: 100%;
 }
 

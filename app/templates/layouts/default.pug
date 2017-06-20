@@ -104,19 +104,19 @@ html
                 screenEl.addEventListener('touchend', endHandler, false);
                 screenEl.addEventListener('touchcancel', endHandler, false);
                 screenEl.addEventListener('scroll', scrollHandler, false);
-                
-                    
+
+
                 function updateVariables() {
                     offsetHeight = startEl.offsetHeight;
                     paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
                 }
-                
+
                 function resetStyles() {
                     screenEl.scrollTop = 0;
                     startEl.removeAttribute('style');
                     scrollerContainer.removeAttribute('style'); // Remove panelLoader Styles
                 }
-                
+
                 function initSpinner(currentRatio, scrollTop) {
                     //window.requestAnimationFrame(function() {
                         scrollerContainer.style.display = 'flex';
@@ -159,13 +159,13 @@ html
                     }
                 }
             }
-            
+
             ////////////////////////////////////////////////////////////////////////////
-            
+
             // mediaToggler
-            
+
             ////////////////////////////////////////////////////////////////////////////
-            
+
             mediaToggler = function() {
                 // Init variables
                 var array = [];
@@ -186,7 +186,7 @@ html
                     array.splice(i, 0, i); // Splice i back into the array
                     responsiveImages();
                 }
-                
+
                 expandMedia = function(i, array) { // Expand the media
                     array.splice(i, 1); // Splice i from the array
                     for (var j = 0; j <= array.length; j++) { // Loop through the spliced array
@@ -207,25 +207,23 @@ html
                     toolExpand[i].addEventListener('click', expandMedia.bind(this, i, array)); // Add click event to toolExpand and bind index
                     toolShrink[i].addEventListener('click', shrinkMedia.bind(this, i, array)); // Add click event to toolShrink and bind index
                 }
-                
+
             }
-                
+
             ////////////////////////////////////////////////////////////////////////////
-            
+
             // responsiveImages
-            
+
             ////////////////////////////////////////////////////////////////////////////
 
             responsiveImages = function(cardName) { 
                 var dppi = window.devicePixelRatio; 
                 // Query Every Card and Image into Respective Arrays
                 var cards = document.getElementsByClassName(cardName);
-                var cardMedias = document.getElementsByClassName('card-media');
-                var imgs = document.getElementsByTagName('img');
-                
+
                 var status = 'all';    
-                var current = 0;
-                
+                var currentImg = null;
+
                 // Initiate Global Reference Variables via the First element
                 // Calculate for Circumference
                 var loaders = document.getElementsByClassName('utility-loader');
@@ -238,12 +236,12 @@ html
                 var strokeDasharray = parseInt(getComputedStyle(firstLoader).getPropertyValue("stroke-dasharray"), 10); // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
                 var difference = circumference - strokeDasharray;
                 var ticker = circumference;
-                
+
                 repeatLoader = function() {
                     ticker = ticker + circumference;
                     startLoader(repeatLoader);
                 }
-                           
+
                 startLoader = function(callback) {
                     for (i = 0; i < loaders.length; i++) {
                         loader = loaders[i];
@@ -252,116 +250,101 @@ html
                     }
                     firstLoader.addEventListener('transitionend', callback);
                 }
-                
-                loadImage = function(cardMedia, callback) {
-                    img = cardMedia.getElementsByTagName('img')[0];
-                    imgWidth = Math.ceil(parseInt(getComputedStyle(img, null).getPropertyValue('width'), 10));
+
+                loadImage = function(cardImg, callback) {
+                    imgWidth = Math.ceil(parseInt(getComputedStyle(cardImg, null).getPropertyValue('width'), 10));
                     newWidth = imgWidth * dppi;
-                    img.addEventListener('load', function() {
-                        self = this;
-                        result = 'success';
-                        callback(self, result);
-                    });
-                    img.addEventListener('error', function() {
-                        self = this
-                        result = 'error';
-                        callback(self, result)
-                    });
-                    // img.classList.add('is-inactive');
-                    if (img.dataset.src) {
-                        imgSrc = img.dataset.src;
+                    if (cardImg.dataset.src) {
+                        imgSrc = cardImg.dataset.src;
                         srcParse = imgSrc.split('upload/');
                         for (var j = 0; j < srcParse.length; j++) {
                             srcFirst = srcParse[0];
                             srcLast = srcParse[1];
                             newSrc = srcFirst + 'upload/w_' + newWidth + '/' + srcLast;
-                            img.src = newSrc;
+                            cardImg.src = newSrc;
                         }
                     }
                 }
-                
-                queryAll = function() {
-                    for (var i = 0; i < cardMedias.length; i++) {
-                        cardMedia = cardMedias[i];
-                        video = cardMedia.getElementsByTagName('video');
-                        if (!video.length) {
-                            loadImage(cardMedia, function(self, result) {
-                                if (result = 'error') {
-                                    console.log('error loading image');
-                                } else if (result = 'success') {
-                                    console.log('successful');
-                                }
-                            });
+
+                hoverReplicate = function() {
+                    for (var i = 0; i < cards.length; i++) {
+                        card = cards[i];
+                        if(card.classList.contains('hover')) {
+                            card.classList.toggle('hover');
                         }
                     }
-                    status = 'all';
+                    this.classList.toggle('hover');
                 }
-                
-                querySingle = function(cardMedia) {
-                    
-                    video = cardMedia.getElementsByTagName('video');
-                    if (!video.length) {
-                        loadImage(cardMedia, function(self, error) {
-                            if (result = 'error') {
-                                console.log('error loading image');
-                            } else if (result = 'success') {
-                                console.log('successful');
-                            }
-                        });
-                    }
-                    status = 'single';
-                    current = cardMedia;
-                }
-                
-                shrinkMedia = function(i) { // Shrink the media
-                    self = cards[i].parentNode;
-                    for (var j = 0; j < cards.length; j++) {
-                        cards[j].parentNode.classList.remove('is-active', 'is-inactive');
-                    }
-                    toolExpand = self.getElementsByClassName('tool-expand')[0];
-                    toolShrink = self.getElementsByClassName('tool-shrink')[0];
-                    toolExpand.classList.remove('is-inactive'); // Hide toolExpand
-                    toolShrink.classList.remove('is-active'); // Make visible toolShrink
-                    queryAll();
-                }
-                
-                expandMedia = function(i) { // Expand the media
-                    self = cards[i].parentNode;
-                    cardMedia = self.getElementsByClassName('card-media')[0];
-                    toolExpand = self.getElementsByClassName('tool-expand')[0];
-                    toolShrink = self.getElementsByClassName('tool-shrink')[0];
-                    self.classList.add('is-active');
-                    toolExpand.classList.add('is-inactive'); // Hide toolExpand
-                    toolShrink.classList.add('is-active'); // Make visible toolShrink
-                    for (var j = 0; j < cards.length; j++) {
-                        if (j != i) {
-                            others = cards[j].parentNode;
-                            others.classList.add('is-inactive');
-                        }
-                    }
-                    querySingle(cardMedia);
-                }
-                
-                for (var i = 0; i < cards.length; i++) {
-                    card = cards[i];
-                    toolExpand = card.getElementsByClassName('tool-expand')[0];
-                    toolShrink = card.getElementsByClassName('tool-shrink')[0];
-                    if (toolExpand && toolShrink) {
-                        toolExpand.addEventListener('click', expandMedia.bind(this, i)); // Add click event to toolExpand and bind index
-                        toolShrink.addEventListener('click', shrinkMedia.bind(this, i)); // Add click event to toolShrink and bind index
-                    }
-                }
-                
-                window.addEventListener('resize', function() {
+
+                queryMedia = function(cardImg) {
                     if (status === 'all') {
-                        queryAll();
+                        for (var i = 0; i < cards.length; i++) {
+                            var card = cards[i];
+                            var cardImg = card.querySelector('img');
+                            loadImage(cardImg);
+                        }
                     } else if (status === 'single') {
-                        querySingle(current);
+                        loadImage(cardImg);
                     }
+                }
+
+                toggleMedia = function(card, cardImg, cardParent, otherCards, tool) {
+                    for (var i = 0; i < otherCards.length; i++) {
+                        otherCards[i].parentNode.classList.toggle('is-inactive');
+                    }
+                    cardParent.classList.toggle('is-active');
+                    card.classList.toggle('is-active');
+                    tool.classList.toggle('is-inactive');
+                    if (status === 'all') {
+                        status = 'single';
+                        currentImg = cardImg;
+                    } else if (status === 'single') {
+                        status = 'all';
+                        currentImg = null;
+                    }
+                    //cardImg.classList.add('is-inactive');
+                    queryMedia(cardImg);
+                }
+
+                for (var i = 0; i < cards.length; i++) {
+                    (function() {
+                        var card = cards[i];
+                        var otherCards = [];
+                        for (var j = 0; j < cards.length; j++) {
+                            if (!cards[j].isSameNode(card)) {
+                                otherCards.push(cards[j]);
+                            }
+                        }
+                        var cardImg = card.querySelector('img');
+                        var cardParent = card.parentNode;
+                        var toolExpand = card.querySelector('.tool-expand');
+                        var toolShrink = card.querySelector('.tool-shrink');
+                        var tools = [];
+                        if (toolExpand && toolShrink) {
+                            tools.push(toolExpand, toolShrink);
+                        }
+                        card.addEventListener('touchstart', hoverReplicate);
+                        cardImg.addEventListener('load', function() {
+                            cardImg.classList.remove('is-inactive');
+                        });
+                        if (tools) {
+                            for(var t = 0; t < tools.length; t++) {
+                                var tool = tools[t];
+                                tool.addEventListener('click', function() {
+                                    var tool = this;
+                                    toggleMedia(card, cardImg, cardParent, otherCards, tool);
+                                });
+                            }
+                        }
+                    })();
+                }
+
+                window.addEventListener('resize', function() {
+                    queryMedia(currentImg);
                 });
-                
+
                 startLoader(repeatLoader);
-                queryAll();
+                queryMedia(status);
             }
 
         block js

@@ -79,10 +79,10 @@ block appBody
                                                 video(src=video autoplay loop muted)
                                                 .utility-loader
                                                     +loader()
-                                            .tool-expand
+                                            .tool-expand.is-inactive
                                                 .tool-media
                                                     +expand()
-                                            .tool-shrink
+                                            .tool-shrink.is-inactive
                                                 .tool-media
                                                     +shrink()
                             if project.images.length
@@ -93,10 +93,10 @@ block appBody
                                                 img(data-src=image)
                                                 .utility-loader
                                                     +loader()
-                                            .tool-expand
+                                            .tool-expand.is-inactive
                                                 .tool-media
                                                     +expand()
-                                            .tool-shrink
+                                            .tool-shrink.is-inactive
                                                 .tool-media
                                                     +shrink()
                         else
