@@ -187,59 +187,23 @@ html
 
             ////////////////////////////////////////////////////////////////////////////
 
-            // initLoader
-
-            ////////////////////////////////////////////////////////////////////////////
-
-            initLoader = function() {
-                // Initiate Global Reference Variables via the First element
-                // Calculate for Circumference
-                var loaders = document.getElementsByClassName('utility-loader');
-                var firstLoader = loaders[0];
-                var originalWidth = parseInt(firstLoader.getElementsByTagName('svg')[0].getAttribute('width'), 10);
-                var computedWidth = parseInt(getComputedStyle(firstLoader).getPropertyValue('width'), 10);
-                var differenceRatio = computedWidth / originalWidth;
-                var circumference = firstLoader.getElementsByTagName('path')[0].getTotalLength() * differenceRatio;
-                // Initiate Variables
-                var strokeDasharray = parseInt(getComputedStyle(firstLoader).getPropertyValue("stroke-dasharray"), 10); // Parse Two Decimals In, Double to Accomodate Both Sides of Circle
-                var difference = circumference - strokeDasharray;
-                var ticker = circumference;
-
-                repeatLoader = function() {
-                    ticker = ticker + circumference;
-                    startLoader(repeatLoader);
-                }
-
-                startLoader = function(callback) {
-                    for (i = 0; i < loaders.length; i++) {
-                        var loader = loaders[i];
-                        loader.style.strokeDasharray = strokeDasharray + ',' + difference;
-                        loader.style.strokeDashoffset = ticker;
-                    }
-                    firstLoader.addEventListener('transitionend', callback);
-                }
-                startLoader(repeatLoader);
-            }
-
-            ////////////////////////////////////////////////////////////////////////////
-
             // responsiveImages
 
             ////////////////////////////////////////////////////////////////////////////
 
             responsiveImages = function(cardName) { 
                 var dppi = window.devicePixelRatio; 
-                var cards = document.getElementsByClassName(cardName);
-                var status = 'all';    
-                var currentImg = null;
-                var prevImgWidth = 0;
-                var scrollContainer = document.querySelector('.panel-body');
-                var scrollPosition = 0;
+                    cards = document.getElementsByClassName(cardName);
+                    status = 'all';    
+                    currentImg = null;
+                    prevImgWidth = 0;
+                    scrollContainer = document.querySelector('.panel-body');
+                    scrollPosition = 0;
 
                 finish = function(cardImg) {
                     setTimeout(function() {
                         cardImg.classList.remove('is-inactive');
-                    }, 500)
+                    }, 1000)
                 }
 
                 loadImage = function(cardImg, otherCardImgs) {
@@ -366,7 +330,6 @@ html
                     queryMedia(currentImg);
                 });
 
-                initLoader();
                 queryMedia(status);
             }
 
