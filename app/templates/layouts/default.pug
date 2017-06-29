@@ -33,7 +33,6 @@ html
         input#dock(type='checkbox')
         input#explore(type='checkbox')
         input#filter(type='checkbox')
-        input#portfolio(type='checkbox')
         .app-main
             header.app-header
                 .wrapper
@@ -42,6 +41,8 @@ html
                     label.tool-toggle(for='dock')
                         .tool-media
                             +lightSwitch()
+            .app-body
+                block appBody
             footer.app-footer
                 .container-dock
                     .container-header
@@ -63,8 +64,6 @@ html
                                     a.btn-title my blog
                                 li.menu-body-part.btn-main
                                     a.btn-title my shop
-            .app-body
-                block appBody
         // script(src='/js/jacobsfletch.min.js')
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -73,94 +72,117 @@ html
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-72591985-3', 'auto');
             ga('send', 'pageview');
+            
+            preventDefault = function(event) {
+                event.preventDefault();
+            }
+            
+            window.addEventListener('touchmove', preventDefault);
+            window.addEventListener('wheel', preventDefault);
+            
+            var touchStart = 0;
+                scrollDistance = 0;
+            
+            function touchStartHandler(event) {
+                touchStart = event.touches[0].pageY;
+            }
+                            
+            function scrollHandler(event) {
+                scrollDistance = event.deltaY ? event.deltaY : event.touches ? (touchStart - event.touches[0].pageY) : null;
+                touchStart = event.touches ? event.touches[0].pageY : null;
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////
 
+            // scrollEnabler
+
+            ////////////////////////////////////////////////////////////////////////////
+            
+            scrollEnabler = function(event, element) {
+                var elementCurrentScroll = panelBody.scrollTop;
+                    elementScrollHeight = element.scrollHeight;
+                    elementClientHeight = element.clientHeight;
+                    fullBodyScroll = elementScrollHeight - elementClientHeight;
+                if (elementCurrentScroll <= fullBodyScroll && elementCurrentScroll >= 0) {
+                    element.scrollTop = elementCurrentScroll + scrollDistance;
+                }
+            }
+            
             ////////////////////////////////////////////////////////////////////////////
 
             // scrollAnimate
 
             ////////////////////////////////////////////////////////////////////////////
 
-            scrollAnimate = function(screenElement, startElement, checkboxElement) {
-                // Query Elements
-                var screenEl = document.getElementById(screenElement);
-                var panelBody = document.getElementById('panelBody');
-                var startEl = document.getElementById(startElement);
-                var scrollerContainer = document.getElementsByClassName('container-scroller')[0];
-                var utilityScroller = scrollerContainer.getElementsByClassName('utility-scroller')[0];                
-                var scrollerTitle = scrollerContainer.getElementsByClassName('utility-title')[0];
+            scrollAnimate = function(screen, checkboxElement) {
+                
                 var checkbox = document.getElementById(checkboxElement);
-                // Initiate Constants
-                var offsetHeight = startEl.offsetHeight;
-                var paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
-                var height = offsetHeight - paddingBottom;
-                // Calculate Circumference
-                var path = scrollerContainer.getElementsByTagName('path')[0];
-                var originalWidth = parseInt(utilityScroller.getElementsByTagName('svg')[0].getAttribute('width'), 10);
-                var transformedWidth = parseInt(getComputedStyle(utilityScroller).getPropertyValue('width'), 10);
-                var differenceRatio = transformedWidth / originalWidth;
-                var circumference = path.getTotalLength() * differenceRatio;
-                // Initiate variables
-                var currentPercentage = 0;
-                var displacement = 0;
-                var threshold = 150;
-                var currentRatio = 0;
-                var scrollTop = 0;
+                    screen = document.querySelector(screen);
+                    start = screen.querySelector('.start');
+                    explore = screen.querySelector('.explore');
+                    panelBody = explore.querySelector('.panel-body');
+                    panelScroll = 0;
+                    panelIsFullyScrolledUp = true;
+                    currentRatio = 0;
+                    panelCurrentScroll = 0;
 
-                window.addEventListener('resize', updateVariables, false);
-                screenEl.addEventListener('touchend', endHandler, false);
-                screenEl.addEventListener('touchcancel', endHandler, false);
-                screenEl.addEventListener('scroll', scrollHandler, false);
-
-
-                function updateVariables() {
-                    offsetHeight = startEl.offsetHeight;
-                    paddingBottom = parseInt(window.getComputedStyle(startEl, null).getPropertyValue('padding-bottom'), 10);
+                fetchVariables = function() {
+                    var exploreBoundingTop = explore.getBoundingClientRect().top;
+                        screenBoundingTop = screen.getBoundingClientRect().top;
+                        exploreTop = Math.round(exploreBoundingTop - screenBoundingTop);
+                        originalExploreTop = exploreTop;
                 }
-
-                function resetStyles() {
-                    screenEl.scrollTop = 0;
-                    startEl.removeAttribute('style');
-                    scrollerContainer.removeAttribute('style'); // Remove panelLoader Styles
-                }
-
-                function initSpinner(currentRatio, scrollTop) {
-                    scrollerContainer.style.display = 'flex';
-                    scrollerContainer.style.height = offsetHeight - scrollTop + 'px';
-                    scrollerContainer.style.transform = 'translateY(' + scrollTop + 'px)';
-                    path.style.strokeDasharray = circumference; // Style dash-array
-                    path.style.strokeDashoffset = circumference * (1 - -currentRatio); // Style dash-offset
-                    if (currentRatio > 0) {
-                        currentPercentage = Math.ceil(currentRatio * 100); // Calculate Ratio Difference
-                        scrollerTitle.innerHTML = "<p>" + currentPercentage + "%</p>"; // Start Percentage Count
+                
+                window.addEventListener('resize', function(event) {
+                    checkbox.checked = false;
+                    explore.removeAttribute('style');
+                    start.removeAttribute('style');
+                    start.classList.remove('active');
+                    explore.classList.remove('active');
+                    panelBody.classList.remove('active');
+                    panelBody.scrollTop = 0 + 'px';
+                    fetchVariables();
+                });
+                
+                screen.addEventListener('wheel', function(event) {
+                    scrollHandler(event);
+                    scrollAnimation(event);
+                });
+                
+                screen.addEventListener('touchmove', function(event) {
+                    scrollHandler(event);
+                    scrollAnimation(event);
+                });
+                
+                screen.addEventListener('touchstart', touchStartHandler);
+                
+                function scrollAnimation(event) {
+                    panelCurrentScroll = panelBody.scrollTop;
+                    panelIsFullyScrolledUp = panelCurrentScroll == 0; 
+                    if (panelIsFullyScrolledUp) {
+                        expectedScroll = exploreTop + -scrollDistance;
+                        exploreTop = (expectedScroll >= originalExploreTop) ? originalExploreTop : (expectedScroll <= 0) ? 0 : (exploreTop + -scrollDistance);
+                        explore.style.top = exploreTop + 'px';
+                        currentRatio = Math.round(100 * (exploreTop / originalExploreTop)) / 100;
+                        start.style.opacity = currentRatio;
+                    }
+                                                        
+                    if (exploreTop == 0) {
+                        checkbox.checked = true;
+                        start.classList.add('active');
+                        explore.classList.add('active');
+                        panelBody.classList.add('active');
+                        scrollEnabler(event, panelBody);
+                    } else if (exploreTop == originalExploreTop) {
+                        checkbox.checked = false;
+                        start.classList.remove('active');
+                        explore.classList.remove('active');
+                        panelBody.classList.remove('active');
                     }
                 }
-
-                function scrollHandler() {
-                    if (!checkbox.checked) {
-                    scrollTop = screenEl.scrollTop;
-                        if (scrollTop >= threshold) {
-                            panelBody.style.overflowY = 'scroll';
-                            checkbox.checked = 'true';
-                            resetStyles();
-                        } else if (scrollTop < 1) {
-                            resetStyles();
-                        } else {
-                            startEl.style.visibility = 'hidden';
-                            currentRatio = scrollTop / threshold;
-                            initSpinner(currentRatio, scrollTop);
-                        }
-                    } else {
-                        resetStyles();
-                    }
-                }
-
-                function endHandler() {
-                    if (scrollTop <= threshold) {
-                        screenEl.scrollTop = 0;
-                    } else {
-                        resetStyles();
-                    }
-                }
+                
+                fetchVariables();
+                
             }
 
             ////////////////////////////////////////////////////////////////////////////

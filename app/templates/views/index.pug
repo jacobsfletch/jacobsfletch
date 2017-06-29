@@ -1,14 +1,21 @@
 extends ../layouts/default
 
-include ../mixins/components/cards
-include ../mixins/layouts/screens
 include ../mixins/media/chevron
-include ../mixins/media/scroller
+include ../mixins/media/circle
 
 block appBody
-    +screenPortfolio()
-
-block js
-    script.
-        scrollAnimate('screenPortfolio', 'portfolioStart', 'portfolio');
-        responsiveImages('card-portfolio');
+    .container-micro
+        .container-header
+            h1.container-title
+                if global.tagline.a
+                    | #{global.tagline.a}
+                else
+                    | no tagline a
+            h2.container-subtitle
+                if global.tagline.b
+                    | #{global.tagline.b}
+                else
+                    | no tagline b
+            a.btn-main(href='/portfolio')
+                .btn-title
+                    p portfolio >

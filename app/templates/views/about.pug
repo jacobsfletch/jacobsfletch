@@ -1,10 +1,10 @@
 extends ../layouts/default
 
-include ../mixins/media/scroller
+include ../mixins/media/circle
 
 block appBody
-    #screenAbout.screen-about
-        #aboutStart.board-project
+    .screen-about
+        .start.board-project
             .board-header
                 .board-subtitle
                     h1
@@ -37,16 +37,17 @@ block appBody
                             p i said that
         .container-scroller
             .utility-scroller
-                +scroller()
-        #panelExplore.panel-gallery
+                +circle()
+                +circle()
+        .explore.panel-gallery
             .panel-header
-                label(for="explore").panel-header
-                    .bar-navigate
+                label(for="explore")
+                    .bar-explore
                         .bar-title
                             p my resume
                         .bar-subtitle
                             p &nbsp;
-            #panelBody.panel-body
+            .panel-body
                 .container-document
                     .container-body-part
                         h3 philosophy
@@ -80,4 +81,4 @@ block appBody
                             p no personals
 block js
     script.
-        scrollAnimate('screenAbout', 'aboutStart', 'explore');
+        scrollAnimate('.screen-about', 'explore');

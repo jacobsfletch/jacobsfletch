@@ -2,12 +2,11 @@ extends ../layouts/default
 
 include ../mixins/media/expand
 include ../mixins/media/shrink
-include ../mixins/media/scroller
-include ../mixins/media/loader
+include ../mixins/media/circle
 
 block appBody
-    #screenProject.screen-project
-        #galleryStart.board-project
+    .screen-project
+        .start.board-project
             .bar-navigate
                 .bar-title.btn-nav
                     a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
@@ -56,18 +55,15 @@ block appBody
                                     | #{project.quoteAuthor}
                                 else
                                     | no quote author
-        .container-scroller
-            .utility-scroller
-                +scroller()
-        #panelExplore.panel-gallery
+        .explore.panel-gallery
             .panel-header
-                label(for="explore").panel-header
-                    .bar-navigate
+                label(for="explore")
+                    .bar-explore
                         .bar-title
                             p project gallery
                         .bar-subtitle
                             p &nbsp;
-            #panelBody.panel-body
+            .panel-body
                 .wall-cards
                     .wall-body
                         if project.images.length
@@ -77,7 +73,7 @@ block appBody
                                         .card-media
                                             img(data-src=image alt='project image')
                                             .utility-loader
-                                                +loader()
+                                                +circle()
                                         .tool-expand.is-inactive
                                             .tool-media
                                                 +expand()
@@ -89,5 +85,5 @@ block appBody
                                 p.type-p no media
 block js
     script.
-        scrollAnimate('screenProject', 'galleryStart', 'explore');
+        scrollAnimate('.screen-project', 'explore');
         responsiveImages('card-project');
