@@ -2,7 +2,7 @@ extends ../layouts/default
 
 include ../mixins/media/expand
 include ../mixins/media/shrink
-include ../mixins/media/circle
+include ../mixins/media/chevron
 
 block appBody
     .screen-project
@@ -55,14 +55,15 @@ block appBody
                                     | #{project.quoteAuthor}
                                 else
                                     | no quote author
-        .explore.panel-gallery
+        .explore.panel-explore
             .panel-header
-                label(for="explore")
-                    .bar-explore
-                        .bar-title
-                            p project gallery
-                        .bar-subtitle
-                            p &nbsp;
+                .bar-explore
+                    .bar-title
+                        p project&nbsp;
+                            span gallery
+                    .bar-subtitle
+                        p scroll&nbsp;
+                            span up
             .panel-body
                 .wall-cards
                     .wall-body
@@ -71,8 +72,8 @@ block appBody
                                 .wall-body-part
                                     .card-project
                                         .card-media
-                                            img(data-src=image alt='project image')
                                             .utility-loader
+                                            img(data-src=image alt='project image')
                                         .tool-expand.is-inactive
                                             .tool-media
                                                 +expand()
@@ -84,5 +85,5 @@ block appBody
                                 p.type-p no media
 block js
     script.
-        scrollAnimate('.screen-project', 'explore');
+        scrollAnimate('.screen-project');
         responsiveImages('card-project');

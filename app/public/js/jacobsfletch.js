@@ -176,9 +176,9 @@ module.exports = {
             return el.tween;
         } else {
             if (el.offsetHeight < 1) {
-                if (!fras.utils.dom.hasClass(el, 'is-active')) {
+                if (!fras.utils.dom.hasClass(el, 'activated')) {
                     setTimeout(function () {
-                        fras.utils.dom.addClass(el, 'is-active');
+                        fras.utils.dom.addClass(el, 'activated');
                         el.style.height = height + 'px';
                     }, 1);
                 } else {
@@ -206,9 +206,9 @@ module.exports = {
             return el.tween;
         } else {
             el.style.height = el.scrollHeight + 'px';
-            if (!fras.utils.dom.hasClass(el, 'is-active')) {
+            if (!fras.utils.dom.hasClass(el, 'activated')) {
                 setTimeout(function () {
-                    fras.utils.dom.removeClass(el, 'is-active');
+                    fras.utils.dom.removeClass(el, 'activated');
                     el.style.height = '0';
                 }, 1);
             } else {

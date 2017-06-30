@@ -207,23 +207,15 @@ select[multiple] {
     vertical-align: top;
 }
 
-.app-main {
-    background-color: #fcfcfc;
-}
-
 .multimedia-lightbox::after {
     background-color: #1f1f1f;
 }
 
-#dock:checked ~ .app-main,
-#explore:checked ~ .app-main,
 #filter:checked ~ .app-main, .wall-cards .wall-footer {
     background-color: #0d0d0d;
 }
 
-.menu-vertical .menu-header .menu-title, .menu-vertical .menu-body-part a, .multimedia-lightbox .multimedia-title, .multimedia-lightbox::after, #dock:checked ~ .app-main .app-header .app-title,
-#explore:checked ~ .app-main .app-header .app-title,
-#filter:checked ~ .app-main .app-header .app-title, .wall-cards .wall-footer {
+.menu-vertical .menu-header .menu-title, .menu-vertical .menu-body-part a, .multimedia-lightbox .multimedia-title, .multimedia-lightbox::after, #filter:checked ~ .app-main .app-header .app-title, .wall-cards .wall-footer {
     color: #fcfcfc;
 }
 
@@ -232,7 +224,7 @@ select[multiple] {
 }
 
 .tool-expand .tool-title,
-.tool-shrink .tool-title, .tool-gallery .tool-title, .tool-toggle .tool-title, .app-main .app-header .wrapper .app-title {
+.tool-shrink .tool-title, .tool-gallery .tool-title, .tool-lightswitch .tool-title {
     color: #0d0d0d;
 }
 
@@ -240,13 +232,17 @@ select[multiple] {
     height: auto;
     display: inline-flex;
     cursor: pointer;
+    color: inherit;
+}
+
+.btn-main .btn-title, .btn-nav .btn-title {
+    color: inherit;
 }
 
 .btn-main .btn-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.1rem;
     line-height: 1.43rem;
-    color: inherit;
     font-weight: 700;
     display: inline-flex;
 }
@@ -261,10 +257,6 @@ select[multiple] {
 
 .btn-nav {
     display: flex;
-}
-
-.btn-nav .btn-title {
-    color: inherit;
 }
 
 .belt-gallery {
@@ -297,12 +289,12 @@ select[multiple] {
 }
 
 .card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
-    z-index: 3333;
     width: 100%;
     height: 100%;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
 }
 
 .card-portfolio .card-media > img.is-inactive, .card-project .card-media > img.is-inactive, .card-portfolio .card-media > video.is-inactive, .card-project .card-media > video.is-inactive {
@@ -364,6 +356,257 @@ select[multiple] {
 
 .card-project .utility-loader {
     stroke: #fcfcfc;
+}
+
+.container-dock {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+
+.container-dock .container-header .container-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    color: #fcfcfc;
+}
+
+.container-dock .container-body .menu-vertical:first-child {
+    padding-bottom: 1.3rem;
+}
+
+.container-document {
+    max-width: 1400px;
+}
+
+.container-document .container-body-part {
+    padding-bottom: 1.3rem;
+}
+
+.container-document .container-body-part > *:last-child {
+    padding-bottom: 0;
+}
+
+.container-document b {
+    font-weight: 700;
+}
+
+.container-document h1 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.4641rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .container-document h1 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.331rem;
+        line-height: 1.625rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .container-document h1 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h2 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.331rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .container-document h2 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .container-document h2 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h3 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.21rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .container-document h3 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .container-document h3 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h4 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.21rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .container-document h4 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .container-document h4 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h5 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .container-document h5 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .container-document h5 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h6 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+}
+
+@media (min-width: 29.3125em) and (max-width: 48em) {
+    .container-document h6 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media (max-width: 29.25em) {
+    .container-document h6 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document p {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin-bottom: 0.65rem;
+}
+
+@media (max-width: 29.25em) {
+    .container-document p {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+    }
+}
+
+.container-micro {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    padding-bottom: 1.3rem;
+    width: 100%;
+}
+
+.container-micro .container-header .container-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.4641rem;
+    line-height: 1.625rem;
+    margin-bottom: 0.65rem;
+    font-weight: 700;
+}
+
+@media (min-width: 20.0625em) and (max-width: 29.25em) {
+    .container-micro .container-header .container-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.331rem;
+        line-height: 1.625rem;
+    }
+}
+
+@media (max-width: 20em) {
+    .container-micro .container-header .container-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-micro .container-header .container-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.43rem;
+    font-weight: 300;
+}
+
+@media (max-width: 20em) {
+    .container-micro .container-header .container-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media (max-width: 20em) {
+    .container-micro .container-header .container-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+}
+
+.container-micro.inactive {
+    visibility: hidden;
 }
 
 .form-contact, .form-filters {
@@ -599,279 +842,6 @@ select[multiple] {
     content: '>';
     transform: rotate(90deg);
     transition: transform 0.33s linear;
-}
-
-.container-dock {
-    justify-content: space-between;
-    flex-direction: column;
-    display: flex;
-}
-
-.container-dock .container-header .container-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    color: #fcfcfc;
-}
-
-.container-dock .container-body .menu-vertical:first-child {
-    padding-bottom: 1.3rem;
-}
-
-.container-document {
-    max-width: 1400px;
-}
-
-.container-document .container-body-part {
-    padding-bottom: 1.3rem;
-}
-
-.container-document .container-body-part > *:last-child {
-    padding-bottom: 0;
-}
-
-.container-document b {
-    font-weight: 700;
-}
-
-.container-document h1 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.4641rem;
-    line-height: 1.625rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h1 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.331rem;
-        line-height: 1.625rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h1 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h2 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.331rem;
-    line-height: 1.625rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h2 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h2 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h3 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.21rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h3 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h3 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h4 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.21rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h4 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h4 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h5 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h5 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h5 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h6 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h6 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h6 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document p {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
-    font-weight: 200;
-    margin-bottom: 0.65rem;
-}
-
-@media (max-width: 29.25em) {
-    .container-document p {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-    }
-}
-
-.container-micro {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: flex-end;
-    padding-bottom: 1.3rem;
-    width: 100%;
-}
-
-.container-micro .container-header .container-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.4641rem;
-    line-height: 1.625rem;
-    margin-bottom: 0.65rem;
-    font-weight: 700;
-}
-
-@media (min-width: 20.0625em) and (max-width: 29.25em) {
-    .container-micro .container-header .container-title {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.331rem;
-        line-height: 1.625rem;
-    }
-}
-
-@media (max-width: 20em) {
-    .container-micro .container-header .container-title {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-micro .container-header .container-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.43rem;
-    font-weight: 300;
-}
-
-@media (max-width: 20em) {
-    .container-micro .container-header .container-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 20em) {
-    .container-micro .container-header .container-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-}
-
-.container-micro.inactive {
-    visibility: hidden;
-}
-
-.container-scroller {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    padding-bottom: 5.2rem;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-@media (max-width: 64em) {
-    .container-scroller {
-        padding-bottom: 2.6rem;
-    }
-}
-
-.container-scroller.active {
-    display: flex;
 }
 
 .checkbox-main {
@@ -1430,14 +1400,14 @@ select[multiple] {
 }
 
 .tool-expand,
-.tool-shrink, .tool-gallery, .tool-toggle {
+.tool-shrink, .tool-gallery, .tool-lightswitch {
     cursor: pointer;
     display: inline-flex;
     position: relative;
 }
 
 .tool-expand .tool-title,
-  .tool-shrink .tool-title, .tool-gallery .tool-title, .tool-toggle .tool-title {
+  .tool-shrink .tool-title, .tool-gallery .tool-title, .tool-lightswitch .tool-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.82645rem;
     line-height: 0.975rem;
@@ -1571,14 +1541,14 @@ select[multiple] {
     opacity: 1;
 }
 
-.tool-toggle {
+.tool-lightswitch {
     width: 2.6rem;
     height: calc(2.6rem + 1.3rem);
-    border: 4px solid transparent;
-    border-color: #0d0d0d;
+    border: 4px solid;
+    border-color: inherit;
 }
 
-.tool-toggle .tool-media {
+.tool-lightswitch .tool-media {
     padding: 0.325rem;
     position: absolute;
     width: 100%;
@@ -1588,12 +1558,12 @@ select[multiple] {
     transform: translate3d(-50%, -50%, 0) scaleY(-1);
 }
 
-.tool-toggle .tool-media svg circle,
-    .tool-toggle .tool-media svg ellipse,
-    .tool-toggle .tool-media svg g,
-    .tool-toggle .tool-media svg path,
-    .tool-toggle .tool-media svg polyline,
-    .tool-toggle .tool-media svg stroke {
+.tool-lightswitch .tool-media svg circle,
+    .tool-lightswitch .tool-media svg ellipse,
+    .tool-lightswitch .tool-media svg g,
+    .tool-lightswitch .tool-media svg path,
+    .tool-lightswitch .tool-media svg polyline,
+    .tool-lightswitch .tool-media svg stroke {
     fill: inherit;
     stroke: inherit;
     stroke-width: inherit;
@@ -1604,12 +1574,25 @@ select[multiple] {
     vector-effect: inherit;
 }
 
-.tool-toggle .tool-media svg {
+.tool-lightswitch .tool-media svg {
     fill: transparent;
     width: 100%;
     height: 100%;
-    stroke: #0d0d0d;
-    stroke-width: 6px;
+    stroke: currentColor;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+}
+
+.tool-lightswitch .tool-media svg polygon, .tool-lightswitch .tool-media svg path {
+    vector-effect: non-scaling-stroke;
+}
+
+.tool-lightswitch .tool-media svg .fill {
+    fill: #0d0d0d;
+}
+
+.tool-lightswitch.switched .tool-media {
+    transform: translate3d(-50%, -50%, 0);
 }
 
 @keyframes loader {
@@ -1677,27 +1660,19 @@ select[multiple] {
     transform: translate3d(-50%, -50%, 0);
 }
 
-#dock,
-#explore,
 #filter {
     display: none;
 }
 
-#dock:checked ~ .app-main,
-#explore:checked ~ .app-main,
 #filter:checked ~ .app-main {
     border: solid #fcfcfc 0.65rem;
 }
 
-#dock:checked ~ .app-main .app-header .tool-toggle,
-  #explore:checked ~ .app-main .app-header .tool-toggle,
-  #filter:checked ~ .app-main .app-header .tool-toggle {
+#filter:checked ~ .app-main .app-header .tool-lightswitch {
     border-color: #fcfcfc;
 }
 
-#dock:checked ~ .app-main .app-header .tool-toggle .tool-media svg,
-    #explore:checked ~ .app-main .app-header .tool-toggle .tool-media svg,
-    #filter:checked ~ .app-main .app-header .tool-toggle .tool-media svg {
+#filter:checked ~ .app-main .app-header .tool-lightswitch .tool-media svg {
     stroke: #fcfcfc;
 }
 
@@ -1728,41 +1703,16 @@ select[multiple] {
     transform: rotate(-90deg);
 }
 
-#explore:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::before {
-    content: "close";
-}
-
-#explore:checked ~ .app-main .panel-header [for="explore"] .bar-subtitle::after {
-    transform: rotate(90deg) translateZ(0);
-}
-
-#dock:checked ~ .app-main .app-header .tool-toggle .tool-media {
-    transform: translate3d(-50%, -50%, 0);
-}
-
-#dock:checked ~ .app-main .app-body {
-    transform: translateX(100%);
-    opacity: 0;
-    flex: 0;
-    height: 0;
-    overflow: hidden;
-}
-
-#dock:checked ~ .app-main .app-footer {
-    padding: 1.3rem;
-    padding-top: 0.65rem;
-    transform: translateX(0);
-    opacity: 1;
-    flex: 1;
-}
-
 html,
 body {
     height: 100%;
 }
 
 .app-main {
-    border: solid #0d0d0d 0.65rem;
+    background-color: #fcfcfc;
+    color: #0d0d0d;
+    border: solid 0.65rem;
+    border-color: #0d0d0d;
     width: 100vw;
     height: 100%;
     display: flex;
@@ -1772,25 +1722,24 @@ body {
 }
 
 .app-main .app-header {
+    width: 100%;
     padding: 1.3rem;
     padding-bottom: 0;
-}
-
-.app-main .app-header .wrapper {
     display: flex;
     justify-content: space-between;
     align-self: center;
 }
 
-.app-main .app-header .wrapper .app-title {
+.app-main .app-header .app-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.21rem;
     line-height: 1.43rem;
+    color: inherit;
     font-weight: 700;
 }
 
 @media (min-width: 29.3125em) and (max-width: 48em) {
-    .app-main .app-header .wrapper .app-title {
+    .app-main .app-header .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.1rem;
         line-height: 1.43rem;
@@ -1798,7 +1747,7 @@ body {
 }
 
 @media (min-width: 20.0625em) and (max-width: 29.25em) {
-    .app-main .app-header .wrapper .app-title {
+    .app-main .app-header .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
         line-height: 1.43rem;
@@ -1806,31 +1755,17 @@ body {
 }
 
 @media (max-width: 20em) {
-    .app-main .app-header .wrapper .app-title {
+    .app-main .app-header .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
         line-height: 1.3rem;
     }
 }
 
-.app-main .app-header.inactive {
-    visibility: hidden;
-}
-
-.app-main .app-footer {
-    display: flex;
-    align-self: center;
-    flex-grow: 1;
-    opacity: 0;
-    width: 100%;
-    flex: 0;
-    height: 0;
-    transform: translateX(-100%);
-    overflow: hidden;
-}
-
 .app-main .app-body {
     padding: 0 1.3rem;
+    background-color: inherit;
+    color: inherit;
     flex-grow: 1;
     opacity: 1;
     width: 100%;
@@ -1867,6 +1802,48 @@ body {
     border-bottom: solid #0d0d0d 4px;
 }
 
+.app-main .app-body.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+    flex: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.app-main .app-footer {
+    display: flex;
+    align-self: center;
+    flex-grow: 1;
+    opacity: 0;
+    width: 100%;
+    flex: 0;
+    height: 0;
+    transform: translateX(-100%);
+    overflow: hidden;
+}
+
+.app-main .app-footer.visible {
+    padding: 1.3rem;
+    padding-top: 0.65rem;
+    transform: translateX(0);
+    opacity: 1;
+    flex: 1;
+}
+
+.app-main.activated, .app-main.docked {
+    background-color: #0d0d0d;
+    color: #fcfcfc;
+    border-color: #fcfcfc;
+}
+
+.app-main.activated .utility-loader, .app-main.docked .utility-loader {
+    background-color: #fcfcfc;
+}
+
+.app-main.activated svg .fill, .app-main.docked svg .fill {
+    fill: #fcfcfc;
+}
+
 .bar-explore, .bar-navigate {
     width: 100%;
     position: relative;
@@ -1891,12 +1868,9 @@ body {
     }
 }
 
-.bar-explore .bar-title:first-child .btn-media, .bar-navigate .bar-title:first-child .btn-media, .bar-explore .bar-title:last-child .btn-media, .bar-navigate .bar-title:last-child .btn-media, .bar-explore .bar-subtitle:first-child .btn-media, .bar-navigate .bar-subtitle:first-child .btn-media, .bar-explore .bar-subtitle:last-child .btn-media, .bar-navigate .bar-subtitle:last-child .btn-media {
-    transform: rotate(-90deg) translateZ(0);
-}
-
 .bar-explore {
     border-bottom: 4px solid;
+    height: 0;
 }
 
 .bar-navigate {
@@ -1994,10 +1968,6 @@ body {
     }
 }
 
-.active.board-contact, .active.board-project {
-    color: #fcfcfc;
-}
-
 .board-contact .board-subtitle {
     display: flex;
 }
@@ -2041,7 +2011,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2.6rem;
+    margin-bottom: calc(1.3rem * 2);
     border-bottom: 4px dashed;
 }
 
@@ -2075,7 +2045,7 @@ body {
     visibility: hidden;
 }
 
-.panel-gallery, .panel-portfolio {
+.panel-explore, .panel-portfolio {
     -webkit-font-smoothing: antialiased;
     z-index: 8888;
     display: flex;
@@ -2084,45 +2054,35 @@ body {
     height: 100%;
 }
 
-.panel-gallery .panel-header, .panel-portfolio .panel-header {
-    cursor: pointer;
+.panel-explore .panel-header, .panel-portfolio .panel-header {
     position: relative;
     font-weight: 500;
 }
 
-.panel-gallery .panel-header > .wrapper, .panel-portfolio .panel-header > .wrapper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-.panel-gallery .panel-body, .panel-portfolio .panel-body {
+.panel-explore .panel-body, .panel-portfolio .panel-body {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     overflow-y: hidden;
 }
 
-.panel-gallery .panel-body::after, .panel-portfolio .panel-body::after {
+.panel-explore .panel-body::after, .panel-portfolio .panel-body::after {
     height: calc(100% + 1px);
 }
 
-.panel-gallery .panel-body.active, .panel-portfolio .panel-body.active {
+.panel-explore .panel-body.activated, .panel-portfolio .panel-body.activated {
     overflow-y: scroll;
 }
 
-.panel-gallery .panel-content, .panel-portfolio .panel-content {
+.panel-explore .panel-content, .panel-portfolio .panel-content {
     flex-direction: column;
 }
 
-.panel-gallery .panel-media, .panel-portfolio .panel-media {
+.panel-explore .panel-media, .panel-portfolio .panel-media {
     align-self: center;
 }
 
-.panel-gallery .panel-content, .panel-portfolio .panel-content, .panel-gallery .panel-media, .panel-portfolio .panel-media {
+.panel-explore .panel-content, .panel-portfolio .panel-content, .panel-explore .panel-media, .panel-portfolio .panel-media {
     width: 100%;
     max-width: 1400px;
     display: flex;
@@ -2130,73 +2090,52 @@ body {
     align-items: flex-start;
 }
 
-.inactive.panel-gallery, .inactive.panel-portfolio {
+.inactive.panel-explore, .inactive.panel-portfolio {
     visibility: hidden;
 }
 
-.panel-gallery {
-    background-color: #fcfcfc;
+.panel-explore {
+    background-color: inherit;
+    color: inherit;
     width: 100%;
     left: 0;
     overflow: hidden;
-    top: calc(100% - 2.6rem);
+    top: calc(100% - (1.3rem * 2));
 }
 
-.panel-gallery .panel-header [for="explore"] {
-    width: 100%;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.panel-gallery .panel-header [for="explore"] .bar-subtitle::before {
-    content: "open";
-}
-
-.panel-gallery .panel-header [for="explore"] .bar-subtitle::after {
-    content: '>';
-    transform: rotate(-90deg);
-}
-
-.panel-gallery .panel-header [for="explore"] .panel-title > *,
-    .panel-gallery .panel-header [for="explore"] .panel-subtitle > * {
+.panel-explore .panel-header .panel-title > *,
+  .panel-explore .panel-header .panel-subtitle > * {
     padding: 0 0.325rem;
 }
 
-.panel-gallery .panel-header .belt-gallery {
+.panel-explore .panel-header .belt-gallery {
     padding: 1.3rem 0;
 }
 
 @media (max-width: 64em) {
-    .panel-gallery .panel-header .belt-gallery {
+    .panel-explore .panel-header .belt-gallery {
         padding: 0.65rem 0;
     }
 }
 
 @media (max-width: 29.25em) {
-    .panel-gallery .panel-header .belt-gallery {
+    .panel-explore .panel-header .belt-gallery {
         display: none;
     }
 }
 
-.panel-gallery .panel-body {
+.panel-explore .panel-body {
     margin-right: -1.3rem;
     padding-right: 1.3rem;
     padding-top: 1.3rem;
     -webkit-overflow-scrolling: touch;
 }
 
-.panel-gallery .panel-body::-webkit-scrollbar {
+.panel-explore .panel-body::-webkit-scrollbar {
     display: none;
 }
 
-.panel-gallery.active {
-    background-color: #0d0d0d;
-    color: #fcfcfc;
-}
-
-.panel-gallery.active .utility-loader {
+.panel-explore.activated .utility-loader {
     background-color: #fcfcfc;
 }
 
@@ -2232,7 +2171,8 @@ body {
     flex-grow: 1;
     overflow-y: scroll;
     width: 100%;
-    color: #0d0d0d;
+    color: inherit;
+    background-color: inherit;
 }
 
 .screen-about::-webkit-scrollbar, .screen-portfolio::-webkit-scrollbar, .screen-project::-webkit-scrollbar {
@@ -2259,10 +2199,6 @@ body {
 
 .screen-about .screen-body::-webkit-scrollbar, .screen-portfolio .screen-body::-webkit-scrollbar, .screen-project .screen-body::-webkit-scrollbar {
     display: none;
-}
-
-.active.screen-about, .active.screen-portfolio, .active.screen-project {
-    color: #fcfcfc;
 }
 
 .screen-about {
@@ -2356,7 +2292,7 @@ body {
     margin: 0;
 }
 
-.wall-cards .wall-body .wall-body-part.is-active {
+.wall-cards .wall-body .wall-body-part.activated {
     width: 100%;
     margin-right: 0;
     margin-left: 0;

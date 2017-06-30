@@ -1,7 +1,5 @@
 extends ../layouts/default
 
-include ../mixins/media/circle
-
 block appBody
     .screen-about
         .start.board-project
@@ -35,18 +33,15 @@ block appBody
                                     | no quote
                         footer
                             p i said that
-        .container-scroller
-            .utility-scroller
-                +circle()
-                +circle()
-        .explore.panel-gallery
+        .explore.panel-explore
             .panel-header
-                label(for="explore")
-                    .bar-explore
-                        .bar-title
-                            p my resume
-                        .bar-subtitle
-                            p &nbsp;
+                .bar-explore
+                    .bar-title
+                        p my resume&nbsp;
+                            span
+                    .bar-subtitle
+                        p scroll&nbsp;
+                            span up
             .panel-body
                 .container-document
                     .container-body-part
@@ -81,4 +76,4 @@ block appBody
                             p no personals
 block js
     script.
-        scrollAnimate('.screen-about', 'explore');
+        scrollAnimate('.screen-about');

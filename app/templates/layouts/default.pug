@@ -30,17 +30,14 @@ html
         block head
     body
         block intro
-        input#dock(type='checkbox')
-        input#explore(type='checkbox')
         input#filter(type='checkbox')
         .app-main
             header.app-header
-                .wrapper
-                    a.app-title(href='/')
-                        h1 jacobsfletch
-                    label.tool-toggle(for='dock')
-                        .tool-media
-                            +lightSwitch()
+                a.app-title(href='/')
+                    h1 jacobsfletch
+                .tool-lightswitch
+                    .tool-media
+                        +lightSwitch()
             .app-body
                 block appBody
             footer.app-footer
@@ -52,7 +49,7 @@ html
                         nav.menu-vertical
                             ul.menu-body
                                 each link in navLinks
-                                    li.menu-body-part.btn-main(class=(section == link.key ? 'active' : null))
+                                    li.menu-body-part.btn-main(class=(section == link.key ? 'activated' : null))
                                         a.btn-title(target=link.target href=link.href)= link.label
                                             |  >
                         nav.menu-vertical
@@ -72,6 +69,12 @@ html
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-72591985-3', 'auto');
             ga('send', 'pageview');
+            
+            ////////////////////////////////////////////////////////////////////////////
+
+            // scrollController
+
+            ////////////////////////////////////////////////////////////////////////////
             
             preventDefault = function(event) {
                 event.preventDefault();
@@ -114,17 +117,22 @@ html
 
             ////////////////////////////////////////////////////////////////////////////
 
-            scrollAnimate = function(screen, checkboxElement) {
+            scrollAnimate = function(screen) {
                 
-                var checkbox = document.getElementById(checkboxElement);
-                    screen = document.querySelector(screen);
+                var app = document.querySelector('.app-main');
+                    screen = app.querySelector(screen);
                     start = screen.querySelector('.start');
                     explore = screen.querySelector('.explore');
                     panelBody = explore.querySelector('.panel-body');
+                    barTitleSpan = explore.querySelector('.bar-title').querySelector('span');
+                    barSubtitleSpan = explore.querySelector('.bar-subtitle').querySelector('span');
+                    originalTitleSpan = barTitleSpan.innerHTML;
+                    originalSubtitleSpan = barSubtitleSpan.innerHTML;
                     panelScroll = 0;
                     panelIsFullyScrolledUp = true;
                     currentRatio = 0;
                     panelCurrentScroll = 0;
+                    checked = false;
 
                 fetchVariables = function() {
                     var exploreBoundingTop = explore.getBoundingClientRect().top;
@@ -134,13 +142,14 @@ html
                 }
                 
                 window.addEventListener('resize', function(event) {
-                    checkbox.checked = false;
+                    checked = false;
                     explore.removeAttribute('style');
                     start.removeAttribute('style');
-                    start.classList.remove('active');
-                    explore.classList.remove('active');
-                    panelBody.classList.remove('active');
+                    panelBody.classList.remove('activated');
+                    app.classList.remove('activated');
                     panelBody.scrollTop = 0 + 'px';
+                    barTitleSpan.innerHTML = originalTitleSpan;
+                    barSubtitleSpan.innerHTML = originalSubtitleSpan;
                     fetchVariables();
                 });
                 
@@ -168,23 +177,43 @@ html
                     }
                                                         
                     if (exploreTop == 0) {
-                        checkbox.checked = true;
-                        start.classList.add('active');
-                        explore.classList.add('active');
-                        panelBody.classList.add('active');
+                        checked = true;
+                        app.classList.add('activated');
+                        panelBody.classList.add('activated');
+                        barTitleSpan.innerHTML = 'overview';
+                        barSubtitleSpan.innerHTML = 'down';
                         scrollEnabler(event, panelBody);
                     } else if (exploreTop == originalExploreTop) {
-                        checkbox.checked = false;
-                        start.classList.remove('active');
-                        explore.classList.remove('active');
-                        panelBody.classList.remove('active');
+                        checked = false;
+                        app.classList.remove('activated');
+                        panelBody.classList.remove('activated');
+                        barTitleSpan.innerHTML = originalTitleSpan;
+                        barSubtitleSpan.innerHTML = originalSubtitleSpan;
                     }
                 }
                 
                 fetchVariables();
                 
             }
+            
+            ////////////////////////////////////////////////////////////////////////////
 
+            // dockInit
+
+            ////////////////////////////////////////////////////////////////////////////
+
+            var app = document.querySelector('.app-main');
+                lightSwitch = app.querySelector('.tool-lightswitch');
+                appFooter = app.querySelector('.app-footer');
+                appBody = app.querySelector('.app-body');
+                
+            lightSwitch.addEventListener('click', function() {
+                app.classList.toggle('docked');
+                appBody.classList.toggle('hidden');
+                appFooter.classList.toggle('visible');
+                lightSwitch.classList.toggle('switched');
+            });
+            
             ////////////////////////////////////////////////////////////////////////////
 
             // responsiveImages
@@ -257,14 +286,14 @@ html
 
                 toggleMedia = function(card, cardImg, cardParent, otherCards, otherCardImgs) {
                     prevImgWidth = Math.ceil(parseInt(getComputedStyle(cardImg, null).getPropertyValue('width'), 10));
-                    if (!cardParent.classList.contains('is-active')) {
+                    if (!cardParent.classList.contains('activated')) {
                         scrollPosition = scrollContainer.scrollTop;
                     }
                     for (var i = 0; i < otherCards.length; i++) {
                         otherCards[i].parentNode.classList.toggle('is-inactive');
                         otherCards[i].classList.add('is-inactive');
                     }
-                    cardParent.classList.toggle('is-active');
+                    cardParent.classList.toggle('activated');
                     card.querySelector('.tool-shrink').classList.toggle('is-inactive');
                     if (status === 'all') {
                         status = 'single';
@@ -276,7 +305,7 @@ html
                     for (var k = 0; k < otherCardImgs.length; k++) {
                         otherCardImgs[k].classList.add('is-inactive');
                     }
-                    if (!cardParent.classList.contains('is-active')) {
+                    if (!cardParent.classList.contains('activated')) {
                         scrollContainer.scrollTop = scrollPosition;
                     } else {
                         scrollContainer.scrollTop = 0;
