@@ -259,6 +259,105 @@ select[multiple] {
     display: flex;
 }
 
+.belt-gallery {
+    display: flex;
+    align-items: center;
+}
+
+.belt-gallery > * {
+    padding-right: 1.3rem;
+}
+
+@media (max-width: 64em) {
+    .belt-gallery > * {
+        padding-right: 0.65rem;
+    }
+}
+
+.belt-gallery > *:last-child {
+    padding-right: 0;
+}
+
+.card-portfolio, .card-project {
+    display: block;
+}
+
+.card-portfolio .card-media, .card-project .card-media {
+    background-position: center;
+    padding-top: 100%;
+    height: 0;
+}
+
+.card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.card-portfolio .card-media > img.deactivated, .card-project .card-media > img.deactivated, .card-portfolio .card-media > video.deactivated, .card-project .card-media > video.deactivated {
+    visibility: hidden;
+}
+
+.card-portfolio {
+    position: relative;
+    transition: background-color 0.33s linear;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card-portfolio:hover .card-header, .card-portfolio.hover .card-header {
+    display: flex;
+}
+
+.card-portfolio .card-header {
+    z-index: 5555;
+    color: #fcfcfc;
+    display: none;
+    position: absolute;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.3rem;
+    background-color: #0d0d0d;
+}
+
+.card-portfolio .card-header .card-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    display: flex;
+    padding-bottom: 0.325rem;
+}
+
+@media (max-width: 29.25em) {
+    .card-portfolio .card-header .card-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.21667rem;
+    }
+}
+
+.card-project:hover .tool-expand, .card-project.hover .tool-expand {
+    display: block;
+}
+
+.card-project video {
+    width: 100%;
+    height: auto;
+}
+
+.card-project .utility-loader {
+    stroke: #fcfcfc;
+}
+
 .container-dock {
     width: 100%;
     height: 100%;
@@ -505,105 +604,6 @@ select[multiple] {
     visibility: hidden;
 }
 
-.belt-gallery {
-    display: flex;
-    align-items: center;
-}
-
-.belt-gallery > * {
-    padding-right: 1.3rem;
-}
-
-@media (max-width: 64em) {
-    .belt-gallery > * {
-        padding-right: 0.65rem;
-    }
-}
-
-.belt-gallery > *:last-child {
-    padding-right: 0;
-}
-
-.card-portfolio, .card-project {
-    display: block;
-}
-
-.card-portfolio .card-media, .card-project .card-media {
-    background-position: center;
-    padding-top: 100%;
-    height: 0;
-}
-
-.card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.card-portfolio .card-media > img.deactivated, .card-project .card-media > img.deactivated, .card-portfolio .card-media > video.deactivated, .card-project .card-media > video.deactivated {
-    visibility: hidden;
-}
-
-.card-portfolio {
-    position: relative;
-    transition: background-color 0.33s linear;
-    cursor: pointer;
-    height: 100%;
-}
-
-.card-portfolio:hover .card-header, .card-portfolio.hover .card-header {
-    display: flex;
-}
-
-.card-portfolio .card-header {
-    z-index: 5555;
-    color: #fcfcfc;
-    display: none;
-    position: absolute;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex-wrap: wrap;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 1.3rem;
-    background-color: #0d0d0d;
-}
-
-.card-portfolio .card-header .card-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    display: flex;
-    padding-bottom: 0.325rem;
-}
-
-@media (max-width: 29.25em) {
-    .card-portfolio .card-header .card-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-        padding-bottom: 0.21667rem;
-    }
-}
-
-.card-project:hover .tool-expand, .card-project.hover .tool-expand {
-    display: block;
-}
-
-.card-project video {
-    width: 100%;
-    height: auto;
-}
-
-.card-project .utility-loader {
-    stroke: #fcfcfc;
-}
-
 .form-contact, .form-filters {
     display: inline-flex;
     flex-direction: column;
@@ -772,13 +772,7 @@ select[multiple] {
     width: 100%;
     left: 0;
     flex-grow: 1;
-    bottom: calc(100% - (2.6rem * 2));
-}
-
-@media (max-width: 64em) {
-    .widget-filter {
-        bottom: calc(100% - (1.3rem * 2));
-    }
+    bottom: calc(100% - (1.3rem * 2));
 }
 
 .widget-filter .widget-body {
