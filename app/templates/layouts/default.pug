@@ -142,7 +142,6 @@ html
                     checked = false;
                     explore.removeAttribute('style');
                     start.removeAttribute('style');
-                    panelBody.classList.remove('activated');
                     app.classList.remove('activated');
                     panelBody.scrollTop = 0 + 'px';
                     barTitleSpan.innerHTML = originalTitleSpan;
@@ -176,14 +175,12 @@ html
                     if (exploreTop == 0) {
                         checked = true;
                         app.classList.add('activated');
-                        panelBody.classList.add('activated');
                         barTitleSpan.innerHTML = 'overview';
                         barSubtitleSpan.innerHTML = 'down';
                         scrollEnabler(event, panelBody);
                     } else if (exploreTop == originalExploreTop) {
                         checked = false;
                         app.classList.remove('activated');
-                        panelBody.classList.remove('activated');
                         barTitleSpan.innerHTML = originalTitleSpan;
                         barSubtitleSpan.innerHTML = originalSubtitleSpan;
                     }
