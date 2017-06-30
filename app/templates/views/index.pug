@@ -6,16 +6,18 @@ include ../mixins/media/circle
 block appBody
     .container-micro
         .container-header
-            h1.container-title
-                if global.tagline.a
-                    | #{global.tagline.a}
-                else
-                    | no tagline a
-            h2.container-subtitle
-                if global.tagline.b
-                    | #{global.tagline.b}
-                else
-                    | no tagline b
-            a.btn-main(href='/portfolio')
-                .btn-title
-                    p portfolio >
+            .container-title
+                h1
+                    if global.tagline.a
+                        | #{global.tagline.a}
+                    else
+                        | no tagline a
+            .container-subtitle
+                h2
+                    if global.tagline.b
+                        | #{global.tagline.b}
+                    else
+                        | no tagline b
+                a.btn-main(href='/portfolio')
+                    .btn-title
+                        p portfolio >

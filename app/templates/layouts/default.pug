@@ -42,9 +42,6 @@ html
                 block appBody
             footer.app-footer
                 .container-dock
-                    .container-header
-                        .container-title
-                            p this website is 100% handmade
                     .container-body
                         nav.menu-vertical
                             ul.menu-body
@@ -231,7 +228,7 @@ html
 
                 finish = function(cardImg) {
                     setTimeout(function() {
-                        cardImg.classList.remove('is-inactive');
+                        cardImg.classList.remove('deactivated');
                     }, 1000)
                 }
 
@@ -275,11 +272,11 @@ html
                         for (var i = 0; i < cards.length; i++) {
                             var card = cards[i];
                             var cardImg = card.querySelector('img');
-                            cardImg.classList.add('is-inactive');
+                            cardImg.classList.add('deactivated');
                             loadImage(cardImg, otherCardImgs);
                         }
                     } else if (status === 'single') {
-                        cardImg.classList.add('is-inactive');
+                        cardImg.classList.add('deactivated');
                         loadImage(cardImg, otherCardImgs);
                     }
                 }
@@ -290,11 +287,11 @@ html
                         scrollPosition = scrollContainer.scrollTop;
                     }
                     for (var i = 0; i < otherCards.length; i++) {
-                        otherCards[i].parentNode.classList.toggle('is-inactive');
-                        otherCards[i].classList.add('is-inactive');
+                        otherCards[i].parentNode.classList.toggle('deactivated');
+                        otherCards[i].classList.add('deactivated');
                     }
                     cardParent.classList.toggle('activated');
-                    card.querySelector('.tool-shrink').classList.toggle('is-inactive');
+                    card.querySelector('.tool-shrink').classList.toggle('deactivated');
                     if (status === 'all') {
                         status = 'single';
                         currentImg = cardImg;
@@ -303,7 +300,7 @@ html
                         currentImg = null;
                     }
                     for (var k = 0; k < otherCardImgs.length; k++) {
-                        otherCardImgs[k].classList.add('is-inactive');
+                        otherCardImgs[k].classList.add('deactivated');
                     }
                     if (!cardParent.classList.contains('activated')) {
                         scrollContainer.scrollTop = scrollPosition;
