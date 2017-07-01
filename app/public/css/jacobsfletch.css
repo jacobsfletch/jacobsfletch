@@ -1407,7 +1407,7 @@ select[multiple] {
 
 .tool-expand,
 .tool-shrink {
-    z-index: 7777;
+    transform: translateZ(0);
     display: block;
     padding: 0.65rem;
     margin: 0.65rem;
@@ -1466,8 +1466,8 @@ select[multiple] {
     stroke: #0d0d0d;
 }
 
-.tool-expand.deactivated,
-  .tool-shrink.deactivated {
+.tool-expand.hidden,
+  .tool-shrink.hidden {
     display: none;
 }
 
@@ -1913,6 +1913,12 @@ body {
     }
 }
 
+@media (max-height: 29.3125em) {
+    .board-contact .board-header .board-subtitle, .board-project .board-header .board-subtitle {
+        display: none;
+    }
+}
+
 .board-contact .board-header + *, .board-project .board-header + * {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
@@ -1957,6 +1963,12 @@ body {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.82645rem;
         line-height: 0.975rem;
+    }
+}
+
+@media (max-height: 29.3125em) {
+    .board-contact .board-body .board-body-part:last-child, .board-project .board-body .board-body-part:last-child {
+        display: none;
     }
 }
 
