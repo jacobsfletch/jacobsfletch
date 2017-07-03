@@ -8,6 +8,12 @@ html body {
     box-sizing: border-box;
 }
 
+body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: 100%;
+}
+
 a,
 abbr,
 acronym,
@@ -247,7 +253,7 @@ select[multiple] {
     display: inline-flex;
 }
 
-@media (max-width: 29.25em) {
+@media only screen and (max-width: 463px) {
     .btn-main .btn-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
@@ -268,7 +274,7 @@ select[multiple] {
     padding-right: 1.3rem;
 }
 
-@media (max-width: 64em) {
+@media only screen and (max-width: 1023px) {
     .belt-gallery > * {
         padding-right: 0.65rem;
     }
@@ -336,7 +342,7 @@ select[multiple] {
     padding-bottom: 0.325rem;
 }
 
-@media (max-width: 29.25em) {
+@media only screen and (max-width: 463px) {
     .card-portfolio .card-header .card-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.82645rem;
@@ -356,255 +362,6 @@ select[multiple] {
 
 .card-project .utility-loader {
     stroke: #fcfcfc;
-}
-
-.container-dock {
-    width: 100%;
-    justify-content: flex-end;
-    flex-direction: column;
-    display: flex;
-}
-
-.container-dock .container-body .menu-vertical:first-child {
-    padding-bottom: 1.3rem;
-}
-
-.container-document {
-    max-width: 1400px;
-}
-
-.container-document .container-body-part {
-    padding-bottom: 1.3rem;
-}
-
-.container-document .container-body-part > *:last-child {
-    padding-bottom: 0;
-}
-
-.container-document b {
-    font-weight: 700;
-}
-
-.container-document h1 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.4641rem;
-    line-height: 1.625rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h1 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.331rem;
-        line-height: 1.625rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h1 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h2 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.331rem;
-    line-height: 1.625rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h2 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h2 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h3 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.21rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h3 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h3 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h4 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.21rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h4 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h4 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h5 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-    margin-bottom: 0.65rem;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h5 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h5 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document h6 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    font-weight: 700;
-}
-
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .container-document h6 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .container-document h6 {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-document p {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
-    margin-bottom: 0.65rem;
-}
-
-@media (max-width: 29.25em) {
-    .container-document p {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-    }
-}
-
-.container-micro {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    justify-content: flex-end;
-    padding-bottom: 1.3rem;
-    width: 100%;
-}
-
-.container-micro .container-header .container-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.4641rem;
-    line-height: 1.625rem;
-    margin-bottom: 0.65rem;
-    font-weight: 700;
-}
-
-@media (min-width: 20.0625em) and (max-width: 29.25em) {
-    .container-micro .container-header .container-title {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.331rem;
-        line-height: 1.625rem;
-    }
-}
-
-@media (max-width: 20em) {
-    .container-micro .container-header .container-title {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1.21rem;
-        line-height: 1.43rem;
-    }
-}
-
-.container-micro .container-header .container-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.43rem;
-    font-weight: 300;
-}
-
-@media (max-width: 20em) {
-    .container-micro .container-header .container-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.43rem;
-    }
-}
-
-@media (max-width: 20em) {
-    .container-micro .container-header .container-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-}
-
-.container-micro .container-header .container-subtitle .btn-main {
-    margin-top: 0.65rem;
-}
-
-.container-micro.inactive {
-    visibility: hidden;
 }
 
 .form-contact, .form-filters {
@@ -834,6 +591,261 @@ select[multiple] {
     content: '>';
     transform: rotate(90deg);
     transition: transform 0.33s linear;
+}
+
+.container-dock {
+    width: 100%;
+    justify-content: flex-end;
+    flex-direction: column;
+    display: flex;
+}
+
+.container-dock .container-body .menu-vertical:first-child {
+    padding-bottom: 1.3rem;
+}
+
+@media only screen and (max-height: 320px) {
+    .container-dock .container-body {
+        display: none;
+    }
+}
+
+.container-document {
+    max-width: 1400px;
+}
+
+.container-document .container-body-part {
+    padding-bottom: 1.3rem;
+}
+
+.container-document .container-body-part > *:last-child {
+    padding-bottom: 0;
+}
+
+.container-document b {
+    font-weight: 700;
+}
+
+.container-document h1 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.4641rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .container-document h1 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.331rem;
+        line-height: 1.625rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document h1 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h2 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.331rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .container-document h2 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document h2 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h3 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.21rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .container-document h3 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document h3 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h4 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.21rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .container-document h4 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document h4 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h5 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .container-document h5 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document h5 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document h6 {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .container-document h6 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document h6 {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-document p {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    margin-bottom: 0.65rem;
+}
+
+@media only screen and (max-width: 463px) {
+    .container-document p {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+    }
+}
+
+.container-micro {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    padding-bottom: 1.3rem;
+    width: 100%;
+}
+
+.container-micro .container-header .container-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.4641rem;
+    line-height: 1.625rem;
+    margin-bottom: 0.65rem;
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 463px) {
+    .container-micro .container-header .container-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.331rem;
+        line-height: 1.625rem;
+    }
+}
+
+@media only screen and (max-width: 319px) {
+    .container-micro .container-header .container-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.21rem;
+        line-height: 1.43rem;
+    }
+}
+
+.container-micro .container-header .container-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.43rem;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 319px) {
+    .container-micro .container-header .container-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.43rem;
+    }
+}
+
+@media only screen and (max-width: 319px) {
+    .container-micro .container-header .container-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+}
+
+.container-micro .container-header .container-subtitle .btn-main {
+    margin-top: 0.65rem;
+}
+
+.container-micro.inactive {
+    visibility: hidden;
 }
 
 .checkbox-main {
@@ -1452,6 +1464,7 @@ select[multiple] {
     stroke: inherit;
     stroke-width: inherit;
     stroke-linecap: inherit;
+    stroke-linejoin: inherit;
     stroke-capoffset: inherit;
     stroke-dasharray: inherit;
     stroke-dashoffset: inherit;
@@ -1480,7 +1493,7 @@ select[multiple] {
     position: relative;
 }
 
-@media (max-width: 64em) {
+@media only screen and (max-width: 1023px) {
     .tool-gallery .tool-media {
         width: 0.65rem;
     }
@@ -1501,6 +1514,7 @@ select[multiple] {
     stroke: inherit;
     stroke-width: inherit;
     stroke-linecap: inherit;
+    stroke-linejoin: inherit;
     stroke-capoffset: inherit;
     stroke-dasharray: inherit;
     stroke-dashoffset: inherit;
@@ -1524,7 +1538,7 @@ select[multiple] {
     transition: opacity 0.33s linear;
 }
 
-@media (max-width: 64em) {
+@media only screen and (max-width: 1023px) {
     .tool-gallery .tool-media::after {
         height: 2px;
     }
@@ -1561,6 +1575,7 @@ select[multiple] {
     stroke: inherit;
     stroke-width: inherit;
     stroke-linecap: inherit;
+    stroke-linejoin: inherit;
     stroke-capoffset: inherit;
     stroke-dasharray: inherit;
     stroke-dashoffset: inherit;
@@ -1637,6 +1652,7 @@ select[multiple] {
     stroke: inherit;
     stroke-width: inherit;
     stroke-linecap: inherit;
+    stroke-linejoin: inherit;
     stroke-capoffset: inherit;
     stroke-dasharray: inherit;
     stroke-dashoffset: inherit;
@@ -1731,7 +1747,7 @@ body {
     font-weight: 700;
 }
 
-@media (min-width: 29.3125em) and (max-width: 48em) {
+@media only screen and (min-width: 464px) and (max-width: 767px) {
     .app-main .app-header .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.1rem;
@@ -1739,7 +1755,7 @@ body {
     }
 }
 
-@media (min-width: 20.0625em) and (max-width: 29.25em) {
+@media only screen and (min-width: 320px) and (max-width: 463px) {
     .app-main .app-header .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
@@ -1747,7 +1763,7 @@ body {
     }
 }
 
-@media (max-width: 20em) {
+@media only screen and (max-width: 319px) {
     .app-main .app-header .app-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1rem;
@@ -1852,7 +1868,7 @@ body {
     display: inline-flex;
 }
 
-@media (max-width: 29.25em) {
+@media only screen and (max-width: 463px) {
     .bar-explore .bar-title, .bar-navigate .bar-title, .bar-explore .bar-subtitle, .bar-navigate .bar-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.82645rem;
@@ -1869,7 +1885,7 @@ body {
     border-bottom: 4px solid;
 }
 
-.board-contact, .board-project {
+.board-about, .board-contact, .board-project {
     visibility: visible;
     position: relative;
     flex-grow: 1;
@@ -1877,99 +1893,130 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    align-items: center;
+    margin-bottom: calc(1.3rem * 2);
+    border-bottom: 4px dashed;
 }
 
-.board-contact .board-header, .board-project .board-header {
+.board-about > *, .board-contact > *, .board-project > * {
+    width: 100%;
+}
+
+.board-about .board-header, .board-contact .board-header, .board-project .board-header {
     padding-top: 1.3rem;
     padding-bottom: 0.65rem;
 }
 
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .board-contact .board-header, .board-project .board-header {
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .board-about .board-header, .board-contact .board-header, .board-project .board-header {
         padding-top: 0.65rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .board-contact .board-header, .board-project .board-header {
-        padding-top: 0.325rem;
         padding-bottom: 0.325rem;
     }
 }
 
-.board-contact .board-header .board-subtitle, .board-project .board-header .board-subtitle {
+@media only screen and (max-width: 463px) {
+    .board-about .board-header, .board-contact .board-header, .board-project .board-header {
+        padding-top: 0.65rem;
+        padding-bottom: 0.21667rem;
+    }
+}
+
+.board-about .board-subtitle, .board-contact .board-subtitle, .board-project .board-subtitle {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1rem;
     line-height: 1.3rem;
     font-weight: 300;
+    padding-bottom: 0.65rem;
 }
 
-@media (max-width: 29.25em) {
-    .board-contact .board-header .board-subtitle, .board-project .board-header .board-subtitle {
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .board-about .board-subtitle, .board-contact .board-subtitle, .board-project .board-subtitle {
+        padding-bottom: 0.325rem;
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .board-about .board-subtitle, .board-contact .board-subtitle, .board-project .board-subtitle {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.82645rem;
         line-height: 0.975rem;
-        padding-top: 0.325rem;
+        padding-bottom: 0.21667rem;
     }
 }
 
-@media (max-height: 29.3125em) {
-    .board-contact .board-header .board-subtitle, .board-project .board-header .board-subtitle {
-        display: none;
-    }
-}
-
-.board-contact .board-header + *, .board-project .board-header + * {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
-}
-
-.board-contact .board-title, .board-project .board-title {
+.board-about .board-title, .board-contact .board-title, .board-project .board-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.4641rem;
     line-height: 1.625rem;
     font-weight: 700;
-    padding-top: 1.3rem;
 }
 
-@media (min-width: 29.3125em) and (max-width: 48em) {
-    .board-contact .board-title, .board-project .board-title {
-        padding-top: 0.65rem;
-    }
-}
-
-@media (max-width: 29.25em) {
-    .board-contact .board-title, .board-project .board-title {
+@media only screen and (max-width: 463px) {
+    .board-about .board-title, .board-contact .board-title, .board-project .board-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.21rem;
         line-height: 1.43rem;
-        padding-top: 0.325rem;
     }
 }
 
-.board-contact .board-body, .board-project .board-body {
+.board-about .board-body, .board-contact .board-body, .board-project .board-body {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.board-contact .board-body .board-body-part, .board-project .board-body .board-body-part {
+.board-about .board-body-part, .board-contact .board-body-part, .board-project .board-body-part {
     width: 100%;
 }
 
-@media (max-width: 20em) {
-    .board-contact .board-body .board-body-part:first-child, .board-project .board-body .board-body-part:first-child {
+.board-about .board-body-part:first-child, .board-contact .board-body-part:first-child, .board-project .board-body-part:first-child {
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 319px) {
+    .board-about .board-body-part:first-child, .board-contact .board-body-part:first-child, .board-project .board-body-part:first-child {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.82645rem;
         line-height: 0.975rem;
     }
 }
 
-@media (max-height: 29.3125em) {
-    .board-contact .board-body .board-body-part:last-child, .board-project .board-body .board-body-part:last-child {
+.board-about .board-body-part .blockquote, .board-contact .board-body-part .blockquote, .board-project .board-body-part .blockquote {
+    padding-bottom: 1.3rem;
+}
+
+.board-about .board-body-part .blockquote footer, .board-contact .board-body-part .blockquote footer, .board-project .board-body-part .blockquote footer {
+    font-weight: 700;
+    padding-top: 0.325rem;
+}
+
+@media only screen and (max-width: 463px) {
+    .board-about .board-body-part .blockquote, .board-contact .board-body-part .blockquote, .board-project .board-body-part .blockquote {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.65rem;
+    }
+}
+
+@media only screen and (max-height: 464px) {
+    .board-about .board-body-part .blockquote, .board-contact .board-body-part .blockquote, .board-project .board-body-part .blockquote {
         display: none;
     }
+}
+
+@media only screen and (max-height: 320px) {
+    .board-about .board-body {
+        display: none;
+    }
+}
+
+.board-contact {
+    margin-bottom: 0;
+    border-bottom: 0;
 }
 
 .board-contact .board-subtitle {
@@ -1977,7 +2024,7 @@ body {
 }
 
 .board-contact .board-subtitle .available,
-  .board-contact .board-subtitle .unavailable {
+    .board-contact .board-subtitle .unavailable {
     width: 0.65rem;
     height: 0.65rem;
     border-radius: 100%;
@@ -2005,48 +2052,30 @@ body {
     padding-bottom: 1.3rem;
 }
 
+.board-contact .board-body-part:first-child {
+    flex-grow: 0;
+}
+
+@media only screen and (max-height: 320px) {
+    .board-contact .board-body-part:first-child {
+        display: none;
+    }
+}
+
 .board-contact .board-body-part:last-child {
     flex-grow: 1;
 }
 
-.board-project {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: calc(1.3rem * 2);
-    border-bottom: 4px dashed;
-}
-
-.board-project > * {
-    width: 100%;
-}
-
-.board-project .board-body-part:first-child {
-    flex-grow: 1;
-}
-
-.board-project .board-body-part:last-child {
-    padding-bottom: 1.3rem;
-}
-
-.board-project .board-body-part:last-child footer {
-    font-weight: 700;
-    padding-top: 0.325rem;
-}
-
-@media (max-width: 29.25em) {
-    .board-project .board-body-part:last-child {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-        padding-bottom: 0.65rem;
+@media only screen and (max-height: 464px) {
+    .board-project .board-subtitle {
+        display: none;
     }
 }
 
-.board-project.inactive {
-    visibility: hidden;
+@media only screen and (max-height: 320px) {
+    .board-project .board-body {
+        display: none;
+    }
 }
 
 .panel-explore, .panel-portfolio {
@@ -2112,13 +2141,13 @@ body {
     padding: 1.3rem 0;
 }
 
-@media (max-width: 64em) {
+@media only screen and (max-width: 1023px) {
     .panel-explore .panel-header .belt-gallery {
         padding: 0.65rem 0;
     }
 }
 
-@media (max-width: 29.25em) {
+@media only screen and (max-width: 463px) {
     .panel-explore .panel-header .belt-gallery {
         display: none;
     }
@@ -2191,7 +2220,7 @@ body {
     margin-top: 5.2rem;
 }
 
-@media (max-width: 64em) {
+@media only screen and (max-width: 1023px) {
     .screen-about .screen-body, .screen-portfolio .screen-body, .screen-project .screen-body {
         margin-top: 2.6rem;
     }
@@ -2254,7 +2283,7 @@ body {
     position: relative;
 }
 
-@media (min-width: 48.0625em) {
+@media only screen and (min-width: 768px) {
     .wall-cards .wall-body .wall-body-part {
         width: calc(33.33% - (1.3rem * 2) / 3);
         margin-right: 1.3rem;
@@ -2265,7 +2294,7 @@ body {
     }
 }
 
-@media (min-width: 29.3125em) and (max-width: 48em) {
+@media only screen and (min-width: 464px) and (max-width: 767px) {
     .wall-cards .wall-body .wall-body-part {
         width: calc((50% - (1.3rem / 2)));
     }
@@ -2279,7 +2308,7 @@ body {
     }
 }
 
-@media (max-width: 29.25em) {
+@media only screen and (max-width: 463px) {
     .wall-cards .wall-body .wall-body-part {
         width: 100%;
     }
