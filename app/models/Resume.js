@@ -42,7 +42,7 @@ Resume.add({
         type: Types.Html,
         wysiwyg: false,
         height: 500
-    }
+    },
     experience: {
         type: Types.Html,
         wysiwyg: false,
