@@ -45,35 +45,29 @@ block appBody
             .panel-body
                 .container-document
                     .container-body-part
-                        h3 philosophy
-                        if resume.philosophy
-                            | !{resume.philosophy}
+                        h3 personals
+                        if resume.personals
+                            | !{resume.personals}
                         else
-                            | no philosophy
-                    .container-body-part
-                        h3 technical skills
-                        if resume.skills
-                            | !{resume.skills}
-                        else
-                            | no development skills
+                            p no personals
                     .container-body-part
                         h3 experience
                         if resume.experience
                             | !{resume.experience}
                         else
-                            | no experience
+                            p no experience
                     .container-body-part
                         h3 education
                         if resume.education
                             | !{resume.education}
                         else
-                            | no education
+                            p no education
                     .container-body-part
-                        h3 personals
-                        if resume.personal
-                            | !{resume.personal}
+                        h3 technicals
+                        if resume.technicals
+                            | !{resume.technicals}
                         else
-                            p no personals
+                            p no technicals
 block js
     script.
         scrollAnimate('.screen-about');

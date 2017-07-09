@@ -38,31 +38,26 @@ Resume.add({
         wysiwyg: false,
         height: 150
     },
-    philosophy: {
+    personals: {
         type: Types.Html,
         wysiwyg: false,
-        height: 150
+        height: 500
+    }
+    experience: {
+        type: Types.Html,
+        wysiwyg: false,
+        height: 500
     },
     education: {
         type: Types.Html,
         wysiwyg:  false,
         height: 500
     },
-    experience: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 500
-    },
-    skills: {
+    technicals: {
         type: Types.Html,
         wysiwyg:  false,
         height: 500
     },
-    personal: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 500
-    }
 });
 
 Resume.defaultColumns = 'name';
