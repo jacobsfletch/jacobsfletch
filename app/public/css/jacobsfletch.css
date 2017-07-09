@@ -1622,51 +1622,15 @@ select[multiple] {
     left: 50%;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
-    width: calc(100% - 1px);
-    height: calc(100% - 1px);
+    width: 100%;
+    height: 100%;
     background-color: #0d0d0d;
     opacity: 1;
     animation: loader 0.66s infinite;
 }
 
-.utility-scroller {
-    position: relative;
-    width: 6.5rem;
-    stroke-width: 4px;
-    stroke: #0d0d0d;
-    fill: none;
-}
-
-.utility-scroller svg {
-    width: 100%;
-    height: 100%;
-}
-
-.utility-scroller svg svg circle,
-    .utility-scroller svg svg ellipse,
-    .utility-scroller svg svg g,
-    .utility-scroller svg svg path,
-    .utility-scroller svg svg polyline,
-    .utility-scroller svg svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-linejoin: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.utility-scroller .utility-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.3rem;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
+.utility-loader.hidden {
+    display: none;
 }
 
 #filter {
