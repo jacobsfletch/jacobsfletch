@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
 var Project = new keystone.List('Project', {
+    sortable: true,
     map: {
         name: 'title'
     },
