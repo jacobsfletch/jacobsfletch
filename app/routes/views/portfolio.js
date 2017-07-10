@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
         var q = keystone.list('Project').model.find({
             state: 'published',
         }).populate('categories');
-
+        q.sort('sortOrder');
         q.exec(function (err, result) {
             if (result) {
                 locals.projects = result;
