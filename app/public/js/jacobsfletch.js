@@ -158,12 +158,10 @@ responsiveImages = function(cardName) {
     finish = function(cardImg) {
         setTimeout(function() {
             cardImg.classList.remove('deactivated');
-            // cardImg.parentNode.querySelector('.utility-loader').classList.add('hidden');
         }, 1000)
     }
 
     loadImage = function(cardImg, otherCardImgs) {
-        // cardImg.parentNode.querySelector('.utility-loader').classList.remove('hidden');
         var imgWidth = Math.ceil(parseInt(getComputedStyle(cardImg, null).getPropertyValue('width'), 10));
         if (imgWidth != prevImgWidth) { // Skip the image transormation if it is the same size as the prior
             var newWidth = imgWidth * dppi;
@@ -172,8 +170,8 @@ responsiveImages = function(cardName) {
                 var srcParse = imgSrc.split('upload/');
                 for (var j = 0; j < srcParse.length; j++) {
                     var srcFirst = srcParse[0];
-                        srcLast = srcParse[1];
-                        srcType = srcLast.split('.')[1];
+                    var srcLast = srcParse[1];
+                    var srcType = srcLast.split('.')[1];
                     if(srcType === 'jpg') {
                         var imgSrc = srcFirst + 'upload/w_' + newWidth + '/' + srcLast;
                     }
@@ -202,7 +200,7 @@ responsiveImages = function(cardName) {
         if (status === 'all') {
             for (var i = 0; i < cards.length; i++) {
                 var card = cards[i];
-                    cardImg = card.querySelector('img');
+                var cardImg = card.querySelector('img');
                 cardImg.classList.add('deactivated');
                 loadImage(cardImg, otherCardImgs);
             }
@@ -244,8 +242,8 @@ responsiveImages = function(cardName) {
     for (var i = 0; i < cards.length; i++) {
         (function() {
             var card = cards[i];
-                otherCards = [];
-                otherCardImgs = [];
+            var otherCards = [];
+            var otherCardImgs = [];
             for (var j = 0; j < cards.length; j++) {
                 if (!cards[j].isSameNode(card)) {
                     otherCards.push(cards[j]);
@@ -256,10 +254,10 @@ responsiveImages = function(cardName) {
                 }
             }
             var cardImg = card.querySelector('img');
-                cardParent = card.parentNode;
-                toolExpand = card.querySelector('.tool-expand');
-                toolShrink = card.querySelector('.tool-shrink');
-                tools = [];
+            var cardParent = card.parentNode;
+            var toolExpand = card.querySelector('.tool-expand');
+            var toolShrink = card.querySelector('.tool-shrink');
+            var tools = [];
             if (toolExpand && toolShrink) {
                 tools.push(toolExpand, toolShrink);
             }
