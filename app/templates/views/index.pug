@@ -4,20 +4,25 @@ include ../mixins/media/chevron
 include ../mixins/media/circle
 
 block appBody
-    .container-micro
-        .container-header
-            .container-title
-                h1
-                    if global.tagline.a
-                        | #{global.tagline.a}
-                    else
-                        | no tagline a
-            .container-subtitle
-                h2
-                    if global.tagline.b
-                        | #{global.tagline.b}
-                    else
-                        | no tagline b
-                a.btn-main(href='/portfolio')
-                    .btn-title
-                        p portfolio >
+    .screen-index
+        .screen-body
+            nav.menu-dock
+                ul.menu-body
+                    li.menu-body-part
+                        p hello, my name is 
+                            a.btn-main(href='/about') jacob&nbsp;fletcher.
+                    li.menu-body-part
+                        p i am a 
+                            a.btn-main(href='/portfolio') creator&nbsp;of&nbsp;things.
+                    li.menu-body-part
+                        p i also 
+                            a.btn-main(href='/blog') like&nbsp;to&nbsp;write
+                    li.menu-body-part
+                        p i am currently 
+                            a.btn-main(href='/contact') available&nbsp;for&nbsp;work
+                    li.menu-body-part
+                        p feel free to 
+                            a.btn-main(href='/contact') drop&nbsp;a&nbsp;line
+                    li.menu-body-part
+                        p oh, and i 
+                            a.btn-main(href='/contact') sell&nbsp;stuff&nbsp;too

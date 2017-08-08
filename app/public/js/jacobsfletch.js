@@ -134,7 +134,7 @@ dockToggler = function() {
     var app = document.querySelector('.app-main');
         tools = app.querySelectorAll('.tool-swatch');
         dock = app.querySelector('.panel-dock');
-        appBody = app.querySelector('.app-body');
+        screen = app.querySelector('[class*=screen-]');
         currentSwatch = undefined;
         toolsArray = [];
         previous = undefined;
@@ -163,7 +163,7 @@ dockToggler = function() {
                     app.classList.remove('docked');
                     docked = false;
                     app.removeAttribute('style');
-                    appBody.classList.remove('hidden');
+                    screen.classList.remove('hidden');
                     dock.classList.remove('visible');
                     app.classList.remove(swatch);
                 }
@@ -172,7 +172,7 @@ dockToggler = function() {
                 app.classList.add('docked');
                 dock.classList.add('visible');
                 docked = true;
-                appBody.classList.add('hidden');
+                screen.classList.add('hidden');
                 app.removeAttribute('style');
                 app.classList.add(swatch);
             }

@@ -33,31 +33,47 @@ html
         input#filter(type='checkbox')
         .app-main
             header.app-header
-                a.app-title(href='/')
-                    h1 jacobsfletch
-                .tool-lightswitch
-                    .tool-media
-                        +lightSwitch()
+                a.header-title(href='/')
+                    h2 placeholder
+                .header-tool
+                    .tool-swatch
+                    .tool-swatch
+                    .tool-swatch
+                    .tool-swatch
             .app-body
+                .panel-dock
+                    .panel-body
+                        nav.menu-dock
+                            ul.menu-body
+                                li.menu-body-part
+                                    p hello, my name is 
+                                        a.btn-main(href='/about') jacob&nbsp;fletcher.
+                                li.menu-body-part
+                                    p i am a 
+                                        a.btn-main(href='/portfolio') creator&nbsp;of&nbsp;things.
+                                li.menu-body-part
+                                    p i also 
+                                        a.btn-main(href='/blog') like&nbsp;to&nbsp;write
+                                li.menu-body-part
+                                    p i am currently 
+                                        a.btn-main(href='/contact') available&nbsp;for&nbsp;work
+                                li.menu-body-part
+                                    p feel free to 
+                                        a.btn-main(href='/contact') drop&nbsp;a&nbsp;line
+                                li.menu-body-part
+                                    p oh, and i 
+                                        a.btn-main(href='/contact') sell&nbsp;stuff&nbsp;too
                 block appBody
             footer.app-footer
-                .container-dock
-                    .container-body
-                        nav.menu-vertical
-                            ul.menu-body
-                                each link in navLinks
-                                    li.menu-body-part.btn-main(class=(section == link.key ? 'activated' : null))
-                                        a.btn-title(target=link.target href=link.href)= link.label
-                                            |  >
-                        nav.menu-vertical
-                            .menu-header
-                                .menu-title
-                                    h6 coming soon
-                            ul.menu-body
-                                li.menu-body-part.btn-main
-                                    a.btn-title my blog
-                                li.menu-body-part.btn-main
-                                    a.btn-title my shop
+                if user.status == 'available'
+                    .available
+                    a.footer-title(href='/contact')
+                        h3 available
+                else if user.status == 'unavailable'
+                    .unavailable
+                    h3.footer-title unavailable
+                a.footer-subtitle(href='/')
+                    h3 #{user.name.first} #{user.name.last} / index
         script(src='/js/jacobsfletch.min.js')
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -66,5 +82,5 @@ html
             })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
             ga('create', 'UA-72591985-3', 'auto');
             ga('send', 'pageview');
-
+            
         block js
