@@ -124,21 +124,65 @@ scrollAnimate = function(screen) {
 
 ////////////////////////////////////////////////////////////////////////////
 
-// dockInit
+// dockToggler
 
 ////////////////////////////////////////////////////////////////////////////
 
-var app = document.querySelector('.app-main');
-    lightSwitch = app.querySelector('.tool-lightswitch');
-    appFooter = app.querySelector('.app-footer');
-    appBody = app.querySelector('.app-body');
 
-lightSwitch.addEventListener('click', function() {
-    app.classList.toggle('docked');
-    appBody.classList.toggle('hidden');
-    appFooter.classList.toggle('visible');
-    lightSwitch.classList.toggle('switched');
-});
+
+dockToggler = function() {
+    var app = document.querySelector('.app-main');
+        tools = app.querySelectorAll('.tool-swatch');
+        dock = app.querySelector('.panel-dock');
+        appBody = app.querySelector('.app-body');
+        currentSwatch = undefined;
+        toolsArray = [];
+        previous = undefined;
+        docked = false;
+        swatches = ['cyan', 'magenta', 'yellow', 'black'];
+        swatch = undefined;
+
+    for (var i = 0; i < tools.length; i++) {
+        var tool = tools[i];
+        tool.addEventListener('click', function() {
+            for (var i = 0; i < tools.length; i++) {
+                if(this.isSameNode(tools[i])) {
+                    swatch = swatches[i];
+                }
+            }
+            if (docked) {
+                if(!this.isSameNode(previous)) {
+                    app.classList.remove(previousSwatch);
+                    app.classList.add(swatch);
+                    for (var k = 0; k < tools.length; k++) {
+                        tools[k].classList.remove('activated');
+                        this.classList.add('activated');
+                    }
+                } else {
+                    this.classList.remove('activated');
+                    app.classList.remove('docked');
+                    docked = false;
+                    app.removeAttribute('style');
+                    appBody.classList.remove('hidden');
+                    dock.classList.remove('visible');
+                    app.classList.remove(swatch);
+                }
+            } else {
+                this.classList.add('activated');
+                app.classList.add('docked');
+                dock.classList.add('visible');
+                docked = true;
+                appBody.classList.add('hidden');
+                app.removeAttribute('style');
+                app.classList.add(swatch);
+            }
+            previous = this;
+            previousSwatch = swatch;
+        });
+    }
+}
+
+dockToggler();
 
 ////////////////////////////////////////////////////////////////////////////
 
