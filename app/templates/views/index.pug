@@ -19,7 +19,10 @@ block appBody
                             a.btn-main(href='/blog') like&nbsp;to&nbsp;write
                     li.menu-body-part
                         p i am currently 
-                            a.btn-main(href='/contact') available&nbsp;for&nbsp;work
+                            if user.status == 'available'
+                                a.btn-main(href='/contact') available&nbsp;for&nbsp;work
+                            else if user.status == 'unavailable'
+                                a.btn-main unavailable&nbsp;for&nbsp;work
                     li.menu-body-part
                         p feel free to 
                             a.btn-main(href='/contact') drop&nbsp;a&nbsp;line

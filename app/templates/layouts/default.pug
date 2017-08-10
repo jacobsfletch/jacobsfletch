@@ -40,6 +40,14 @@ html
                     .tool-swatch
                     .tool-swatch
                     .tool-swatch
+                .header-subtitle
+                    .container-measure
+                        .measure-index
+                        .measure-inner
+                            .line
+                            .line
+                            .line
+                            .line
             .app-body
                 .panel-dock
                     .panel-body
@@ -56,7 +64,10 @@ html
                                         a.btn-main(href='/blog') like&nbsp;to&nbsp;write
                                 li.menu-body-part
                                     p i am currently 
-                                        a.btn-main(href='/contact') available&nbsp;for&nbsp;work
+                                        if user.status == 'available'
+                                            a.btn-main(href='/contact') available&nbsp;for&nbsp;work
+                                        else if user.status == 'unavailable'
+                                            a.btn-main unavailable&nbsp;for&nbsp;work
                                 li.menu-body-part
                                     p feel free to 
                                         a.btn-main(href='/contact') drop&nbsp;a&nbsp;line
@@ -65,15 +76,20 @@ html
                                         a.btn-main(href='/contact') sell&nbsp;stuff&nbsp;too
                 block appBody
             footer.app-footer
-                if user.status == 'available'
-                    .available
-                    a.footer-title(href='/contact')
-                        h3 available
-                else if user.status == 'unavailable'
-                    .unavailable
-                    h3.footer-title unavailable
-                a.footer-subtitle(href='/')
-                    h3 #{user.name.first} #{user.name.last} / index
+                .footer-title
+                    if user.status == 'available'
+                        a.btn-list.available(href='/contact') available&nbsp;
+                        p for work
+                    else if user.status == 'unavailable'
+                        a.btn-list.unavailable unavailable&nbsp;
+                        p for work
+                .footer-subtitle
+                    nav.menu-list
+                        ul.menu-body
+                            li.menu-body-part
+                                a.btn-list(href='/') #{user.name.first} #{user.name.last}
+                            li.menu-body-part
+                                a.btn-list(href='/') index
         script(src='/js/jacobsfletch.min.js')
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

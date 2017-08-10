@@ -46,6 +46,20 @@ exports.globals = function(req, res, next) {
     });
 }
 
+// Load the Projects
+exports.myself = function(req, res, next) {
+    var q = keystone.list('User').model.findOne({
+        key: 'jacob-fletcher'
+    }).select('status name');
+    q.exec(function (err, result) {
+        if (result) {
+            locals.user = result;
+        }
+        next();
+    });
+
+}
+
 // Fetches and clears the flashMessages before a view is rendered
 exports.flashMessages = function(req, res, next) {
 

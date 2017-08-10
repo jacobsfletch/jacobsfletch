@@ -234,15 +234,32 @@ select[multiple] {
     color: #0d0d0d;
 }
 
-.btn-main, .btn-nav {
+.btn-list, .btn-main, .btn-nav {
     height: auto;
     display: inline-flex;
     cursor: pointer;
     color: inherit;
 }
 
-.btn-main .btn-title, .btn-nav .btn-title {
+.btn-list .btn-title, .btn-main .btn-title, .btn-nav .btn-title {
     color: inherit;
+}
+
+.btn-list {
+    transition: 0.165s font-weight linear;
+    font-weight: 900;
+}
+
+.btn-list:hover {
+    font-weight: 400;
+}
+
+.btn-list.available {
+    color: green;
+}
+
+.btn-list.unavailable {
+    color: red;
 }
 
 .btn-main {
@@ -279,6 +296,86 @@ select[multiple] {
 
 .belt-gallery > *:last-child {
     padding-right: 0;
+}
+
+.card-portfolio, .card-project {
+    display: block;
+}
+
+.card-portfolio .card-media, .card-project .card-media {
+    background-position: center;
+    padding-top: 100%;
+    height: 0;
+}
+
+.card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.card-portfolio .card-media > img.deactivated, .card-project .card-media > img.deactivated, .card-portfolio .card-media > video.deactivated, .card-project .card-media > video.deactivated {
+    visibility: hidden;
+}
+
+.card-portfolio {
+    position: relative;
+    transition: background-color 0.33s linear;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card-portfolio:hover .card-header, .card-portfolio.hover .card-header {
+    display: flex;
+}
+
+.card-portfolio .card-header {
+    z-index: 5555;
+    color: #fcfcfc;
+    display: none;
+    position: absolute;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.975rem;
+    background-color: #0d0d0d;
+}
+
+.card-portfolio .card-header .card-subtitle {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1rem;
+    line-height: 1.43rem;
+    display: flex;
+    padding-bottom: 0.325rem;
+}
+
+@media only screen and (max-width: 463px) {
+    .card-portfolio .card-header .card-subtitle {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.82645rem;
+        line-height: 0.975rem;
+        padding-bottom: 0.21667rem;
+    }
+}
+
+.card-project:hover .tool-expand, .card-project.hover .tool-expand {
+    display: block;
+}
+
+.card-project video {
+    width: 100%;
+    height: auto;
+}
+
+.card-project .utility-loader {
+    stroke: #fcfcfc;
 }
 
 .container-dock {
@@ -472,6 +569,43 @@ select[multiple] {
     }
 }
 
+.container-measure {
+    height: 6.5rem;
+    border-width: 2px 0;
+    border-color: #0d0d0d;
+    border-style: solid;
+    width: 0.975rem;
+    display: flex;
+}
+
+.container-measure .measure-inner {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.container-measure .measure-index {
+    cursor: row-resize;
+    border: solid 2px #0d0d0d;
+    border-radius: 100%;
+    background-color: #fcfcfc;
+    width: 0.65rem;
+    height: 0.65rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-50% + 1px));
+    /* Translate Y Value in Respect to Scroll Position */
+}
+
+.container-measure .line {
+    height: 1px;
+    background-color: #0d0d0d;
+    width: 100%;
+}
+
 .container-micro {
     display: flex;
     flex-direction: column;
@@ -591,6 +725,28 @@ select[multiple] {
 
 .menu-dock .menu-body-part:last-child {
     margin-bottom: 0;
+}
+
+.menu-list {
+    display: flex;
+}
+
+.menu-list .menu-body {
+    flex-grow: 1;
+    display: flex;
+}
+
+.menu-list .menu-body-part {
+    display: flex;
+}
+
+.menu-list .menu-body-part::after {
+    content: '/';
+    padding: 0 0.65rem;
+}
+
+.menu-list .menu-body-part:last-child::after {
+    content: '';
 }
 
 .menu-vertical {
@@ -794,363 +950,6 @@ select[multiple] {
     content: '>';
     transform: rotate(90deg);
     transition: transform 0.33s linear;
-}
-
-.card-portfolio, .card-project {
-    display: block;
-}
-
-.card-portfolio .card-media, .card-project .card-media {
-    background-position: center;
-    padding-top: 100%;
-    height: 0;
-}
-
-.card-portfolio .card-media > img, .card-project .card-media > img, .card-portfolio .card-media > video, .card-project .card-media > video {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.card-portfolio .card-media > img.deactivated, .card-project .card-media > img.deactivated, .card-portfolio .card-media > video.deactivated, .card-project .card-media > video.deactivated {
-    visibility: hidden;
-}
-
-.card-portfolio {
-    position: relative;
-    transition: background-color 0.33s linear;
-    cursor: pointer;
-    height: 100%;
-}
-
-.card-portfolio:hover .card-header, .card-portfolio.hover .card-header {
-    display: flex;
-}
-
-.card-portfolio .card-header {
-    z-index: 5555;
-    color: #fcfcfc;
-    display: none;
-    position: absolute;
-    justify-content: flex-end;
-    flex-direction: column;
-    flex-wrap: wrap;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0.975rem;
-    background-color: #0d0d0d;
-}
-
-.card-portfolio .card-header .card-subtitle {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1rem;
-    line-height: 1.43rem;
-    display: flex;
-    padding-bottom: 0.325rem;
-}
-
-@media only screen and (max-width: 463px) {
-    .card-portfolio .card-header .card-subtitle {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.82645rem;
-        line-height: 0.975rem;
-        padding-bottom: 0.21667rem;
-    }
-}
-
-.card-project:hover .tool-expand, .card-project.hover .tool-expand {
-    display: block;
-}
-
-.card-project video {
-    width: 100%;
-    height: auto;
-}
-
-.card-project .utility-loader {
-    stroke: #fcfcfc;
-}
-
-.tool-expand,
-.tool-shrink, .tool-gallery, .tool-lightswitch, .tool-swatch {
-    cursor: pointer;
-    display: inline-flex;
-    position: relative;
-}
-
-.tool-expand .tool-title,
-  .tool-shrink .tool-title, .tool-gallery .tool-title, .tool-lightswitch .tool-title, .tool-swatch .tool-title {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 0.82645rem;
-    line-height: 0.975rem;
-}
-
-.tool-expand,
-.tool-shrink {
-    transform: translateZ(0);
-    display: block;
-    padding: 0.65rem;
-    margin: 0.65rem;
-    background-color: #fcfcfc;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-.tool-expand .tool-media,
-  .tool-shrink .tool-media {
-    transition: all 0.33s linear;
-    width: 0.975rem;
-    height: 0.975rem;
-    position: relative;
-}
-
-.tool-expand .tool-media svg,
-    .tool-shrink .tool-media svg {
-    overflow: visible;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.tool-expand .tool-media svg svg circle,
-      .tool-expand .tool-media svg svg ellipse,
-      .tool-expand .tool-media svg svg g,
-      .tool-expand .tool-media svg svg path,
-      .tool-expand .tool-media svg svg polyline,
-      .tool-expand .tool-media svg svg stroke,
-      .tool-shrink .tool-media svg svg circle,
-      .tool-shrink .tool-media svg svg ellipse,
-      .tool-shrink .tool-media svg svg g,
-      .tool-shrink .tool-media svg svg path,
-      .tool-shrink .tool-media svg svg polyline,
-      .tool-shrink .tool-media svg svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-linejoin: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.tool-expand .tool-media polyline,
-    .tool-shrink .tool-media polyline {
-    vector-effect: non-scaling-stroke;
-    fill: none;
-    stroke-width: 4px;
-    stroke: #0d0d0d;
-}
-
-.tool-expand.hidden,
-  .tool-shrink.hidden {
-    display: none;
-}
-
-.tool-gallery {
-    height: 100%;
-}
-
-.tool-gallery .tool-media {
-    width: 0.975rem;
-    position: relative;
-}
-
-@media only screen and (max-width: 1023px) {
-    .tool-gallery .tool-media {
-        width: 0.65rem;
-    }
-}
-
-.tool-gallery .tool-media svg {
-    width: 100%;
-    height: 100%;
-}
-
-.tool-gallery .tool-media svg svg circle,
-      .tool-gallery .tool-media svg svg ellipse,
-      .tool-gallery .tool-media svg svg g,
-      .tool-gallery .tool-media svg svg path,
-      .tool-gallery .tool-media svg svg polyline,
-      .tool-gallery .tool-media svg svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-linejoin: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.tool-gallery .tool-media svg rect {
-    fill: #fcfcfc;
-}
-
-.tool-gallery .tool-media::after {
-    position: absolute;
-    content: '';
-    display: block;
-    left: 0;
-    bottom: -3px;
-    background-color: #fcfcfc;
-    height: 4px;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.33s linear;
-}
-
-@media only screen and (max-width: 1023px) {
-    .tool-gallery .tool-media::after {
-        height: 2px;
-    }
-}
-
-.tool-gallery .tool-media:hover::after {
-    opacity: 1;
-}
-
-.tool-lightswitch {
-    width: 2.6rem;
-    height: calc(2.6rem + 0.975rem);
-    border: 4px solid;
-    border-color: inherit;
-}
-
-.tool-lightswitch .tool-media {
-    padding: 0.325rem;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0) scaleY(-1);
-}
-
-.tool-lightswitch .tool-media svg circle,
-    .tool-lightswitch .tool-media svg ellipse,
-    .tool-lightswitch .tool-media svg g,
-    .tool-lightswitch .tool-media svg path,
-    .tool-lightswitch .tool-media svg polyline,
-    .tool-lightswitch .tool-media svg stroke {
-    fill: inherit;
-    stroke: inherit;
-    stroke-width: inherit;
-    stroke-linecap: inherit;
-    stroke-linejoin: inherit;
-    stroke-capoffset: inherit;
-    stroke-dasharray: inherit;
-    stroke-dashoffset: inherit;
-    vector-effect: inherit;
-}
-
-.tool-lightswitch .tool-media svg {
-    fill: transparent;
-    width: 100%;
-    height: 100%;
-    stroke: currentColor;
-    stroke-width: 4px;
-    stroke-linejoin: round;
-}
-
-.tool-lightswitch .tool-media svg polygon, .tool-lightswitch .tool-media svg path {
-    vector-effect: non-scaling-stroke;
-}
-
-.tool-lightswitch .tool-media svg .fill {
-    fill: #0d0d0d;
-}
-
-.tool-lightswitch.switched .tool-media {
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.tool-swatch {
-    box-sizing: border-box;
-    margin-right: 0.975rem;
-    width: 0.975rem;
-    height: 0.975rem;
-}
-
-.tool-swatch::before {
-    content: '';
-    box-sizing: border-box;
-    transition: 0.165s transform linear;
-    width: 100%;
-    height: 100%;
-}
-
-.tool-swatch:first-child::before {
-    background-color: cyan;
-}
-
-.tool-swatch:nth-child(2)::before {
-    background-color: magenta;
-}
-
-.tool-swatch:nth-child(3)::before {
-    background-color: yellow;
-}
-
-.tool-swatch:nth-child(4)::before {
-    background-color: #0d0d0d;
-}
-
-.tool-swatch.activated::before {
-    border: 4px #fcfcfc solid;
-}
-
-@media only screen and (max-width: 463px) {
-    .tool-swatch {
-        width: 0.65rem;
-        height: 0.65rem;
-        margin-right: 0.65rem;
-    }
-}
-
-.tool-swatch:hover::before {
-    transform: translateY(-0.325rem);
-}
-
-@keyframes loader {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: .9;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.utility-loader {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    width: calc(100% - 3px);
-    height: calc(100% - 3px);
-    background-color: #0d0d0d;
-    opacity: 1;
-    animation: loader 0.66s infinite;
-}
-
-.utility-loader.hidden {
-    display: none;
 }
 
 .checkbox-main {
@@ -1708,6 +1507,274 @@ select[multiple] {
     background: #cccccc;
 }
 
+.tool-expand,
+.tool-shrink, .tool-gallery, .tool-lightswitch, .tool-swatch {
+    cursor: pointer;
+    display: inline-flex;
+    position: relative;
+}
+
+.tool-expand .tool-title,
+  .tool-shrink .tool-title, .tool-gallery .tool-title, .tool-lightswitch .tool-title, .tool-swatch .tool-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.82645rem;
+    line-height: 0.975rem;
+}
+
+.tool-expand,
+.tool-shrink {
+    transform: translateZ(0);
+    display: block;
+    padding: 0.65rem;
+    margin: 0.65rem;
+    background-color: #fcfcfc;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tool-expand .tool-media,
+  .tool-shrink .tool-media {
+    transition: all 0.33s linear;
+    width: 0.975rem;
+    height: 0.975rem;
+    position: relative;
+}
+
+.tool-expand .tool-media svg,
+    .tool-shrink .tool-media svg {
+    overflow: visible;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.tool-expand .tool-media svg svg circle,
+      .tool-expand .tool-media svg svg ellipse,
+      .tool-expand .tool-media svg svg g,
+      .tool-expand .tool-media svg svg path,
+      .tool-expand .tool-media svg svg polyline,
+      .tool-expand .tool-media svg svg stroke,
+      .tool-shrink .tool-media svg svg circle,
+      .tool-shrink .tool-media svg svg ellipse,
+      .tool-shrink .tool-media svg svg g,
+      .tool-shrink .tool-media svg svg path,
+      .tool-shrink .tool-media svg svg polyline,
+      .tool-shrink .tool-media svg svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-linejoin: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.tool-expand .tool-media polyline,
+    .tool-shrink .tool-media polyline {
+    vector-effect: non-scaling-stroke;
+    fill: none;
+    stroke-width: 4px;
+    stroke: #0d0d0d;
+}
+
+.tool-expand.hidden,
+  .tool-shrink.hidden {
+    display: none;
+}
+
+.tool-gallery {
+    height: 100%;
+}
+
+.tool-gallery .tool-media {
+    width: 0.975rem;
+    position: relative;
+}
+
+@media only screen and (max-width: 1023px) {
+    .tool-gallery .tool-media {
+        width: 0.65rem;
+    }
+}
+
+.tool-gallery .tool-media svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tool-gallery .tool-media svg svg circle,
+      .tool-gallery .tool-media svg svg ellipse,
+      .tool-gallery .tool-media svg svg g,
+      .tool-gallery .tool-media svg svg path,
+      .tool-gallery .tool-media svg svg polyline,
+      .tool-gallery .tool-media svg svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-linejoin: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.tool-gallery .tool-media svg rect {
+    fill: #fcfcfc;
+}
+
+.tool-gallery .tool-media::after {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    bottom: -3px;
+    background-color: #fcfcfc;
+    height: 4px;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.33s linear;
+}
+
+@media only screen and (max-width: 1023px) {
+    .tool-gallery .tool-media::after {
+        height: 2px;
+    }
+}
+
+.tool-gallery .tool-media:hover::after {
+    opacity: 1;
+}
+
+.tool-lightswitch {
+    width: 2.6rem;
+    height: calc(2.6rem + 0.975rem);
+    border: 4px solid;
+    border-color: inherit;
+}
+
+.tool-lightswitch .tool-media {
+    padding: 0.325rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0) scaleY(-1);
+}
+
+.tool-lightswitch .tool-media svg circle,
+    .tool-lightswitch .tool-media svg ellipse,
+    .tool-lightswitch .tool-media svg g,
+    .tool-lightswitch .tool-media svg path,
+    .tool-lightswitch .tool-media svg polyline,
+    .tool-lightswitch .tool-media svg stroke {
+    fill: inherit;
+    stroke: inherit;
+    stroke-width: inherit;
+    stroke-linecap: inherit;
+    stroke-linejoin: inherit;
+    stroke-capoffset: inherit;
+    stroke-dasharray: inherit;
+    stroke-dashoffset: inherit;
+    vector-effect: inherit;
+}
+
+.tool-lightswitch .tool-media svg {
+    fill: transparent;
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+}
+
+.tool-lightswitch .tool-media svg polygon, .tool-lightswitch .tool-media svg path {
+    vector-effect: non-scaling-stroke;
+}
+
+.tool-lightswitch .tool-media svg .fill {
+    fill: #0d0d0d;
+}
+
+.tool-lightswitch.switched .tool-media {
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.tool-swatch {
+    box-sizing: border-box;
+    margin-right: 0.975rem;
+    width: 0.975rem;
+    height: 0.975rem;
+}
+
+.tool-swatch::before {
+    content: '';
+    transition: 0.165s transform linear;
+    width: 100%;
+    height: 100%;
+}
+
+.tool-swatch:first-child::before {
+    background-color: cyan;
+}
+
+.tool-swatch:nth-child(2)::before {
+    background-color: magenta;
+}
+
+.tool-swatch:nth-child(3)::before {
+    background-color: yellow;
+}
+
+.tool-swatch:nth-child(4)::before {
+    background-color: #0d0d0d;
+}
+
+.tool-swatch.activated::before {
+    background-color: #fcfcfc;
+}
+
+.tool-swatch:hover::before {
+    transform: translateY(-0.325rem);
+}
+
+@keyframes loader {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .9;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.utility-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: calc(100% - 3px);
+    height: calc(100% - 3px);
+    background-color: #0d0d0d;
+    opacity: 1;
+    animation: loader 0.66s infinite;
+}
+
+.utility-loader.hidden {
+    display: none;
+}
+
 #filter {
     display: none;
 }
@@ -1782,13 +1849,6 @@ body {
     padding: 0.975rem;
 }
 
-@media only screen and (max-width: 463px) {
-    .app-main .app-header,
-      .app-main .app-footer {
-        padding: 0.65rem;
-    }
-}
-
 .app-main .app-header::before, .app-main .app-header::after,
     .app-main .app-footer::before,
     .app-main .app-footer::after {
@@ -1800,15 +1860,6 @@ body {
     border: 4px currentColor solid;
 }
 
-@media only screen and (max-width: 463px) {
-    .app-main .app-header::before, .app-main .app-header::after,
-        .app-main .app-footer::before,
-        .app-main .app-footer::after {
-        width: 0.65rem;
-        height: 0.65rem;
-    }
-}
-
 .app-main .app-header > [class$="-title"],
     .app-main .app-header .footer-subtitle,
     .app-main .app-footer > [class$="-title"],
@@ -1818,14 +1869,15 @@ body {
     margin-left: 0.975rem;
 }
 
-@media only screen and (max-width: 463px) {
-    .app-main .app-header > [class$="-title"],
-        .app-main .app-header .footer-subtitle,
-        .app-main .app-footer > [class$="-title"],
-        .app-main .app-footer .footer-subtitle {
-        line-height: 0.65rem;
-        margin-left: 0.65rem;
-    }
+.app-main .app-header {
+    position: relative;
+}
+
+.app-main .app-header .header-subtitle {
+    position: absolute;
+    right: 0.975rem;
+    top: 100%;
+    z-index: 8888;
 }
 
 .app-main .app-header .header-tool {
@@ -1844,19 +1896,20 @@ body {
     border-right: none;
 }
 
+.app-main .app-footer .footer-title {
+    display: flex;
+}
+
+.app-main .app-footer .footer-title p:last-child {
+    font-weight: 900;
+}
+
 .app-main .app-footer .footer-subtitle {
     position: absolute;
     transform: rotate(-90deg);
     transform-origin: bottom left;
     left: 0.975rem;
     top: -0.975rem;
-}
-
-@media only screen and (max-width: 463px) {
-    .app-main .app-footer .footer-subtitle {
-        left: 0.65rem;
-        top: -0.65rem;
-    }
 }
 
 .app-main .app-footer::before, .app-main .app-footer::after {
@@ -1884,12 +1937,6 @@ body {
     position: relative;
     overflow: auto;
     -ms-overflow-style: none;
-}
-
-@media only screen and (max-width: 463px) {
-    .app-main .app-body {
-        padding: 0 calc(0.65rem * 3);
-    }
 }
 
 .app-main .app-body > * {
@@ -1925,6 +1972,19 @@ body {
     overflow: hidden;
 }
 
+.app-main.docked.magenta .btn-main, .app-main.docked.black .btn-main {
+    background-color: #fcfcfc;
+    color: #0d0d0d;
+}
+
+.app-main.docked.magenta .btn-list.available, .app-main.docked.magenta .btn-list.unavailable, .app-main.docked.black .btn-list.available, .app-main.docked.black .btn-list.unavailable {
+    color: #fcfcfc;
+}
+
+.app-main.docked.cyan .btn-list.available, .app-main.docked.cyan .btn-list.unavailable, .app-main.docked.yellow .btn-list.available, .app-main.docked.yellow .btn-list.unavailable {
+    color: #0d0d0d;
+}
+
 .app-main.docked.cyan {
     background-color: cyan;
 }
@@ -1932,11 +1992,6 @@ body {
 .app-main.docked.magenta {
     background-color: magenta;
     color: #fcfcfc;
-}
-
-.app-main.docked.magenta .btn-main {
-    background-color: #fcfcfc;
-    color: #0d0d0d;
 }
 
 .app-main.docked.yellow {
@@ -1951,6 +2006,10 @@ body {
 .app-main.docked.black .btn-main {
     background-color: #fcfcfc;
     color: #0d0d0d;
+}
+
+.app-main.docked.black .btn-list.available, .app-main.docked.black .btn-list.unavailable {
+    color: #fcfcfc;
 }
 
 .app-main.docked .utility-loader {
