@@ -57,7 +57,6 @@ exports.myself = function(req, res, next) {
         }
         next();
     });
-
 }
 
 // Fetches and clears the flashMessages before a view is rendered
@@ -75,6 +74,11 @@ exports.flashMessages = function(req, res, next) {
 	next();
 
 };
+
+exports.breadcrumbs = function(req, res, next) {
+    res.locals.response = res;
+	next();
+}
 
 // Check if user is on a modern browser
 exports.ensureLatestBrowser = function(req, res, next) {

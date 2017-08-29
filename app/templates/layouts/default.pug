@@ -76,6 +76,7 @@ html
                                 li.menu-body-part
                                     p oh, and i 
                                         a.btn-main(href='/contact') sell&nbsp;stuff&nbsp;too
+                p #{locals.response}
                 block appBody
             footer.app-footer
                 .footer-title
@@ -89,7 +90,7 @@ html
                     nav.menu-list
                         ul.menu-body
                             li.menu-body-part
-                                a.btn-list(href='/') #{user.name.first} #{user.name.last}
+                                a.btn-list(href='/') #{user.pseudonym}
                             li.menu-body-part
                                 a.btn-list(href='/') index
                 .footer-tool

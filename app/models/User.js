@@ -17,6 +17,11 @@ User.add({
         required: true,
         index: true
     },
+    pseudonym: {
+        type: String,
+        required: true,
+        initial: true,
+    },
     email: {
         type: Types.Email,
         initial: true,
