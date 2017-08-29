@@ -62,6 +62,8 @@ scrollAnimate = function(screen) {
         panelCurrentScroll = 0;
         checked = false;
         exploreTop = 0;
+        measureIndex = app.querySelector('.measure-index');
+        measureIndexB = app.querySelector('.measure-index-b');
 
     fetchVariables = function() {
         var exploreBoundingTop = explore.getBoundingClientRect().top;
@@ -93,6 +95,7 @@ scrollAnimate = function(screen) {
     screen.addEventListener('touchstart', touchStartHandler);
 
     function scrollAnimation(event) {
+        measureIndex.style.top = (100 * (1 - currentRatio)) + '%';
         panelCurrentScroll = panelBody.scrollTop;
         panelIsFullyScrolledUp = panelCurrentScroll == 0;
 
@@ -110,6 +113,8 @@ scrollAnimate = function(screen) {
             barTitleSpan.innerHTML = 'overview';
             barSubtitleSpan.innerHTML = 'down';
             scrollEnabler(event, panelBody);
+            var currentScroll = panelBody.scrollTop / (panelBody.scrollHeight - panelBody.clientHeight);
+            measureIndexB.style.top = (100 * currentScroll) + '%';
         } else if (exploreTop == originalExploreTop) {
             checked = false;
             app.classList.remove('activated');

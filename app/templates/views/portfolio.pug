@@ -3,30 +3,33 @@ extends ../layouts/default
 include ../mixins/media/chevron
 include ../mixins/media/circle
 
+block pageName
+    | portfolio
+
 block appBody
     .screen-portfolio
         .panel-portfolio
-            .widget-filter
-                .widget-body
-                    .widget-body-part
-                        .widget-subtitle
-                            h3 select all that apply
-                    .widget-body-part
-                        form#categories.form-filters
-                            each category in categories
-                                .checkbox-main
-                                    input(id="category-" + category.key name="category-" + category.key type='checkbox' checked)
-                                    label.checkbox-label(for="category-" + category.key)
-                                        .checkbox-input
-                                            .wrapper
-                                        .checkbox-title
-                                            p #{category.key}
-                label.widget-header(for="filter")
-                    .bar-navigate
-                        .bar-title
-                            p my portfolio
-                        .bar-subtitle
-                            p filter
+            // .widget-filter
+            //    .widget-body
+            //        .widget-body-part
+            //            .widget-subtitle
+            //                h3 select all that apply
+            //        .widget-body-part
+            //            form#categories.form-filters
+            //                each category in categories
+            //                    .checkbox-main
+            //                        input(id="category-" + category.key name="category-" + category.key type='checkbox' checked)
+            //                        label.checkbox-label(for="category-" + category.key)
+            //                            .checkbox-input
+            //                                .wrapper
+            //                            .checkbox-title
+            //                              p #{category.key}
+            //    label.widget-header(for="filter")
+            //        .bar-navigate
+            //            .bar-title
+            //                p my portfolio
+            //            .bar-subtitle
+            //                p filter
             .panel-body
                 .wall-cards
                     .wall-body

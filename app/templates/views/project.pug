@@ -4,6 +4,9 @@ include ../mixins/media/expand
 include ../mixins/media/shrink
 include ../mixins/media/chevron
 
+block pageName
+    | project
+    
 block appBody
     .screen-project
         .start.board-project
@@ -11,7 +14,7 @@ block appBody
                 .bar-title.btn-nav
                     a.btn-title(href='/api/portfolio/' + project.slug + '/previous')
                         p < prev
-                .bar-subtitle.btn-nav 
+                .bar-subtitle.btn-nav
                     a.btn-title(href='/api/portfolio/' + project.slug + '/next')
                         p next >
             .board-header

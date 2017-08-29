@@ -33,8 +33,9 @@ html
         input#filter(type='checkbox')
         .app-main
             header.app-header
-                a.header-title(href='/')
-                    h2 placeholder
+                a.header-title
+                    h2
+                        block pageName
                 .header-tool
                     .tool-swatch
                     .tool-swatch
@@ -42,6 +43,7 @@ html
                     .tool-swatch
                 .header-subtitle
                     .container-measure
+                        .measure-index-b
                         .measure-index
                         .measure-inner
                             .line
@@ -90,6 +92,8 @@ html
                                 a.btn-list(href='/') #{user.name.first} #{user.name.last}
                             li.menu-body-part
                                 a.btn-list(href='/') index
+                .footer-tool
+                    a.btn-list top
         script(src='/js/jacobsfletch.min.js')
         script.
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
