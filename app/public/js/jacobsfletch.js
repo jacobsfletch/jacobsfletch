@@ -52,10 +52,6 @@ scrollAnimate = function(screen) {
         start = screen.querySelector('.start');
         explore = screen.querySelector('.explore');
         panelBody = explore.querySelector('.panel-body');
-        barTitleSpan = explore.querySelector('.bar-title').querySelector('span');
-        barSubtitleSpan = explore.querySelector('.bar-subtitle').querySelector('span');
-        originalTitleSpan = barTitleSpan.innerHTML;
-        originalSubtitleSpan = barSubtitleSpan.innerHTML;
         panelScroll = 0;
         panelIsFullyScrolledUp = true;
         currentRatio = 0;
@@ -64,6 +60,7 @@ scrollAnimate = function(screen) {
         exploreTop = 0;
         measureIndex = app.querySelector('.measure-index');
         measureIndexB = app.querySelector('.measure-index-b');
+        footerTool = app.querySelector('.footer-tool')
 
     fetchVariables = function() {
         var exploreBoundingTop = explore.getBoundingClientRect().top;
@@ -79,6 +76,10 @@ scrollAnimate = function(screen) {
         if (checked == true) {
             explore.style.top = 0;
             exploreTop = 0;
+            measureIndexB.style.top = 0;
+        } else {
+            measureIndex.removeAttribute('style');
+            measureIndexB.removeAttribute('style');
         }
     });
 
@@ -92,12 +93,35 @@ scrollAnimate = function(screen) {
         scrollAnimation(event);
     });
 
+    function backToTop() {
+        app.classList.remove('activated');
+        measureIndex.removeAttribute('style');
+        measureIndexB.removeAttribute('style');
+        start.removeAttribute('style');
+        explore.removeAttribute('style');
+        panelScroll = 0;
+        panelIsFullyScrolledUp = true;
+        currentRatio = 0;
+        panelCurrentScroll = 0;
+        checked = false;
+        exploreTop = 0;
+        currentScroll = 0;
+    }
+
     screen.addEventListener('touchstart', touchStartHandler);
+
+    footerTool.addEventListener('click', backToTop);
 
     function scrollAnimation(event) {
         measureIndex.style.top = (100 * (1 - currentRatio)) + '%';
         panelCurrentScroll = panelBody.scrollTop;
         panelIsFullyScrolledUp = panelCurrentScroll == 0;
+
+        if (currentRatio < 1) {
+            footerTool.classList.add('visible');
+        } else {
+            footerTool.classList.remove('visible');
+        }
 
         if (panelIsFullyScrolledUp) {
             expectedScroll = exploreTop + -scrollDistance;
@@ -110,16 +134,12 @@ scrollAnimate = function(screen) {
         if (exploreTop == 0) {
             checked = true;
             app.classList.add('activated');
-            barTitleSpan.innerHTML = 'overview';
-            barSubtitleSpan.innerHTML = 'down';
             scrollEnabler(event, panelBody);
             var currentScroll = panelBody.scrollTop / (panelBody.scrollHeight - panelBody.clientHeight);
             measureIndexB.style.top = (100 * currentScroll) + '%';
         } else if (exploreTop == originalExploreTop) {
             checked = false;
             app.classList.remove('activated');
-            barTitleSpan.innerHTML = originalTitleSpan;
-            barSubtitleSpan.innerHTML = originalSubtitleSpan;
         }
     }
 

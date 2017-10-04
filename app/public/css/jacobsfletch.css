@@ -1909,6 +1909,12 @@ body {
     font-weight: 900;
 }
 
+@media only screen and (max-width: 463px) {
+    .app-main .app-footer .footer-title p:last-child {
+        display: none;
+    }
+}
+
 .app-main .app-footer .footer-subtitle {
     position: absolute;
     transform: rotate(-90deg);
@@ -1919,6 +1925,17 @@ body {
 
 .app-main .app-footer .footer-tool {
     margin-right: 0.975rem;
+    display: none;
+}
+
+.app-main .app-footer .footer-tool.visible {
+    display: block;
+}
+
+@media only screen and (max-width: 463px) {
+    .app-main .app-footer .footer-tool span {
+        display: none;
+    }
 }
 
 .app-main .app-footer::before, .app-main .app-footer::after {
@@ -2053,9 +2070,37 @@ body {
     }
 }
 
+@keyframes bounce {
+    25% {
+        transform: translateY(-2px);
+    }
+
+    75% {
+        transform: translateY(2px);
+    }
+}
+
 .bar-explore {
     border-bottom: 4px solid;
     height: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar-explore .bar-tool {
+    animation: bounce 1.32s infinite;
+}
+
+.bar-explore .bar-tool::after {
+    content: '';
+    box-sizing: border-box;
+    display: block;
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 4px currentColor solid;
+    border-right: 0;
+    border-top: 0;
+    transform: rotate(-45deg);
 }
 
 .bar-navigate {
@@ -2427,6 +2472,10 @@ body {
     display: none;
 }
 
+.hidden.screen-about, .hidden.screen-portfolio, .hidden.screen-project {
+    display: none;
+}
+
 .screen-about {
     position: relative;
     display: flex;
@@ -2518,6 +2567,10 @@ body {
 @media only screen and (max-width: 463px) {
     .wall-cards .wall-body .wall-body-part {
         width: 100%;
+    }
+
+    .wall-cards .wall-body .wall-body-part:last-child {
+        margin-bottom: 0;
     }
 }
 
