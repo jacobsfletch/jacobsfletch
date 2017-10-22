@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
 import './index.css';
 
 // var data = require('./data.js');
@@ -19,9 +21,6 @@ class App extends React.Component {
         } else {
             this.setState({color, docked: true})
         }
-    }
-    componentDidUpdate() {
-        // console.log('didUpdate')
     }
     render() {
         const color = this.state.color
@@ -43,7 +42,36 @@ class Dock extends React.Component {
         const dock = this.props.dock
         const classes = dock ? `dock docked ${color}` : `dock`
         return (
-            <div className={classes}></div>
+            <div className={classes}>
+                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/contact" component={Contact}></Route>
+                <nav className="menu">
+                    <button>
+                        Hello, my name is
+                        <Link to="/">jacob fletcher</Link>
+                    </button>
+                    <button>
+                        i am a
+                        <Link to="/portfolio">creator of things</Link>
+                    </button>
+                    <button>
+                        i also
+                        <Link to="/blog">like to write</Link>
+                    </button>
+                    <button>
+                        i am currently
+                        <Link to="/contact">available for work</Link>
+                    </button>
+                    <button>
+                        feel free to
+                        <Link to="/contact">drop a line</Link>
+                    </button>
+                    <button>
+                        oh, and i
+                        <Link to="/contact">sell stuff too</Link>
+                    </button>
+                </nav>
+            </div>
         )
     }
 }
@@ -72,9 +100,7 @@ class Header extends React.Component {
 class Body extends React.Component {
     render() {
         return (
-            <div className="app-body">
-                <p>body</p>
-            </div>
+            <div className="app-body"></div>
         )
     }
 }
@@ -103,7 +129,24 @@ class Footer extends React.Component {
     }
 }
 
+class Home extends React.Component {
+    render() {
+        return (
+            <p>Home Page</p>
+        )
+    }
+}
+
+class Contact extends React.Component {
+    render() {
+        return (
+            <p>Contact Page</p>
+        )
+    }
+}
+
 ReactDOM.render(
-    <App />,
-    document.getElementById('app')
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>, document.getElementById('app')
 );
