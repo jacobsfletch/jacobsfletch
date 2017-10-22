@@ -1,0 +1,52 @@
+.app-header,
+.app-footer {
+    height: 15px;
+    display: flex;
+    z-index: 1;
+
+    & * {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .header-title,
+    .footer-title {
+        flex-grow: 1;
+        margin-left: 15px;
+    }
+
+    .footer-subtitle {
+        margin-right: 15px;
+    }
+}
+
+.app-header .cropmark {
+    &:first-child {
+        border-left: 0;
+        border-top: 0;
+    }
+    &:last-child {
+        border-right: 0;
+        border-top: 0;
+    }
+}
+
+.app-footer .cropmark {
+    &:last-child {
+        border-right: 0;
+        border-bottom: 0;
+    }
+    &:first-child {
+        border-left: 0;
+        border-bottom: 0;
+    }
+}
+
+.cropmark {
+    box-sizing: border-box;
+    border: solid currentColor 4px;
+    width: 15px;
+    height: 15px;
+}

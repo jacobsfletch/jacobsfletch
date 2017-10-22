@@ -1,0 +1,42 @@
+.app-header,
+.app-footer {
+  height: 15px;
+  display: flex;
+  z-index: 1; }
+  .app-header *,
+  .app-footer * {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px; }
+  .app-header .header-title,
+  .app-header .footer-title,
+  .app-footer .header-title,
+  .app-footer .footer-title {
+    flex-grow: 1;
+    margin-left: 15px; }
+  .app-header .footer-subtitle,
+  .app-footer .footer-subtitle {
+    margin-right: 15px; }
+
+.app-header .cropmark:first-child {
+  border-left: 0;
+  border-top: 0; }
+
+.app-header .cropmark:last-child {
+  border-right: 0;
+  border-top: 0; }
+
+.app-footer .cropmark:last-child {
+  border-right: 0;
+  border-bottom: 0; }
+
+.app-footer .cropmark:first-child {
+  border-left: 0;
+  border-bottom: 0; }
+
+.cropmark {
+  box-sizing: border-box;
+  border: solid currentColor 4px;
+  width: 15px;
+  height: 15px; }

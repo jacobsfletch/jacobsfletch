@@ -1,0 +1,36 @@
+.dock {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  padding: 40px;
+  left: 0;
+  top: 0;
+  display: none;
+  position: fixed; }
+  .dock.docked {
+    display: flex; }
+    .dock.docked.cyan {
+      background-color: cyan; }
+      .dock.docked.cyan ~ * {
+        color: black; }
+        .dock.docked.cyan ~ * .swatch-cyan::after {
+          border: black 4px solid; }
+    .dock.docked.magenta {
+      background-color: magenta; }
+      .dock.docked.magenta ~ * {
+        color: white; }
+        .dock.docked.magenta ~ * .swatch-magenta::after {
+          border: white 4px solid; }
+    .dock.docked.yellow {
+      background-color: yellow; }
+      .dock.docked.yellow ~ * {
+        color: black; }
+        .dock.docked.yellow ~ * .swatch-yellow::after {
+          border: black 4px solid; }
+    .dock.docked.black {
+      background-color: black; }
+      .dock.docked.black ~ * {
+        color: white; }
+        .dock.docked.black ~ * .swatch-black::after {
+          border: white 4px solid; }

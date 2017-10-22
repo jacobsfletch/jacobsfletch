@@ -1,0 +1,10 @@
+.app {
+  padding: 15px;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; }
+  .app .app-body {
+    flex-grow: 1;
+    padding: 15px 30px; }

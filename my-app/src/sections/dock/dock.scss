@@ -1,0 +1,51 @@
+.dock {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    padding: 40px;
+    left: 0;
+    top: 0;
+    display: none;
+    position: fixed;
+
+    &.docked {
+        display: flex;
+        &.cyan {
+            background-color: cyan;
+            & ~ * {
+                color: black;
+                .swatch-cyan::after {
+                    border: black 4px solid;
+                }
+            }
+        }
+        &.magenta {
+            background-color: magenta;
+            & ~ * {
+                color: white;
+                .swatch-magenta::after {
+                    border: white 4px solid;
+                }
+            }
+        }
+        &.yellow {
+            background-color: yellow;
+            & ~ * {
+                color: black;
+                .swatch-yellow::after {
+                    border: black 4px solid;
+                }
+            }
+        }
+        &.black {
+            background-color: black;
+            & ~ * {
+                color: white;
+                .swatch-black::after {
+                    border: white 4px solid;
+                }
+            }
+        }
+    }
+}
