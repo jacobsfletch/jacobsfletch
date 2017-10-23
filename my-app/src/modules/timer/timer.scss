@@ -1,0 +1,10 @@
+@import "../../index/index.scss";
+
+.module-timer {
+    .timer-date {
+        margin-right: size(xs);
+        @include breakpoint(xs) {
+            display: none;
+        };
+    }
+}

@@ -3,9 +3,7 @@ import React from 'react';
 import Dock from '../../sections/dock/dock';
 import Header from '../../sections/header/header';
 import Footer from '../../sections/footer/footer';
-
-import Home from '../../screens/home/home';
-import Contact from '../../screens/contact/contact';
+import Screen from '../../screens/screen';
 
 import '../../reset.css';
 import './main.css';
@@ -15,7 +13,8 @@ export default class App extends React.Component {
         super()
         this.state = {
             color: '',
-            docked: false
+            docked: false,
+            screen: ''
         }
     }
     activateDock(color) {
@@ -33,9 +32,7 @@ export default class App extends React.Component {
             <div className="app">
                 <Dock dock={dock} color={color} />
                 <Header activateDock={this.activateDock.bind(this)} />
-                <div className="app-body">
-                    <div className="screen" />
-                </div>
+                <Screen className="screen" />
                 <Footer />
             </div>
         )

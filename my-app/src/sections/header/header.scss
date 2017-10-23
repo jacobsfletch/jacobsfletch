@@ -1,44 +1,47 @@
+@import "../../index/index.scss";
+
 .app-header,
 .app-footer {
-    height: 15px;
+    @include type(p);
+    min-height: size(m);
     display: flex;
+    align-items: center;
     z-index: 1;
-
-    & * {
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
+    align-items: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    position: relative;
 
     .header-title,
     .footer-title {
         flex-grow: 1;
-        margin-left: 15px;
+        margin-left: size(m);
     }
 
     .footer-subtitle {
-        margin-right: 15px;
+        margin-right: size(m);
     }
 }
 
 .app-header .cropmark {
-    &:first-child {
+    &.tl {
         border-left: 0;
         border-top: 0;
     }
-    &:last-child {
+    &.tr{
         border-right: 0;
         border-top: 0;
     }
 }
 
 .app-footer .cropmark {
-    &:last-child {
+    &.bl {
         border-right: 0;
         border-bottom: 0;
     }
-    &:first-child {
+    &.br {
         border-left: 0;
         border-bottom: 0;
     }
@@ -46,7 +49,23 @@
 
 .cropmark {
     box-sizing: border-box;
-    border: solid currentColor 4px;
-    width: 15px;
-    height: 15px;
+    border: solid currentColor;
+    border-width: line(m);
+    width: size(m);
+    height: size(m);
+    @include breakpoint(xs) {
+        width: size(s);
+        height: size(s);
+        border-width: line(s);
+    };
+}
+
+.header-after {
+    position: absolute;
+    bottom: - size(m);
+    right: size(m);
+    @include breakpoint(xs) {
+        right: size(s);
+        bottom: - size(s);
+    };
 }

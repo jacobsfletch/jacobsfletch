@@ -1,10 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900");
+html body {
+  text-transform: lowercase;
+  font-family: "Source Code Pro", sans-serif; }
+
 .app {
-  padding: 15px;
+  padding: 0.975rem;
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column; }
+  @media only screen and (max-width: 319px) {
+    .app {
+      padding: 0.65rem; } }
   .app .app-body {
     flex-grow: 1;
-    padding: 15px 30px; }
+    overflow: hidden;
+    display: flex;
+    padding: 0.975rem calc(0.975rem * 2); }
+    @media only screen and (max-width: 319px) {
+      .app .app-body {
+        padding: 0.65rem calc(0.65rem * 2); } }

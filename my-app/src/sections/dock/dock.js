@@ -1,8 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
-
-import Contact from '../../screens/contact/contact';
-import Home from '../../screens/home/home';
+import { Link } from 'react-router-dom';
 
 import './dock.css';
 
@@ -13,33 +10,33 @@ export default class Dock extends React.Component {
         const classes = dock ? `dock docked ${color}` : `dock`
         return (
             <div className={classes}>
-                <Route exact path="/" component={Home}></Route>
-                <Route exact path="/contact" component={Contact}></Route>
-                <nav className="menu">
-                    <button>
-                        Hello, my name is
-                        <Link to="/">jacob fletcher</Link>
-                    </button>
-                    <button>
-                        i am a
-                        <Link to="/portfolio">creator of things</Link>
-                    </button>
-                    <button>
-                        i also
-                        <Link to="/blog">like to write</Link>
-                    </button>
-                    <button>
-                        i am currently
-                        <Link to="/contact">available for work</Link>
-                    </button>
-                    <button>
-                        feel free to
-                        <Link to="/contact">drop a line</Link>
-                    </button>
-                    <button>
-                        oh, and i
-                        <Link to="/contact">sell stuff too</Link>
-                    </button>
+                <nav className="dock-menu">
+                    <ul>
+                        <li>
+                            Hello, my name is
+                            <Link to="/">jacob fletcher</Link>
+                        </li>
+                        <li>
+                            i am a
+                            <Link to="/portfolio">creator of things</Link>
+                        </li>
+                        <li>
+                            i also
+                            <Link to="/blog">like to write</Link>
+                        </li>
+                        <li>
+                            i am currently
+                            <Link to="/contact">available for work</Link>
+                        </li>
+                        <li>
+                            feel free to
+                            <Link to="/contact">drop a line</Link>
+                        </li>
+                        <li>
+                            oh, and i
+                            <Link to="/contact">sell stuff too</Link>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         )

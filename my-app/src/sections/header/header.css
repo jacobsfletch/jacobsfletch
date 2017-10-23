@@ -1,42 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900");
 .app-header,
 .app-footer {
-  height: 15px;
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 0.65rem;
+  line-height: 0.65rem;
+  min-height: 0.975rem;
   display: flex;
-  z-index: 1; }
-  .app-header *,
-  .app-footer * {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px; }
+  align-items: center;
+  z-index: 1;
+  align-items: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  position: relative; }
   .app-header .header-title,
   .app-header .footer-title,
   .app-footer .header-title,
   .app-footer .footer-title {
     flex-grow: 1;
-    margin-left: 15px; }
+    margin-left: 0.975rem; }
   .app-header .footer-subtitle,
   .app-footer .footer-subtitle {
-    margin-right: 15px; }
+    margin-right: 0.975rem; }
 
-.app-header .cropmark:first-child {
+.app-header .cropmark.tl {
   border-left: 0;
   border-top: 0; }
 
-.app-header .cropmark:last-child {
+.app-header .cropmark.tr {
   border-right: 0;
   border-top: 0; }
 
-.app-footer .cropmark:last-child {
+.app-footer .cropmark.bl {
   border-right: 0;
   border-bottom: 0; }
 
-.app-footer .cropmark:first-child {
+.app-footer .cropmark.br {
   border-left: 0;
   border-bottom: 0; }
 
 .cropmark {
   box-sizing: border-box;
-  border: solid currentColor 4px;
-  width: 15px;
-  height: 15px; }
+  border: solid currentColor;
+  border-width: 4px;
+  width: 0.975rem;
+  height: 0.975rem; }
+  @media only screen and (max-width: 319px) {
+    .cropmark {
+      width: 0.65rem;
+      height: 0.65rem;
+      border-width: 3px; } }
+
+.header-after {
+  position: absolute;
+  bottom: -0.975rem;
+  right: 0.975rem; }
+  @media only screen and (max-width: 319px) {
+    .header-after {
+      right: 0.65rem;
+      bottom: -0.65rem; } }

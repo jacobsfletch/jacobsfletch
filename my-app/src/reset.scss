@@ -1,18 +1,215 @@
-html {
-    font-family: monospace;
+* {
+    box-sizing: border-box;
 }
 
 body {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: 100%;
+}
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
     margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+// HTML5 display-role reset for older browsers
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+:focus {
+    outline: none;
 }
 
 button {
-    outline: none;
+    background: none;
     border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
     padding: 0;
-    background-color: transparent;
+    -webkit-appearance: button; // for input
+    -webkit-user-select: none; // for button
+       -moz-user-select: none;
+        -ms-user-select: none;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+input,
+label,
+select,
+button,
+textarea
+{
     margin: 0;
+    border: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    background: none;
+    line-height: 1;
+}
+
+input:focus { // Remove the stupid outer glow in Webkit
+    outline:0;
+}
+
+ul {
+    list-style: none;
+}
+
+input,
+textarea { // all of our custom controls should be what we expect them to be
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select { // these elements are usually rendered a certain way by the browser
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    width:13px;
+    height:13px;
+}
+
+input[type=search] { // make webkit render the search input like a normal text field
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+}
+
+::-webkit-search-decoration { // turn off the recent search for webkit. It adds about 15px padding on the left
+    display: none;
+}
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"] { // Fix IE7 display bug
+    overflow:visible;
+    width:auto;
+}
+
+::-webkit-file-upload-button {    // IE8 and FF freak out if this rule is within another selector
+    padding:0;
+    border:0;
+    background:none;
+}
+
+textarea {
+    vertical-align:top; // move the label to the top
+    overflow:auto; // turn off scroll bars in IE unless needed
+}
+
+select[multiple] {
+    vertical-align: top; // move the label to the top
 }

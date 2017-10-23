@@ -1,14 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900");
 .swatches {
   display: flex;
   justify-content: flex-end; }
 
 [class^=swatch-] {
-  width: 15px;
-  height: 15px;
-  margin-right: 15px;
+  width: 0.975rem;
+  height: 0.975rem;
+  margin-right: 0.975rem;
   cursor: pointer;
   position: relative;
   background-color: transparent; }
+  @media only screen and (max-width: 319px) {
+    [class^=swatch-] {
+      width: 0.65rem;
+      height: 0.65rem;
+      margin-right: 0.65rem; } }
   [class^=swatch-]:hover::after {
     transform: translateY(-25%); }
   [class^=swatch-]::after {

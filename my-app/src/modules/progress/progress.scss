@@ -1,0 +1,42 @@
+@import "../../index/index.scss";
+
+.scroll-progress  {
+	height: size(xxl);
+	width: size(m);
+	display: flex;
+    position: absolute;
+    @include breakpoint(xs) {
+        width: size(s);
+    };
+	.measure-inner {
+		position: relative;
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	.measure-index,
+    .measure-index-b {
+        cursor: row-resize;
+		border-radius: 100%;
+		background-color: color(dark, 3);
+		width: size(xs);
+		height: size(xs);
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(calc(-50% + #{line(xs) / 2})); /* Translate Y Value in Respect to Scroll Position */
+        z-index: layer(top);
+	}
+	.line {
+		height: line(xxs);
+		background-color: color(dark, 3);
+		width: 100%;
+        height: line(xxs);
+        background-color: color(dark, 3);
+        &:first-child,
+        &:last-child {
+            height: line(xs);
+        }
+	}
+}
