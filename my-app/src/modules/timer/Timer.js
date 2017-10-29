@@ -10,7 +10,6 @@ export default class ProjectThumbnail extends React.Component {
         }
     }
     tick() {
-        console.log(new Date().toLocaleDateString())
         const newDate = new Date()
         this.setState({
             time: newDate.toLocaleTimeString(),

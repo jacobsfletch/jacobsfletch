@@ -1,19 +1,20 @@
 import React from 'react';
 import Swatch from '../../elements/swatch/Swatch'
 import Progress from '../../modules/progress/Progress'
+import { connect } from 'react-redux';
 
 import './header.css';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
     activateDock(color) {
         this.props.activateDock(color)
     }
     render() {
-        //const screenTitle = this.props.screenTitle
+        // if (!this.props.screen)
         return (
             <div className="app-header">
                 <div className="cropmark tl"></div>
-                <h1 className="header-title">screenTitle</h1>
+                <h1 className="header-title">{this.props.screen}</h1>
                 <div className="swatches">
                     <Swatch color="cyan" activateDock={this.activateDock.bind(this)}/>
                     <Swatch color="magenta" activateDock={this.activateDock.bind(this)}/>
@@ -28,3 +29,11 @@ export default class Header extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        screen: state.mountedScreen
+    }
+}
+
+export default connect(mapStateToProps)(Header)

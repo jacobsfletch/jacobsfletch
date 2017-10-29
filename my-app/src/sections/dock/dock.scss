@@ -10,6 +10,7 @@
     top: 0;
     display: none;
     position: fixed;
+    z-index: 1;
 
     &.docked {
         display: flex;
