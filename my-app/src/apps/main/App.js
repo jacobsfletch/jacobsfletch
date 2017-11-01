@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Dock from '../../sections/dock/dock';
-import Header from '../../sections/header/header';
-import Footer from '../../sections/footer/footer';
-import Screen from '../../screens/screen';
+import Dock from '../../layouts/dock/dock';
+import Header from '../../layouts/header/header';
+import Footer from '../../layouts/footer/footer';
+import ScreenController from '../../screens/ScreenController';
 
-import '../../reset.css';
+import { activateDock } from './AppActions'
+
 import './main.css';
 
 export default class App extends React.Component {
@@ -32,7 +33,7 @@ export default class App extends React.Component {
             <div className="app">
                 <Dock dock={dock} color={color} />
                 <Header activateDock={this.activateDock.bind(this)} />
-                <Screen className="screen" />
+                <ScreenController className="screen" />
                 <Footer />
             </div>
         )

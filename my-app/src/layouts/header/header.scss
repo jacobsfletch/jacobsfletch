@@ -1,0 +1,71 @@
+@import "../../sassafras/index.scss";
+
+.app-header,
+.app-footer {
+    @include type(p);
+    min-height: size(m);
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    align-items: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    position: relative;
+
+    .header-title,
+    .footer-title {
+        flex-grow: 1;
+        margin-left: size(m);
+    }
+
+    .footer-subtitle {
+        margin-right: size(m);
+    }
+}
+
+.app-header .cropmark {
+    &.tl {
+        border-left: 0;
+        border-top: 0;
+    }
+    &.tr{
+        border-right: 0;
+        border-top: 0;
+    }
+}
+
+.app-footer .cropmark {
+    &.bl {
+        border-right: 0;
+        border-bottom: 0;
+    }
+    &.br {
+        border-left: 0;
+        border-bottom: 0;
+    }
+}
+
+.cropmark {
+    box-sizing: border-box;
+    border: solid currentColor;
+    border-width: line(m);
+    width: size(m);
+    height: size(m);
+    @include breakpoint(xs) {
+        width: size(s);
+        height: size(s);
+        border-width: line(s);
+    };
+}
+
+.header-after {
+    position: absolute;
+    bottom: - size(m);
+    right: size(m);
+    @include breakpoint(xs) {
+        right: size(s);
+        bottom: - size(s);
+    };
+}

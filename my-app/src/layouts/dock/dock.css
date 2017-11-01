@@ -195,8 +195,60 @@ textarea {
 select[multiple] {
   vertical-align: top; }
 
-.module-timer .timer-date {
-  margin-right: 0.325rem; }
-  @media only screen and (max-width: 319px) {
-    .module-timer .timer-date {
-      display: none; } }
+.dock {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+  position: fixed;
+  z-index: 1; }
+  .dock.docked {
+    display: flex;
+    padding: calc(0.975rem * 2); }
+    .dock.docked.cyan {
+      background-color: cyan; }
+      .dock.docked.cyan ~ * {
+        color: black; }
+        .dock.docked.cyan ~ * .swatch-cyan::after {
+          border: black 4px solid; }
+    .dock.docked.magenta {
+      background-color: magenta; }
+      .dock.docked.magenta ~ * {
+        color: white; }
+        .dock.docked.magenta ~ * .swatch-magenta::after {
+          border: white 4px solid; }
+    .dock.docked.yellow {
+      background-color: yellow; }
+      .dock.docked.yellow ~ * {
+        color: black; }
+        .dock.docked.yellow ~ * .swatch-yellow::after {
+          border: black 4px solid; }
+    .dock.docked.black {
+      background-color: black; }
+      .dock.docked.black ~ * {
+        color: white; }
+        .dock.docked.black ~ * .swatch-black::after {
+          border: white 4px solid; }
+  .dock .dock-menu .menu-item {
+    margin-bottom: 0.975rem; }
+    .dock .dock-menu .menu-item a {
+      position: relative; }
+      .dock .dock-menu .menu-item a::after {
+        content: '';
+        position: absolute;
+        display: block;
+        visibility: hidden;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1; }
+      .dock .dock-menu .menu-item a:hover {
+        color: white; }
+        .dock .dock-menu .menu-item a:hover::after {
+          visibility: visible; }
