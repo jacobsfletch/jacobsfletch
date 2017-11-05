@@ -15,7 +15,9 @@ class ScreenController extends React.Component {
         if (screenName === "") {
             screenName = "index"
         }
-        screenChanged(screenName)
+        let { dispatch } = this.props
+        let action = screenChanged(screenName)
+        dispatch(action)
     }
     render() {
         return (
@@ -42,8 +44,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({screenChanged: screenChanged}, dispatch)
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScreenController))
+export default withRouter(connect(mapStateToProps)(ScreenController))
