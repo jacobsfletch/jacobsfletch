@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import './dock.css';
 
-export default class Dock extends React.Component {
+class Dock extends React.Component {
     render() {
-        const color = this.props.color
-        const dock = this.props.dock
-        const classes = dock ? `dock docked ${color}` : `dock`
+        const color = this.props.dock.color
+        const status = this.props.dock.status
+        const classes = status ? `dock docked ${color}` : `dock`
         return (
             <div className={classes}>
                 <nav className="dock-menu">
@@ -42,3 +43,11 @@ export default class Dock extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        dock: state.dock
+    }
+}
+
+export default connect(mapStateToProps)(Dock)

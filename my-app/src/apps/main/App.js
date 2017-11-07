@@ -1,15 +1,16 @@
-import React from 'react';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import Dock from '../../layouts/dock/dock';
-import Header from '../../layouts/header/header';
-import Footer from '../../layouts/footer/footer';
-import ScreenController from '../../screens/ScreenController';
+import Dock from '../../layouts/dock/Dock'
+import Header from '../../layouts/header/header'
+import Footer from '../../layouts/footer/footer'
+import ScreenController from '../../screens/ScreenController'
 
 import { activateDock } from './AppActions'
 
-import './main.css';
+import './main.css'
 
-export default class App extends React.Component {
+class App extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -19,19 +20,20 @@ export default class App extends React.Component {
         }
     }
     activateDock(color) {
-        const prevColor = this.state.color
-        if (prevColor === color) {
-            this.setState({color: '', docked: false})
-        } else {
-            this.setState({color, docked: true})
-        }
+        //if (prevColor === color) {
+        //    this.setState({color: '', docked: false})
+        //} else {
+        //    this.setState({color, docked: true})
+        //}
+        let { dispatch } = this.props
+        let action = activateDock(color)
+        dispatch(action)
+        const prevColor = color
     }
     render() {
-        const color = this.state.color
-        const dock = this.state.docked
         return (
             <div className="app">
-                <Dock dock={dock} color={color} />
+                <Dock />
                 <Header activateDock={this.activateDock.bind(this)} />
                 <ScreenController className="screen" />
                 <Footer />
@@ -39,3 +41,11 @@ export default class App extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        dock: state.dock
+    }
+}
+
+export default connect(mapStateToProps)(App)
