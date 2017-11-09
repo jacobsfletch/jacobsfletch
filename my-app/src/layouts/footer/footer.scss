@@ -1,0 +1,16 @@
+@import "../../sassafras/index.scss";
+
+.app-footer {
+    position: relative;
+    .footer-breadcrumbs {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding-left: size(m);
+    }
+}

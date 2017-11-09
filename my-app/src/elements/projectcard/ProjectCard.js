@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 
 import './projectthumbnail.css';
 
-export default class ProjectThumbnail extends React.Component {
+class ProjectCard extends React.Component {
     render() {
         const imgUrl = this.props.thumbnailImage
         const altText = this.props.altText
@@ -22,3 +24,9 @@ export default class ProjectThumbnail extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return state
+}
+
+export default withRouter(connect(mapStateToProps)(ProjectCard))

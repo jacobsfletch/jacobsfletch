@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 
 import Dock from '../../layouts/dock/Dock'
 import Header from '../../layouts/header/header'
@@ -7,28 +8,20 @@ import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
 import { activateDock } from './AppActions'
+import { deactivateDock } from './AppActions'
 
 import './main.css'
 
 class App extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            color: '',
-            docked: false,
-            screen: ''
-        }
-    }
     activateDock(color) {
-        //if (prevColor === color) {
-        //    this.setState({color: '', docked: false})
-        //} else {
-        //    this.setState({color, docked: true})
-        //}
         let { dispatch } = this.props
-        let action = activateDock(color)
-        dispatch(action)
-        const prevColor = color
+        if (this.props.dock.color !== color) {
+            let action = activateDock(color)
+            dispatch(action)
+        } else {
+            let action = deactivateDock()
+            dispatch(action)
+        }
     }
     render() {
         return (
@@ -48,4 +41,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(App)
+export default withRouter(connect(mapStateToProps)(App))

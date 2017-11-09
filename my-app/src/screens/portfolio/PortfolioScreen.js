@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 
 import ProjectCard from '../../elements/projectcard/ProjectCard';
 
 import './portfolio.css';
 
 class PortfolioScreen extends React.Component {
-    componentDidMount() {
-        const screenName = this.props.location.pathname.replace(/\//g, "")
-        this.props.changeScreenTitle(screenName)
-    }
     createCards() {
         const projects = this.props.projects
         return (
@@ -31,4 +28,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(PortfolioScreen)
+export default withRouter(connect(mapStateToProps)(PortfolioScreen))

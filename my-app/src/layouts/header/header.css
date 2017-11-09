@@ -215,7 +215,10 @@ select[multiple] {
   .app-footer .header-title,
   .app-footer .footer-title {
     flex-grow: 1;
-    margin-left: 0.975rem; }
+    margin-left: 0.975rem;
+    height: 100%;
+    display: flex;
+    align-items: center; }
   .app-header .footer-subtitle,
   .app-footer .footer-subtitle {
     margin-right: 0.975rem; }

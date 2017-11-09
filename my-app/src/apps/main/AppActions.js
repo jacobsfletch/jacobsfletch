@@ -8,7 +8,7 @@ export function activateDock(color) {
     }
 }
 
-export function deactivateDock(color) {
+export function deactivateDock() {
     return {
         type: 'DOCK_DEACTIVATED',
         payload: {

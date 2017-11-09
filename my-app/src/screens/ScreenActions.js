@@ -4,3 +4,10 @@ export function screenChanged(screenName) {
         payload: screenName
     }
 }
+
+export function routeChanged(routePath) {
+    return {
+        type: 'ROUTE_CHANGED',
+        payload: routePath
+    }
+}

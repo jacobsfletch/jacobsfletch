@@ -1,11 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './project.css';
 
-export default class Project extends React.Component {
-    componentDidMount() {
-        //const screenName = this.props.location.pathname
-    }
+class ProjectScreen extends React.Component {
     render() {
         const projectName = this.props.match.params.projectName
         const imgUrl = this.props.thumbnailImage
@@ -18,3 +16,5 @@ export default class Project extends React.Component {
         )
     }
 }
+
+export default ProjectScreen

@@ -22,6 +22,10 @@ class Dock extends React.Component {
                             <Link to="/portfolio">creator of things</Link>
                         </li>
                         <li className="menu-item">
+                            no route &nbsp;
+                            <Link to="/noroute">here</Link>
+                        </li>
+                        <li className="menu-item">
                             i also&nbsp;
                             <Link to="/blog">like to write</Link>
                         </li>
