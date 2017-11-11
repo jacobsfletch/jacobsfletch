@@ -1,28 +1,53 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var keystone = require('keystone'),
+    Types = keystone.Field.Types;
 
-/**
- * User Model
- * ==========
- */
-var User = new keystone.List('User');
+var User = new keystone.List('User', {
+    track: true,
+    defaultColumns: 'user_type, canAccessKeystone',
+    autokey: {
+        path: 'key',
+        from: 'name',
+        unique: true
+    }
+});
 
 User.add({
-	name: { type: Types.Name, required: true, index: true },
-	email: { type: Types.Email, initial: true, required: true, unique: true, index: true },
-	password: { type: Types.Password, initial: true, required: true },
-}, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+    name: {
+        type: Types.Name,
+        required: true,
+        index: true
+    },
+    pseudonym: {
+        type: String,
+        required: true,
+        initial: true,
+    },
+    email: {
+        type: Types.Email,
+        initial: true,
+        required: true,
+        index: true
+    },
+    password: {
+        type: Types.Password,
+        initial: true,
+        required: true
+    },
+    status: {
+        type: Types.Select,
+        options: [{
+            value: 'unavailable',
+            label: 'Unavailable'
+        }, {
+            value: 'available',
+            label: 'Available'
+        }]
+    },
+    canAccessKeystone: {
+        type: Boolean,
+        initial: true
+    }
 });
 
-// Provide access to Keystone
-User.schema.virtual('canAccessKeystone').get(function () {
-	return this.isAdmin;
-});
-
-
-/**
- * Registration
- */
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name';
 User.register();

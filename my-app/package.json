@@ -25,10 +25,10 @@
   "scripts": {
     "keystone": "node keystone.js",
     "client-server": "node server.js",
-    "build-css": "node-sass-chokidar client/ -o client/",
-    "watch-css": "npm run build-css && node-sass-chokidar client/ -o client/ --watch --recursive",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css keystone",
+    "start": "npm-run-all -p watch-css start-js keystone",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
