@@ -1,0 +1,48 @@
+@import "../../../sassafras/index.scss";
+
+.swatches {
+    display: flex;
+    justify-content: flex-end;
+}
+
+[class^=swatch-] {
+    width: size(m);
+    height: size(m);
+    margin-right: size(m);
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    @include breakpoint(xs) {
+        width: size(s);
+        height: size(s);
+        margin-right: size(s)
+    };
+    &:hover::after {
+        transform: translateY(-25%);
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+    }
+}
+
+.swatch-cyan::after {
+    background-color: cyan;
+}
+
+.swatch-magenta::after {
+    background-color: magenta;
+}
+
+.swatch-black::after {
+    background-color: black;
+}
+
+.swatch-yellow::after {
+    background-color: yellow;
+}

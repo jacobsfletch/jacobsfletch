@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import ScreenReducer from './screens/ScreenReducer'
+import ScreenReducer from './components/screens/ScreenReducer'
 import ProjectsReducer from './ProjectsReducer'
 import DockReducer from './reducers/DockReducer'
 

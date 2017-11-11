@@ -1,0 +1,103 @@
+@import "../../../sassafras/index.scss";
+
+.dock {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 1;
+
+    &.docked {
+        display: flex;
+        padding: calc(#{size(m)} * 2);
+        &.cyan {
+            color: black;
+            background-color: cyan;
+            .menu-item a {
+                color: white;
+            }
+            & ~ * {
+                color: black;
+                .swatch-cyan::after {
+                    border: black line(m) solid;
+                }
+            }
+        }
+        &.magenta {
+            background-color: magenta;
+            color: white;
+            .menu-item a {
+                color: black;
+                &::after {
+                    background-color: white;
+                }
+            }
+            & ~ * {
+                color: white;
+                .swatch-magenta::after {
+                    border: white line(m) solid;
+                }
+            }
+        }
+        &.yellow {
+            background-color: yellow;
+            color: black;
+            .menu-item a {
+                color: white;
+            }
+            & ~ * {
+                color: black;
+                .swatch-yellow::after {
+                    border: black line(m) solid;
+                }
+            }
+        }
+        &.black {
+            background-color: black;
+            color: white;
+            .dock-menu a {
+                color: black;
+                &::after {
+                    background-color: white;
+                }
+            }
+            & ~ * {
+                color: white;
+                .swatch-black::after {
+                    border: white line(m) solid;
+                }
+            }
+        }
+    }
+
+    .dock-menu {
+        color: inherit;
+        .menu-item {
+            margin-bottom: size(m);
+            color: inherit;
+            a {
+                color: inherit;
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    background-color: black;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    z-index: -1;
+                }
+                &:hover::after {
+                    width: calc(100% + #{size(m)});
+                }
+            }
+        }
+    }
+}
