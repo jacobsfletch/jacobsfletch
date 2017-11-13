@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
 import ScreenReducer from './components/screens/ScreenReducer'
-import ProjectsReducer from './ProjectsReducer'
+import PortfolioReducer from './reducers/PortfolioReducer'
 import DockReducer from './reducers/DockReducer'
 
 const allReducers = combineReducers({
     mountedScreen: ScreenReducer,
-    projects: ProjectsReducer,
+    portfolio: PortfolioReducer,
     dock: DockReducer
 })
 

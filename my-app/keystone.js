@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 var keystone = require('keystone');
 
 keystone.init({
@@ -6,8 +7,6 @@ keystone.init({
     'brand': 'jacobsfletch',
     'static': 'public',
     'favicon': 'public/favicon.ico',
-    'views': 'templates',
-    'view engine': 'pug',
     'auto update': true,
     'auth': true,
     'user model': 'User',
@@ -20,7 +19,7 @@ keystone.init({
 
 keystone.import('models');
 
-// keystone.set() is the same as simply putting the variables in the init object above
+// keystone.set() or add the key-value pair into keystone.init() object above
 keystone.set('locals', {
     _: require('lodash'),
     env: keystone.get('env'),
@@ -34,7 +33,8 @@ keystone.set('nav', {
     'users': 'users',
     'relationships': ['categories', 'tags', 'hashtags'],
     'content': ['globals', 'resumes'],
-    'posts': ['projects','products', 'posts']
+    'posts': ['projects', 'products', 'posts']
 });
 
-keystone.start(); // Start Keystone to connect to your database and initialise the web server
+// Start Keystone to connect to your database and initialise the web server
+keystone.start();

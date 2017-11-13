@@ -12,9 +12,6 @@ import ProjectScreen from './project/ProjectScreen'
 import PageNotFound from './404/PageNotFound'
 
 class ScreenController extends React.Component {
-    componentDidMount() {
-        console.log('hi')
-    }
     render() {
         return (
             <div className="app-body">

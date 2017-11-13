@@ -9,10 +9,14 @@ import ScreenController from '../../screens/ScreenController'
 
 import { activateDock } from './AppActions'
 import { deactivateDock } from './AppActions'
+import { getPortfolio } from './AppActions'
 
 import './main.css'
 
 class App extends React.Component {
+    componentWillMount() {
+        this.props.changeScreenTitle
+    }
     activateDock(color) {
         let { dispatch } = this.props
         if (this.props.dock.color !== color) {

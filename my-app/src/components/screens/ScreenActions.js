@@ -11,3 +11,10 @@ export function routeChanged(routePath) {
         payload: routePath
     }
 }
+
+export function getPortfolio(data) {
+    return {
+        type: 'PORTFOLIO_LOADED',
+        payload: data
+    }
+}

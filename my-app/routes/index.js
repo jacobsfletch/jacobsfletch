@@ -1,9 +1,22 @@
-const express = require('express')
-const app = express()
-const path = require('path')
+var express = require('express')
+var app = express()
+var path = require('path')
+var keystone = require('keystone')
+var middleware = require('./middleware')
+var importRoutes = keystone.importer(__dirname)
 
-app.use(express.static(path.join(__dirname, 'build')))
+var routes = {
+	api: importRoutes('./api')
+}
+keystone.pre('routes', middleware.api);
+keystone.pre('render', middleware.flashMessages);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', '/index.html'))
-})
+exports = module.exports = function(app) {
+
+    //app.use(express.static(path.join(__dirname, 'build')))
+    app.get('/api/portfolio', routes.api.portfolio.getAllPublished)
+    app.use('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../public', '/index.html'))
+    })
+
+}
