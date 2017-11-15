@@ -5,19 +5,9 @@ import { Link } from 'react-router-dom';
 
 import ProjectCard from '../../elements/projectcard/ProjectCard';
 
-import { getPortfolio } from '../ScreenActions'
-
 import './portfolio.css';
 
 class PortfolioScreen extends React.Component {
-    componentWillMount() {
-        fetch('/api/portfolio')
-            .then(results => {
-                return results.json()
-            }).then(data => {
-                this.props.getPortfolio(data)
-            })
-    }
     render() {
         let projects = this.props.portfolio.map(project =>
             <ProjectCard key={project._id} data={project} />
@@ -34,12 +24,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        getPortfolio: (data) => {
-            dispatch(getPortfolio(data))
-        }
-    }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PortfolioScreen))
+export default withRouter(connect(mapStateToProps)(PortfolioScreen))

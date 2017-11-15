@@ -16,6 +16,14 @@ import './main.css'
 class App extends React.Component {
     componentWillMount() {
         this.props.changeScreenTitle
+        fetch('/api/portfolio')
+            .then(results => {
+                return results.json()
+            }).then(data => {
+                this.props.getPortfolio(data)
+            })
+    }
+    componentDidMount() {
     }
     activateDock(color) {
         let { dispatch } = this.props
@@ -45,4 +53,12 @@ function mapStateToProps(state) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(App))
+function mapDispatchToProps(dispatch) {
+    return {
+        getPortfolio: (data) => {
+            dispatch(getPortfolio(data))
+        }
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
