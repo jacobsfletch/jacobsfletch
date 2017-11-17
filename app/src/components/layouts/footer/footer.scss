@@ -12,5 +12,12 @@
         height: 100%;
         align-items: center;
         padding-left: size(m);
+        .list-item::before {
+            content: ' / ';
+            white-space: pre;
+        }
+        .list-item:first-child::before {
+            content: ''
+        }
     }
 }

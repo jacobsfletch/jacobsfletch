@@ -207,3 +207,8 @@ select[multiple] {
     height: 100%;
     align-items: center;
     padding-left: 0.975rem; }
+    .app-footer .footer-breadcrumbs .list-item::before {
+      content: ' / ';
+      white-space: pre; }
+    .app-footer .footer-breadcrumbs .list-item:first-child::before {
+      content: ''; }
