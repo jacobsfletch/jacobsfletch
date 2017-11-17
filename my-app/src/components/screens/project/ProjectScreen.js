@@ -10,11 +10,11 @@ class ProjectScreen extends React.Component {
         })
     }
     render() {
-        var project = this.props.portfolio.find(project => project.slug == this.state.projectTitle)
+        var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
         if(!project) { project = {} }
         return (
             <section className="screen-project">
-                <img className="project-image" src={project.featuredImage || "loading"} />
+                <img alt="alt text" className="project-image" src={project.featuredImage || "loading"} />
                 <h1 className="project-title">{project.title || "loading"}</h1>
                 <p className="project-categories">{project.categories || "loading"}</p>
                 <p className="project-quote">{project.quote || "loading"}</p>

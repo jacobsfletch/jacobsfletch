@@ -7,13 +7,6 @@ import './footer.css'
 
 class Footer extends React.Component {
     render() {
-        const paths = this.props.mountedScreen
-        //const path = paths.map(function(path) {
-        //    return <a key={path} href={path}>{path}</a>
-        //})
-        //var tags = this.props.mountedScreen.map(function(i, item) {
-        //    return <a key={i}>{item}</a>
-        //});
         const path = this.props.location.pathname.split("/")
         path.splice(0, 1, "index")
         return (

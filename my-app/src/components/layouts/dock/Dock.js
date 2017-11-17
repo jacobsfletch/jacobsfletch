@@ -1,45 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { deactivateDock } from '../../../actions/DockActions'
 
 import './dock.css';
 
 class Dock extends React.Component {
     render() {
-        const color = this.props.dock.color
-        const status = this.props.dock.status
-        const classes = status ? `dock docked ${color}` : `dock`
+        const classes = this.props.status ? `dock docked ${this.props.color}` : `dock`
         return (
             <div className={classes}>
                 <nav className="dock-menu">
                     <ul>
                         <li className="menu-item">
                             Hello, my name is&nbsp;
-                            <Link to="/">jacob fletcher</Link>
+                            <NavLink to="/" onClick={(e) => this.props.deactivateDock()}>jacob fletcher</NavLink>
                         </li>
                         <li className="menu-item">
                             i am a&nbsp;
-                            <Link to="/portfolio">creator of things</Link>
+                            <NavLink to="/portfolio" onClick={(e) => this.props.deactivateDock()}>creator of things</NavLink>
                         </li>
                         <li className="menu-item">
                             no route &nbsp;
-                            <Link to="/noroute">here</Link>
+                            <NavLink to="/noroute" onClick={(e) => this.props.deactivateDock()}>here</NavLink>
                         </li>
                         <li className="menu-item">
                             i also&nbsp;
-                            <Link to="/blog">like to write</Link>
+                            <NavLink to="/blog" onClick={(e) => this.props.deactivateDock()}>like to write</NavLink>
                         </li>
                         <li className="menu-item">
                             i am currently&nbsp;
-                            <Link to="/contact">available for work</Link>
+                            <NavLink to="/contact" onClick={(e) => this.props.deactivateDock()}>available for work</NavLink>
                         </li>
                         <li className="menu-item">
                             feel free to&nbsp;
-                            <Link to="/contact">drop a line</Link>
+                            <NavLink to="/contact" onClick={(e) => this.props.deactivateDock()}>drop a line</NavLink>
                         </li>
                         <li className="menu-item">
                             oh, and i&nbsp;
-                            <Link to="/contact">sell stuff too</Link>
+                            <NavLink to="/contact" onClick={(e) => this.props.deactivateDock()}>sell stuff too</NavLink>
                         </li>
                     </ul>
                 </nav>
@@ -50,8 +49,17 @@ class Dock extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        dock: state.dock
+        color: state.dock.color,
+        status: state.dock.status
     }
 }
 
-export default connect(mapStateToProps)(Dock)
+function mapDispatchToProps(dispatch) {
+    return {
+        deactivateDock: () => {
+            dispatch(deactivateDock())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dock)
