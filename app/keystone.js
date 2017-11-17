@@ -1,70 +1,41 @@
-// Require keystone
 require('dotenv').config();
 
 var keystone = require('keystone');
 
-
-// Initialise Keystone with your project's configuration.
-// See http://keystonejs.com/guide/config for available options
-// and documentation.
-
 keystone.init({
-    'name': 'jacobsfletch',
+    'name': 'jacobsfletch.com',
     'brand': 'jacobsfletch',
     'static': 'public',
-    //'favicon': 'public/favicon.ico',
-    'views': 'templates/views',
-    'view engine': 'pug',
+    'favicon': 'public/favicon.ico',
     'auto update': true,
-    'mongo': 'mongodb://' + process.env.DB_USERNAME + ':' + process.env.DB_PASSWORD + '@' + process.env.DB_URL,
-    'session store' : 'mongo',
-    'session': true,
     'auth': true,
     'user model': 'User',
-    'port' : 3000,
+    'port': process.env.PORT,
     'cookie secret': process.env.COOKIE_SECRET,
-    'google server api key' : process.env.GOOGLE_SERVER_API,
-    'google api key' : process.env.GOOGLE_API,
-    'wysiwyg additional buttons': 'format',
-    'mandrill api key': process.env.MANDRIL_API,
-    'mandrill username': process.env.MANDRIL_USERNAME,
+    'mongo': 'mongodb://' + process.env.DB_USERNAME + ':' + process.env.DB_PASSWORD + '@' + process.env.DB_URL,
+    'cloudinary config': process.env.CLOUDINARY,
     'mailgun api key': process.env.MAILGUN_API_KEY,
-    'mailgun domain': process.env.MAILGUN_DOMAIN,
-    'emails': 'templates/emails',
+    'mailgun domain': process.env.MAILGUN_DOMAIN
 });
 
-keystone.set('s3 config', {
-    bucket: 'macker',
-    key:  process.env.S3_KEY,
-    secret:  process.env.S3_SECRET,
-});
-
-keystone.set('cloudinary config', process.env.CLOUDINARY);
-keystone.set('cloudinary secure', true);
-
-// Load your project's Models
 keystone.import('models');
 
-// Setup common locals for your templates. The following are required for the
-// bundled templates and layouts. Any runtime locals (that should be set uniquely
-// for each request) should be added to ./routes/middleware.js
-
+// keystone.set() or add the key-value pair into keystone.init() object above
 keystone.set('locals', {
-	_: require('underscore'),
-	utils: keystone.utils,
-	editable: keystone.content.editable
+    _: require('lodash'),
+    env: keystone.get('env'),
+    utils: keystone.utils,
+    editable: keystone.content.editable
 });
 
-// Load your project's Routes
 keystone.set('routes', require('./routes'));
 
-// Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
     'users': 'users',
     'relationships': ['categories', 'tags', 'hashtags'],
     'content': ['globals', 'resumes'],
-    'posts': ['projects','products', 'posts']
+    'posts': ['projects', 'products', 'posts']
 });
 
-// Start Keystone to connect to your database and initialize the web server
+// Start Keystone to connect to your database and initialise the web server
 keystone.start();

@@ -6,8 +6,3 @@ config/mongo/*
 app/.env
 
 !config/mongo/*.conf
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml

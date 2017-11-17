@@ -1,63 +1,6 @@
-//
-// This file contains the common middleware used by your routes.
-//
-// Extend or replace these functions as your application requires.
-//
-// This structure is not enforced, and just a starting point. If
-// you have more middleware you may want to group it as separate
-// modules in your project's /lib directory.
-//
-
 var _ = require('underscore');
 var UAParser = require('ua-parser-js');
 var keystone = require('keystone');
-
-// Initializes the standard view locals
-// The included layout depends on the navLinks array to generate
-// the navigation in the header, you may wish to change this array
-// or replace it with your own templates / logic.
-exports.initLocals = function(req, res, next) {
-	var locals = res.locals;
-	locals.navLinks = [
-		{ label: 'start',	    key: 'start',	    href: '/' },
-		{ label: 'portfolio',	key: 'portfolio',	href: '/portfolio' },
-        { label: 'about',       key: 'about',		href: '/about' },
-		{ label: 'contact',		key: 'contact',		href: '/contact' },
-		{ label: 'instagram',	key: 'instagram',	href: 'http://www.instagram.com/jacobsfletch', target:'_blank' },
-        { label: 'github',		key: 'github',		href: 'http://www.github.com/jacobsfletch', target:'_blank'} ,
-	];
-
-	locals.user = req.user;
-	next();
-
-};
-
-// Fetch global content
-exports.globals = function(req, res, next) {
-    var locals = res.locals;
-    var Global = keystone.list('Global').model;
-
-    Global.findOne({
-        slug: 'main'
-    })
-    .exec(function (err, doc) {
-        locals.global = doc;
-        next();
-    });
-}
-
-// Load the Projects
-exports.myself = function(req, res, next) {
-    var q = keystone.list('User').model.findOne({
-        key: 'jacob-fletcher'
-    }).select('status name');
-    q.exec(function (err, result) {
-        if (result) {
-            locals.user = result;
-        }
-        next();
-    });
-}
 
 // Fetches and clears the flashMessages before a view is rendered
 exports.flashMessages = function(req, res, next) {
@@ -74,11 +17,6 @@ exports.flashMessages = function(req, res, next) {
 	next();
 
 };
-
-exports.breadcrumbs = function(req, res, next) {
-    res.locals.response = res;
-	next();
-}
 
 // Check if user is on a modern browser
 exports.ensureLatestBrowser = function(req, res, next) {
@@ -116,15 +54,69 @@ exports.requireAdmin = function(req, res, next) {
 	} else {
 		next();
 	}
-
 };
 
-exports.getGeo = function(req, res, next) {
-	var address = JSON.stringify(req.user.address);
+exports.api = function (req, res, next) {
+    var sendResponse = function(status) {
+		res.json(status);
+	};
 
-	doGoogleGeocodeRequest(address, region || keystone.get('default region'), function(err, geocode){
-		console.log(geocode);
-	});
+	var sendError = function(key, err, msg) {
+		msg = msg || 'API Error';
+		key = key || 'unknown error';
+		msg += ' (' + key + ')';
+		console.log(msg + (err ? ':' : ''));
+		if (err) {
+			console.log(err);
+		}
+		res.status(500);
+		sendResponse({ error: key || 'error', detail: err ? err.message : '' });
+	};
 
-	next();
+    res.apiResponse = function (data) {
+        if (req.query.callback) {
+            res.jsonp(data);
+        } else {
+            res.json(data);
+        }
+    };
+
+    res.apiError = function (key, err, msg, code) {
+        msg = msg || 'Error';
+        key = key || 'unknown error';
+        msg += ' (' + key + ')';
+        if (keystone.get('logger')) {
+            console.log(msg + (err ? ':' : ''));
+            if (err) {
+                console.log(err);
+            }
+        }
+
+        res.slackMsg('Macker API Error\n' + key, {
+            attachments: [{
+                fallback: JSON.stringify(err, null, 4),
+                author_name: req.user ? req.user.name.full : 'Guest',
+                author_link: req.user ? req.protocol + '://' + req.get('host') + '/keystone/users/' + req.user._id : false,
+                title: req.get('host') + req.originalUrl,
+                title_link: req.protocol + '://' + req.get('host') + req.originalUrl,
+                text: '*User-Agent: ' + req.headers['user-agent'] + '*\n' +JSON.stringify(err, null, 4),
+                color: '#CD2626',
+                footer: 'IP: ' + req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+                ts: +new Date()
+            }]
+        });
+
+        sendError(key, err, msg);
+    };
+
+
+    res.apiNotFound = function (err, msg) {
+        res.apiError('data not found', err, msg || 'not found', 404);
+    };
+
+    res.apiNotAllowed = function (err, msg) {
+        res.apiError('access not allowed', err, msg || 'not allowed', 403);
+    };
+
+    next();
 };
