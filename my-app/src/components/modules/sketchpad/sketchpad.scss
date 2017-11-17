@@ -1,0 +1,46 @@
+@import "../../../sassafras/index.scss";
+
+.sketchpad {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    cursor: n-resize;
+    color: white;
+    .sketchpad-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        &.deactive {
+            display: none;
+        }
+    }
+}
+
+.sketchpad-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.sketchpad-toolbelt {
+    position: absolute;
+    bottom: 0;
+    padding: size(m);
+    display: none;
+    &.active {
+        display: block;
+    }
+    button {
+        color: white;
+        border: line(xs) white solid;
+        background-color: none;
+        padding: size(xs) size(s);
+        &:first-child {
+            margin-right: size(s)
+        }
+        &:hover {
+            transform: translateY(-#{size(xxs)});
+        }
+    }
+}

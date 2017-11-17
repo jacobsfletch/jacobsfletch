@@ -1,0 +1,27 @@
+@import "../../../sassafras/index.scss";
+
+html body {
+    text-transform: lowercase;
+    font-family: font(body);
+}
+
+.app {
+    padding: size(m);
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(xs) {
+        padding: size(s);
+    };
+    .app-body {
+        flex-grow: 1;
+        overflow: hidden;
+        display: flex;
+        padding: size(m) calc(#{size(m)} * 2);
+        @include breakpoint(xs) {
+            padding: size(s) calc(#{size(s)} * 2);
+        };
+    }
+}
