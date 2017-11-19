@@ -14,7 +14,6 @@ class ScreenController extends React.Component {
             <div className="app-body">
                 <Switch>
                     <Route exact path='/' component={HomeScreen} />
-                    <Route exact path='/index' component={HomeScreen} />
                     <Route exact path='/portfolio' component={PortfolioScreen}/>
                     <Route exact path='/portfolio/:projectName' component={ProjectScreen} />
                     <Route path='/404' component={PageNotFound} />

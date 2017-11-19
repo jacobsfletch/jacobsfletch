@@ -13,7 +13,7 @@ keystone.pre('render', middleware.flashMessages);
 
 exports = module.exports = function(app) {
 
-    //app.use(express.static(path.join(__dirname, 'build')))
+    app.use(express.static(path.join(__dirname, 'build')))
     app.get('/api/portfolio', routes.api.portfolio.getAllPublished)
     app.use('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../public', '/index.html'))

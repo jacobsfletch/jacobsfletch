@@ -1,0 +1,26 @@
+@import "../../../sassafras/index.scss";
+
+.footer-breadcrumbs {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    height: 100%;
+    align-items: center;
+    padding-left: size(m);
+    ul {
+        display: flex;
+        .list-item {
+            display: inline-flex;
+            &::before {
+                content: ' / ';
+                white-space: pre;
+            }
+        }
+        .list-item:first-child::before {
+            content: ''
+        }
+    }
+}

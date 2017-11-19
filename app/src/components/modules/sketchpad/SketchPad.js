@@ -24,6 +24,7 @@ export default class SketchPad extends Component {
         this.onMouseMove = this.onMouseMove.bind(this)
         this.onDebouncedMove = this.onDebouncedMove.bind(this)
         this.onMouseUp = this.onMouseUp.bind(this)
+        this.onResize = this.onResize.bind(this)
         this.state = {
             canvasStatus: false
         }
@@ -38,20 +39,25 @@ export default class SketchPad extends Component {
     }
 
     componentDidMount() {
-        const canvas = findDOMNode(this.canvasRef)
         this.canvas = findDOMNode(this.canvasRef)
         this.ctx = this.canvas.getContext('2d')
         this.tool = this.props.tool(this.ctx)
-        this.handleResize.bind(this.canvas)()
-        window.addEventListener('resize', this.handleResize.bind(this.canvas), false)
+        this.onResize()
+        window.addEventListener('resize', this.onResize, false)
     }
 
-    handleResize() {
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.onResize, false)
+    }
+
+    onResize() {
+        this.canvas = findDOMNode(this.canvasRef)
         const sketchpad = document.querySelector('.sketchpad')
         const sketchpadWidth = sketchpad.clientWidth
         const sketchpadHeight = sketchpad.clientHeight
-        this.width = sketchpadWidth
-        this.height = sketchpadHeight
+        this.canvas.width = sketchpadWidth
+        this.canvas.height = sketchpadHeight
+        this.clearCanvas()
     }
 
     onMouseDown(e) {
@@ -66,7 +72,7 @@ export default class SketchPad extends Component {
     }
 
     onDebouncedMove() {
-        if (typeof this.tool.onDebouncedMouseMove == 'function' && this.props.onDebouncedItemChange) {
+        if (typeof this.tool.onDebouncedMouseMove === 'function' && this.props.onDebouncedItemChange) {
             this.props.onDebouncedItemChange.apply(null, this.tool.onDebouncedMouseMove())
         }
     }
