@@ -21,6 +21,14 @@
 .sketchpad-canvas {
     width: 100%;
     height: 100%;
+    background-color: black;
+    background-image: url('/img/doodle.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    &.deactive {
+        background-image: none;
+    }
 }
 
 .sketchpad-toolbelt {

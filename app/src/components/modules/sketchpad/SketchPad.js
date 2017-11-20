@@ -113,17 +113,16 @@ export default class SketchPad extends Component {
 
     render() {
         const toolbeltClassList = this.state.canvasStatus ? 'sketchpad-toolbelt active' : 'sketchpad-tools'
-        const titleClassList = this.state.canvasStatus ? 'sketchpad-title deactive' : 'sketchpad-title'
+        const canvasClassList = this.state.canvasStatus ? 'sketchpad-canvas deactive' : 'sketchpad-canvas'
         return (
             <div className={'sketchpad'}>
                 <canvas
                     ref={(canvas) => { this.canvasRef = canvas }}
-                    className={'sketchpad-canvas'}
+                    className={canvasClassList}
                     onMouseDown={this.onMouseDown}
                     onMouseMove={this.onMouseMove}
                     onMouseOut={this.onMouseUp}
                     onMouseUp={this.onMouseUp}
-                    style={{backgroundColor: 'black'}}
                 />
                 <div className={toolbeltClassList}>
                     <button
@@ -133,7 +132,6 @@ export default class SketchPad extends Component {
                         onClick={(e) => this.sendSketch(e)}>Send
                     </a>
                 </div>
-                <p className={titleClassList}>draw me something</p>
             </div>
         )
     }
