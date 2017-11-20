@@ -7,7 +7,7 @@ import Header from '../../layouts/header/header'
 import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
-import { getPortfolio } from './AppActions'
+import { getPortfolio, getGlobals, getResume } from './AppActions'
 
 import './main.css'
 
@@ -18,6 +18,18 @@ class App extends React.Component {
                 return results.json()
             }).then(data => {
                 this.props.getPortfolio(data)
+            })
+        fetch('/api/globals')
+            .then(results => {
+                return results.json()
+            }).then(data => {
+                this.props.getGlobals(data)
+            })
+        fetch('/api/resume')
+            .then(results => {
+                return results.json()
+            }).then(data => {
+                this.props.getResume(data)
             })
     }
     render() {
@@ -36,6 +48,12 @@ function mapDispatchToProps(dispatch) {
     return {
         getPortfolio: (data) => {
             dispatch(getPortfolio(data))
+        },
+        getGlobals: (data) => {
+            dispatch(getGlobals(data))
+        },
+        getResume: (data) => {
+            dispatch(getResume(data))
         }
     }
 }

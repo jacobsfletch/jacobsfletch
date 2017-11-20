@@ -1,12 +1,10 @@
 const keystone = require('keystone')
-const Project = keystone.list('Project').model
+const Global = keystone.list('Global').model;
 
-exports.getAllPublished = function(req, res) {
-    Project.find({
-        state: 'published',
+exports.getGlobals = function(req, res) {
+    Global.findOne({
+        slug: 'main',
     })
-    .populate('hashtags categories')
-    .sort('sortOrder')
     .exec(function(err, items) {
         if (err) return res.apiError('database error', err);
         if (!items) return res.apiError('No project was found.');
