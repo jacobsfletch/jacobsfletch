@@ -7,6 +7,9 @@
 
     @include breakpoint($size: m, $inherit: down) {
         width: 100%;
+        &:nth-child(odd) {
+            margin-right: 0 !important;
+        }
     };
 
     &::after {
@@ -22,6 +25,17 @@
 
     &:hover {
         padding: 0 0 size(m) size(m);
+        .card-title {
+            &::after {
+                content: ' >';
+                white-space: pre;
+            }
+        }
+        .card-categories,
+        .card-client,
+        .card-title {
+            font-weight: 900;
+        }
     }
 
     &:nth-child(odd) {
@@ -30,7 +44,7 @@
 
     > a {
         border: solid black line(m);
-        padding:size(m) ;
+        padding: size(m) ;
         position: relative;
         width: 100%;
         height: 100%;
@@ -61,9 +75,14 @@
             display: inline-block;
             margin-top: size(xs);
             margin-bottom: size(s);
+            white-space: normal;
+            @include breakpoint($size:xs) {
+                @include type(h3);
+            };
         }
         .card-categories {
             display: flex;
+            flex-wrap: wrap;
             .card-category {
                 @include type(p);
                 text-transform: uppercase;

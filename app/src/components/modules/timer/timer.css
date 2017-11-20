@@ -196,7 +196,7 @@ select[multiple] {
   vertical-align: top; }
 
 .module-timer .timer-date {
-  margin-right: 0.325rem; }
+  margin-right: 0.65rem; }
   @media only screen and (max-width: 319px) {
     .module-timer .timer-date {
       display: none; } }

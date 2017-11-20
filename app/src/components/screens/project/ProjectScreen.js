@@ -12,16 +12,29 @@ class ProjectScreen extends React.Component {
     render() {
         var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
         if(!project) { project = {} }
-        var hashtags = !project.hashtags ? 'loading' : project.hashtags.map(function(tag){return `${tag.name} `})
+        let hashtags = !project.hashtags ? 'loading' : project.hashtags.map(function(tag){return `${tag.name} `})
+        let categories = !project.categories ? 'loading' : project.categories.map(function(category){return <li key={category.name} className="board-category">{category.name}</li>})
+        let client = project.client ? 'client: ' + project.client : 'personal project'
+        let images = !project.images ? 'loading' : project.images.map(function(image){return <li key={image}><img className="board-image" src={image} alt={image}/></li>})
         return (
             <section className="screen-project">
-                <img alt="alt text" className="project-image" src={project.featuredImage || "loading"} />
-                <h1 className="project-title">{project.title || "loading"}</h1>
-                <p className="project-categories">{project.categories || "loading"}</p>
-                <p className="project-quote">{project.quote || "loading"}</p>
-                <p className="project-quoteAuthor">{project.quoteAuthor || "loading"}</p>
-                <p className="project-content">{project.content || "loading"}</p>
-                <p className="project-content">{hashtags}</p>
+                <header className="board-header">
+                    <img alt="alt text" className="board-image" src={project.featuredImage || "loading"} />
+                    <h5 className="board-client">{client}</h5>
+                    <h1 className="board-title">{project.title || "loading"}</h1>
+                    <ul className="board-categories">{categories}</ul>
+                </header>
+                <div className="board-body">
+                    <blockquote className="board-blockquote">
+                        <p className="board-quote">{project.quote || "loading"}</p>
+                        <cite className="board-quoteAuthor">{project.quoteAuthor || "loading"}</cite>
+                    </blockquote>
+                    <p className="board-content">{project.content || "loading"}</p>
+                    <ul className="board-gallery">{images}</ul>
+                    <footer className="board-footer">
+                        <p className="board-hashtags"><span>hashtags</span>{hashtags}</p>
+                    </footer>
+                </div>
             </section>
         )
     }

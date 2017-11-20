@@ -202,7 +202,7 @@ select[multiple] {
   position: absolute; }
   @media only screen and (max-width: 319px) {
     .scroll-progress {
-      width: 0.65rem; } }
+      width: 0.8125rem; } }
   .scroll-progress .measure-inner {
     position: relative;
     display: flex;
@@ -214,8 +214,8 @@ select[multiple] {
     cursor: row-resize;
     border-radius: 100%;
     background-color: #0d0d0d;
-    width: 0.325rem;
-    height: 0.325rem;
+    width: 0.65rem;
+    height: 0.65rem;
     position: absolute;
     top: 0;
     left: 50%;

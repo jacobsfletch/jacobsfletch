@@ -225,8 +225,8 @@ select[multiple] {
     color: white;
     border: 2px white solid;
     background-color: none;
-    padding: 0.325rem 0.65rem; }
+    padding: 0.65rem 0.8125rem; }
     .sketchpad-toolbelt button:first-child {
-      margin-right: 0.65rem; }
+      margin-right: 0.8125rem; }
     .sketchpad-toolbelt button:hover {
-      transform: translateY(-0.21667rem); }
+      transform: translateY(-0.4875rem); }

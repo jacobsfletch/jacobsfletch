@@ -250,8 +250,8 @@ select[multiple] {
   height: 0.975rem; }
   @media only screen and (max-width: 319px) {
     .cropmark {
-      width: 0.65rem;
-      height: 0.65rem;
+      width: 0.8125rem;
+      height: 0.8125rem;
       border-width: 3px; } }
 
 .header-after {
@@ -260,5 +260,5 @@ select[multiple] {
   right: 0.975rem; }
   @media only screen and (max-width: 319px) {
     .header-after {
-      right: 0.65rem;
-      bottom: -0.65rem; } }
+      right: 0.8125rem;
+      bottom: -0.8125rem; } }

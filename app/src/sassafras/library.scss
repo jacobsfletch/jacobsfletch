@@ -22,9 +22,9 @@ $colors: (
 
 $sizes: (
 	// Small Sizing
-	'xxs': baseline(1/6),
-	'xs': baseline(1/4),
-	's': baseline(1/2),
+	'xxs': baseline(3/8),
+	'xs': baseline(1/2),
+	's': baseline(5/8),
 	'm': baseline(3/4),
 	'l': baseline(1),
 	'xl': baseline(1.25),
@@ -89,8 +89,8 @@ $fonts: (
 $typography: (
     p: (
         font-family: font(body),
-        font-size: size(s),
-        line-height: size(s)
+        font-size: size(xs),
+        line-height: size(xs)
     ),
     fine: (
         font-family: font(body),

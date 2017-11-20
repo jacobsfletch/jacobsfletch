@@ -8,7 +8,7 @@ export default function ProjectCard(data) {
     let categories = data.data.categories.map(function(category) {
         return <li key={category.name} className="card-category">{category.name}</li>
     })
-    var client = data.data.client ? 'client: ' + data.data.client : 'personal project'
+    let client = data.data.client ? 'client: ' + data.data.client : 'personal project'
     return (
         <li className="project-card">
             <Link to={slug}>

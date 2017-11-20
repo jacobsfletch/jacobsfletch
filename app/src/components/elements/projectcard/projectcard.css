@@ -201,7 +201,9 @@ select[multiple] {
   position: relative; }
   @media only screen and (max-width: 767px) {
     .project-card {
-      width: 100%; } }
+      width: 100%; }
+      .project-card:nth-child(odd) {
+        margin-right: 0 !important; } }
   .project-card::after {
     content: '';
     position: absolute;
@@ -213,6 +215,13 @@ select[multiple] {
     display: block; }
   .project-card:hover {
     padding: 0 0 0.975rem 0.975rem; }
+    .project-card:hover .card-title::after {
+      content: ' >';
+      white-space: pre; }
+    .project-card:hover .card-categories,
+    .project-card:hover .card-client,
+    .project-card:hover .card-title {
+      font-weight: 900; }
   .project-card:nth-child(odd) {
     margin-right: 0.975rem; }
   .project-card > a {
@@ -243,10 +252,17 @@ select[multiple] {
     line-height: 1.3rem;
     position: relative;
     display: inline-block;
-    margin-top: 0.325rem;
-    margin-bottom: 0.65rem; }
+    margin-top: 0.65rem;
+    margin-bottom: 0.8125rem;
+    white-space: normal; }
+    @media only screen and (max-width: 319px) {
+      .project-card .card-meta .card-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 0.975rem;
+        line-height: 0.975rem; } }
   .project-card .card-meta .card-categories {
-    display: flex; }
+    display: flex;
+    flex-wrap: wrap; }
     .project-card .card-meta .card-categories .card-category {
       font-family: "Source Code Pro", sans-serif;
       font-size: 0.65rem;

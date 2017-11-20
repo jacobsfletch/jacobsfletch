@@ -4,4 +4,7 @@
   overflow-y: scroll;
   white-space: nowrap;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  -webkit-overflow-scrolling: touch; }
+  .screen-portfolio::-webkit-scrollbar {
+    display: none; }

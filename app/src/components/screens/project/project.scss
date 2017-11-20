@@ -1,6 +1,89 @@
+@import "../../../sassafras/index.scss";
+
 .screen-project {
     overflow-x: hidden;
-    .project-image {
-        width: 100%;
+    position: relative;
+    border: solid black line(m);
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .board-header {
+        padding: size(m);
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        .board-image {
+            width: 100%;
+            margin-bottom: size(m);
+        }
+        .board-title,
+        .board-client,
+        .board-categories {
+            font-weight: 900;
+        }
+        .board-title {
+            @include type(h2);
+            margin-bottom: size(s);
+            margin-top: size(xs);
+        }
+        .board-client {
+            @include type(p);
+            text-transform: uppercase;
+        }
+        .board-categories {
+            display: flex;
+            .board-category {
+                @include type(p);
+                text-transform: uppercase;
+                &::after {
+                    content: ', ';
+                    white-space: pre;
+                }
+                &:last-child::after {
+                    content: '';
+                }
+            }
+        }
+    }
+    .board-body {
+        background-color: white;
+        border-top: 0;
+        padding: size(m);
+        border: black line(m);
+        border-top-style: dashed;
+        .board-blockquote {
+            margin-bottom: size(m);
+            .board-quote {
+                @include type(h3);
+                font-weight: 200;
+                text-transform: lowercase;
+            }
+            .board-quoteAuthor {
+                @include type(p);
+                font-weight: 900;
+                text-transform: uppercase;
+            }
+        }
+        .board-gallery {
+            .board-image {
+                width: 100%;
+            }
+        }
+        .board-footer {
+            border-top: solid line(m) black;
+            margin-top: size(m);
+            padding-top: size(m);
+            .board-hashtags {
+                @include type(h4);
+                font-weight: 100;
+                span {
+                    @include type(p);
+                    text-transform: uppercase;
+                    font-weight: 900;
+                    display: block;
+                    margin-bottom: size(xxs);
+                }
+            }
+        }
     }
 }
