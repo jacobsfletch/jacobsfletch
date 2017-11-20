@@ -12,6 +12,7 @@ class ProjectScreen extends React.Component {
     render() {
         var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
         if(!project) { project = {} }
+        var hashtags = !project.hashtags ? 'loading' : project.hashtags.map(function(tag){return `${tag.name} `})
         return (
             <section className="screen-project">
                 <img alt="alt text" className="project-image" src={project.featuredImage || "loading"} />
@@ -20,7 +21,7 @@ class ProjectScreen extends React.Component {
                 <p className="project-quote">{project.quote || "loading"}</p>
                 <p className="project-quoteAuthor">{project.quoteAuthor || "loading"}</p>
                 <p className="project-content">{project.content || "loading"}</p>
-                <p className="project-hashtags">{project.hashtags || "loading"}</p>
+                <p className="project-content">{hashtags}</p>
             </section>
         )
     }

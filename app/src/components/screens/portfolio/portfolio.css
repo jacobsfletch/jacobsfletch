@@ -1,5 +1,7 @@
 .screen-portfolio {
   flex-grow: 1;
   overflow: hidden;
-  overflow-x: scroll;
-  white-space: nowrap; }
+  overflow-y: scroll;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap; }

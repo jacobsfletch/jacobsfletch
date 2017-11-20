@@ -6,13 +6,17 @@
     min-height: size(m);
     display: flex;
     align-items: center;
-    z-index: 1;
+    z-index: layer(tippy-top);
     align-items: center;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
     white-space: nowrap;
     position: relative;
+
+    .header-title:hover {
+        font-weight: 200;
+    }
 
     .header-title,
     .footer-title {

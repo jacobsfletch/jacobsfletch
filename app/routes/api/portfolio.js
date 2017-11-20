@@ -5,6 +5,7 @@ exports.getAllPublished = function(req, res) {
 	Project.model.find({
         state: 'published',
     })
+    .populate('hashtags categories')
     .sort('sortOrder')
     .exec(function(err, items) {
 		if (err) return res.apiError('database error', err);

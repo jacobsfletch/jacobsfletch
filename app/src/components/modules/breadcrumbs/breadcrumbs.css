@@ -209,6 +209,8 @@ select[multiple] {
     display: flex; }
     .footer-breadcrumbs ul .list-item {
       display: inline-flex; }
+      .footer-breadcrumbs ul .list-item a:hover {
+        font-weight: 200; }
       .footer-breadcrumbs ul .list-item::before {
         content: ' / ';
         white-space: pre; }

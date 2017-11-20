@@ -7,6 +7,8 @@ exports.send = function(req, res) {
     var locals = res.locals,
     data = (req.method == 'POST') ? req.body : req.query;
 
+    console.log('here');
+
     keystone.list('User').model.findOne({
         key: 'jacob-fletcher'
     }).exec(function (err, result) {
@@ -19,7 +21,7 @@ exports.send = function(req, res) {
     });
 
     function contact(email) {
-        new Email('templates/emails/contact.pug', {
+        new Email('public/emails/contact.html', {
             transport: 'mailgun',
         }).send({
             first: data.first,
@@ -43,7 +45,7 @@ exports.send = function(req, res) {
     }
 
     function confirm() {
-        new Email('templates/emails/confirmation.pug', {
+        new Email('public/emails/contact-confirmation.html', {
             transport: 'mailgun',
         }).send({
             first: data.first,
@@ -67,6 +69,6 @@ exports.send = function(req, res) {
     }
 
     function success() {
-        res.redirect('/contact/confirmation')
+        res.apiResponse('success')
     }
 }

@@ -203,13 +203,16 @@ select[multiple] {
   min-height: 0.975rem;
   display: flex;
   align-items: center;
-  z-index: 1;
+  z-index: 9999;
   align-items: center;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
   white-space: nowrap;
   position: relative; }
+  .app-header .header-title:hover,
+  .app-footer .header-title:hover {
+    font-weight: 200; }
   .app-header .header-title,
   .app-header .footer-title,
   .app-footer .header-title,

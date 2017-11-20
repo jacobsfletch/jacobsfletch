@@ -14,16 +14,27 @@ var Project = new keystone.List('Project', {
 });
 
 Project.add({
+    title: {
+        type: String,
+        required: true,
+        initial: true,
+    },
     state: {
         type: Types.Select,
         options: 'draft, published, archived',
         default: 'draft',
         index: true
     },
-    title: {
-        type: String,
-        required: true,
+    clientCheck: {
+        type: Boolean,
         initial: true,
+        label: 'Is this is a client project?'
+    },
+    client: {
+        type: String,
+        initial: true,
+        required: true,
+        dependsOn: {clientCheck: true}
     },
     categories: {
         type: Types.Relationship,
@@ -55,6 +66,9 @@ Project.add({
             initial: true,
         }
     },
+    deliverables: {
+        type: Types.Text
+    },
     featuredImage: {
         type: Types.Text
     },
@@ -78,5 +92,5 @@ Project.add({
     }
 });
 
-Project.defaultColumns = 'title, state';
+Project.defaultColumns = 'title, client, state';
 Project.register();

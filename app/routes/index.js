@@ -15,6 +15,7 @@ exports = module.exports = function(app) {
 
     app.use(express.static(path.join(__dirname, 'build')))
     app.get('/api/portfolio', routes.api.portfolio.getAllPublished)
+    app.get('/api/email/send', routes.api.email.send)
     app.use('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../public', '/index.html'))
     })

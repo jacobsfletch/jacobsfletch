@@ -13,7 +13,7 @@ export default class ProjectThumbnail extends React.Component {
         const newDate = new Date()
         this.setState({
             time: newDate.toLocaleTimeString(),
-            date: newDate.toLocaleDateString().replace(/\//g, '')
+            date: newDate.toLocaleDateString() // .replace(/\//g, '')
         });
     }
     componentDidMount() {

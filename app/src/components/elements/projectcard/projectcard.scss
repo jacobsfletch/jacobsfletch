@@ -1,41 +1,80 @@
 @import "../../../sassafras/index.scss";
 
-.project-thumbnail {
-    margin-right: size(m);
-    height: 100%;
-    display: inline-flex;
+.project-card {
+    width: calc(50% - #{size(m)/2});
+    margin-bottom: size(m);
+    position: relative;
 
-    &:last-child {
-        margin-right: 0;
+    @include breakpoint($size: m, $inherit: down) {
+        width: 100%;
+    };
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: calc(100% - #{size(m)});
+        height: calc(100% - #{size(m)});
+        left: 0;
+        bottom: 0;
+        background-color: black;
+        display: block;
     }
-    a {
+
+    &:hover {
+        padding: 0 0 size(m) size(m);
+    }
+
+    &:nth-child(odd) {
+        margin-right: size(m);
+    }
+
+    > a {
+        border: solid black line(m);
+        padding:size(m) ;
         position: relative;
         width: 100%;
         height: 100%;
-        display: block;
-        color: color(light, 1);
-    }
-    .thumbnail-image {
-        height: 100%;
-        transform: translateZ(0);
-        display: inline-block;
-        min-width: 100%;
-    }
-    .thumbnail-meta {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        padding: size(m);
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        .thumbnail-title {
+        color: black;
+        background-color: white;
+        z-index: layer(mid-bottom);
 
+    }
+
+    .card-image {
+        width: 100%;
+        height: auto;
+        transform: translateZ(0);
+        display: inline-block;
+        margin-bottom: size(m);
+    }
+
+    .card-meta {
+        .card-client {
+            @include type(p);
+            text-transform: uppercase;
         }
-        .thumbnail-subtitle {
-
+        .card-title {
+            @include type(h2);
+            position: relative;
+            display: inline-block;
+            margin-top: size(xs);
+            margin-bottom: size(s);
+        }
+        .card-categories {
+            display: flex;
+            .card-category {
+                @include type(p);
+                text-transform: uppercase;
+                &::after {
+                    content: ', ';
+                    white-space: pre;
+                }
+                &:last-child::after {
+                    content: '';
+                }
+            }
         }
     }
 }
