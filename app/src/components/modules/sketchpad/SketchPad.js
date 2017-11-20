@@ -99,8 +99,9 @@ export default class SketchPad extends Component {
         ]
     }
 
-    sendSketch() {
-        console.log('sending...jk asshole')
+    sendSketch(e) {
+        e.target.href = this.canvas.toDataURL()
+        e.target.download = 'doodle.png'
     }
 
     clearCanvas() {
@@ -128,9 +129,9 @@ export default class SketchPad extends Component {
                     <button
                         onClick={(e) => this.clearCanvas()}>Clear
                     </button>
-                    <button
-                        onClick={(e) => this.sendSketch()}>Send
-                    </button>
+                    <a
+                        onClick={(e) => this.sendSketch(e)}>Send
+                    </a>
                 </div>
                 <p className={titleClassList}>draw me something</p>
             </div>
