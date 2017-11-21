@@ -1,6 +1,7 @@
 import React from 'react'
 import Timer from '../../modules/timer/Timer'
 import Breadcrumbs from '../../modules/breadcrumbs/Breadcrumbs'
+import BackToTop from '../../modules/backtotop/BackToTop'
 
 import './footer.css'
 
@@ -15,7 +16,9 @@ class Footer extends React.Component {
                 <div className="footer-title">
                     <Timer />
                 </div>
-                <p className="footer-subtitle">...</p>
+                <div className="footer-subtitle">
+                    <BackToTop />
+                </div>
                 <div className="cropmark br"></div>
             </div>
         )
