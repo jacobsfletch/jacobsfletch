@@ -10,7 +10,7 @@ keystone.init({
     'auto update': true,
     'auth': true,
     'user model': 'User',
-    'port': process.env.PORT,
+    'port': (process.env.ENV === 'production') ? 80 : process.env.PORT,
     'cookie secret': process.env.COOKIE_SECRET,
     'mongo': 'mongodb://' + process.env.DB_USERNAME + ':' + process.env.DB_PASSWORD + '@' + process.env.DB_URL,
     'cloudinary config': process.env.CLOUDINARY,
