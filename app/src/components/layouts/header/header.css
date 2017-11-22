@@ -210,8 +210,8 @@ select[multiple] {
   letter-spacing: 2px;
   white-space: nowrap;
   position: relative; }
-  .app-header .header-title:hover,
-  .app-footer .header-title:hover {
+  .app-header .header-title a:hover,
+  .app-footer .header-title a:hover {
     font-weight: 200; }
   .app-header .header-title,
   .app-header .footer-title,

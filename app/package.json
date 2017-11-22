@@ -28,11 +28,11 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "PORT=3000 npm-run-all -p watch-css start-js",
+    "start": "PORT=8081 npm-run-all -p watch-css start-js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "restart": "pm2 restart all"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:8080"
 }

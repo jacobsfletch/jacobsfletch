@@ -10,7 +10,9 @@ export default class Header extends React.Component {
         return (
             <div className="app-header">
                 <div className="cropmark tl"></div>
-                <a className="header-title" href="/">jacobsfletch.com</a>
+                <div className="header-title">
+                    <a href="/">jacobsfletch.com</a>
+                </div>
                 <div className="swatches">
                     <Swatch color="cyan"/>
                     <Swatch color="magenta"/>

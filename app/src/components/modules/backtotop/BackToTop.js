@@ -16,7 +16,7 @@ class BackToTop extends React.Component {
     }
     componentDidMount() {
         const container = document.querySelector('*[class^="screen"]')
-        container.addEventListener('scroll', this.onScroll, false)
+        //container.addEventListener('scroll', this.onScroll, false)
         console.log(this.props.location)
         this.setState({
             scrollContainer: container
