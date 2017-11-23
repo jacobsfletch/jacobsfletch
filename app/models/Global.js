@@ -44,6 +44,9 @@ Global.add({
     },
     startupImg: {
         type: Types.CloudinaryImage
+    },
+    doodles: {
+        type: Types.TextArray
     }
 });
 

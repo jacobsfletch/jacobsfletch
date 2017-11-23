@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
+import { connect } from 'react-redux'
+
 import Pencil from './Pencil'
 
 import './sketchpad.css'
 
-export default class SketchPad extends Component {
+class SketchPad extends Component {
 
     tool = null
     interval = null
@@ -44,6 +46,10 @@ export default class SketchPad extends Component {
         this.tool = this.props.tool(this.ctx)
         this.onResize()
         window.addEventListener('resize', this.onResize, false)
+        const doodles = this.loadRandomDoodle(this.props.doodles)
+        this.setState({
+            doodle: doodles ? doodles : '/img/doodle.png'
+        })
     }
 
     componentWillUnmount() {
@@ -111,6 +117,12 @@ export default class SketchPad extends Component {
         })
     }
 
+    loadRandomDoodle(doodles) {
+        if (this.props.doodles) {
+            return doodles[Math.floor(Math.random() * doodles.length)];
+        }
+    }
+
     render() {
         const toolbeltClassList = this.state.canvasStatus ? 'sketchpad-toolbelt active' : 'sketchpad-tools'
         const canvasClassList = this.state.canvasStatus ? 'sketchpad-canvas deactive' : 'sketchpad-canvas'
@@ -123,6 +135,7 @@ export default class SketchPad extends Component {
                     onMouseMove={this.onMouseMove}
                     onMouseOut={this.onMouseUp}
                     onMouseUp={this.onMouseUp}
+                    style={{backgroundImage: 'url(' + this.state.doodle + ')'}}
                 />
                 <div className={toolbeltClassList}>
                     <button
@@ -136,3 +149,11 @@ export default class SketchPad extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        doodles: state.globals.doodles
+    }
+}
+
+export default connect(mapStateToProps)(SketchPad)
