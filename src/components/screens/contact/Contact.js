@@ -19,9 +19,10 @@ export default class Contact extends React.Component {
                 body: formData,
                 headers: {'Content-Type':'application/json'}
             })
-            .then(results => {
-                // this.props.history.push('/contact/confirmation')
+            .then(response => {
+                this.props.history.push('/contact/confirmation')
             })
+        return false
     }
     handleFirstNameChange(e) {
         this.setState({
@@ -42,7 +43,7 @@ export default class Contact extends React.Component {
         return (
             <div>
                 <p>start by filling out the form below so that i know how to best reach you.</p>
-                <form id='contact' className='form-contact' onSubmit={this.handleSubmit.bind(this)}>
+                <form id='contact' className='form-contact' onSubmit={this.handleSubmit.bind(this)} >
                     <input placeholder="first" className='input-text' name='first' type='text' value={this.state.firstName} onChange={this.handleFirstNameChange.bind(this)} required />
                     <input placeholder="last" className='input-text' name='last' type='text' value={this.state.lastName} onChange={this.handleLastNameChange.bind(this)} required />
                     <input placeholder="email" className='input-text' name='email' type='email' value={this.state.emailAddress} onChange={this.handleEmailChange.bind(this)} required />
