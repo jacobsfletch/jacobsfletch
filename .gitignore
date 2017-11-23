@@ -1,8 +1,14 @@
-.DS_Store
-config/logs/
 node_modules
-config/mongo/*
+.env
+.DS_Store
+logs
 *.log
-app/.env
 
-!config/mongo/*.conf
+pids
+*.pid
+*.seed
+
+lib-cov
+coverage
+.grunt
+build/Release
