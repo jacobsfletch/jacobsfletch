@@ -1,13 +1,13 @@
 var keystone = require('keystone');
 
-var Tag = new keystone.List('Tag', {
+var Client = new keystone.List('Client', {
 	autokey: { from: 'name', path: 'key', unique: true }
 });
 
-Tag.add({
+Client.add({
 	name: { type: String, required: true }
 });
 
-Tag.relationship({ ref: 'Post', path: 'tags' });
+Client.relationship({ ref: 'Project', path: 'client' });
 
-Tag.register();
+Client.register();

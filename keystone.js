@@ -32,7 +32,7 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
     'users': 'users',
-    'relationships': ['categories', 'tags', 'hashtags'],
+    'relationships': ['clients', 'categories', 'tags', 'hashtags'],
     'content': ['globals', 'resumes'],
     'posts': ['projects', 'products', 'posts']
 });

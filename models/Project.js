@@ -4,19 +4,25 @@ var Types = keystone.Field.Types;
 var Project = new keystone.List('Project', {
     sortable: true,
     map: {
-        name: 'title'
+        name: 'projectName'
     },
     autokey: {
         path: 'slug',
-        from: 'title',
+        from: 'projectName',
         unique: true
     }
 });
 
 Project.add({
+    projectName: {
+        type: String,
+        label: 'Project Name',
+        required: true,
+        initial: true,
+    },
     title: {
         type: String,
-        required: true,
+        required: false,
         initial: true,
     },
     state: {
@@ -25,15 +31,16 @@ Project.add({
         default: 'draft',
         index: true
     },
-    clientCheck: {
-        type: Boolean,
-        initial: true,
-        label: 'Is this is a client project?'
-    },
     client: {
+        type: Types.Relationship,
+        ref: 'Client',
+        initial: true,
+        many: false
+    },
+    subtitle: {
         type: String,
         initial: true,
-        required: true,
+        required: false,
         dependsOn: {clientCheck: true}
     },
     categories: {

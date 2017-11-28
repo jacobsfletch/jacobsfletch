@@ -14,26 +14,33 @@ class BackToTop extends React.Component {
             scrolled: false
         }
     }
+    componentWillReceiveProps() {}
     componentDidMount() {
+        window.addEventListener('resize', this.refreshVars, false)
         const container = document.querySelector('*[class^="screen"]')
-        //container.addEventListener('scroll', this.onScroll, false)
+        container.addEventListener('scroll', this.onScroll, false)
         console.log(this.props.location)
-        this.setState({
-            scrollContainer: container
-        })
+        this.setState({scrollContainer: container})
+        // this.refreshVars()
     }
+    //refreshVars() {
+    //    console.log(this.state)
+    //    const catainer = this.state.scrollContainer
+    //    if(catainer) {
+    //        catainer.addEventListener('scroll', this.onScroll, false)
+    //    }
+    //}
     onScroll() {
         const distance = this.state.scrollContainer.scrollTop
         let checker = (distance > 0)
-        this.setState({
-            scrolled: checker
-        })
+        this.setState({scrolled: checker})
     }
     onClick() {
-        const distanceScrolled = this.state.scrollContainer.scrollTop
-        this.state.scrollContainer.scrollTop = 0
+        this.state.scrollContainer.scrollTop = 0;
+        this.setState({ scrolled: false})
     }
     render() {
+        // console.log(this.props.history.location.pathname)
         const classList = this.state.scrolled ? `backtotop active` : `backtotop`
         return (
             <button className={classList} onClick={(e) => this.onClick(e)}>back to top ^</button>
@@ -43,9 +50,7 @@ class BackToTop extends React.Component {
 
 
 function mapStateToProps(state) {
-    return {
-        location: state.location
-    }
+    return state
 }
 
 export default withRouter(connect(mapStateToProps)(BackToTop))
