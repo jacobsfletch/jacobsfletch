@@ -32,9 +32,9 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
     'users': 'users',
-    'relationships': ['clients', 'categories', 'tags', 'hashtags'],
+    'relationships': ['teams', 'clients', 'categories', 'tags', 'hashtags'],
     'content': ['globals', 'resumes'],
-    'posts': ['projects', 'products', 'posts']
+    'posts': ['projects', 'products', 'articles']
 });
 
 // Start Keystone to connect to your database and initialise the web server

@@ -24,6 +24,12 @@ Product.add({
         required: true,
         initial: true,
     },
+    productName: {
+        type: String,
+        label: 'Product Name',
+        required: true,
+        initial: true,
+    },
     categories: {
         type: Types.Relationship,
         ref: 'Category',
@@ -42,7 +48,7 @@ Product.add({
         many: true,
         initial: true,
     },
-    backlink: {
+    related: {
         projects: {
             type: Types.Relationship,
             ref: 'Project',
@@ -69,11 +75,19 @@ Product.add({
         ref: 'Price',
         initial: true,
     },
+    specs: {
+        weight: {
+            Type: String
+        },
+        dimensions: {
+            Type: String
+        }
+    },
     featuredImage: {
-        type: Types.CloudinaryImage
+        type: Types.Text
     },
     images: {
-        type: Types.CloudinaryImages
+        type: Types.TextArray
     },
     content: {
         excerpt: {

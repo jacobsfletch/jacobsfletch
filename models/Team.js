@@ -1,6 +1,6 @@
 var keystone = require('keystone');
 
-var Hashtag = new keystone.List('Hashtag', {
+var Team = new keystone.List('Team', {
 	autokey: {
         from: 'name',
         path: 'key',
@@ -8,16 +8,20 @@ var Hashtag = new keystone.List('Hashtag', {
     }
 });
 
-Hashtag.add({
+Team.add({
 	name: {
         type: String,
         required: true
+    },
+    website: {
+        type: String
     }
 });
 
-Hashtag.relationship({
+Team.relationship({
+    path: 'projects',
     ref: 'Project',
-    path: 'hashtags'
+    refPath: 'team'
 });
 
-Hashtag.register();
+Team.register();

@@ -4,83 +4,78 @@ var Types = keystone.Field.Types;
 var Project = new keystone.List('Project', {
     sortable: true,
     map: {
-        name: 'projectName'
+        name: 'name'
     },
     autokey: {
         path: 'slug',
-        from: 'projectName',
+        from: 'name',
         unique: true
-    }
+    },
 });
 
 Project.add({
-    projectName: {
+    name: {
         type: String,
-        label: 'Project Name',
         required: true,
+        label: 'Project Name (Slug)',
         initial: true,
     },
     title: {
         type: String,
-        required: false,
+        required: true,
         initial: true,
     },
     state: {
         type: Types.Select,
         options: 'draft, published, archived',
         default: 'draft',
-        index: true
+        index: true,
     },
-    client: {
+    team: {
         type: Types.Relationship,
-        ref: 'Client',
+        required: true,
         initial: true,
-        many: false
+        ref: 'Team',
+        many: false,
     },
-    subtitle: {
-        type: String,
-        initial: true,
-        required: false,
-        dependsOn: {clientCheck: true}
+    deliverables: {
+        type: Types.Text
     },
     categories: {
         type: Types.Relationship,
         ref: 'Category',
         many: true,
-        initial: true,
+    },
+    clients: {
+        type: Types.Relationship,
+        label: 'Client',
+        ref: 'Client',
     },
     tags: {
         type: Types.Relationship,
         ref: 'Tag',
         many: true,
-        initial: true,
     },
-    hashtags: {
+    caseStudy: {
         type: Types.Relationship,
-        ref: 'Hashtag',
-        many: true,
-        initial: true,
+        ref: 'Article',
     },
     related: {
-        post: {
+        article: {
             type: Types.Relationship,
-            ref: 'Post',
-            initial: true,
+            ref: 'Article',
+            many: true,
         },
         product: {
             type: Types.Relationship,
             ref: 'Product',
-            initial: true,
+            many: true,
         }
     },
-    deliverables: {
-        type: Types.Text
-    },
-    featuredImage: {
-        type: Types.Text
-    },
-    images: {
-        type: Types.TextArray
+    brief: {
+        type: Types.Html,
+        wysiwyg: false,
+        height: 150
     },
     content: {
         type: Types.Html,
@@ -88,16 +83,23 @@ Project.add({
         height: 150
     },
     quote: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
+        type: String
     },
     quoteAuthor: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
-    }
+        type: String
+    },
+    featuredImage: {
+        type: Types.Text
+    },
+    images: {
+        type: Types.TextArray
+    },
+    hashtags: {
+        type: Types.Relationship,
+        ref: 'Hashtag',
+        many: true,
+    },
 });
 
-Project.defaultColumns = 'title, client, state';
+Project.defaultColumns = 'name, state|25%';
 Project.register();

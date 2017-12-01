@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
-var Post = new keystone.List('Post', {
+var Article = new keystone.List('Article', {
     map: {
         name: 'title'
     },
@@ -12,7 +12,7 @@ var Post = new keystone.List('Post', {
     }
 });
 
-Post.add({
+Article.add({
     state: {
         type: Types.Select,
         options: 'draft, published, archived',
@@ -98,5 +98,5 @@ Post.add({
     }
 });
 
-Post.defaultColumns = 'title, state, author, publishedDate';
-Post.register();
+Article.defaultColumns = 'title, state, author, publishedDate';
+Article.register();
