@@ -3,12 +3,10 @@
 .screen-project {
     overflow-x: hidden;
     position: relative;
-    border: solid black line(m);
     &::-webkit-scrollbar {
         display: none;
     }
     .board-header {
-        padding: size(m);
         display: flex;
         flex-direction: column;
         background-color: white;
@@ -48,7 +46,7 @@
     .board-body {
         background-color: white;
         border-top: 0;
-        padding: size(m);
+        padding: size(m) 0;
         border: black line(m);
         border-top-style: dashed;
         .board-blockquote {

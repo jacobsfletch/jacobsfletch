@@ -11,28 +11,49 @@ class BackToTop extends React.Component {
         this.onScroll = this.onScroll.bind(this)
         this.state = {
             scrollContainer: null,
-            scrolled: false
+            scrolled: false,
+            distance: 0,
         }
     }
-    componentWillReceiveProps() {}
-    componentDidMount() {
-        window.addEventListener('resize', this.refreshVars, false)
-        const container = document.querySelector('*[class^="screen"]')
-        container.addEventListener('scroll', this.onScroll, false)
-        console.log(this.props.location)
-        this.setState({scrollContainer: container})
-        // this.refreshVars()
+    componentDidUpdate(previousProps) {
+        let scrollContainer = document.querySelector('*[class^="screen"]')
+        if (previousProps.scrollContainer === this.state.scrollContainer) {
+            console.log(previousProps.scrollContainer)
+            this.setState({
+                scrollContainer
+            })
+        }
+        console.log(this.state.scrollContainer)
     }
-    //refreshVars() {
-    //    console.log(this.state)
-    //    const catainer = this.state.scrollContainer
-    //    if(catainer) {
-    //        catainer.addEventListener('scroll', this.onScroll, false)
-    //    }
-    //}
+    componentDidMount() {
+        window.addEventListener('resize', this.onWindowResize, false)
+        //console.log(this.props)
+    }
+    componentWillUnmount() {
+        console.log('unmount')
+        window.removeEventListener('resize', this.onWindowResize, false)
+    }
+    onWindowResize() {
+
+    }
+    onRouteChange() {
+        this.state.scrollContainer.removeEventListener('scroll', this.onScroll, false)
+        this.refreshVars()
+    }
+    refreshVars() {
+        let container = this.state.scrollContainer
+        this.setState({
+            scrollContainer: document.querySelector('*[class^="screen"]')
+        })
+        if (container) {
+            container.addEventListener('scroll', this.onScroll, false)
+        }
+    }
     onScroll() {
-        const distance = this.state.scrollContainer.scrollTop
-        let checker = (distance > 0)
+        //console.log('scroll')
+        let scrollTop = this.state.scrollContainer.scrollTop
+        this.setState({distance: scrollTop})
+        let checker = (this.state.distance > 0)
         this.setState({scrolled: checker})
     }
     onClick() {
@@ -40,7 +61,6 @@ class BackToTop extends React.Component {
         this.setState({ scrolled: false})
     }
     render() {
-        // console.log(this.props.history.location.pathname)
         const classList = this.state.scrolled ? `backtotop active` : `backtotop`
         return (
             <button className={classList} onClick={(e) => this.onClick(e)}>back to top ^</button>
@@ -50,7 +70,9 @@ class BackToTop extends React.Component {
 
 
 function mapStateToProps(state) {
-    return state
+    return {
+        route: state.route
+    }
 }
 
 export default withRouter(connect(mapStateToProps)(BackToTop))

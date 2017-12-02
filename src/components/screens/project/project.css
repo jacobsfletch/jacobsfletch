@@ -197,12 +197,10 @@ select[multiple] {
 
 .screen-project {
   overflow-x: hidden;
-  position: relative;
-  border: solid black 4px; }
+  position: relative; }
   .screen-project::-webkit-scrollbar {
     display: none; }
   .screen-project .board-header {
-    padding: 0.975rem;
     display: flex;
     flex-direction: column;
     background-color: white; }
@@ -239,7 +237,7 @@ select[multiple] {
   .screen-project .board-body {
     background-color: white;
     border-top: 0;
-    padding: 0.975rem;
+    padding: 0.975rem 0;
     border: black 4px;
     border-top-style: dashed; }
     .screen-project .board-body .board-blockquote {

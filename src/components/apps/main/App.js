@@ -9,7 +9,7 @@ import ScreenController from '../../screens/ScreenController'
 
 import { getPortfolio, getGlobals, getResume } from './AppActions'
 
-import './main.css'
+import './app.css'
 
 class App extends React.Component {
     componentWillMount() {

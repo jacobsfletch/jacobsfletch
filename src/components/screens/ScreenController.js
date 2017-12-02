@@ -10,7 +10,14 @@ import Contact from './contact/Contact'
 import ContactConfirmation from './contact/ContactConfirmation'
 import PageNotFound from './404/PageNotFound'
 
+import { routeChanged } from '../../actions/ScreenActions'
+
 class ScreenController extends React.Component {
+    componentDidMount() {
+        this.props.history.listen((location, action) => {
+            this.props.routeChanged(location.pathname)
+        })
+    }
     render() {
         return (
             <div className="app-body">
@@ -32,4 +39,12 @@ function mapStateToProps(state) {
     return state
 }
 
-export default withRouter(connect(mapStateToProps)(ScreenController))
+function mapDispatchToProps(dispatch) {
+    return {
+        routeChanged: (route) => {
+            dispatch(routeChanged(route))
+        }
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScreenController))
