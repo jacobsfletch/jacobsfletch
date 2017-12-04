@@ -18,7 +18,8 @@ exports = module.exports = function(app) {
 
     // REST API CONTROLLER
     app.get('/api/portfolio', routes.api.portfolio.getAllPublished)
-    app.post('/api/email/send', routes.api.email.send)
+    app.post('/api/email/contact', routes.api.email.contact)
+    app.post('/api/email/doodle', routes.api.email.doodle)
     app.get('/api/globals', routes.api.global.getGlobals)
     app.get('/api/resume', routes.api.resume.getResume)
 

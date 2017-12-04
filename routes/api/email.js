@@ -3,11 +3,10 @@ require('dotenv').config();
 var Email = require('keystone-email');
 var keystone = require('keystone');
 
-exports.send = function(req, res) {
-    console.log('hi');
+exports.contact = function(req, res) {
     var locals = res.locals,
-    data = (req.method == 'POST') ? req.body : req.query;
-    domain = process.env.ENV = 'production' ? 'jacobsfletch.com' : process.env.MAILGUN_DOMAIN;
+        data = (req.method == 'POST') ? req.body : req.query;
+        domain = process.env.ENV = 'production' ? 'jacobsfletch.com' : process.env.MAILGUN_DOMAIN;
 
     keystone.list('User').model.findOne({
         key: 'jacob-fletcher'
@@ -17,7 +16,8 @@ exports.send = function(req, res) {
     });
 
     function contact(email) {
-        new Email('public/emails/contact.html', {
+        new Email('public/emails/contact.pug', {
+            engine: 'pug',
             transport: 'mailgun',
         }).send({
             first: data.firstName,
@@ -37,6 +37,7 @@ exports.send = function(req, res) {
 
     function confirm() {
         new Email('public/emails/contact-confirmation.html', {
+            engine: 'pug',
             transport: 'mailgun',
         }).send({
             first: data.firstName,
@@ -56,5 +57,40 @@ exports.send = function(req, res) {
 
     function success() {
         res.apiResponse('success')
+    }
+}
+
+exports.doodle = function(req, res) {
+    var locals = res.locals,
+        data = (req.method == 'POST') ? req.body : req.query;
+        domain = process.env.ENV = 'production' ? 'jacobsfletch.com' : process.env.MAILGUN_DOMAIN;
+
+    keystone.list('User').model.findOne({
+        key: 'jacob-fletcher'
+    }).exec(function (err, result) {
+        if (err) { console.log(err); }
+        if (result) { send(result.email); }
+    });
+
+    function send(email) {
+        new Email('public/emails/doodle.pug', {
+            engine: 'pug',
+            transport: 'mailgun'
+        }).send({
+            doodle: data.doodle
+        }, {
+            apiKey: process.env.MAILGUN_API_KEY,
+            domain: domain,
+            to: email,
+            from: 'jacobsfletch.com <doodle@jacobsfletch.com>',
+            subject: 'Doodle from jacobsfletch.com',
+            attachment: {data: data.doodle, filename: 'doodle.png'}
+        }, function (err, result) {
+            if (err) { console.error('Mailgun failed with error:\n', err); }
+            else {
+                console.log('Mailgun success with result:\n', result);
+                res.apiResponse('success')
+            }
+        });
     }
 }

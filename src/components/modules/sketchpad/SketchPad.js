@@ -28,7 +28,8 @@ class SketchPad extends Component {
         this.onMouseUp = this.onMouseUp.bind(this)
         this.onResize = this.onResize.bind(this)
         this.state = {
-            canvasStatus: false
+            canvasActive: false,
+            doodleSent: false
         }
     }
 
@@ -46,10 +47,10 @@ class SketchPad extends Component {
         this.tool = this.props.tool(this.ctx)
         this.onResize()
         window.addEventListener('resize', this.onResize, false)
-        const doodles = this.loadRandomDoodle(this.props.doodles)
-        this.setState({
-            doodle: doodles ? doodles : '/img/doodle.png'
-        })
+        // const doodles = this.loadRandomDoodle(this.props.doodles)
+        // this.setState({
+        //     doodle: doodles ? doodles : '/img/doodle.png'
+        // })
     }
 
     componentWillUnmount() {
@@ -73,7 +74,7 @@ class SketchPad extends Component {
             this.interval = setInterval(this.onDebouncedMove, this.props.debounceTime)
         }
         this.setState({
-            canvasStatus: true
+            canvasActive: true
         })
     }
 
@@ -106,44 +107,74 @@ class SketchPad extends Component {
     }
 
     sendSketch(e) {
-        e.target.href = this.canvas.toDataURL()
-        e.target.download = 'doodle.png'
+        const doodle = this.canvas.toDataURL('image/png', 1)
+        const d = new Date()
+        const day = d.getDate()
+        const month= d.getMonth() + 1
+        const year = d.getFullYear()
+        const time = d.toLocaleTimeString()
+        const date = `doodle-${month}-${day}-${year}-${time}`
+        console.log(time)
+        e.target.href = doodle
+        e.target.download = date
+        // fetch('/api/email/doodle', {
+        //         method: 'POST',
+        //         body: doodle,
+        //         headers: {'Content-Type':'application/json'}
+        //     })
+        //     .then(response => {
+        //         if(response.status === 200) { this.clearCanvas(true) }
+        //     })
     }
 
-    clearCanvas() {
+    clearCanvas(sent) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.setState({
-            canvasStatus: false
-        })
+        this.ctx.fillStyle = 'black'
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+        if(sent) {
+            this.setState({
+                canvasActive: false,
+                doodleSent: true
+            })
+        } else {
+            this.setState({
+                canvasActive: false,
+                doodleSent: false
+            })
+        }
     }
 
     loadRandomDoodle(doodles) {
         if (this.props.doodles) {
             return doodles[Math.floor(Math.random() * doodles.length)];
         }
+        // Put this in the props on the canvas element in the render funtion:
+        // style={{backgroundImage: 'url(' + this.state.doodle + ')'}}
     }
 
     render() {
-        const toolbeltClassList = this.state.canvasStatus ? 'sketchpad-toolbelt active' : 'sketchpad-tools'
-        const canvasClassList = this.state.canvasStatus ? 'sketchpad-canvas deactive' : 'sketchpad-canvas'
+        const toolbeltClasses = this.state.canvasActive ? 'sketchpad-toolbelt active' : 'sketchpad-tools'
+        const titleClasses = (this.state.canvasActive && !this.state.doodleSent) ? 'sketchpad-title deactive' : 'sketchpad-title'
+        const confirmClasses = this.state.doodleSent ? 'sketchpad-confirm' : 'sketchpad-confirm deactive'
         return (
-            <div className={'sketchpad'}>
+            <div className='sketchpad'>
                 <canvas
                     ref={(canvas) => { this.canvasRef = canvas }}
-                    className={canvasClassList}
+                    className='sketchpad-canvas'
                     onMouseDown={this.onMouseDown}
                     onMouseMove={this.onMouseMove}
                     onMouseOut={this.onMouseUp}
                     onMouseUp={this.onMouseUp}
-                    style={{backgroundImage: 'url(' + this.state.doodle + ')'}}
                 />
-                <div className={toolbeltClassList}>
-                    <button
-                        onClick={(e) => this.clearCanvas()}>Clear
-                    </button>
+                <p className={confirmClasses}>Your doodle has been sent!</p>
+                <p className={titleClasses}>Draw me a picture</p>
+                <div className={toolbeltClasses}>
                     <a
-                        onClick={(e) => this.sendSketch(e)}>Send
+                        onClick={(e) => this.sendSketch(e)}>Download
                     </a>
+                    <button
+                        onClick={(e) => this.clearCanvas()}>clear
+                    </button>
                 </div>
             </div>
         )

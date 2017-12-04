@@ -14,7 +14,7 @@ export default class Contact extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         const formData = JSON.stringify(this.state)
-        fetch('/api/email/send', {
+        fetch('/api/email/contact', {
                 method: 'POST',
                 body: formData,
                 headers: {'Content-Type':'application/json'}
