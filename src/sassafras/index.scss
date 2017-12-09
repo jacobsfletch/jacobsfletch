@@ -5,7 +5,6 @@ $font-size: 16;
 $base-font-size: $font-size/16;
 $base-line-height: $base-font-size * $baseline-ratio;
 
-@import './reset.scss';
 @import './math.scss';
 @import './helpers.scss';
 @import './library.scss';
