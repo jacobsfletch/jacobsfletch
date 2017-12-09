@@ -1,275 +1,143 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
-* {
-  box-sizing: border-box; }
-
-body {
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: none;
-  -ms-text-size-adjust: 100%; }
-
-a,
-abbr,
-acronym,
-address,
-applet,
-article,
-aside,
-audio,
-b,
-big,
-blockquote,
-body,
-canvas,
-caption,
-center,
-cite,
-code,
-dd,
-del,
-details,
-dfn,
-div,
-dl,
-dt,
-em,
-embed,
-fieldset,
-figcaption,
-figure,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-hgroup,
-hr,
-html,
-i,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-mark,
-menu,
-nav,
-object,
-ol,
-output,
-p,
-pre,
-q,
-ruby,
-s,
-samp,
-section,
-small,
-span,
-strike,
-strong,
-sub,
-summary,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-time,
-tr,
-tt,
-u,
-ul,
-var,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  text-decoration: none;
-  color: currentColor; }
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block; }
-
-:focus {
-  outline: none; }
-
-button {
-  background: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-  padding: 0;
-  -webkit-appearance: button;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none; }
-
-input,
-label,
-select,
-button,
-textarea {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-  white-space: normal;
-  background: none;
-  line-height: 1; }
-
-input:focus {
-  outline: 0; }
-
-ul {
-  list-style: none; }
-
-input,
-textarea {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box; }
-
-button,
-input[type=reset],
-input[type=button],
-input[type=submit],
-input[type=checkbox],
-input[type=radio],
-select {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-input[type=checkbox],
-input[type=radio] {
-  width: 13px;
-  height: 13px; }
-
-input[type=search] {
-  -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box; }
-
-::-webkit-search-decoration {
-  display: none; }
-
-button,
-input[type="reset"],
-input[type="button"],
-input[type="submit"] {
-  overflow: visible;
-  width: auto; }
-
-::-webkit-file-upload-button {
-  padding: 0;
-  border: 0;
-  background: none; }
-
-textarea {
-  vertical-align: top;
-  overflow: auto; }
-
-select[multiple] {
-  vertical-align: top; }
-
 .screen-project {
   overflow-x: hidden;
   position: relative; }
   .screen-project::-webkit-scrollbar {
     display: none; }
-  .screen-project .board-header {
-    display: flex;
-    flex-direction: column;
-    background-color: white; }
-    .screen-project .board-header .board-image {
-      width: 100%;
-      margin-bottom: 0.975rem; }
-    .screen-project .board-header .board-title,
-    .screen-project .board-header .board-client,
-    .screen-project .board-header .board-categories {
-      font-weight: 900; }
-    .screen-project .board-header .board-title {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 1.3rem;
-      line-height: 1.3rem;
-      margin-bottom: 0.8125rem;
-      margin-top: 0.65rem; }
-    .screen-project .board-header .board-client {
+  .screen-project .board-blockquote {
+    margin: 0.975rem 0; }
+    .screen-project .board-blockquote .board-quote {
       font-family: "Source Code Pro", sans-serif;
       font-size: 0.65rem;
       line-height: 0.65rem;
+      margin: 0;
       text-transform: uppercase; }
-    .screen-project .board-header .board-categories {
-      display: flex; }
-      .screen-project .board-header .board-categories .board-category {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.65rem;
-        line-height: 0.65rem;
-        text-transform: uppercase; }
-        .screen-project .board-header .board-categories .board-category::after {
-          content: ', ';
-          white-space: pre; }
-        .screen-project .board-header .board-categories .board-category:last-child::after {
-          content: ''; }
-  .screen-project .board-body {
+      .screen-project .board-blockquote .board-quote::before {
+        content: open-quote; }
+      .screen-project .board-blockquote .board-quote::after {
+        content: close-quote; }
+    .screen-project .board-blockquote .board-quoteAuthor {
+      font-family: "Source Code Pro", sans-serif;
+      font-size: 0.65rem;
+      line-height: 0.65rem;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-style: normal; }
+      .screen-project .board-blockquote .board-quoteAuthor::before {
+        content: '-'; }
+  .screen-project .board-header {
+    display: flex;
+    flex-direction: column;
     background-color: white;
-    border-top: 0;
-    padding: 0.975rem 0;
+    padding-bottom: 0.975rem; }
+  .screen-project .board-image {
+    width: 100%;
+    margin-bottom: 0.975rem; }
+  .screen-project .board-title,
+  .screen-project .board-client,
+  .screen-project .board-categories {
+    font-weight: 900; }
+  .screen-project .board-client::before {
+    content: 'client: '; }
+  .screen-project .board-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 0.8125rem;
+    margin-top: 0.65rem; }
+  .screen-project .board-client {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.65rem;
+    line-height: 0.65rem;
+    margin: 0;
+    text-transform: uppercase; }
+  .screen-project .board-brief {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.8125rem;
+    line-height: 0.8125rem; }
+  .screen-project .list-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.8125rem;
+    line-height: 0.8125rem;
+    text-transform: uppercase; }
+    .screen-project .list-title::after {
+      content: ': ';
+      white-space: pre; }
+  .screen-project .board-meta {
     border: black 4px;
-    border-top-style: dashed; }
-    .screen-project .board-body .board-blockquote {
-      margin-bottom: 0.975rem; }
-      .screen-project .board-body .board-blockquote .board-quote {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.975rem;
-        line-height: 0.975rem;
-        font-weight: 200;
-        text-transform: lowercase; }
-      .screen-project .board-body .board-blockquote .board-quoteAuthor {
+    border-top-style: dashed;
+    border-bottom-style: solid;
+    padding: 0.975rem 0; }
+    .screen-project .board-meta > * {
+      margin-bottom: 0.8125rem; }
+      .screen-project .board-meta > *:last-child {
+        margin-bottom: 0; }
+    .screen-project .board-meta .board-categories {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      align-items: center; }
+      .screen-project .board-meta .board-categories .board-category {
         font-family: "Source Code Pro", sans-serif;
         font-size: 0.65rem;
         line-height: 0.65rem;
-        font-weight: 900;
+        margin: 0;
+        letter-spacing: 1px;
+        margin-right: 0.4875rem;
+        background-color: black;
+        color: white;
+        padding: 4px 0.65rem;
+        text-transform: uppercase;
+        cursor: pointer; }
+        .screen-project .board-meta .board-categories .board-category:last-child {
+          margin-right: 0; }
+    .screen-project .board-meta .board-tags {
+      font-family: "Source Code Pro", sans-serif;
+      font-size: 0.8125rem;
+      line-height: 0.8125rem;
+      display: flex;
+      list-style: none;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+      align-items: center; }
+      .screen-project .board-meta .board-tags .board-tag::after {
+        content: ', ';
+        white-space: pre; }
+      .screen-project .board-meta .board-tags .board-tag:last-child::after {
+        content: ''; }
+    .screen-project .board-meta .board-team {
+      font-family: "Source Code Pro", sans-serif;
+      font-size: 0.8125rem;
+      line-height: 0.8125rem;
+      display: flex;
+      align-items: center; }
+      .screen-project .board-meta .board-team .team-link {
         text-transform: uppercase; }
-    .screen-project .board-body .board-gallery .board-image {
-      width: 100%; }
-    .screen-project .board-body .board-footer {
-      border-top: solid 4px black;
-      margin-top: 0.975rem;
-      padding-top: 0.975rem; }
-      .screen-project .board-body .board-footer .board-hashtags {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.8125rem;
-        line-height: 0.8125rem;
-        font-weight: 100; }
-        .screen-project .board-body .board-footer .board-hashtags span {
-          font-family: "Source Code Pro", sans-serif;
-          font-size: 0.65rem;
-          line-height: 0.65rem;
-          text-transform: uppercase;
-          font-weight: 900;
-          display: block;
-          margin-bottom: 0.4875rem; }
+        .screen-project .board-meta .board-team .team-link::before {
+          content: '[ '; }
+        .screen-project .board-meta .board-team .team-link::after {
+          content: ' ]'; }
+  .screen-project .board-body {
+    background-color: white; }
+  .screen-project .board-gallery .board-image {
+    width: 100%; }
+  .screen-project .board-footer {
+    border-top: solid 4px black;
+    margin-top: 0.975rem;
+    padding-top: 0.975rem; }
+  .screen-project .board-hashtags {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.8125rem;
+    line-height: 0.8125rem;
+    font-weight: 100;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-transform: uppercase; }
+    .screen-project .board-hashtags::after {
+      content: ', ';
+      white-space: pre; }
+    .screen-project .board-hashtags:last-child::after {
+      content: ''; }

@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 
 var Tag = new keystone.List('Tag', {
-	autokey: {
+    autokey: {
         from: 'name',
         path: 'key',
         unique: true
@@ -9,10 +9,16 @@ var Tag = new keystone.List('Tag', {
 });
 
 Tag.add({
-	name: {
+    name: {
         type: String,
         required: true
     }
+});
+
+Tag.relationship({
+    path: 'projects',
+    ref: 'Project',
+    refPath: 'tags'
 });
 
 Tag.register();

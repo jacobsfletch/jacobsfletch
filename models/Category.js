@@ -15,4 +15,10 @@ Category.add({
     }
 });
 
+Category.relationship({
+    path: 'projects',
+    ref: 'Project',
+    refPath: 'categories'
+});
+
 Category.register();

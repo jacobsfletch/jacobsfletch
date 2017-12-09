@@ -11,11 +11,13 @@ import ContactConfirmation from './contact/ContactConfirmation'
 import PageNotFound from './404/PageNotFound'
 
 import { routeChanged } from '../../actions/ScreenActions'
+import { deactivateDock } from '../../actions/DockActions'
 
 class ScreenController extends React.Component {
     componentDidMount() {
         this.props.history.listen((location, action) => {
             this.props.routeChanged(location.pathname)
+            this.props.deactivateDock()
         })
     }
     render() {
@@ -43,6 +45,9 @@ function mapDispatchToProps(dispatch) {
     return {
         routeChanged: (route) => {
             dispatch(routeChanged(route))
+        },
+        deactivateDock: () => {
+            dispatch(deactivateDock())
         }
     }
 }

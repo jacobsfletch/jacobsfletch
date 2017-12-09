@@ -90,7 +90,8 @@ $typography: (
     p: (
         font-family: font(body),
         font-size: size(xs),
-        line-height: size(xs)
+        line-height: size(xs),
+        margin: 0
     ),
     fine: (
         font-family: font(body),

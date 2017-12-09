@@ -3,10 +3,10 @@
 //////////////////////////////////////////////////////////
 
 @function find($map, $key, $variant: null) {
-    $item : map-get($map, $key);
+    $item: map-get($map, $key);
     @if $variant {
         @if type-of($item) == map {
-            $item : map-get($item, $variant);
+            $item: map-get($item, $variant);
         }@else if type-of($item) == list {
             $item: nth($item, $variant);
         }

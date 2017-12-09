@@ -6,81 +6,160 @@
     &::-webkit-scrollbar {
         display: none;
     }
+    .board-blockquote {
+        margin: size(m) 0;
+        .board-quote {
+            @include type(p);
+            text-transform: uppercase;
+            &::before {
+                content: open-quote;
+            }
+            &::after {
+                content: close-quote;
+            }
+        }
+        .board-quoteAuthor {
+            @include type(p);
+            text-transform: uppercase;
+            font-weight: 900;
+            font-style: normal;
+            &::before {
+                content: '-'
+            }
+        }
+    }
     .board-header {
         display: flex;
         flex-direction: column;
         background-color: white;
-        .board-image {
-            width: 100%;
-            margin-bottom: size(m);
+        padding-bottom: size(m);
+    }
+    .board-image {
+        width: 100%;
+        margin-bottom: size(m);
+    }
+    .board-title,
+    .board-client,
+    .board-categories {
+        font-weight: 900;
+    }
+    .board-client {
+        &::before {
+            content: 'client: ';
         }
-        .board-title,
-        .board-client,
-        .board-categories {
-            font-weight: 900;
+    }
+    .board-title {
+        @include type(h2);
+        text-transform: uppercase;
+        margin-bottom: size(s);
+        margin-top: size(xs);
+    }
+    .board-client {
+        @include type(p);
+        text-transform: uppercase;
+    }
+    .board-brief {
+        @include type(h4);
+    }
+    .list-title {
+        @include type(h4);
+        text-transform: uppercase;
+        &::after {
+            content: ': ';
+            white-space: pre;
         }
-        .board-title {
-            @include type(h2);
+    }
+    .board-meta {
+        border: black line(m);
+        border-top-style: dashed;
+        border-bottom-style: solid;
+        padding: size(m) 0;
+        > * {
             margin-bottom: size(s);
-            margin-top: size(xs);
-        }
-        .board-client {
-            @include type(p);
-            text-transform: uppercase;
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
         .board-categories {
             display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
             .board-category {
                 @include type(p);
+                letter-spacing: line(xxs);
+                margin-right: size(xxs);
+                background-color: black;
+                color: white;
+                padding: line(m) size(xs);
                 text-transform: uppercase;
+                cursor: pointer;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+        .board-tags {
+            @include type(h4);
+            display: flex;
+            list-style: none;
+            text-transform: uppercase;
+            flex-wrap: wrap;
+            align-items: center;
+            .board-tag {
                 &::after {
                     content: ', ';
                     white-space: pre;
                 }
-                &:last-child::after {
-                    content: '';
+                &:last-child {
+                    &::after {
+                        content: '';
+                    }
+                }
+            }
+        }
+        .board-team {
+            @include type(h4);
+            display: flex;
+            align-items: center;
+            .team-link {
+                text-transform: uppercase;
+                &::before {
+                    content: '[ ';
+                }
+                &::after {
+                    content: ' ]';
                 }
             }
         }
     }
     .board-body {
         background-color: white;
-        border-top: 0;
-        padding: size(m) 0;
-        border: black line(m);
-        border-top-style: dashed;
-        .board-blockquote {
-            margin-bottom: size(m);
-            .board-quote {
-                @include type(h3);
-                font-weight: 200;
-                text-transform: lowercase;
-            }
-            .board-quoteAuthor {
-                @include type(p);
-                font-weight: 900;
-                text-transform: uppercase;
-            }
+    }
+    .board-gallery {
+        .board-image {
+            width: 100%;
         }
-        .board-gallery {
-            .board-image {
-                width: 100%;
-            }
+    }
+    .board-footer {
+        border-top: solid line(m) black;
+        margin-top: size(m);
+        padding-top: size(m);
+    }
+    .board-hashtags {
+        @include type(h4);
+        font-weight: 100;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        text-transform: uppercase;
+        &::after {
+            content: ', ';
+            white-space: pre;
         }
-        .board-footer {
-            border-top: solid line(m) black;
-            margin-top: size(m);
-            padding-top: size(m);
-            .board-hashtags {
-                @include type(h4);
-                font-weight: 100;
-                span {
-                    @include type(p);
-                    text-transform: uppercase;
-                    font-weight: 900;
-                    display: block;
-                    margin-bottom: size(xxs);
-                }
+        &:last-child {
+            &::after {
+                content: '';
             }
         }
     }

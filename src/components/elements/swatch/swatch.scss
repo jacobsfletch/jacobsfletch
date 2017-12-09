@@ -6,12 +6,14 @@
 }
 
 [class^=swatch-] {
+    border: 0;
     width: size(m);
     height: size(m);
     margin-right: size(m);
     cursor: pointer;
     position: relative;
     background-color: transparent;
+    outline: 0;
     @include breakpoint(xs) {
         width: size(s);
         height: size(s);

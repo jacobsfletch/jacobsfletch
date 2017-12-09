@@ -16,8 +16,9 @@ Hashtag.add({
 });
 
 Hashtag.relationship({
+    path: 'projects',
     ref: 'Project',
-    path: 'hashtags'
+    refPath: 'hashtags'
 });
 
 Hashtag.register();
