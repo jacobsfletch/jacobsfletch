@@ -77,27 +77,40 @@
 
     .dock-menu {
         color: inherit;
-        .menu-item {
-            margin-bottom: size(m);
-            color: inherit;
-            a {
+        ul {
+            list-style: none;
+            .menu-item {
+                margin-bottom: size(m);
                 color: inherit;
-                position: relative;
-                &::after {
-                    content: '';
-                    position: absolute;
-                    display: block;
-                    background-color: black;
-                    width: 100%;
-                    height: 100%;
-                    left: 0;
-                    top: 0;
-                    z-index: -1;
-                }
-                &:hover::after {
-                    width: calc(100% + #{size(m)});
+                a {
+                    @include type(p);
+                    color: inherit;
+                    position: relative;
+                    letter-spacing: line(xxs);
+                    margin-right: size(xxs);
+                    padding: line(m) size(xs);
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        background-color: black;
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        top: 0;
+                        z-index: -1;
+                    }
+                    &:hover::after {
+                        width: calc(100% + #{size(m)});
+                    }
                 }
             }
+
         }
     }
 }
