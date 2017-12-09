@@ -54,7 +54,8 @@
         .dock.docked.black ~ * .swatch-black::after {
           border: white 4px solid; }
   .dock .dock-menu {
-    color: inherit; }
+    color: inherit;
+    text-transform: lowercase; }
     .dock .dock-menu ul {
       list-style: none; }
       .dock .dock-menu ul .menu-item {

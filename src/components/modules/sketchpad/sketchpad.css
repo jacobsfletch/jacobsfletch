@@ -33,6 +33,10 @@
   .sketchpad-toolbelt.active {
     display: block; }
   .sketchpad-toolbelt button, .sketchpad-toolbelt a {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.8125rem;
+    line-height: 0.8125rem;
+    text-transform: uppercase;
     color: white;
     background-color: transparent;
     padding: 0.65rem 0.8125rem;
@@ -44,6 +48,11 @@
         color: black;
         background-color: white; }
     .sketchpad-toolbelt button:last-child, .sketchpad-toolbelt a:last-child {
-      opacity: .5; }
+      opacity: .5;
+      border: 0; }
       .sketchpad-toolbelt button:last-child:hover, .sketchpad-toolbelt a:last-child:hover {
         opacity: 1; }
+      .sketchpad-toolbelt button:last-child::before, .sketchpad-toolbelt a:last-child::before {
+        content: '[ '; }
+      .sketchpad-toolbelt button:last-child::after, .sketchpad-toolbelt a:last-child::after {
+        content: ' ]'; }

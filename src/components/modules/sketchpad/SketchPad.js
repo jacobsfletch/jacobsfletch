@@ -153,7 +153,7 @@ class SketchPad extends Component {
     }
 
     render() {
-        const toolbeltClasses = this.state.canvasActive ? 'sketchpad-toolbelt active' : 'sketchpad-tools'
+        const toolbeltClasses = this.state.canvasActive ? 'sketchpad-toolbelt active' : 'sketchpad-toolbelt'
         const titleClasses = (this.state.canvasActive && !this.state.doodleSent) ? 'sketchpad-title deactive' : 'sketchpad-title'
         const confirmClasses = this.state.doodleSent ? 'sketchpad-confirm' : 'sketchpad-confirm deactive'
         return (

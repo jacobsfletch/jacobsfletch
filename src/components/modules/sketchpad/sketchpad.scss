@@ -40,6 +40,8 @@
         display: block;
     }
     button, a {
+        @include type(h4);
+        text-transform: uppercase;
         color: white;
         background-color: transparent;
         padding: size(xs) size(s);
@@ -54,8 +56,15 @@
         }
         &:last-child {
             opacity: .5;
+            border: 0;
             &:hover {
                 opacity: 1;
+            }
+            &::before {
+                content: '[ ';
+            }
+            &::after {
+                content: ' ]';
             }
         }
     }

@@ -10,8 +10,7 @@
   margin-right: 0.975rem;
   cursor: pointer;
   position: relative;
-  background-color: transparent;
-  outline: 0; }
+  background-color: transparent; }
   @media only screen and (max-width: 319px) {
     [class^=swatch-] {
       width: 0.8125rem;

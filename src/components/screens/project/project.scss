@@ -30,13 +30,25 @@
     }
     .board-header {
         display: flex;
-        flex-direction: column;
         background-color: white;
         padding-bottom: size(m);
+        @include breakpoint($size: m, $inherit: down) {
+            flex-direction: column;
+        };
     }
     .board-image {
-        width: 100%;
+        width: 50%;
+        height: 100%;
         margin-bottom: size(m);
+        @include breakpoint($size: m, $inherit: down) {
+            width: 100%;
+        };
+    }
+    .header-body {
+        padding-left: size(m);
+        @include breakpoint($size: m, $inherit: down) {
+            padding-left: 0;
+        };
     }
     .board-title,
     .board-client,

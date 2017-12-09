@@ -28,12 +28,23 @@
         content: '-'; }
   .screen-project .board-header {
     display: flex;
-    flex-direction: column;
     background-color: white;
     padding-bottom: 0.975rem; }
+    @media only screen and (max-width: 767px) {
+      .screen-project .board-header {
+        flex-direction: column; } }
   .screen-project .board-image {
-    width: 100%;
+    width: 50%;
+    height: 100%;
     margin-bottom: 0.975rem; }
+    @media only screen and (max-width: 767px) {
+      .screen-project .board-image {
+        width: 100%; } }
+  .screen-project .header-body {
+    padding-left: 0.975rem; }
+    @media only screen and (max-width: 767px) {
+      .screen-project .header-body {
+        padding-left: 0; } }
   .screen-project .board-title,
   .screen-project .board-client,
   .screen-project .board-categories {
