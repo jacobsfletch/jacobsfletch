@@ -13,6 +13,8 @@ import './app.css'
 
 class App extends React.Component {
     componentWillMount() {
+        window.addEventListener('touchmove', this.preventDefault);
+        window.addEventListener('wheel', this.preventDefault);
         fetch('/api/portfolio')
             .then(results => {
                 return results.json()
@@ -32,14 +34,17 @@ class App extends React.Component {
                 this.props.getResume(data)
             })
     }
+    preventDefault(e) {
+        e.preventDefault()
+    }
     render() {
         return (
-            <div className="app">
+            <section className="app">
                 <Dock />
                 <Header />
                 <ScreenController className="screen" />
                 <Footer />
-            </div>
+            </section>
         )
     }
 }

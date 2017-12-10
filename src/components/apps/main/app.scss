@@ -1,6 +1,10 @@
 @import "../../../sassafras/index.scss";
 
-html body {
+html, body {
+    height: 100%;
+}
+
+body {
     font-family: font(body);
     margin: 0;
 }
@@ -21,9 +25,13 @@ button {
     outline: 0;
 }
 
+.mount {
+    height: 100%;
+}
+
 .app {
     padding: size(m);
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     box-sizing: border-box;
     display: flex;

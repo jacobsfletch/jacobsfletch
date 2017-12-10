@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
-html body {
+html, body {
+  height: 100%; }
+
+body {
   font-family: "Source Code Pro", sans-serif;
   margin: 0; }
 
@@ -17,9 +20,12 @@ ul {
 button {
   outline: 0; }
 
+.mount {
+  height: 100%; }
+
 .app {
   padding: 0.975rem;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   box-sizing: border-box;
   display: flex;

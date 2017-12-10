@@ -7,12 +7,12 @@ import { Provider } from 'react-redux'
 
 import App from './components/apps/main/App';
 
-const app = document.getElementById('app')
+const mount = document.querySelector('.mount')
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
             <App />
         </Router>
-    </Provider>, app
+    </Provider>, mount
 );
