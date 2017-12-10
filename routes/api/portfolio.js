@@ -5,7 +5,7 @@ exports.getAllPublished = function(req, res) {
     Project.find({
         state: 'published',
     })
-    .populate('team hashtags categories tags')
+    .populate('team clients hashtags categories tags')
     .sort('sortOrder')
     .exec(function(err, items) {
         if (err) return res.apiError('database error', err);

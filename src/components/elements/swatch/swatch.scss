@@ -13,6 +13,7 @@
     cursor: pointer;
     position: relative;
     background-color: transparent;
+    padding: 0;
     @include breakpoint(xs) {
         width: size(s);
         height: size(s);

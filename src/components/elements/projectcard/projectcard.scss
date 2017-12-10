@@ -1,9 +1,10 @@
 @import "../../../sassafras/index.scss";
 
 .project-card {
-    width: calc(50% - #{size(m)/2});
-    margin-bottom: size(m);
+    width: 100%;
+    height: 100%;
     position: relative;
+    display: inline-block;
 
     @include breakpoint($size: m, $inherit: down) {
         width: 100%;
@@ -12,19 +13,7 @@
         }
     };
 
-    &::after {
-        content: '';
-        position: absolute;
-        width: calc(100% - #{size(m)});
-        height: calc(100% - #{size(m)});
-        left: 0;
-        bottom: 0;
-        background-color: black;
-        display: block;
-    }
-
     &:hover {
-        padding: 0 0 size(m) size(m);
         .card-title {
             &::after {
                 content: ' >';
@@ -43,57 +32,64 @@
     }
 
     > a {
-        border: solid black line(m);
-        padding: size(m) ;
+        display: flex;
+        justify-content: center;
         position: relative;
         width: 100%;
         height: 100%;
-        display: flex;
         flex-direction: column;
         color: black;
         background-color: white;
         z-index: layer(mid-bottom);
+    }
 
+    .card-index {
+        @include type(h1);
     }
 
     .card-image {
-        width: 100%;
-        height: auto;
-        transform: translateZ(0);
+        width: 75%;
+        height: 50%;
         display: inline-block;
         margin-bottom: size(m);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        align-self: center;
     }
 
     .card-meta {
-        .card-client {
-            @include type(p);
-            text-transform: uppercase;
+
+    }
+    .card-client {
+        @include type(p);
+        text-transform: uppercase;
+    }
+    .card-title {
+        @include type(h2);
+        position: relative;
+        display: inline-block;
+        margin-top: size(xs);
+        margin-bottom: size(s);
+        white-space: normal;
+        text-transform: lowercase;
+        @include breakpoint($size:xs) {
+            @include type(h3);
+        };
+    }
+    .card-categories {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .card-category {
+        @include type(p);
+        text-transform: uppercase;
+        &::after {
+            content: ', ';
+            white-space: pre;
         }
-        .card-title {
-            @include type(h2);
-            position: relative;
-            display: inline-block;
-            margin-top: size(xs);
-            margin-bottom: size(s);
-            white-space: normal;
-            @include breakpoint($size:xs) {
-                @include type(h3);
-            };
-        }
-        .card-categories {
-            display: flex;
-            flex-wrap: wrap;
-            .card-category {
-                @include type(p);
-                text-transform: uppercase;
-                &::after {
-                    content: ', ';
-                    white-space: pre;
-                }
-                &:last-child::after {
-                    content: '';
-                }
-            }
+        &:last-child::after {
+            content: '';
         }
     }
 }
