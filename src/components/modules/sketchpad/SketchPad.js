@@ -12,7 +12,7 @@ class SketchPad extends Component {
     interval = null
 
     static defaultProps = {
-        color: '#ffffff',
+        color: '#000000',
         size: 12,
         debounceTime: 1000,
         tool: Pencil,
@@ -22,14 +22,15 @@ class SketchPad extends Component {
     constructor(props) {
         super(props)
         this.tool = this.props.tool(this.ctx)
-        this.onMouseDown = this.onMouseDown.bind(this)
-        this.onMouseMove = this.onMouseMove.bind(this)
+        this.onDown = this.onDown.bind(this)
+        this.onMove = this.onMove.bind(this)
         this.onDebouncedMove = this.onDebouncedMove.bind(this)
-        this.onMouseUp = this.onMouseUp.bind(this)
+        this.onUp = this.onUp.bind(this)
         this.onResize = this.onResize.bind(this)
         this.state = {
             canvasActive: false,
-            doodleSent: false
+            doodleSent: false,
+            touchStart: 0
         }
     }
 
@@ -67,7 +68,17 @@ class SketchPad extends Component {
         this.clearCanvas()
     }
 
-    onMouseDown(e) {
+    getCursorPosition(e) {
+        const {top, left} = this.canvas.getBoundingClientRect()
+        const x = e.touches && e.touches[0] ? e.touches[0].pageX : e.clientX
+        const y = e.touches && e.touches[0]? e.touches[0].pageY : e.clientY
+        return [
+            x - left,
+            y - top
+        ]
+    }
+
+    onDown(e) {
         const data = this.tool.onMouseDown(...this.getCursorPosition(e), this.props.color, this.props.size)
         data && data[0] && this.props.onItemStart && this.props.onItemStart.apply(null, data)
         if (this.props.onDebouncedItemChange) {
@@ -78,32 +89,24 @@ class SketchPad extends Component {
         })
     }
 
+    onMove(e) {
+        const data = this.tool.onMouseMove(...this.getCursorPosition(e))
+        data && data[0] && this.props.onEveryItemChange && this.props.onEveryItemChange.apply(null, data)
+    }
+
     onDebouncedMove() {
         if (typeof this.tool.onDebouncedMouseMove === 'function' && this.props.onDebouncedItemChange) {
             this.props.onDebouncedItemChange.apply(null, this.tool.onDebouncedMouseMove())
         }
     }
 
-    onMouseMove(e) {
-        const data = this.tool.onMouseMove(...this.getCursorPosition(e))
-        data && data[0] && this.props.onEveryItemChange && this.props.onEveryItemChange.apply(null, data)
-    }
-
-    onMouseUp(e) {
+    onUp(e) {
         const data = this.tool.onMouseUp(...this.getCursorPosition(e))
         data && data[0] && this.props.onCompleteItem && this.props.onCompleteItem.apply(null, data)
         if (this.props.onDebouncedItemChange) {
             clearInterval(this.interval)
             this.interval = null
         }
-    }
-
-    getCursorPosition(e) {
-        const {top, left} = this.canvas.getBoundingClientRect()
-        return [
-            e.clientX - left,
-            e.clientY - top
-        ]
     }
 
     sendSketch(e) {
@@ -114,7 +117,6 @@ class SketchPad extends Component {
         const year = d.getFullYear()
         const time = d.toLocaleTimeString()
         const date = `doodle-${month}-${day}-${year}-${time}`
-        console.log(time)
         e.target.href = doodle
         e.target.download = date
         // fetch('/api/email/doodle', {
@@ -129,7 +131,7 @@ class SketchPad extends Component {
 
     clearCanvas(sent) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.fillStyle = 'black'
+        this.ctx.fillStyle = 'white'
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
         if(sent) {
             this.setState({
@@ -161,10 +163,13 @@ class SketchPad extends Component {
                 <canvas
                     ref={(canvas) => { this.canvasRef = canvas }}
                     className='sketchpad-canvas'
-                    onMouseDown={this.onMouseDown}
-                    onMouseMove={this.onMouseMove}
-                    onMouseOut={this.onMouseUp}
-                    onMouseUp={this.onMouseUp}
+                    onMouseDown={this.onDown}
+                    onMouseMove={this.onMove}
+                    onMouseOut={this.onUp}
+                    onMouseUp={this.onUp}
+                    onTouchStart={this.onDown}
+                    onTouchMove={this.onMove}
+                    onTouchEnd={this.onUp}
                 />
                 <p className={confirmClasses}>Your doodle has been sent!</p>
                 <p className={titleClasses}>Draw me a picture</p>
