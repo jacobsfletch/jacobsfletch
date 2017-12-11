@@ -14,6 +14,7 @@ class PortfolioScreen extends React.Component {
         this.onWheel = this.onWheel.bind(this)
         this.onScroll = this.onScroll.bind(this)
         this.isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints
+        this.getPortfolioDimensions = this.getPortfolioDimensions.bind(this)
         this.state = {
             coords: {},
             move: 0,
@@ -27,11 +28,11 @@ class PortfolioScreen extends React.Component {
         }
     }
     componentDidMount() {
-        window.addEventListener('resize', this.getPortfolioDimensions.bind(this), false)
+        window.addEventListener('resize', this.getPortfolioDimensions)
         this.getPortfolioDimensions()
     }
     componentWillUnmount() {
-        window.addEventListener('resize', this.getPortfolioDimensions.bind(this), false)
+        window.removeEventListener('resize', this.getPortfolioDimensions)
     }
     getPortfolioDimensions() {
         this.setState ({

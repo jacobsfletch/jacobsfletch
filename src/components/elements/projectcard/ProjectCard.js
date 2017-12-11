@@ -6,6 +6,7 @@ import './projectcard.css';
 export default class ProjectCard extends React.Component {
     constructor(props) {
         super(props)
+        this.getImageDimensions = this.getImageDimensions.bind(this)
         this.state = {
             portfolioWidth: this.props.portfolioWidth,
             portfolioHeight: this.props.portfolioHeight,
@@ -18,10 +19,10 @@ export default class ProjectCard extends React.Component {
     }
     componentDidMount() {
         this.getImageDimensions()
-        window.addEventListener('resize', this.getImageDimensions.bind(this), false)
+        window.addEventListener('resize', this.getImageDimensions)
     }
     componentWillUnmount() {
-        window.addEventListener('resize', this.getImageDimensions.bind(this), false)
+        window.removeEventListener('resize', this.getImageDimensions)
     }
     getImageDimensions() {
         const image = window.getComputedStyle(this.cardImgRef)
