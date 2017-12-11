@@ -12,9 +12,16 @@ import { getPortfolio, getGlobals, getResume } from './AppActions'
 import './app.css'
 
 class App extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         window.addEventListener('touchmove', this.preventDefault);
-        window.addEventListener('wheel', this.preventDefault);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('touchmove', this.preventDefault);
+    }
+    preventDefault(e) {
+        e.preventDefault()
+    }
+    componentWillMount() {
         fetch('/api/portfolio')
             .then(results => {
                 return results.json()
@@ -33,9 +40,6 @@ class App extends React.Component {
             }).then(data => {
                 this.props.getResume(data)
             })
-    }
-    preventDefault(e) {
-        e.preventDefault()
     }
     render() {
         return (

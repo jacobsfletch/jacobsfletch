@@ -2,6 +2,12 @@
   flex-grow: 1;
   overflow: hidden;
   overflow-x: scroll;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  position: relative; }
+  .screen-portfolio.touchable {
+    overflow: hidden;
+    overflow-y: scroll; }
+    .screen-portfolio.touchable > * {
+      display: flex; }
   .screen-portfolio::-webkit-scrollbar {
     display: none; }

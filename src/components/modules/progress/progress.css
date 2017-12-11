@@ -18,8 +18,8 @@
     cursor: row-resize;
     border-radius: 100%;
     background-color: #0d0d0d;
-    width: 0.65rem;
-    height: 0.65rem;
+    width: 5px;
+    height: 5px;
     position: absolute;
     top: 0;
     left: 50%;
@@ -29,8 +29,10 @@
   .scroll-progress .line {
     height: 1px;
     background-color: #0d0d0d;
-    width: 100%;
+    width: 75%;
+    align-self: center;
     height: 1px;
     background-color: #0d0d0d; }
     .scroll-progress .line:first-child, .scroll-progress .line:last-child {
-      height: 2px; }
+      height: 2px;
+      width: 100%; }

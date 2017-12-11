@@ -17,7 +17,7 @@ class Footer extends React.Component {
                     <Timer />
                 </div>
                 <div className="footer-subtitle">
-                    <p>Back To Top</p>
+                    <p>Top</p>
                 </div>
                 <div className="cropmark br"></div>
             </div>

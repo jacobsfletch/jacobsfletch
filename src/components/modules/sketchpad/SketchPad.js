@@ -48,24 +48,10 @@ class SketchPad extends Component {
         this.tool = this.props.tool(this.ctx)
         this.onResize()
         window.addEventListener('resize', this.onResize, false)
-        // const doodles = this.loadRandomDoodle(this.props.doodles)
-        // this.setState({
-        //     doodle: doodles ? doodles : '/img/doodle.png'
-        // })
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.onResize, false)
-    }
-
-    onResize() {
-        this.canvas = findDOMNode(this.canvasRef)
-        const sketchpad = document.querySelector('.sketchpad')
-        const sketchpadWidth = sketchpad.clientWidth
-        const sketchpadHeight = sketchpad.clientHeight
-        this.canvas.width = sketchpadWidth
-        this.canvas.height = sketchpadHeight
-        this.clearCanvas()
     }
 
     getCursorPosition(e) {
@@ -109,6 +95,16 @@ class SketchPad extends Component {
         }
     }
 
+    onResize() {
+        this.canvas = findDOMNode(this.canvasRef)
+        const sketchpad = document.querySelector('.sketchpad')
+        const sketchpadWidth = sketchpad.clientWidth
+        const sketchpadHeight = sketchpad.clientHeight
+        this.canvas.width = sketchpadWidth
+        this.canvas.height = sketchpadHeight
+        this.clearCanvas()
+    }
+
     sendSketch(e) {
         const doodle = this.canvas.toDataURL('image/png', 1)
         const d = new Date()
@@ -144,14 +140,6 @@ class SketchPad extends Component {
                 doodleSent: false
             })
         }
-    }
-
-    loadRandomDoodle(doodles) {
-        if (this.props.doodles) {
-            return doodles[Math.floor(Math.random() * doodles.length)];
-        }
-        // Put this in the props on the canvas element in the render funtion:
-        // style={{backgroundImage: 'url(' + this.state.doodle + ')'}}
     }
 
     render() {

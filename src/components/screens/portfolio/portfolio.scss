@@ -3,6 +3,14 @@
     overflow: hidden;
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
+    position: relative;
+    &.touchable {
+        overflow: hidden;
+        overflow-y: scroll;
+        > * {
+            display: flex;
+        }
+    }
     &::-webkit-scrollbar {
         display: none;
     }
