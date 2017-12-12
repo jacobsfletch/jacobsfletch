@@ -13,8 +13,8 @@ import './app.css'
 
 class App extends React.Component {
     componentDidMount() {
-        window.addEventListener('wheel', this.preventDefault);
-        window.addEventListener('touchmove', this.preventDefault);
+        window.addEventListener('wheel', this.preventDefault, false)
+        window.addEventListener('touchmove', this.preventDefault, {passive: false})
     }
     preventDefault(e) {
         e.preventDefault()
