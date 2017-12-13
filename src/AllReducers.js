@@ -5,13 +5,15 @@ import DockReducer from './reducers/DockReducer'
 import GlobalsReducer from './reducers/GlobalsReducer'
 import ResumeReducer from './reducers/ResumeReducer'
 import RouteReducer from './reducers/RouteReducer'
+import WindowReducer from './reducers/WindowReducer'
 
 const allReducers = combineReducers({
     route: RouteReducer,
     portfolio: PortfolioReducer,
     dock: DockReducer,
     globals: GlobalsReducer,
-    resume: ResumeReducer
+    resume: ResumeReducer,
+    windowSize: WindowReducer
 })
 
 export default allReducers

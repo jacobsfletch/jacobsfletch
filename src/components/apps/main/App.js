@@ -7,17 +7,29 @@ import Header from '../../layouts/header/header'
 import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
-import { getPortfolio, getGlobals, getResume } from './AppActions'
+import { getPortfolio, getGlobals, getResume, resizeWindow } from '../../../actions/AppActions'
 
 import './app.css'
 
 class App extends React.Component {
+    constructor(props) {
+        super(props)
+        this.resizeWindow = this.resizeWindow.bind(this)
+    }
     componentDidMount() {
+        window.addEventListener('resize', this.resizeWindow, false)
         window.addEventListener('wheel', this.preventDefault, false)
         window.addEventListener('touchmove', this.preventDefault, {passive: false})
     }
     preventDefault(e) {
         e.preventDefault()
+    }
+    resizeWindow(e) {
+        const windowSize = {
+            windowWidth: e.target.innerWidth,
+            windowHeight: e.target.innerHeight
+        }
+        this.props.resizeWindow(windowSize)
     }
     componentWillMount() {
         fetch('/api/portfolio')
@@ -61,6 +73,9 @@ function mapDispatchToProps(dispatch) {
         },
         getResume: (data) => {
             dispatch(getResume(data))
+        },
+        resizeWindow: (windowSize) => {
+            dispatch(resizeWindow(windowSize))
         }
     }
 }

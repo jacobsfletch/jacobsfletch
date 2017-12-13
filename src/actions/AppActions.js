@@ -18,3 +18,13 @@ export function getResume(data) {
         payload: data
     }
 }
+
+export function resizeWindow(windowSize) {
+    return {
+        type: 'WINDOW_RESIZED',
+        payload: {
+            windowWidth: windowSize.windowWidth,
+            windowHeight: windowSize.windowHeight
+        }
+    }
+}
