@@ -28,3 +28,13 @@ export function resizeWindow(viewportSize) {
         }
     }
 }
+
+export function resizePortfolio(portfolioSize) {
+    return {
+        type: 'PORTFOLIO_RESIZED',
+        payload: {
+            width: portfolioSize.width,
+            height: portfolioSize.height
+        }
+    }
+}

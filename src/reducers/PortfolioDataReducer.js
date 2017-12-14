@@ -1,6 +1,6 @@
-export default function(state='', action) {
+export default function(state=[], action) {
     switch (action.type) {
-        case 'PORTFOLIO_RESIZED':
+        case 'PORTFOLIO_LOADED':
             return action.payload
         default:
             return state

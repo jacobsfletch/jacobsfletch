@@ -2,14 +2,13 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router'
 
 import './projectcard.css';
 
 class ProjectCard extends React.Component {
     constructor(props) {
         super(props)
-        this.getImageSize = this.getImageSize.bind(this)
+        this.getCardSize = this.getCardSize.bind(this)
         this.state = {
             portfolioWidth: 0,
             portfolioHeight: 0,
@@ -21,26 +20,26 @@ class ProjectCard extends React.Component {
         }
     }
     componentWillReceiveProps(nextProps) {
+        if (this.props.move !== nextProps.move) {
+            this.onMove()
+        }
         if (this.props.viewportSize !== nextProps.viewportSize) {
             this.setState({
                 viewportWidth: nextProps.viewportSize.width,
                 viewportHeight: nextProps.viewportSize.innerHeight
             })
-            this.getImageSize()
+            this.getCardSize()
         }
-        if (this.props.move !== nextProps.move) {
-            this.onMove()
-        }
-    }
-    componentDidMount() {
         this.setState({
-            portfolioWidth: this.props.portfolioWidth,
-            portfolioHeight: this.props.portfolioHeight,
+            portfolioWidth: this.props.portfolioSize.width,
+            portfolioHeight: this.props.portfolioSize.height,
             portfolioOffsetLeft: this.props.portfolioOffsetLeft
         })
-        this.getImageSize()
     }
-    getImageSize() {
+    componentDidMount() {
+        this.getCardSize()
+    }
+    getCardSize() {
         const cardStyles = window.getComputedStyle(this.cardRef)
         this.setState({
             cardWidth: cardStyles.getPropertyValue('width'),
@@ -49,38 +48,35 @@ class ProjectCard extends React.Component {
         this.onMove()
     }
     onMove() {
-        if(this.cardRef) {
-            const isInViewport = this.isInViewport(this.cardRef)
-            const ratioInViewport = isInViewport.ratioInViewport
-            const cardWidth = this.state.cardWidth
-            const cardHeight = this.state.cardHeight
-            if (isInViewport.status && !this.props.isFullyScrolled) {
-                this.cardRef.classList.add('active')
-                if (!this.props.isTouchDevice) {
-                    //let adjustedTransform = parseInt(cardWidth, 10) * ratioInViewport
-                    this.cardImgRef.style.transform = 'translateX(' + ratioInViewport*100 + '%)'
-                } else {
-                    //let adjustedTransform = parseInt(cardHeight, 10) * ratioInViewport
-                    this.cardImgRef.style.transform = 'translateX(' + ratioInViewport*100 + '%)'
-                }
+        const isInViewport = this.isInViewport(this.cardRef)
+        const ratioInViewport = isInViewport.ratioInViewport
+        const weightedRatio = .25
+        if (isInViewport.status && !this.props.isFullyScrolled) {
+            this.cardRef.classList.add('active')
+            if (!this.props.isTouchDevice) {
+                let adjustedTransform = weightedRatio * ratioInViewport
+                this.cardImgRef.style.transform = 'translateX(' + (adjustedTransform * 100) + '%)'
             } else {
-                this.cardRef.classList.remove('active')
+                let adjustedTransform =  weightedRatio * ratioInViewport
+                this.cardImgRef.style.transform = 'translateX(' + (adjustedTransform * 100) + '%)'
             }
+        } else {
+            this.cardRef.classList.remove('active')
         }
     }
     isInViewport(el) {
-        let rect = el.getBoundingClientRect();
+        let rect = el.getBoundingClientRect()
         const offsetLeft = rect.left - this.state.portfolioOffsetLeft
         const offsetRight = rect.right - this.state.portfolioOffsetLeft
         const offsetTop = rect.top - this.state.portfolioOffsetLeft
         const offsetBottom = rect.bottom - this.state.portfolioOffsetLeft
-        var ratio = 1
+        let ratio = 0
         if (!this.props.isTouchDevice && offsetLeft <= this.state.portfolioWidth && offsetRight >= 0) {
             let computedRatio = Math.round((1 - (offsetLeft / this.state.portfolioWidth)) * 100) / 100
-            var ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
+            ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
         } else if (this.props.isTouchDevice && offsetTop <= this.state.portfolioHeight && offsetBottom >= 0) {
             let computedRatio = Math.round((1 - (offsetTop / this.state.portfolioHeight)) * 100) / 100
-            var ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
+            ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
         }
         return {
            status:
@@ -114,7 +110,8 @@ class ProjectCard extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        viewportSize: state.viewportSize
+        viewportSize: state.viewportSize,
+        portfolioSize: state.portfolioSize
     }
 }
 
