@@ -14,7 +14,7 @@ class PortfolioScreen extends React.Component {
         this.onWheel = this.onWheel.bind(this)
         this.onScroll = this.onScroll.bind(this)
         this.isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints
-        this.getPortfolioDimensions = this.getPortfolioDimensions.bind(this)
+        this.getPortfolioSize = this.getPortfolioSize.bind(this)
         this.state = {
             coords: {},
             move: 0,
@@ -27,14 +27,15 @@ class PortfolioScreen extends React.Component {
             scrollWidth: 0
         }
     }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.viewportSize !== nextProps.viewportSize) {
+            this.getPortfolioSize()
+        }
+    }
     componentDidMount() {
-        window.addEventListener('resize', this.getPortfolioDimensions)
-        this.getPortfolioDimensions()
+        this.getPortfolioSize()
     }
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.getPortfolioDimensions)
-    }
-    getPortfolioDimensions() {
+    getPortfolioSize() {
         this.setState ({
             portfolioHeight: this.portfolioRef.offsetHeight,
             portfolioWidth: this.portfolioRef.offsetWidth,
@@ -43,21 +44,21 @@ class PortfolioScreen extends React.Component {
             scrollHeight: this.portfolioRef.scrollHeight,
             scrollWidth: this.portfolioRef.scrollWidth
         })
-        this.scrollCheck()
+        this.checkIfFullyScrolled()
+    }
+    onScroll() {
+        this.checkIfFullyScrolled()
     }
     onWheel(e) {
         let scrollDown = e.deltaY
         let scrollLeft = this.portfolioRef.scrollLeft
         this.portfolioRef.scrollLeft = scrollLeft + scrollDown
-        this.scrollCheck()
+        this.checkIfFullyScrolled()
     }
     onTouchMove(e) {
         e.stopPropagation()
     }
-    onScroll() {
-        this.scrollCheck()
-    }
-    scrollCheck() {
+    checkIfFullyScrolled() {
         let scrollTop = this.portfolioRef.scrollTop
         let scrollLeft = this.portfolioRef.scrollLeft
         var check = false
@@ -84,7 +85,8 @@ class PortfolioScreen extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        portfolio: state.portfolio
+        portfolio: state.portfolio,
+        windowSize: state.windowSize
     }
 }
 

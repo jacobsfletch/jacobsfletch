@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { findDOMNode } from 'react-dom'
 import { connect } from 'react-redux'
 
 import Pencil from './Pencil'
@@ -27,6 +26,7 @@ class SketchPad extends Component {
         this.onDebouncedMove = this.onDebouncedMove.bind(this)
         this.onUp = this.onUp.bind(this)
         this.onResize = this.onResize.bind(this)
+        this.pixelRatio = 1/window.devicePixelRatio
         this.state = {
             canvasActive: false,
             doodleSent: false,
@@ -43,11 +43,10 @@ class SketchPad extends Component {
     }
 
     componentDidMount() {
-        this.canvas = findDOMNode(this.canvasRef)
-        this.ctx = this.canvas.getContext('2d')
+        window.addEventListener('resize', this.onResize, false)
+        this.ctx = this.canvasRef.getContext('2d')
         this.tool = this.props.tool(this.ctx)
         this.onResize()
-        window.addEventListener('resize', this.onResize, false)
     }
 
     componentWillUnmount() {
@@ -96,13 +95,32 @@ class SketchPad extends Component {
     }
 
     onResize() {
-        this.canvas = findDOMNode(this.canvasRef)
-        const sketchpad = document.querySelector('.sketchpad')
-        const sketchpadWidth = sketchpad.clientWidth
-        const sketchpadHeight = sketchpad.clientHeight
-        this.canvas.width = sketchpadWidth
-        this.canvas.height = sketchpadHeight
+        this.canvas = this.canvasRef
+        this.sketchpadWidth = this.sketchpadRef.clientWidth
+        this.sketchpadHeight = this.sketchpadRef.clientHeight
+        this.canvas.width = this.sketchpadWidth * this.pixelRatio
+        this.canvas.height = this.sketchpadHeight * this.pixelRatio
         this.clearCanvas()
+    }
+
+    clearCanvas(sent) {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.canvas.style.width = this.sketchpadWidth
+        this.canvas.style.height = this.sketchpadHeight
+        this.ctx.fillStyle = 'white'
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.scale(this.pixelRatio, this.pixelRatio)
+        if(sent) {
+            this.setState({
+                canvasActive: false,
+                doodleSent: true
+            })
+        } else {
+            this.setState({
+                canvasActive: false,
+                doodleSent: false
+            })
+        }
     }
 
     sendSketch(e) {
@@ -125,29 +143,12 @@ class SketchPad extends Component {
         //     })
     }
 
-    clearCanvas(sent) {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.fillStyle = 'white'
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
-        if(sent) {
-            this.setState({
-                canvasActive: false,
-                doodleSent: true
-            })
-        } else {
-            this.setState({
-                canvasActive: false,
-                doodleSent: false
-            })
-        }
-    }
-
     render() {
         const toolbeltClasses = this.state.canvasActive ? 'sketchpad-toolbelt active' : 'sketchpad-toolbelt'
         const titleClasses = (this.state.canvasActive && !this.state.doodleSent) ? 'sketchpad-title deactive' : 'sketchpad-title'
         const confirmClasses = this.state.doodleSent ? 'sketchpad-confirm' : 'sketchpad-confirm deactive'
         return (
-            <div className='sketchpad'>
+            <div className='sketchpad' ref={(sketchpad) => { this.sketchpadRef = sketchpad }} >
                 <canvas
                     ref={(canvas) => { this.canvasRef = canvas }}
                     className='sketchpad-canvas'

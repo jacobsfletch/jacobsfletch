@@ -1,55 +1,67 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 
 import './projectcard.css';
 
-export default class ProjectCard extends React.Component {
+class ProjectCard extends React.Component {
     constructor(props) {
         super(props)
-        this.getImageDimensions = this.getImageDimensions.bind(this)
+        this.getImageSize = this.getImageSize.bind(this)
         this.state = {
-            portfolioWidth: this.props.portfolioWidth,
-            portfolioHeight: this.props.portfolioHeight,
-            viewportWidth: window.innerWidth,
-            viewportHeight: window.innerHeight,
-            portfolioOffsetLeft: this.props.portfolioOffsetLeft,
-            imageWidth: null,
-            imageHeight: null
+            portfolioWidth: 0,
+            portfolioHeight: 0,
+            viewportWidth: 0,
+            viewportHeight: 0,
+            portfolioOffsetLeft: 0,
+            cardWidth: null,
+            cardHeight: null
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.viewportSize !== nextProps.viewportSize) {
+            this.setState({
+                viewportWidth: nextProps.viewportSize.width,
+                viewportHeight: nextProps.viewportSize.innerHeight
+            })
+            this.getImageSize()
+        }
+        if (this.props.move !== nextProps.move) {
+            this.onMove()
         }
     }
     componentDidMount() {
-        this.getImageDimensions()
-        window.addEventListener('resize', this.getImageDimensions)
-    }
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.getImageDimensions)
-    }
-    getImageDimensions() {
-        const image = window.getComputedStyle(this.cardImgRef)
-        this.cardImgRef.style.width = ''
-        this.cardImgRef.style.height = ''
         this.setState({
-            imageWidth: image.getPropertyValue('width'),
-            imageHeight: image.getPropertyValue('height'),
-            viewportWidth: window.innerWidth,
-            viewportHeight: window.innerHeight,
+            portfolioWidth: this.props.portfolioWidth,
+            portfolioHeight: this.props.portfolioHeight,
+            portfolioOffsetLeft: this.props.portfolioOffsetLeft
+        })
+        this.getImageSize()
+    }
+    getImageSize() {
+        const cardStyles = window.getComputedStyle(this.cardRef)
+        this.setState({
+            cardWidth: cardStyles.getPropertyValue('width'),
+            cardHeight: cardStyles.getPropertyValue('height')
         })
         this.onMove()
     }
     onMove() {
         if(this.cardRef) {
-            const payload = this.isInViewport(this.cardRef)
-            const transform = payload.ratioInViewport
-            const imageWidth = this.state.imageWidth
-            const imageHeight = this.state.imageHeight
-            if (payload.status && !this.props.isFullyScrolled) {
+            const isInViewport = this.isInViewport(this.cardRef)
+            const ratioInViewport = isInViewport.ratioInViewport
+            const cardWidth = this.state.cardWidth
+            const cardHeight = this.state.cardHeight
+            if (isInViewport.status && !this.props.isFullyScrolled) {
                 this.cardRef.classList.add('active')
                 if (!this.props.isTouchDevice) {
-                    let style = parseInt(imageWidth, 10) * transform
-                    this.cardImgRef.style.width = style + 'px'
+                    //let adjustedTransform = parseInt(cardWidth, 10) * ratioInViewport
+                    this.cardImgRef.style.transform = 'translateX(' + ratioInViewport*100 + '%)'
                 } else {
-                    let style = parseInt(imageHeight, 10) * transform
-                    this.cardImgRef.style.height = style + 'px'
+                    //let adjustedTransform = parseInt(cardHeight, 10) * ratioInViewport
+                    this.cardImgRef.style.transform = 'translateX(' + ratioInViewport*100 + '%)'
                 }
             } else {
                 this.cardRef.classList.remove('active')
@@ -65,10 +77,10 @@ export default class ProjectCard extends React.Component {
         var ratio = 1
         if (!this.props.isTouchDevice && offsetLeft <= this.state.portfolioWidth && offsetRight >= 0) {
             let computedRatio = Math.round((1 - (offsetLeft / this.state.portfolioWidth)) * 100) / 100
-            var ratio = (computedRatio > 1) ? 2 - computedRatio : computedRatio
+            var ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
         } else if (this.props.isTouchDevice && offsetTop <= this.state.portfolioHeight && offsetBottom >= 0) {
             let computedRatio = Math.round((1 - (offsetTop / this.state.portfolioHeight)) * 100) / 100
-            var ratio = (computedRatio > 1) ? 2 - computedRatio : computedRatio
+            var ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
         }
         return {
            status:
@@ -80,16 +92,15 @@ export default class ProjectCard extends React.Component {
         }
     }
     render() {
-        const wheel = this.props.move ? this.onMove() : ''
         const slug = `/portfolio/${this.props.data.slug}`
-        const index = this.props.index + 1
-        const newIndex = index < 10 ? "0" + index : index
+        const indexCount = this.props.index + 1
+        const index = indexCount < 10 ? "0" + indexCount : indexCount
         const client = this.props.data.clients ? this.props.data.clients.name : 'no client'
         const image = {backgroundImage: "url('" + this.props.data.featuredImage + "')"}
         return (
             <li className="project-card" ref={(card) => { this.cardRef = card }}>
-                <p className="card-index">{newIndex}</p>
-                <div className="card-image" style={image} ref={(cardImg) => { this.cardImgRef = cardImg }}/>
+                <p className="card-index">{index}</p>
+                <div className="card-image" style={image} ref={(image) => { this.cardImgRef = image }}/>
                 <div className="card-meta">
                     <h5 className="card-client">{client}</h5>
                     <Link to={slug}>
@@ -100,3 +111,11 @@ export default class ProjectCard extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        viewportSize: state.viewportSize
+    }
+}
+
+export default connect(mapStateToProps)(ProjectCard)

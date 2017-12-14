@@ -19,12 +19,12 @@ export function getResume(data) {
     }
 }
 
-export function resizeWindow(windowSize) {
+export function resizeWindow(viewportSize) {
     return {
         type: 'WINDOW_RESIZED',
         payload: {
-            windowWidth: windowSize.windowWidth,
-            windowHeight: windowSize.windowHeight
+            width: viewportSize.width,
+            height: viewportSize.height
         }
     }
 }

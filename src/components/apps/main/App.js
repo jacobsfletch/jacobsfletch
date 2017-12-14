@@ -25,11 +25,11 @@ class App extends React.Component {
         e.preventDefault()
     }
     resizeWindow(e) {
-        const windowSize = {
-            windowWidth: e.target.innerWidth,
-            windowHeight: e.target.innerHeight
+        const viewportSize = {
+            width: e.target.innerWidth,
+            height: e.target.innerHeight
         }
-        this.props.resizeWindow(windowSize)
+        this.props.resizeWindow(viewportSize)
     }
     componentWillMount() {
         fetch('/api/portfolio')
@@ -74,8 +74,8 @@ function mapDispatchToProps(dispatch) {
         getResume: (data) => {
             dispatch(getResume(data))
         },
-        resizeWindow: (windowSize) => {
-            dispatch(resizeWindow(windowSize))
+        resizeWindow: (viewportSize) => {
+            dispatch(resizeWindow(viewportSize))
         }
     }
 }

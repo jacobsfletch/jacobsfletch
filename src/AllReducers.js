@@ -13,7 +13,7 @@ const allReducers = combineReducers({
     dock: DockReducer,
     globals: GlobalsReducer,
     resume: ResumeReducer,
-    windowSize: WindowReducer
+    viewportSize: WindowReducer
 })
 
 export default allReducers

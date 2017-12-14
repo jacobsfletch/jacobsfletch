@@ -1,7 +1,6 @@
 import React from 'react'
 import Timer from '../../modules/timer/Timer'
 import Breadcrumbs from '../../modules/breadcrumbs/Breadcrumbs'
-import BackToTop from '../../modules/backtotop/BackToTop'
 
 import './footer.css'
 
