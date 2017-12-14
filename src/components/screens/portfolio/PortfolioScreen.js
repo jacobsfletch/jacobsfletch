@@ -58,9 +58,9 @@ class PortfolioScreen extends React.Component {
         this.checkIfFullyScrolled()
     }
     onWheel(e) {
-        let scrollDown = e.deltaY
-        let scrollLeft = this.portfolioRef.scrollLeft
-        this.portfolioRef.scrollLeft = scrollLeft + scrollDown
+        const scrollY = e.deltaY
+        const scrollLeft = this.portfolioRef.scrollLeft
+        this.portfolioRef.scrollLeft = scrollLeft + scrollY
         this.checkIfFullyScrolled()
     }
     onTouchMove(e) {

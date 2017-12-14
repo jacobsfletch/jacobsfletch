@@ -5,9 +5,19 @@ import './project.css';
 
 class ProjectScreen extends React.Component {
     componentWillMount() {
+        this.onTouchMove = this.onTouchMove.bind(this)
+        this.onWheel = this.onWheel.bind(this)
         this.setState({
             projectTitle: this.props.match.params.projectName
         })
+    }
+    onWheel(e) {
+        const scrollY = e.deltaY
+        const scrollTop = this.projectRef.scrollTop
+        this.projectRef.scrollTop = scrollTop + scrollY
+    }
+    onTouchMove(e) {
+        e.stopPropagation()
     }
     render() {
         var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
@@ -19,7 +29,7 @@ class ProjectScreen extends React.Component {
         let team = project.team ? project.team : 'loading'
         let images = !project.images ? 'loading' : project.images.map(function(image){return <li key={image}><img className="board-image" src={image} alt={image}/></li>})
         return (
-            <section className="screen-project">
+            <section className="screen-project" onWheel={this.onWheel} onTouchMove={this.onTouchMove} ref={(project) => { this.projectRef = project }}>
                 <header className="board-header">
                     <img alt="alt text" className="board-image" src={project.featuredImage || "loading"} />
                     <div className="header-body">
