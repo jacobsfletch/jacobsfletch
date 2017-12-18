@@ -12,7 +12,7 @@
   z-index: 8888; }
   .dock.docked {
     display: flex;
-    padding: calc(0.975rem * 2); }
+    padding: calc(1.125rem * 2); }
     .dock.docked.cyan {
       color: black;
       background-color: cyan; }
@@ -59,18 +59,18 @@
     .dock .dock-menu ul {
       list-style: none; }
       .dock .dock-menu ul .menu-item {
-        margin-bottom: 0.975rem;
+        margin-bottom: 1.125rem;
         color: inherit; }
         .dock .dock-menu ul .menu-item a {
           font-family: "Source Code Pro", sans-serif;
-          font-size: 0.65rem;
-          line-height: 0.65rem;
+          font-size: 0.75rem;
+          line-height: 0.75rem;
           margin: 0;
           color: inherit;
           position: relative;
           letter-spacing: 1px;
-          margin-right: 0.4875rem;
-          padding: 4px 0.65rem;
+          margin-right: 0.5625rem;
+          padding: 4px 0.75rem;
           text-transform: uppercase;
           cursor: pointer; }
           .dock .dock-menu ul .menu-item a:last-child {
@@ -86,4 +86,4 @@
             top: 0;
             z-index: -1; }
           .dock .dock-menu ul .menu-item a:hover::after {
-            width: calc(100% + 0.975rem); }
+            width: calc(100% + 1.125rem); }

@@ -3,75 +3,86 @@
 .screen-project {
     overflow-x: hidden;
     position: relative;
+    -webkit-overflow-scrolling: touch;
     &::-webkit-scrollbar {
         display: none;
     }
     .board-blockquote {
         margin: size(m) 0;
-        .board-quote {
-            @include type(p);
-            text-transform: uppercase;
-            &::before {
-                content: open-quote;
-            }
-            &::after {
-                content: close-quote;
-            }
+    }
+    .board-quoteAuthor {
+        @include type(p);
+        text-transform: uppercase;
+        font-weight: 900;
+        font-style: normal;
+        display: block;
+        &::before {
+            content: '-'
         }
-        .board-quoteAuthor {
-            @include type(p);
-            text-transform: uppercase;
-            font-weight: 900;
-            font-style: normal;
-            &::before {
-                content: '-'
-            }
+    }
+    .board-quote {
+        @include type(p);
+        text-transform: uppercase;
+        background-color: yellow;
+        display: inline;
+        &::before {
+            content: open-quote;
+        }
+        &::after {
+            content: close-quote;
         }
     }
     .board-header {
         display: flex;
+        flex-direction: column;
         background-color: white;
         padding-bottom: size(m);
-        @include breakpoint($size: m, $inherit: down) {
-            flex-direction: column;
-        };
+        align-items: center;
     }
-    .board-image {
+    .board-featured {
         width: 50%;
         height: 100%;
         margin-bottom: size(m);
-        @include breakpoint($size: m, $inherit: down) {
-            width: 100%;
-        };
     }
     .header-body {
-        padding-left: size(m);
-        @include breakpoint($size: m, $inherit: down) {
-            padding-left: 0;
-        };
+        width: 75%;
+        margin-top: size(xxl);
     }
     .board-title,
     .board-client,
     .board-categories {
         font-weight: 900;
     }
-    .board-client {
-        &::before {
-            content: 'client: ';
-        }
-    }
     .board-title {
-        @include type(h2);
-        text-transform: uppercase;
-        margin-bottom: size(s);
-        margin-top: size(xs);
+        @include type(h1);
+        text-transform: lowercase;
+        margin-bottom: size(xl);
+        margin-top: size(xl);
     }
-    .board-client {
+    .board-client,
+    .board-team {
         @include type(p);
         text-transform: uppercase;
     }
+    .board-client {
+        margin-bottom: size(xxs);
+        &::before {
+            content: 'client: '
+        }
+    }
+    .board-team {
+        &::before {
+            content: 'team: '
+        }
+        .team-icon {
+            line, polyline {
+
+            }
+        }
+    }
     .board-brief {
-        @include type(h4);
+        @include type(h3);
+        margin: size(xl) 0;
     }
     .list-title {
         @include type(h4);
@@ -81,85 +92,90 @@
             white-space: pre;
         }
     }
-    .board-meta {
-        border: black line(m);
-        border-top-style: dashed;
-        border-bottom-style: solid;
-        padding: size(m) 0;
-        > * {
-            margin-bottom: size(s);
+    .board-categories {
+        display: flex;
+        list-style: none;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .board-category {
+        @include type(p);
+        position: relative;
+        letter-spacing: line(xxs);
+        margin-right: size(xxs);
+        background-color: white;
+        color: black;
+        padding: line(m) size(xs);
+        padding-left: size(l);
+        text-transform: uppercase;
+        border: line(xxs) solid black;
+        cursor: pointer;
+        &:hover {
+            background-color: black;
+            color: white;
+            &::after {
+                background-color: white;
+            }
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            left: size(xxs);
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: black;
+            width: line(l);
+            height: line(l);
+            border-radius: 100%;
+        }
+    }
+    .board-tags {
+        @include type(h4);
+        display: flex;
+        list-style: none;
+        text-transform: uppercase;
+        flex-wrap: wrap;
+        align-items: center;
+        .board-tag {
+            &::after {
+                content: ', ';
+                white-space: pre;
+            }
             &:last-child {
-                margin-bottom: 0;
-            }
-        }
-        .board-categories {
-            display: flex;
-            list-style: none;
-            flex-wrap: wrap;
-            align-items: center;
-            .board-category {
-                @include type(p);
-                letter-spacing: line(xxs);
-                margin-right: size(xxs);
-                background-color: black;
-                color: white;
-                padding: line(m) size(xs);
-                text-transform: uppercase;
-                cursor: pointer;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-        .board-tags {
-            @include type(h4);
-            display: flex;
-            list-style: none;
-            text-transform: uppercase;
-            flex-wrap: wrap;
-            align-items: center;
-            .board-tag {
                 &::after {
-                    content: ', ';
-                    white-space: pre;
-                }
-                &:last-child {
-                    &::after {
-                        content: '';
-                    }
-                }
-            }
-        }
-        .board-team {
-            @include type(h4);
-            display: flex;
-            align-items: center;
-            .team-link {
-                text-transform: uppercase;
-                &::before {
-                    content: '[ ';
-                }
-                &::after {
-                    content: ' ]';
+                    content: '';
                 }
             }
         }
     }
     .board-body {
-        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .board-gallery {
+        width: 50%;
+        .gallery-item {
+            list-style: none;
+        }
         .board-image {
             width: 100%;
         }
     }
     .board-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         border-top: solid line(m) black;
         margin-top: size(m);
         padding-top: size(m);
     }
     .board-hashtags {
         @include type(h4);
+        width: 75%;
         font-weight: 100;
         list-style: none;
         display: flex;

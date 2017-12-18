@@ -2,10 +2,10 @@
 .app-header,
 .app-footer {
   font-family: "Source Code Pro", sans-serif;
-  font-size: 0.65rem;
-  line-height: 0.65rem;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
   margin: 0;
-  min-height: 0.975rem;
+  min-height: 1.125rem;
   display: flex;
   align-items: center;
   z-index: 9999;
@@ -23,13 +23,13 @@
   .app-footer .header-title,
   .app-footer .footer-title {
     flex-grow: 1;
-    margin-left: 0.975rem;
+    margin-left: 1.125rem;
     height: 100%;
     display: flex;
     align-items: center; }
   .app-header .footer-subtitle,
   .app-footer .footer-subtitle {
-    margin-right: 0.975rem; }
+    margin-right: 1.125rem; }
 
 .app-header .cropmark.tl {
   border-left: 0;
@@ -40,30 +40,30 @@
   border-top: 0; }
 
 .app-footer .cropmark.bl {
-  border-right: 0;
+  border-left: 0;
   border-bottom: 0; }
 
 .app-footer .cropmark.br {
-  border-left: 0;
+  border-right: 0;
   border-bottom: 0; }
 
 .cropmark {
   box-sizing: border-box;
   border: solid currentColor;
   border-width: 4px;
-  width: 0.975rem;
-  height: 0.975rem; }
+  width: 1.125rem;
+  height: 1.125rem; }
   @media only screen and (max-width: 319px) {
     .cropmark {
-      width: 0.8125rem;
-      height: 0.8125rem;
+      width: 0.9375rem;
+      height: 0.9375rem;
       border-width: 3px; } }
 
 .header-after {
   position: absolute;
-  bottom: -0.975rem;
-  right: 0.975rem; }
+  bottom: -1.125rem;
+  right: 1.125rem; }
   @media only screen and (max-width: 319px) {
     .header-after {
-      right: 0.8125rem;
-      bottom: -0.8125rem; } }
+      right: 0.9375rem;
+      bottom: -0.9375rem; } }

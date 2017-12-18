@@ -41,8 +41,8 @@
         align-self: center;
     }
 
-    .card-meta {
-
+    .card-meta a {
+        display: block;
     }
     .card-client {
         @include type(p);

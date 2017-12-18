@@ -58,7 +58,7 @@ class ProjectCard extends React.Component {
                 this.cardImgRef.style.transform = 'translateX(' + (adjustedTransform * 100) + '%)'
             } else {
                 let adjustedTransform =  weightedRatio * ratioInViewport
-                this.cardImgRef.style.transform = 'translateX(' + (adjustedTransform * 100) + '%)'
+                this.cardImgRef.style.transform = 'translateY(' + (adjustedTransform * 100) + '%)'
             }
         } else {
             this.cardRef.classList.remove('active')

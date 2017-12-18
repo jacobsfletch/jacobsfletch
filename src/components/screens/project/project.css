@@ -1,147 +1,158 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
 .screen-project {
   overflow-x: hidden;
-  position: relative; }
+  position: relative;
+  -webkit-overflow-scrolling: touch; }
   .screen-project::-webkit-scrollbar {
     display: none; }
   .screen-project .board-blockquote {
-    margin: 0.975rem 0; }
-    .screen-project .board-blockquote .board-quote {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 0.65rem;
-      line-height: 0.65rem;
-      margin: 0;
-      text-transform: uppercase; }
-      .screen-project .board-blockquote .board-quote::before {
-        content: open-quote; }
-      .screen-project .board-blockquote .board-quote::after {
-        content: close-quote; }
-    .screen-project .board-blockquote .board-quoteAuthor {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 0.65rem;
-      line-height: 0.65rem;
-      margin: 0;
-      text-transform: uppercase;
-      font-weight: 900;
-      font-style: normal; }
-      .screen-project .board-blockquote .board-quoteAuthor::before {
-        content: '-'; }
+    margin: 1.125rem 0; }
+  .screen-project .board-quoteAuthor {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: normal;
+    display: block; }
+    .screen-project .board-quoteAuthor::before {
+      content: '-'; }
+  .screen-project .board-quote {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    margin: 0;
+    text-transform: uppercase;
+    background-color: yellow;
+    display: inline; }
+    .screen-project .board-quote::before {
+      content: open-quote; }
+    .screen-project .board-quote::after {
+      content: close-quote; }
   .screen-project .board-header {
     display: flex;
+    flex-direction: column;
     background-color: white;
-    padding-bottom: 0.975rem; }
-    @media only screen and (max-width: 767px) {
-      .screen-project .board-header {
-        flex-direction: column; } }
-  .screen-project .board-image {
+    padding-bottom: 1.125rem;
+    align-items: center; }
+  .screen-project .board-featured {
     width: 50%;
     height: 100%;
-    margin-bottom: 0.975rem; }
-    @media only screen and (max-width: 767px) {
-      .screen-project .board-image {
-        width: 100%; } }
+    margin-bottom: 1.125rem; }
   .screen-project .header-body {
-    padding-left: 0.975rem; }
-    @media only screen and (max-width: 767px) {
-      .screen-project .header-body {
-        padding-left: 0; } }
+    width: 75%;
+    margin-top: 3rem; }
   .screen-project .board-title,
   .screen-project .board-client,
   .screen-project .board-categories {
     font-weight: 900; }
-  .screen-project .board-client::before {
-    content: 'client: '; }
   .screen-project .board-title {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 1.3rem;
-    line-height: 1.3rem;
-    text-transform: uppercase;
-    margin-bottom: 0.8125rem;
-    margin-top: 0.65rem; }
-  .screen-project .board-client {
+    font-size: 1.875rem;
+    line-height: 1.875rem;
+    text-transform: lowercase;
+    margin-bottom: 1.875rem;
+    margin-top: 1.875rem; }
+  .screen-project .board-client,
+  .screen-project .board-team {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.65rem;
-    line-height: 0.65rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     margin: 0;
     text-transform: uppercase; }
+  .screen-project .board-client {
+    margin-bottom: 0.5625rem; }
+    .screen-project .board-client::before {
+      content: 'client: '; }
+  .screen-project .board-team::before {
+    content: 'team: '; }
   .screen-project .board-brief {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.8125rem;
-    line-height: 0.8125rem; }
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    margin: 1.875rem 0; }
   .screen-project .list-title {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.8125rem;
-    line-height: 0.8125rem;
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
     text-transform: uppercase; }
     .screen-project .list-title::after {
       content: ': ';
       white-space: pre; }
-  .screen-project .board-meta {
-    border: black 4px;
-    border-top-style: dashed;
-    border-bottom-style: solid;
-    padding: 0.975rem 0; }
-    .screen-project .board-meta > * {
-      margin-bottom: 0.8125rem; }
-      .screen-project .board-meta > *:last-child {
-        margin-bottom: 0; }
-    .screen-project .board-meta .board-categories {
-      display: flex;
-      list-style: none;
-      flex-wrap: wrap;
-      align-items: center; }
-      .screen-project .board-meta .board-categories .board-category {
-        font-family: "Source Code Pro", sans-serif;
-        font-size: 0.65rem;
-        line-height: 0.65rem;
-        margin: 0;
-        letter-spacing: 1px;
-        margin-right: 0.4875rem;
-        background-color: black;
-        color: white;
-        padding: 4px 0.65rem;
-        text-transform: uppercase;
-        cursor: pointer; }
-        .screen-project .board-meta .board-categories .board-category:last-child {
-          margin-right: 0; }
-    .screen-project .board-meta .board-tags {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 0.8125rem;
-      line-height: 0.8125rem;
-      display: flex;
-      list-style: none;
-      text-transform: uppercase;
-      flex-wrap: wrap;
-      align-items: center; }
-      .screen-project .board-meta .board-tags .board-tag::after {
-        content: ', ';
-        white-space: pre; }
-      .screen-project .board-meta .board-tags .board-tag:last-child::after {
-        content: ''; }
-    .screen-project .board-meta .board-team {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 0.8125rem;
-      line-height: 0.8125rem;
-      display: flex;
-      align-items: center; }
-      .screen-project .board-meta .board-team .team-link {
-        text-transform: uppercase; }
-        .screen-project .board-meta .board-team .team-link::before {
-          content: '[ '; }
-        .screen-project .board-meta .board-team .team-link::after {
-          content: ' ]'; }
+  .screen-project .board-categories {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    align-items: center; }
+  .screen-project .board-category {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    margin: 0;
+    position: relative;
+    letter-spacing: 1px;
+    margin-right: 0.5625rem;
+    background-color: white;
+    color: black;
+    padding: 4px 0.75rem;
+    padding-left: 1.5rem;
+    text-transform: uppercase;
+    border: 1px solid black;
+    cursor: pointer; }
+    .screen-project .board-category:hover {
+      background-color: black;
+      color: white; }
+      .screen-project .board-category:hover::after {
+        background-color: white; }
+    .screen-project .board-category:last-child {
+      margin-right: 0; }
+    .screen-project .board-category::after {
+      content: '';
+      position: absolute;
+      left: 0.5625rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: black;
+      width: 5px;
+      height: 5px;
+      border-radius: 100%; }
+  .screen-project .board-tags {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
+    display: flex;
+    list-style: none;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    align-items: center; }
+    .screen-project .board-tags .board-tag::after {
+      content: ', ';
+      white-space: pre; }
+    .screen-project .board-tags .board-tag:last-child::after {
+      content: ''; }
   .screen-project .board-body {
-    background-color: white; }
-  .screen-project .board-gallery .board-image {
-    width: 100%; }
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .screen-project .board-gallery {
+    width: 50%; }
+    .screen-project .board-gallery .gallery-item {
+      list-style: none; }
+    .screen-project .board-gallery .board-image {
+      width: 100%; }
   .screen-project .board-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-top: solid 4px black;
-    margin-top: 0.975rem;
-    padding-top: 0.975rem; }
+    margin-top: 1.125rem;
+    padding-top: 1.125rem; }
   .screen-project .board-hashtags {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.8125rem;
-    line-height: 0.8125rem;
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
+    width: 75%;
     font-weight: 100;
     list-style: none;
     display: flex;

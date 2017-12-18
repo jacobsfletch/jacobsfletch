@@ -5,20 +5,20 @@
 
 [class^=swatch-] {
   border: 0;
-  width: 0.975rem;
-  height: 0.975rem;
-  margin-right: 0.975rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 1.125rem;
   cursor: pointer;
   position: relative;
   background-color: transparent;
   padding: 0; }
   @media only screen and (max-width: 319px) {
     [class^=swatch-] {
-      width: 0.8125rem;
-      height: 0.8125rem;
-      margin-right: 0.8125rem; } }
+      width: 0.9375rem;
+      height: 0.9375rem;
+      margin-right: 0.9375rem; } }
   [class^=swatch-]:hover::after {
-    transform: translateY(-0.4875rem); }
+    transform: translateY(-0.5625rem); }
   [class^=swatch-]::after {
     content: '';
     position: absolute;

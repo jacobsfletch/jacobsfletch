@@ -20,45 +20,47 @@
     font-weight: 900; }
   .project-card .card-index {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 1.625rem;
-    line-height: 1.625rem; }
+    font-size: 1.875rem;
+    line-height: 1.875rem; }
   .project-card .card-image {
     width: 75%;
     height: 50%;
     display: inline-block;
-    margin-bottom: 0.975rem;
+    margin-bottom: 1.125rem;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     align-self: center; }
+  .project-card .card-meta a {
+    display: block; }
   .project-card .card-client {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.65rem;
-    line-height: 0.65rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     margin: 0;
     text-transform: uppercase; }
   .project-card .card-title {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 1.3rem;
-    line-height: 1.3rem;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
     position: relative;
     display: inline-block;
-    margin-top: 0.65rem;
-    margin-bottom: 0.8125rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.9375rem;
     white-space: normal;
     text-transform: lowercase; }
     @media only screen and (max-width: 319px) {
       .project-card .card-title {
         font-family: "Source Code Pro", sans-serif;
-        font-size: 0.975rem;
-        line-height: 0.975rem; } }
+        font-size: 1.125rem;
+        line-height: 1.5rem; } }
   .project-card .card-categories {
     display: flex;
     flex-wrap: wrap; }
   .project-card .card-category {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.65rem;
-    line-height: 0.65rem;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
     margin: 0;
     text-transform: uppercase; }
     .project-card .card-category::after {
