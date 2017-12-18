@@ -1,146 +1,108 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Pencil from './Pencil'
-
 import './sketchpad.css'
 
 class SketchPad extends Component {
 
-    tool = null
-    interval = null
-
-    static defaultProps = {
-        color: '#000000',
-        size: 12,
-        debounceTime: 1000,
-        tool: Pencil,
-        items: []
-    }
-
     constructor(props) {
         super(props)
-        this.tool = this.props.tool(this.ctx)
         this.onDown = this.onDown.bind(this)
         this.onMove = this.onMove.bind(this)
-        this.onDebouncedMove = this.onDebouncedMove.bind(this)
         this.onUp = this.onUp.bind(this)
-        this.onResize = this.onResize.bind(this)
+        this.setCanvasSize = this.setCanvasSize.bind(this)
         this.pixelRatio = 1/window.devicePixelRatio
+        this.lineWidth = 12
+        this.lineColor = 'red'
         this.state = {
             canvasActive: false,
             doodleSent: false,
-            touchStart: 0
+            touchStart: 0,
+            viewportSize: {
+                width: 0,
+                height: 0
+            },
+            canvasSize: {
+                width: 0,
+                height: 0
+            },
+            startCoords: {
+                x: 0,
+                y: 0
+            }
         }
     }
 
-    componentWillReceiveProps({tool, items}) {
-        items.filter(item => this.props.items.indexOf(item) === -1).forEach(item => {
-            this.tool = item.tool.props.tool(this.ctx)
-            this.tool.draw(item, false)
+    componentWillReceiveProps(nextProps) {
+        if (this.props.viewportSize !== nextProps.viewportSize) {
+            this.setState({
+                viewportSize: {
+                    width: nextProps.viewportSize.width,
+                    height: nextProps.viewportSize.height
+                }
+            })
+            this.setCanvasSize()
+        }
+    }
+
+    setCanvasSize() {
+        const canvasWidth = this.canvasRef.clientWidth
+        const canvasHeight = this.canvasRef.clientHeight
+        this.canvasRef.width = canvasWidth
+        this.canvasRef.height = canvasHeight
+        this.setState({
+            canvasSize: {
+                width: canvasWidth,
+                height: canvasHeight
+            },
+            canvasActive: false
         })
-        this.tool = this.props.tool(this.ctx)
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.onResize, false)
         this.ctx = this.canvasRef.getContext('2d')
-        this.tool = this.props.tool(this.ctx)
-        this.onResize()
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.onResize, false)
     }
 
     getCursorPosition(e) {
-        const {top, left} = this.canvas.getBoundingClientRect()
         const x = e.touches && e.touches[0] ? e.touches[0].pageX : e.clientX
-        const y = e.touches && e.touches[0]? e.touches[0].pageY : e.clientY
-        return [
-            x - left,
-            y - top
-        ]
+        const y = e.touches && e.touches[0] ? e.touches[0].pageY : e.clientY
+        return {
+            x: x - ((this.state.viewportSize.width - this.state.canvasSize.width) / 2),
+            y: y - ((this.state.viewportSize.height - this.state.canvasSize.height) / 2)
+        }
     }
 
     onDown(e) {
-        const data = this.tool.onMouseDown(...this.getCursorPosition(e), this.props.color, this.props.size)
-        data && data[0] && this.props.onItemStart && this.props.onItemStart.apply(null, data)
-        if (this.props.onDebouncedItemChange) {
-            this.interval = setInterval(this.onDebouncedMove, this.props.debounceTime)
-        }
         this.setState({
-            canvasActive: true
+            canvasActive: true,
+            isMouseDown: true
         })
+        const cursor = this.getCursorPosition(e)
+        this.ctx.lineJoin = 'round'
+        this.ctx.lineCap = 'round'
+        this.ctx.lineWidth = this.lineWidth
+        this.ctx.strokeStyle = this.lineColor
+        this.ctx.beginPath()
+        this.ctx.moveTo(cursor.x, cursor.y)
+        this.drawLine(e)
     }
 
     onMove(e) {
-        const data = this.tool.onMouseMove(...this.getCursorPosition(e))
-        data && data[0] && this.props.onEveryItemChange && this.props.onEveryItemChange.apply(null, data)
-    }
-
-    onDebouncedMove() {
-        if (typeof this.tool.onDebouncedMouseMove === 'function' && this.props.onDebouncedItemChange) {
-            this.props.onDebouncedItemChange.apply(null, this.tool.onDebouncedMouseMove())
+        if (this.state.isMouseDown) {
+            this.drawLine(e)
         }
     }
 
-    onUp(e) {
-        const data = this.tool.onMouseUp(...this.getCursorPosition(e))
-        data && data[0] && this.props.onCompleteItem && this.props.onCompleteItem.apply(null, data)
-        if (this.props.onDebouncedItemChange) {
-            clearInterval(this.interval)
-            this.interval = null
-        }
+    onUp() {
+        this.setState({
+            isMouseDown: false
+        })
     }
 
-    onResize() {
-        this.canvas = this.canvasRef
-        this.sketchpadWidth = this.sketchpadRef.clientWidth
-        this.sketchpadHeight = this.sketchpadRef.clientHeight
-        this.canvas.width = this.sketchpadWidth * this.pixelRatio
-        this.canvas.height = this.sketchpadHeight * this.pixelRatio
-        this.clearCanvas()
-    }
-
-    clearCanvas(sent) {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.canvas.style.width = this.sketchpadWidth
-        this.canvas.style.height = this.sketchpadHeight
-        this.ctx.fillStyle = 'white'
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.scale(this.pixelRatio, this.pixelRatio)
-        if(sent) {
-            this.setState({
-                canvasActive: false,
-                doodleSent: true
-            })
-        } else {
-            this.setState({
-                canvasActive: false,
-                doodleSent: false
-            })
-        }
-    }
-
-    sendSketch(e) {
-        const doodle = this.canvas.toDataURL('image/png', 1)
-        const d = new Date()
-        const day = d.getDate()
-        const month= d.getMonth() + 1
-        const year = d.getFullYear()
-        const time = d.toLocaleTimeString()
-        const date = `doodle-${month}-${day}-${year}-${time}`
-        e.target.href = doodle
-        e.target.download = date
-        // fetch('/api/email/doodle', {
-        //         method: 'POST',
-        //         body: doodle,
-        //         headers: {'Content-Type':'application/json'}
-        //     })
-        //     .then(response => {
-        //         if(response.status === 200) { this.clearCanvas(true) }
-        //     })
+    drawLine(e) {
+        const cursor = this.getCursorPosition(e)
+        this.ctx.lineTo(cursor.x, cursor.y)
+        this.ctx.stroke()
     }
 
     render() {
@@ -148,7 +110,7 @@ class SketchPad extends Component {
         const titleClasses = (this.state.canvasActive && !this.state.doodleSent) ? 'sketchpad-title deactive' : 'sketchpad-title'
         const confirmClasses = this.state.doodleSent ? 'sketchpad-confirm' : 'sketchpad-confirm deactive'
         return (
-            <div className='sketchpad' ref={(sketchpad) => { this.sketchpadRef = sketchpad }} >
+            <div className='sketchpad'>
                 <canvas
                     ref={(canvas) => { this.canvasRef = canvas }}
                     className='sketchpad-canvas'
@@ -167,7 +129,7 @@ class SketchPad extends Component {
                         onClick={(e) => this.sendSketch(e)}>Download
                     </a>
                     <button
-                        onClick={(e) => this.clearCanvas()}>clear
+                        onClick={(e) => this.setCanvasSize()}>clear
                     </button>
                 </div>
             </div>
@@ -177,7 +139,8 @@ class SketchPad extends Component {
 
 function mapStateToProps(state) {
     return {
-        doodles: state.globals.doodles
+        doodles: state.globals.doodles,
+        viewportSize: state.viewportSize
     }
 }
 

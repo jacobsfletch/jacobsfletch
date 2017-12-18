@@ -19,9 +19,9 @@ export function getResume(data) {
     }
 }
 
-export function resizeWindow(viewportSize) {
+export function setViewportSize(viewportSize) {
     return {
-        type: 'WINDOW_RESIZED',
+        type: 'VIEWPORT_CALCULATED',
         payload: {
             width: viewportSize.width,
             height: viewportSize.height

@@ -7,29 +7,31 @@ import Header from '../../layouts/header/header'
 import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
-import { getPortfolio, getGlobals, getResume, resizeWindow } from '../../../actions/AppActions'
+import { getPortfolio, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
 
 import './app.css'
 
 class App extends React.Component {
     constructor(props) {
         super(props)
-        this.resizeWindow = this.resizeWindow.bind(this)
+        this.setViewportSize = this.setViewportSize.bind(this)
     }
     componentDidMount() {
-        window.addEventListener('resize', this.resizeWindow, false)
+        window.addEventListener('resize', this.setViewportSize, false)
         window.addEventListener('wheel', this.preventDefault, false)
         window.addEventListener('touchmove', this.preventDefault, {passive: false})
+        this.setViewportSize()
     }
     preventDefault(e) {
         e.preventDefault()
     }
-    resizeWindow(e) {
+    setViewportSize(e) {
+        const viewport = e ? e.target : window
         const viewportSize = {
-            width: e.target.innerWidth,
-            height: e.target.innerHeight
+            width: viewport.innerWidth,
+            height: viewport.innerHeight
         }
-        this.props.resizeWindow(viewportSize)
+        this.props.setViewportSize(viewportSize)
     }
     componentWillMount() {
         fetch('/api/portfolio')
@@ -74,8 +76,8 @@ function mapDispatchToProps(dispatch) {
         getResume: (data) => {
             dispatch(getResume(data))
         },
-        resizeWindow: (viewportSize) => {
-            dispatch(resizeWindow(viewportSize))
+        setViewportSize: (viewportSize) => {
+            dispatch(setViewportSize(viewportSize))
         }
     }
 }
