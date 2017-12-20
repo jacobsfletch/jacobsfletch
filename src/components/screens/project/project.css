@@ -10,7 +10,7 @@
   .screen-project .board-quoteAuthor {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
-    line-height: 0.75rem;
+    line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
     font-weight: 900;
@@ -21,7 +21,7 @@
   .screen-project .board-quote {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
-    line-height: 0.75rem;
+    line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
     background-color: yellow;
@@ -58,7 +58,7 @@
   .screen-project .board-team {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
-    line-height: 0.75rem;
+    line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase; }
   .screen-project .board-client {
@@ -70,7 +70,7 @@
   .screen-project .board-brief {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.125rem;
-    line-height: 1.5rem;
+    line-height: 1.875rem;
     margin: 1.875rem 0; }
   .screen-project .list-title {
     font-family: "Source Code Pro", sans-serif;
@@ -88,7 +88,7 @@
   .screen-project .board-category {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
-    line-height: 0.75rem;
+    line-height: 0.9375rem;
     margin: 0;
     position: relative;
     letter-spacing: 1px;

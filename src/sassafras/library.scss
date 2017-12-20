@@ -90,7 +90,7 @@ $typography: (
     p: (
         font-family: font(body),
         font-size: size(xs),
-        line-height: size(xs),
+        line-height: size(s),
         margin: 0
     ),
     fine: (
@@ -111,7 +111,7 @@ $typography: (
     h3: (
         font-family: font(heading),
         font-size: size(m),
-        line-height: size(l)
+        line-height: size(xl)
     ),
     h4: (
         font-family: font(heading),

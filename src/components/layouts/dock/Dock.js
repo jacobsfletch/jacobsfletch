@@ -8,7 +8,7 @@ class Dock extends React.Component {
     render() {
         const classes = this.props.status ? `dock docked ${this.props.color}` : `dock`
         return (
-            <div className={classes}>
+            <section className={classes}>
                 <nav className="dock-menu">
                     <ul>
                         <li className="menu-item">
@@ -41,7 +41,7 @@ class Dock extends React.Component {
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </section>
         )
     }
 }

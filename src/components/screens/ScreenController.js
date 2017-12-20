@@ -22,7 +22,7 @@ class ScreenController extends React.Component {
     }
     render() {
         return (
-            <div className="app-body">
+            <section className="app-body">
                 <Switch>
                     <Route exact path='/' component={HomeScreen} />
                     <Route exact path='/portfolio' component={PortfolioScreen}/>
@@ -32,7 +32,7 @@ class ScreenController extends React.Component {
                     <Route path='/404' component={PageNotFound} />
                     <Redirect to='/404' />
                 </Switch>
-            </div>
+            </section>
         )
     }
 }

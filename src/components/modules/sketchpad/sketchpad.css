@@ -35,21 +35,21 @@
 .sketchpad-toolbelt {
   position: absolute;
   bottom: 0;
-  padding: 0.975rem;
+  padding: 1.125rem;
   display: none; }
   .sketchpad-toolbelt.active {
     display: block; }
   .sketchpad-toolbelt button, .sketchpad-toolbelt a {
     font-family: "Source Code Pro", sans-serif;
-    font-size: 0.8125rem;
-    line-height: 0.8125rem;
+    font-size: 0.9375rem;
+    line-height: 1.125rem;
     text-transform: uppercase;
     color: black;
     background-color: transparent;
-    padding: 0.65rem 0.8125rem;
+    padding: 0.75rem 0.9375rem;
     cursor: pointer; }
     .sketchpad-toolbelt button:first-child, .sketchpad-toolbelt a:first-child {
-      margin-right: 0.8125rem;
+      margin-right: 0.9375rem;
       border: 2px black solid; }
       .sketchpad-toolbelt button:first-child:hover, .sketchpad-toolbelt a:first-child:hover {
         color: white;

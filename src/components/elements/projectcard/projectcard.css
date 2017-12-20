@@ -36,7 +36,7 @@
   .project-card .card-client {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
-    line-height: 0.75rem;
+    line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase; }
   .project-card .card-title {
@@ -53,14 +53,14 @@
       .project-card .card-title {
         font-family: "Source Code Pro", sans-serif;
         font-size: 1.125rem;
-        line-height: 1.5rem; } }
+        line-height: 1.875rem; } }
   .project-card .card-categories {
     display: flex;
     flex-wrap: wrap; }
   .project-card .card-category {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
-    line-height: 0.75rem;
+    line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase; }
     .project-card .card-category::after {

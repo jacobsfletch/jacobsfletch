@@ -7,7 +7,7 @@ import './footer.css'
 class Footer extends React.Component {
     render() {
         return (
-            <div className="app-footer">
+            <footer className="app-footer">
                 <div className="cropmark bl"></div>
                 <nav className="footer-breadcrumbs">
                     <Breadcrumbs />
@@ -19,7 +19,7 @@ class Footer extends React.Component {
                     <p>Top</p>
                 </div>
                 <div className="cropmark br"></div>
-            </div>
+            </footer>
         )
     }
 }

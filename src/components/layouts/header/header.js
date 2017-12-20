@@ -9,7 +9,7 @@ import './header.css';
 export default class Header extends React.Component {
     render() {
         return (
-            <div className="app-header">
+            <header className="app-header">
                 <div className="cropmark tl"></div>
                 <div className="header-title">
                     <Link to="/">jacobsfletch.com</Link>
@@ -24,7 +24,7 @@ export default class Header extends React.Component {
                 <div className="header-after">
                     <Progress />
                 </div>
-            </div>
+            </header>
         )
     }
 }
