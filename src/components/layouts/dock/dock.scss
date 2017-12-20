@@ -2,6 +2,7 @@
 
 .dock {
     display: none;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -14,7 +15,7 @@
 
     &.docked {
         display: flex;
-        padding: calc(#{size(m)} * 2);
+        padding: calc(#{size(m)} * 4);
         &.cyan {
             color: black;
             background-color: cyan;

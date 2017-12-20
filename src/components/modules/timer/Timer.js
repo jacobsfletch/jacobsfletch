@@ -5,31 +5,27 @@ import './timer.css';
 export default class ProjectThumbnail extends React.Component {
     constructor(props) {
         super()
+        this.tick = this.tick.bind(this)
         this.state = {
-            time: new Date().toLocaleString()
+            intervalId: '',
+            time: new Date().toLocaleTimeString()
         }
     }
     tick() {
-        const newDate = new Date()
+        const time = new Date().toLocaleTimeString()
         this.setState({
-            time: newDate.toLocaleTimeString(),
-            date: newDate.toLocaleDateString() // .replace(/\//g, '')
-        });
+            time: time
+        })
     }
     componentDidMount() {
-        this.timerID = setInterval(
-            () => this.tick(), 1000
-        );
+        this.intervalId = setInterval(this.tick, 1000)
     }
     componentWillUnmount() {
-        clearInterval(this.timerID);
+        clearInterval(this.intervalID);
     }
     render() {
         return (
             <div className="module-timer">
-                <time className="timer-date">
-                    {this.state.date}
-                </time>
                 <time className="timer-time">
                     {this.state.time}
                 </time>

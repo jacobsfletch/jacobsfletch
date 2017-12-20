@@ -12,7 +12,7 @@ export default class Header extends React.Component {
             <header className="app-header">
                 <div className="cropmark tl"></div>
                 <div className="header-title">
-                    <Link to="/">jacobsfletch.com</Link>
+                    back
                 </div>
                 <div className="swatches">
                     <Swatch color="cyan"/>

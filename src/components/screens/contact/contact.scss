@@ -2,17 +2,19 @@
 
 .screen-contact {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    .screen-title {
-        @include type(h3);
-        margin-bottom: 0;
-        width: 75%;
-    }
+    width: 100%;
+    overflow-y: scroll;
+
     .form-contact {
         @include type(h3);
         width: 75%;
+        margin: auto;
+        padding: size(l) 0;
+        @include breakpoint($size: s, $inherit: down) {
+            width: 100%;
+        };
         * {
             display: inline;
         }
@@ -21,10 +23,18 @@
             margin-top: size(xl);
         }
     }
+
+    .screen-title {
+        @include type(h3);
+        margin-bottom: 0;
+    }
+
     .input {
         position: relative;
         font-weight: 900;
+        white-space: nowrap;
     }
+
     .error-message {
         @include type(fine);
         margin: 0;
@@ -59,10 +69,11 @@
     }
     input, select, .input-ruler {
         @include type(h3);
-        white-space: nowrap;
         margin: 0;
         padding: 0;
         font-weight: 900;
+        border-radius: 0;
+        text-align: center;
     }
     input,
     select {

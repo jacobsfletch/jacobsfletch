@@ -5,6 +5,8 @@ import './contact.css';
 export default class Contact extends React.Component {
     constructor() {
         super()
+        this.onTouchMove = this.onTouchMove.bind(this)
+        this.onWheel = this.onWheel.bind(this)
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
         this.handleLastNameChange = this.handleLastNameChange.bind(this)
         this.handleEmailChange = this.handleEmailChange.bind(this)
@@ -48,12 +50,22 @@ export default class Contact extends React.Component {
         this.useRuler(this.phoneRef)
     }
 
+    onWheel(e) {
+        const scrollY = e.deltaY
+        const scrollTop = this.screenRef.scrollTop
+        this.screenRef.scrollTop = scrollTop + scrollY
+    }
+
+    onTouchMove(e) {
+        e.stopPropagation()
+    }
+
     useRuler(e) {
         let element = e.target ? e.target : e
         const ruler = element.parentNode.lastChild
         ruler.innerHTML = element.value ? element.value : element.placeholder
         const rulerWidth = ruler.offsetWidth
-        element.style.width = rulerWidth + 'px'
+        element.style.width = rulerWidth + 2 + 'px'
     }
 
     validateField(fieldName, value) {
@@ -141,17 +153,17 @@ export default class Contact extends React.Component {
     render() {
         const disabled = (this.state.firstName.isValid && this.state.lastName.isValid && this.state.emailAddress.isValid && this.state.phoneNumber.isValid) ? false : true
         return (
-            <article className="screen-contact">
-                <h2 className="screen-title">dear jacobsfletch,</h2>
+            <article className="screen-contact" ref={(contact) => { this.screenRef = contact }} onWheel={this.onWheel} onTouchMove={this.onTouchMove}>
                 <form id='contact' className='form-contact' onSubmit={this.handleSubmit} noValidate >
-                    <br/>
+                    <h2 className="screen-title">dear jacobsfletch,</h2>
+                    <br/><br/>
                     <p>hello, my name is&nbsp;</p>
                     <span className='input input-text'>
                         <input placeholder="first" name='first' type='text' ref={(firstName) => { this.firstNameRef = firstName }} value={this.state.firstName.value}  onChange={this.handleFirstNameChange} />
-                        <p>&nbsp;</p>
                         <p className="error-message">{this.state.firstName.errorMessage}</p>
                         <p className="input-ruler" />
                     </span>
+                    <p> </p>
                     <span className='input input-text'>
                         <input placeholder="last" name='last' type='text' ref={(lastName) => { this.lastNameRef = lastName }} value={this.state.lastName.value} onChange={this.handleLastNameChange} />
                         <p className="error-message">{this.state.lastName.errorMessage}</p>

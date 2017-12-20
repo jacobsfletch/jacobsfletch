@@ -6,14 +6,22 @@ import { Link } from 'react-router-dom';
 
 import './breadcrumbs.css';
 
+class Breadcrumbs extends React.Component {
+    render() {
+        return (
+            <Crumb pathname={this.props.location.pathname}/>
+        )
+    }
+}
+
 function Crumb(pathname) {
     const pathArray = pathname.pathname.split('/').filter(Boolean)
-    pathArray.unshift('index')
+    pathArray.unshift('jacobsfletch')
     let listItems =
         pathArray.map(function(path, i) {
-            let href = (path === 'index') ? '' : path
+            let href = (path === 'jacobsfletch') ? '' : path
             var links =
-                (pathArray.length === i+1) ? <p>{path}</p> : <Link to={`/${href}`}>{path}</Link>
+                (pathArray.length === i + 1) ? <p>{path}</p> : <Link to={`/${href}`}>{path}</Link>
             return (
                 <li key={path} className='list-item'>
                     {links}
@@ -25,14 +33,6 @@ function Crumb(pathname) {
             {listItems}
         </ul>
     )
-}
-
-class Breadcrumbs extends React.Component {
-    render() {
-        return (
-            <Crumb pathname={this.props.location.pathname}/>
-        )
-    }
 }
 
 function mapStateToProps(state) {

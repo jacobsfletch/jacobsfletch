@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
 .dock {
   display: none;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -12,7 +13,7 @@
   z-index: 8888; }
   .dock.docked {
     display: flex;
-    padding: calc(1.125rem * 2); }
+    padding: calc(1.125rem * 4); }
     .dock.docked.cyan {
       color: black;
       background-color: cyan; }

@@ -20,10 +20,6 @@ class Dock extends React.Component {
                             <NavLink to="/portfolio">creator of things</NavLink>
                         </li>
                         <li className="menu-item">
-                            no route &nbsp;
-                            <NavLink to="/noroute">here</NavLink>
-                        </li>
-                        <li className="menu-item">
                             i also&nbsp;
                             <NavLink to="/blog">like to write</NavLink>
                         </li>

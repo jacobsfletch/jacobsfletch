@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './project.css';
 
 class ProjectScreen extends React.Component {
+
     componentWillMount() {
         this.onTouchMove = this.onTouchMove.bind(this)
         this.onWheel = this.onWheel.bind(this)
@@ -11,14 +12,17 @@ class ProjectScreen extends React.Component {
             projectTitle: this.props.match.params.projectName
         })
     }
+
     onWheel(e) {
         const scrollY = e.deltaY
-        const scrollTop = this.projectRef.scrollTop
-        this.projectRef.scrollTop = scrollTop + scrollY
+        const scrollTop = this.screenRef.scrollTop
+        this.screenRef.scrollTop = scrollTop + scrollY
     }
+
     onTouchMove(e) {
         e.stopPropagation()
     }
+
     render() {
         var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
         if(!project) { project = {} }
@@ -29,7 +33,7 @@ class ProjectScreen extends React.Component {
         const team = project.team ? project.team : 'loading'
         const images = !project.images ? 'loading' : project.images.map(function(image){return <li className="gallery-item" key={image}><img className="board-image" src={image} alt={image}/></li>})
         return (
-            <section className="screen-project" onWheel={this.onWheel} onTouchMove={this.onTouchMove} ref={(project) => { this.projectRef = project }}>
+            <section className="screen-project" onWheel={this.onWheel} onTouchMove={this.onTouchMove} ref={(project) => { this.screenRef = project }}>
                 <header className="board-header">
                     <img alt="alt text" className="board-featured" src={project.featuredImage || "loading"} />
                     <section className="header-body">
