@@ -12,9 +12,11 @@ class SketchPad extends Component {
         this.onUp = this.onUp.bind(this)
         this.setCanvasSize = this.setCanvasSize.bind(this)
         this.pixelRatio = 1/window.devicePixelRatio
-        this.lineWidth = 12
-        this.lineColor = 'red'
+        this.lineWidth = 10
+        this.lineColor = 'black'
         this.state = {
+            lastCursorX: 0,
+            lastCursorY: 0,
             canvasActive: false,
             doodleSent: false,
             touchStart: 0,
@@ -66,13 +68,16 @@ class SketchPad extends Component {
     getCursorPosition(e) {
         const x = e.touches && e.touches[0] ? e.touches[0].pageX : e.clientX
         const y = e.touches && e.touches[0] ? e.touches[0].pageY : e.clientY
+        const adjustedX = x - ((this.state.viewportSize.width - this.state.canvasSize.width) / 2)
+        const adjustedY = y - ((this.state.viewportSize.height - this.state.canvasSize.height) / 2)
         return {
-            x: x - ((this.state.viewportSize.width - this.state.canvasSize.width) / 2),
-            y: y - ((this.state.viewportSize.height - this.state.canvasSize.height) / 2)
+            x: adjustedX,
+            y: adjustedY
         }
     }
 
     onDown(e) {
+        e.preventDefault()
         this.setState({
             canvasActive: true,
             isMouseDown: true
@@ -82,9 +87,7 @@ class SketchPad extends Component {
         this.ctx.lineCap = 'round'
         this.ctx.lineWidth = this.lineWidth
         this.ctx.strokeStyle = this.lineColor
-        this.ctx.beginPath()
-        this.ctx.moveTo(cursor.x, cursor.y)
-        this.drawLine(e)
+        this.drawLine(e, true)
     }
 
     onMove(e) {
@@ -99,10 +102,18 @@ class SketchPad extends Component {
         })
     }
 
-    drawLine(e) {
+    drawLine(e, isFirst) {
         const cursor = this.getCursorPosition(e)
+        this.ctx.beginPath()
+        const lastCursorX = isFirst ? cursor.x - 1 : this.state.lastCursorX
+        const lastCursorY = isFirst ? cursor.y - 1 : this.state.lastCursorY
+        this.ctx.moveTo(lastCursorX, lastCursorY)
         this.ctx.lineTo(cursor.x, cursor.y)
         this.ctx.stroke()
+        this.setState({
+            lastCursorX: cursor.x,
+            lastCursorY: cursor.y
+        })
     }
 
     render() {
@@ -123,7 +134,7 @@ class SketchPad extends Component {
                     onTouchEnd={this.onUp}
                 />
                 <p className={confirmClasses}>Your doodle has been sent!</p>
-                <p className={titleClasses}>Draw me a picture</p>
+                <p className={titleClasses}>h: {this.state.viewportSize.height} w: {this.state.viewportSize.width}</p>
                 <div className={toolbeltClasses}>
                     <a
                         onClick={(e) => this.sendSketch(e)}>Download

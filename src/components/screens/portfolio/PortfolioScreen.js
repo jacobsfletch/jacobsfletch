@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import ProjectCard from '../../elements/projectcard/ProjectCard';
+import ProjectCard from '../../elements/projectcard/ProjectCard'
 
 import { resizePortfolio } from '../../../actions/AppActions'
 
-import './portfolio.css';
+import './portfolio.css'
 
 class PortfolioScreen extends React.Component {
     constructor(props) {
@@ -30,14 +30,17 @@ class PortfolioScreen extends React.Component {
             scrollWidth: 0
         }
     }
+
     componentWillReceiveProps(nextProps) {
         if (this.props.viewportSize !== nextProps.viewportSize) {
             this.setPortfolioSize()
         }
     }
+
     componentDidMount() {
         this.setPortfolioSize()
     }
+
     setPortfolioSize() {
         this.setState ({
             portfolioHeight: this.portfolioRef.offsetHeight,
@@ -54,18 +57,22 @@ class PortfolioScreen extends React.Component {
         this.resizePortfolio(portfolioSize)
         this.checkIfFullyScrolled()
     }
+
     onScroll() {
         this.checkIfFullyScrolled()
     }
+
     onWheel(e) {
         const scrollY = e.deltaY
         const scrollLeft = this.portfolioRef.scrollLeft
         this.portfolioRef.scrollLeft = scrollLeft + scrollY
         this.checkIfFullyScrolled()
     }
+
     onTouchMove(e) {
         e.stopPropagation()
     }
+
     checkIfFullyScrolled() {
         let scrollTop = this.portfolioRef.scrollTop
         let scrollLeft = this.portfolioRef.scrollLeft
@@ -80,13 +87,16 @@ class PortfolioScreen extends React.Component {
             isFullyScrolled: check
         })
     }
+
     render() {
         let projects = this.props.portfolio.map((project, index) =>
             <ProjectCard key={project._id} data={project} index={index} move={this.state.move} portfolioOffsetLeft={this.state.portfolioOffsetLeft} isTouchDevice={this.isTouchDevice} isFullyScrolled={this.state.isFullyScrolled} />
         )
         const classList = this.isTouchDevice ? 'screen-portfolio touchable' : 'screen-portfolio'
         return (
-            <ul className={classList} onScroll={this.onScroll} onTouchMove={this.onTouchMove} onWheel={this.onWheel} ref={(portfolio) => { this.portfolioRef = portfolio }}>{projects}</ul>
+            <ul className={classList} onScroll={this.onScroll} onTouchMove={this.onTouchMove} onWheel={this.onWheel} ref={(portfolio) => { this.portfolioRef = portfolio }}>
+                {projects}
+            </ul>
         )
     }
 }
