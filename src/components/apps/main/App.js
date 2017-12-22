@@ -34,8 +34,8 @@ class App extends React.Component {
 
     setViewportSize(e) {
         const viewportSize = {
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth,
+            height: document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight
         }
         this.props.setViewportSize(viewportSize)
     }
