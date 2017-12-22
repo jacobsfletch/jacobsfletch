@@ -67,8 +67,7 @@
     margin: 0;
     padding: 0;
     font-weight: 900;
-    border-radius: 0;
-    text-align: center; }
+    border-radius: 0; }
   .screen-contact input,
   .screen-contact select {
     color: inherit;

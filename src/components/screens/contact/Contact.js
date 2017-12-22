@@ -65,7 +65,7 @@ export default class Contact extends React.Component {
         const ruler = element.parentNode.lastChild
         ruler.innerHTML = element.value ? element.value : element.placeholder
         const rulerWidth = ruler.offsetWidth
-        element.style.width = rulerWidth + 2 + 'px'
+        element.style.width = rulerWidth + 8 + 'px'
     }
 
     validateField(fieldName, value) {
@@ -80,7 +80,8 @@ export default class Contact extends React.Component {
             if (addressValid) { return true }
             else { return 'invalid email' }
         } else if (fieldName === 'phoneNumber') {
-            const phoneValid = value.match(/\d/g).length===10
+            const phoneValidator = /^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/
+            const phoneValid = phoneValidator.test(value)
             if (phoneValid) { return true }
             else { return 'invalid phone' }
         }
@@ -90,7 +91,6 @@ export default class Contact extends React.Component {
     updateField(fieldName, e) {
         let stateProp = eval('this.state.' + fieldName)
         const isValid = this.validateField(fieldName, e.target.value)
-        stateProp.value = e.target.value
         stateProp.errorMessage = isValid
         if (isValid !== true) {
             e.target.classList.add('invalid')
@@ -100,6 +100,7 @@ export default class Contact extends React.Component {
             e.target.classList.remove('invalid')
             stateProp.isValid = true
         }
+        stateProp.value = e.target.value
         this.setState({stateProp})
     }
 
@@ -151,6 +152,28 @@ export default class Contact extends React.Component {
     }
 
     render() {
+        let phoneNumber = this.state.phoneNumber.value
+        if (this.state.phoneNumber.value.length > 0) {
+            const value = this.state.phoneNumber.value
+            let phoneNormalize = value.replace(/[^\d]/g, "")
+            const size = phoneNormalize.length
+            const zip = phoneNormalize.slice(0, 3)
+            const prefix = phoneNormalize.slice(3, 6)
+            const suffix = phoneNormalize.slice(6, 10)
+            console.log(size)
+            if (size === 0) {
+                phoneNormalize = phoneNormalize
+            } else if (size <= 3) {
+                phoneNormalize = "(" + zip + ")"
+            } else if (size <= 6) {
+                phoneNormalize = "(" + zip + ")" + prefix + "-"
+            } else {
+                phoneNormalize = "(" + zip + ")" + prefix + "-" + suffix
+            }
+            phoneNumber = phoneNormalize
+        } else {
+            phoneNumber = this.state.phoneNumber.value
+        }
         const disabled = (this.state.firstName.isValid && this.state.lastName.isValid && this.state.emailAddress.isValid && this.state.phoneNumber.isValid) ? false : true
         return (
             <article className="screen-contact" ref={(contact) => { this.screenRef = contact }} onWheel={this.onWheel} onTouchMove={this.onTouchMove}>
@@ -189,7 +212,7 @@ export default class Contact extends React.Component {
                     </span>
                     <p>&nbsp;- or you can reach me at&nbsp;</p>
                     <span className="input input-text">
-                        <input placeholder="555-555-5555" name='email' type='tel' ref={(phone) => { this.phoneRef = phone }} value={this.state.phoneNumber.value} onChange={this.handlePhoneChange} />
+                        <input placeholder="(555)555-5555" name='email' type='tel' maxLength="13" ref={(phone) => { this.phoneRef = phone }} value={phoneNumber} onChange={this.handlePhoneChange} />
                         <p className="error-message">{this.state.phoneNumber.errorMessage}</p>
                         <p className="input-ruler" />
                     </span>
