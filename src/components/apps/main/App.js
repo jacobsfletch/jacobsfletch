@@ -8,51 +8,65 @@ import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
 import { getPortfolio, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
+import offlinePortfolio from '../../offlineData/offlinePortfolio'
 
 import './app.css'
 
 class App extends React.Component {
+
     constructor(props) {
         super(props)
+        this.offline = true
         this.setViewportSize = this.setViewportSize.bind(this)
     }
+
     componentDidMount() {
         window.addEventListener('resize', this.setViewportSize, false)
+        window.addEventListener('orientationchange', this.setViewportSize, false)
         window.addEventListener('wheel', this.preventDefault, false)
         window.addEventListener('touchmove', this.preventDefault, {passive: false})
         this.setViewportSize()
     }
+
     preventDefault(e) {
         e.preventDefault()
     }
+
     setViewportSize(e) {
-        const viewport = e ? e.target : window
         const viewportSize = {
-            width: viewport.innerWidth,
-            height: viewport.innerHeight
+            width: window.innerWidth,
+            height: window.innerHeight
         }
         this.props.setViewportSize(viewportSize)
     }
+
     componentWillMount() {
-        fetch('/api/portfolio')
-            .then(results => {
-                return results.json()
-            }).then(data => {
-                this.props.getPortfolio(data)
-            })
-        fetch('/api/globals')
-            .then(results => {
-                return results.json()
-            }).then(data => {
-                this.props.getGlobals(data)
-            })
-        fetch('/api/resume')
-            .then(results => {
-                return results.json()
-            }).then(data => {
-                this.props.getResume(data)
-            })
+        if (!this.offline) {
+            fetch('/api/portfolio')
+                .then(results => {
+                    return results.json()
+                }).then(data => {
+                    this.props.getPortfolio(data)
+                })
+            fetch('/api/globals')
+                .then(results => {
+                    return results.json()
+                }).then(data => {
+                    this.props.getGlobals(data)
+                })
+            fetch('/api/resume')
+                .then(results => {
+                    return results.json()
+                }).then(data => {
+                    this.props.getResume(data)
+                })
+        } else {
+            this.props.getPortfolio(offlinePortfolio)
+            // this.props.getGlobals(data)
+            // this.props.getResume(data)
+        }
     }
+
     render() {
         return (
             <section className="app">
