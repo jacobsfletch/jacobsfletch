@@ -82,7 +82,6 @@ class SketchPad extends Component {
             canvasActive: true,
             isMouseDown: true
         })
-        const cursor = this.getCursorPosition(e)
         this.ctx.lineJoin = 'round'
         this.ctx.lineCap = 'round'
         this.ctx.lineWidth = this.lineWidth
