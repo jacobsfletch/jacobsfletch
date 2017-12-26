@@ -9,20 +9,23 @@
     border: 0;
     width: size(m);
     height: size(m);
-    margin-right: size(m);
+    margin-left: size(m);
     cursor: pointer;
     position: relative;
     background-color: transparent;
     padding: 0;
+
     @include breakpoint(xs) {
         width: size(s);
         height: size(s);
-        margin-right: size(s)
+        margin-right: size(s);
     };
+
     &:hover::after {
         transform: translateY(-#{size(xxs)});
     }
-    &::after{
+
+    &::after {
         content: '';
         position: absolute;
         width: 100%;
