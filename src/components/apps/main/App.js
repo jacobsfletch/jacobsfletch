@@ -16,7 +16,7 @@ class App extends React.Component {
 
     constructor(props) {
         super(props)
-        this.offline = true
+        this.offline = false
         this.setViewportSize = this.setViewportSize.bind(this)
     }
 
@@ -69,12 +69,12 @@ class App extends React.Component {
 
     render() {
         return (
-            <section className="app">
+            <div className="app">
                 <Dock />
                 <Header />
                 <ScreenController className="screen" />
                 <Footer />
-            </section>
+            </div>
         )
     }
 }

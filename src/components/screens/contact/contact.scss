@@ -6,6 +6,10 @@
     flex-direction: column;
     width: 100%;
     overflow-y: scroll;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     .form-contact {
         @include type(h3);
@@ -14,10 +18,12 @@
         padding: size(l) 0;
         @include breakpoint($size: s, $inherit: down) {
             width: 100%;
-        };
+        }
+
         * {
             display: inline;
         }
+
         button {
             display: block;
             margin-top: size(xl);
@@ -60,6 +66,7 @@
             border-top: line(l) solid black;
         }
     }
+
     .input-ruler {
         position: absolute;
         visibility: hidden;
@@ -67,6 +74,7 @@
         top: 0;
         margin: 0;
     }
+
     input, select, .input-ruler {
         @include type(h3);
         margin: 0;
@@ -74,6 +82,7 @@
         font-weight: 900;
         border-radius: 0;
     }
+
     input,
     select {
         color: inherit;
@@ -92,6 +101,7 @@
             }
         }
     }
+
     .input-select {
         padding-right: size(s);
         &:after {
@@ -112,9 +122,11 @@
             position: relative;
         }
     }
+
     .form-footer {
         display: block;
     }
+
     .form-button {
         @include type(h4)
         text-transform: uppercase;

@@ -75,12 +75,12 @@ export default class Contact extends React.Component {
             if (isAlphabetical) { return true }
             else { return 'alphabet only' }
         } else if (fieldName === 'emailAddress') {
-            const emailValidator = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            const emailValidator = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             const addressValid = emailValidator.test(value)
             if (addressValid) { return true }
             else { return 'invalid email' }
         } else if (fieldName === 'phoneNumber') {
-            const phoneValidator = /^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/
+            const phoneValidator = /^[(]{0,1}[0-9]{3}[).\- ]{0,1}[0-9]{3}[.\- ]{0,1}[0-9]{4}$/
             const phoneValid = phoneValidator.test(value)
             if (phoneValid) { return true }
             else { return 'invalid phone' }
@@ -132,23 +132,20 @@ export default class Contact extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         //const formData = JSON.stringify(this.state)
-        let formData = []
+        let formData = {}
         for (var i in this.state) {
-            const key = this.state[i]
             const value = this.state[i].value
-            console.log(this.state[i])
-            //formData = formData.push({key: value})
+            formData[i] = value
         }
-        //console.log(JSON.stringify(formData))
-        //fetch('/api/email/contact', {
-        //        method: 'POST',
-        //        body: formData,
-        //        headers: {'Content-Type':'application/json'}
-        //    })
-        //    .then(response => {
-        //        this.props.history.push('/contact/confirmation')
-        //    })
-        //return false
+        fetch('/api/email/contact', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {'Content-Type':'application/json'}
+            })
+            .then(response => {
+                this.props.history.push('/contact/confirmation')
+            })
+        return false
     }
 
     render() {
@@ -160,20 +157,19 @@ export default class Contact extends React.Component {
             const zip = phoneNormalize.slice(0, 3)
             const prefix = phoneNormalize.slice(3, 6)
             const suffix = phoneNormalize.slice(6, 10)
-            console.log(size)
-            if (size === 0) {
-                phoneNormalize = phoneNormalize
-            } else if (size <= 3) {
+            if (size > 0 && size <= 3) {
+                console.log(size)
                 phoneNormalize = "(" + zip + ")"
             } else if (size <= 6) {
                 phoneNormalize = "(" + zip + ")" + prefix + "-"
-            } else {
+            } else if (size <= 10){
                 phoneNormalize = "(" + zip + ")" + prefix + "-" + suffix
             }
             phoneNumber = phoneNormalize
         } else {
             phoneNumber = this.state.phoneNumber.value
         }
+        //const disabled = false
         const disabled = (this.state.firstName.isValid && this.state.lastName.isValid && this.state.emailAddress.isValid && this.state.phoneNumber.isValid) ? false : true
         return (
             <article className="screen-contact" ref={(contact) => { this.screenRef = contact }} onWheel={this.onWheel} onTouchMove={this.onTouchMove}>

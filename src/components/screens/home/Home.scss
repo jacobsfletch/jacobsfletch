@@ -1,0 +1,23 @@
+@import "../../../sassafras/index.scss";
+
+.screen-home {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .screen-body {
+        @include type(h3);
+        width: 75%;
+        margin: auto;
+        padding: size(l) 0;
+        @include breakpoint($size: s, $inherit: down) {
+            width: 100%;
+        }
+    }
+}

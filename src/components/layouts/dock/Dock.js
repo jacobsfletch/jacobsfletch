@@ -12,28 +12,19 @@ class Dock extends React.Component {
                 <nav className="dock-menu">
                     <ul>
                         <li className="menu-item">
-                            Hello, my name is&nbsp;
-                            <NavLink to="/">jacob fletcher</NavLink>
+                            <NavLink to="/portfolio">look at stuff</NavLink>
                         </li>
                         <li className="menu-item">
-                            i am a&nbsp;
-                            <NavLink to="/portfolio">creator of things</NavLink>
+                            <NavLink to="/">read stuff</NavLink>
                         </li>
                         <li className="menu-item">
-                            i also&nbsp;
-                            <NavLink to="/blog">like to write</NavLink>
+                            <NavLink to="/">buy stuff</NavLink>
                         </li>
                         <li className="menu-item">
-                            i am currently&nbsp;
-                            <NavLink to="/contact">available for work</NavLink>
+                            <NavLink to="/doodle">draw things</NavLink>
                         </li>
                         <li className="menu-item">
-                            feel free to&nbsp;
-                            <NavLink to="/contact">drop a line</NavLink>
-                        </li>
-                        <li className="menu-item">
-                            oh, and i&nbsp;
-                            <NavLink to="/contact">sell stuff too</NavLink>
+                            <NavLink to="/contact">say things</NavLink>
                         </li>
                     </ul>
                 </nav>

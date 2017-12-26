@@ -2,7 +2,6 @@ import React from 'react';
 
 import Swatch from '../../elements/swatch/Swatch'
 import Progress from '../../modules/progress/Progress'
-import { Link } from 'react-router-dom';
 
 import './header.css';
 

@@ -5,6 +5,8 @@
   flex-direction: column;
   width: 100%;
   overflow-y: scroll; }
+  .screen-contact::-webkit-scrollbar {
+    display: none; }
   .screen-contact .form-contact {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.125rem;

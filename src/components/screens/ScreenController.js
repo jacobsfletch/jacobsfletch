@@ -3,11 +3,12 @@ import { Route, Switch} from 'react-router-dom'
 import { Redirect, withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
-import HomeScreen from './home/HomeScreen'
-import PortfolioScreen from './portfolio/PortfolioScreen'
-import ProjectScreen from './project/ProjectScreen'
+import HomeScreen from './home/Home'
+import DoodleScreen from './doodle/Doodle'
+import PortfolioScreen from './portfolio/Portfolio'
+import ProjectScreen from './project/Project'
 import Contact from './contact/Contact'
-import ContactConfirmation from './contact/ContactConfirmation'
+import ContactConfirmation from './contact/Contact'
 import PageNotFound from './404/PageNotFound'
 
 import { routeChanged } from '../../actions/ScreenActions'
@@ -22,9 +23,10 @@ class ScreenController extends React.Component {
     }
     render() {
         return (
-            <section className="app-body">
+            <div className="app-body">
                 <Switch>
                     <Route exact path='/' component={HomeScreen} />
+                    <Route exact path='/doodle' component={DoodleScreen} />
                     <Route exact path='/portfolio' component={PortfolioScreen}/>
                     <Route exact path='/portfolio/:projectName' component={ProjectScreen} />
                     <Route exact path='/contact' component={Contact} />
@@ -32,7 +34,7 @@ class ScreenController extends React.Component {
                     <Route path='/404' component={PageNotFound} />
                     <Redirect to='/404' />
                 </Switch>
-            </section>
+            </div>
         )
     }
 }
