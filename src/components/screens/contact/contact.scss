@@ -6,7 +6,7 @@
     flex-direction: column;
     width: 100%;
     overflow-y: scroll;
-    
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -16,6 +16,7 @@
         width: 75%;
         margin: auto;
         padding: size(l) 0;
+
         @include breakpoint($size: s, $inherit: down) {
             width: 100%;
         }
@@ -53,6 +54,7 @@
         color: white;
         padding: size(xxs);
         white-space: nowrap;
+
         &:after {
             position: absolute;
             content: '';
