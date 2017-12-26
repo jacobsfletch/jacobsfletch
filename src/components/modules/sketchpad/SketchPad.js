@@ -62,6 +62,7 @@ class SketchPad extends Component {
     }
 
     componentDidMount() {
+        this.setCanvasSize()
         this.ctx = this.canvasRef.getContext('2d')
     }
 
@@ -133,7 +134,7 @@ class SketchPad extends Component {
                     onTouchEnd={this.onUp}
                 />
                 <p className={confirmClasses}>Your doodle has been sent!</p>
-                <p className={titleClasses}>h: {this.state.viewportSize.height} w: {this.state.viewportSize.width}</p>
+                <p className={titleClasses}>Draw me something</p>
                 <div className={toolbeltClasses}>
                     <a
                         onClick={(e) => this.sendSketch(e)}>Download

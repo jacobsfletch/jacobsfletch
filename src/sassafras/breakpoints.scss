@@ -95,4 +95,14 @@
             }
         }
     }
+
+    // short devices
+        // no inheritances
+    @if $size == short {
+        @if $orientation == null {
+            @media only screen and (max-height: #{break(xs)}) {
+                @content;
+            }
+        }
+    }
 }

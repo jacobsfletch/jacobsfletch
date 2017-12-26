@@ -1,2 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
 .app-footer {
   position: relative; }
+  .app-footer .footer-title {
+    flex-grow: 1;
+    height: 100%;
+    margin-left: 1.125rem;
+    display: flex;
+    align-items: center; }
+  .app-footer .footer-subtitle {
+    margin-right: 1.125rem; }

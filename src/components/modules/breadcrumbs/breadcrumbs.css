@@ -15,8 +15,13 @@
       display: inline-flex; }
       .footer-breadcrumbs ul .list-item a:hover {
         font-weight: 200; }
+      @media only screen and (max-height: 320px) {
+        .footer-breadcrumbs ul .list-item {
+          display: none; }
+          .footer-breadcrumbs ul .list-item:first-child {
+            display: inline-flex; } }
       .footer-breadcrumbs ul .list-item::before {
         content: ' / ';
         white-space: pre; }
-    .footer-breadcrumbs ul .list-item:first-child::before {
-      content: ''; }
+      .footer-breadcrumbs ul .list-item:first-child::before {
+        content: ''; }

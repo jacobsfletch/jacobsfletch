@@ -10,20 +10,32 @@
     height: 100%;
     align-items: center;
     padding-left: size(m);
+
     ul {
         display: flex;
+
         .list-item {
             display: inline-flex;
+
             a:hover {
                 font-weight: 200;
             }
+
+            @include breakpoint($size: short) {
+                display: none;
+                &:first-child {
+                    display: inline-flex;
+                }
+            }
+
             &::before {
                 content: ' / ';
                 white-space: pre;
             }
-        }
-        .list-item:first-child::before {
-            content: ''
+
+            &:first-child::before {
+                content: ''
+            }
         }
     }
 }

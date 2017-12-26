@@ -18,17 +18,20 @@
         font-weight: 200;
     }
 
-    .header-title,
-    .footer-title {
+    .header-menu {
         flex-grow: 1;
-        margin-left: size(m);
         height: 100%;
-        display: flex;
-        align-items: center;
     }
 
-    .footer-subtitle {
-        margin-right: size(m);
+    .header-menu {
+        margin: 0 size(m);
+        display: flex;
+        justify-content: flex-end;
+
+        p {
+            cursor: pointer;
+            text-align: right;
+        }
     }
 }
 
@@ -60,6 +63,7 @@
     border-width: line(m);
     width: size(m);
     height: size(m);
+
     @include breakpoint(xs) {
         width: size(s);
         height: size(s);
@@ -71,6 +75,7 @@
     position: absolute;
     bottom: - size(m);
     right: size(m);
+
     @include breakpoint(xs) {
         right: size(s);
         bottom: - size(s);

@@ -1,3 +1,17 @@
+@import "../../../sassafras/index.scss";
+
 .app-footer {
     position: relative;
+
+    .footer-title {
+        flex-grow: 1;
+        height: 100%;
+        margin-left: size(m);
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-subtitle {
+        margin-right: size(m);
+    }
 }
