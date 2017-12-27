@@ -96,7 +96,9 @@ class ProjectCard extends React.Component {
         return (
             <li className="project-card" ref={(card) => { this.cardRef = card }}>
                 <p className="card-index">{index}</p>
-                <div className="card-image" style={image} ref={(image) => { this.cardImgRef = image }}/>
+                <div className="card-image" style={image} ref={(image) => { this.cardImgRef = image }} >
+                    <Link to={slug} />
+                </div>
                 <div className="card-meta">
                     <h5 className="card-client">{client}</h5>
                     <Link to={slug}>

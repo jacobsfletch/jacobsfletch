@@ -2,8 +2,8 @@
   flex-grow: 1;
   overflow: hidden;
   overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  position: relative; }
+  position: relative;
+  -webkit-overflow-scrolling: touch; }
   .screen-portfolio.touchable {
     overflow: hidden;
     overflow-y: scroll; }

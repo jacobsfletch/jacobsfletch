@@ -77,7 +77,7 @@ class PortfolioScreen extends React.Component {
         let scrollTop = this.portfolioRef.scrollTop
         let scrollLeft = this.portfolioRef.scrollLeft
         let check = false
-        if(this.isTouchDevice) {
+        if (this.isTouchDevice) {
             check = scrollTop <= 0 || this.state.scrollHeight - scrollTop <= -this.state.portfolioHeight
         } else {
             check = scrollLeft <= 0 || this.state.scrollWidth - scrollLeft <= -this.state.portfolioWidth + 1

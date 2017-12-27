@@ -2,15 +2,12 @@
 
 .app-header,
 .app-footer {
-    @include type(p);
+    @include type(label);
     min-height: size(m);
     display: flex;
     align-items: center;
     z-index: layer(tippy-top);
     align-items: center;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     white-space: nowrap;
     position: relative;
 

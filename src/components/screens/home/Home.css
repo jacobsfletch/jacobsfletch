@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
 .screen-home {
   display: flex;
   align-items: center;
@@ -8,12 +8,29 @@
   .screen-home::-webkit-scrollbar {
     display: none; }
   .screen-home .screen-body {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.875rem;
     width: 75%;
     margin: auto;
     padding: 1.5rem 0; }
     @media only screen and (max-width: 463px) {
       .screen-home .screen-body {
         width: 100%; } }
+    .screen-home .screen-body .screen-title {
+      font-family: "Source Code Pro", sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.875rem;
+      font-weight: normal; }
+    .screen-home .screen-body a {
+      font-family: "Source Code Pro", sans-serif;
+      font-size: 0.75rem;
+      line-height: 0.9375rem;
+      margin: 0;
+      text-transform: uppercase;
+      font-weight: 400;
+      background-color: black;
+      outline: black 1px solid;
+      color: white;
+      letter-spacing: 2px;
+      padding: 4px 0.75rem; }
+      .screen-home .screen-body a:hover {
+        background-color: transparent;
+        color: black; }

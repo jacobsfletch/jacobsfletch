@@ -23,15 +23,18 @@ export default class HomeScreen extends React.Component {
         return (
             <section className="screen-home" ref={(home) => { this.screenRef = home }} onWheel={this.onWheel} onTouchMove={this.onTouchMove}>
                 <article className="screen-body">
-                    <p>
+                    <h1 className="screen-title">
                         hello, my name is jacob fletcher.
+                        <br /><br />
                         i am a designer and web developer.
                         this is my website.
-                        it is a place to <Link to={"/Portfolio"}>show</Link> my work,
-                        a place to <Link to={"/"}>share</Link> my thoughts,
-                        and somewhere to <Link to={"/"}>sell</Link> my stuff.
-
-                    </p>
+                        it is a place to <Link to={"/Portfolio"}>see</Link> my work,
+                        a place to <Link to={"/"}>read</Link> my thoughts,
+                        and somewhere to <Link to={"/"}>buy</Link> my stuff.
+                        <br /><br />
+                        Feel free to <Link to={"/doodle"}>draw</Link> me a picture, by all means.
+                        Or, <Link to={"/contact"}>write</Link> me a letter if you feel so inclined.
+                    </h1>
                 </article>
             </section>
         )

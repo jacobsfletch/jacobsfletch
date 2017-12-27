@@ -15,13 +15,19 @@
 
     &.docked {
         display: flex;
-        padding: calc(#{size(m)} * 4);
+        padding: calc(#{size(m)} * 3);
+
         &.cyan {
             color: black;
             background-color: cyan;
+
             .menu-item a {
                 color: white;
+                background-color: black;
+                outline-color: black;
+                color: black;
             }
+
             & ~ * {
                 color: black;
                 .swatch-cyan::after {
@@ -32,12 +38,16 @@
         &.magenta {
             background-color: magenta;
             color: white;
+
             .menu-item a {
                 color: black;
-                &::after {
-                    background-color: white;
+                background-color: white;
+                outline-color: white;
+                &:hover {
+                    color: white;
                 }
             }
+
             & ~ * {
                 color: white;
                 .swatch-magenta::after {
@@ -48,9 +58,16 @@
         &.yellow {
             background-color: yellow;
             color: black;
+
             .menu-item a {
                 color: white;
+                background-color: black;
+                outline-color: black;
+                &:hover {
+                    color: black;
+                }
             }
+
             & ~ * {
                 color: black;
                 .swatch-yellow::after {
@@ -58,13 +75,16 @@
                 }
             }
         }
+
         &.black {
             background-color: black;
             color: white;
             .dock-menu a {
                 color: black;
-                &::after {
-                    background-color: white;
+                background-color: white;
+                outline-color: white;
+                &:hover {
+                    color: white;
                 }
             }
             & ~ * {
@@ -79,40 +99,48 @@
     .dock-menu {
         color: inherit;
         text-transform: lowercase;
+
         ul {
             list-style: none;
-            .menu-item {
-                margin-bottom: size(m);
-                color: inherit;
-                a {
-                    @include type(p);
-                    color: inherit;
-                    position: relative;
-                    letter-spacing: line(xxs);
-                    margin-right: size(xxs);
-                    padding: line(m) size(xs);
-                    text-transform: uppercase;
-                    cursor: pointer;
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        display: block;
-                        background-color: black;
-                        width: 100%;
-                        height: 100%;
-                        left: 0;
-                        top: 0;
-                        z-index: -1;
-                    }
-                    &:hover::after {
-                        width: calc(100% + #{size(m)});
-                    }
+            @include breakpoint($size: short) {
+                display: inline-flex;
+                flex-wrap: wrap;
+            }
+        }
+
+        .menu-item {
+            margin-bottom: size(m);
+            color: inherit;
+            display: flex;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            @include breakpoint($size: short) {
+                display: inline-flex;
+                margin: size(xxs) 0;
+                margin-right: size(m);
+                &:last-child {
+                    margin-bottom: size(xxs);
+                    margin-right: 0;
                 }
             }
 
+            a {
+                @include type(p);
+                color: inherit;
+                background-color: inherit;
+                letter-spacing: line(xxs);
+                text-transform: uppercase;
+                padding: line(m) size(xs);
+                cursor: pointer;
+                outline: solid line(xxs);
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
         }
     }
 }

@@ -77,7 +77,7 @@ $breakpoints: (
 //////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700');
 
 // Fonts
 $fonts: (
@@ -97,6 +97,15 @@ $typography: (
         font-family: font(body),
         font-size: size(xxs),
         line-height: size(xxs)
+    ),
+    label: (
+        font-family: font(body),
+        font-size: size(xs),
+        line-height: size(s),
+        margin: 0,
+        text-transform: uppercase,
+        letter-spacing: line(xxs),
+        font-weight: 900
     ),
     h1: (
         font-family: font(heading),

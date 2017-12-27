@@ -12,12 +12,32 @@
     }
 
     .screen-body {
-        @include type(h3);
         width: 75%;
         margin: auto;
         padding: size(l) 0;
         @include breakpoint($size: s, $inherit: down) {
             width: 100%;
+        }
+
+        .screen-title {
+            @include type(h3);
+            font-weight: normal;
+        }
+
+        a {
+            @include type(p);
+            text-transform: uppercase;
+            font-weight: 400;
+            background-color: black;
+            outline: black line(xxs) solid;
+            color: white;
+            letter-spacing: line(xs);
+            padding: line(m) size(xs);
+
+            &:hover {
+                background-color: transparent;
+                color: black;
+            }
         }
     }
 }

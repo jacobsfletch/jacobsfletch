@@ -1,18 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
 .app-header,
 .app-footer {
   font-family: "Source Code Pro", sans-serif;
   font-size: 0.75rem;
   line-height: 0.9375rem;
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 900;
   min-height: 1.125rem;
   display: flex;
   align-items: center;
   z-index: 9999;
   align-items: center;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   white-space: nowrap;
   position: relative; }
   .app-header .header-title a:hover,
