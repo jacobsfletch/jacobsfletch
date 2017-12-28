@@ -15,7 +15,7 @@ class Dock extends React.Component {
                             <NavLink to="/portfolio">look at stuff</NavLink>
                         </li>
                         <li className="menu-item">
-                            <NavLink to="/">read stuff</NavLink>
+                            <NavLink to="/blog">read stuff</NavLink>
                         </li>
                         <li className="menu-item">
                             <NavLink to="/">buy stuff</NavLink>

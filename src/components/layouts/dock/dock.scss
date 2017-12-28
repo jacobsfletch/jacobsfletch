@@ -25,7 +25,9 @@
                 color: white;
                 background-color: black;
                 outline-color: black;
-                color: black;
+                &:hover {
+                    color: black;
+                }
             }
 
             & ~ * {

@@ -20,8 +20,9 @@
       .dock.docked.cyan .menu-item a {
         color: white;
         background-color: black;
-        outline-color: black;
-        color: black; }
+        outline-color: black; }
+        .dock.docked.cyan .menu-item a:hover {
+          color: black; }
       .dock.docked.cyan ~ * {
         color: black; }
         .dock.docked.cyan ~ * .swatch-cyan::after {
