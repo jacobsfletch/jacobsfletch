@@ -92,20 +92,9 @@ exports.create = function(req, res) {
 	data.password_confirm = userdata.password_confirm;
 	data.canAccessKeystone = false;
 	data.name = userdata.name;
-	data.height = userdata.height;
-	data.dob = userdata.dob;
-	data.experience = Number(userdata.experience);
-	data.gender = userdata.gender;
-	data.phone = userdata.phone;
-	data.profile_image_upload = userdata.profile_image_upload ? userdata.profile_image_upload : null;
 
     data['name.first'] = userdata['name.first'];
     data['name.last'] = userdata['name.last'];
-    data['address.street1'] = userdata['address.street1'];
-	data['address.street2'] = userdata['address.street2'];
-	data['address.city'] = userdata['address.city'];
-	data['address.state'] = userdata['address.state'];
-	data['address.postcode'] = userdata['address.postcode'];
 	User.model.findOne({ email: data.email }).exec(function(err, result) {
 		if (result) {
 			res.apiError('A user with this email already exists.');

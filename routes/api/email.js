@@ -70,7 +70,7 @@ exports.subscribe = function(req, res) {
     }).exec(function (err, result) {
         if (err) { console.log(err); }
         if (result) { contact(result.email); }
-    });
+    })
 
     function contact(email) {
         new Email('public/emails/subscribe.pug', {
@@ -87,7 +87,7 @@ exports.subscribe = function(req, res) {
         }, function (err, result) {
             if (err) { console.error('Mailgun failed with error:\n', err); }
             else { console.log('Mailgun success with result:\n', result); confirm(); }
-        });
+        })
     }
 
     function confirm() {
@@ -95,8 +95,6 @@ exports.subscribe = function(req, res) {
             engine: 'pug',
             transport: 'mailgun',
         }).send({
-            first: data.firstName,
-            last: data.lastName,
             email: data.emailAddress
         }, {
             apiKey: process.env.MAILGUN_API_KEY,
@@ -107,7 +105,7 @@ exports.subscribe = function(req, res) {
         }, function (err, result) {
             if (err) { console.error('Mailgun failed with error:\n', err); }
             else { console.log('Mailgun success with result:\n', result); success(); }
-        });
+        })
     }
 
     function success() {
@@ -125,7 +123,7 @@ exports.doodle = function(req, res) {
     }).exec(function (err, result) {
         if (err) { console.log(err); }
         if (result) { send(result.email); }
-    });
+    })
 
     function send(email) {
         new Email('public/emails/doodle.pug', {
@@ -146,6 +144,6 @@ exports.doodle = function(req, res) {
                 console.log('Mailgun success with result:\n', result);
                 res.apiResponse('success')
             }
-        });
+        })
     }
 }
