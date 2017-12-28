@@ -94,7 +94,11 @@ class PortfolioScreen extends React.Component {
         )
         const classList = this.isTouchDevice ? 'screen-portfolio touchable' : 'screen-portfolio'
         return (
-            <ul className={classList} onScroll={this.onScroll} onTouchMove={this.onTouchMove} onWheel={this.onWheel} ref={(portfolio) => { this.portfolioRef = portfolio }}>
+            <ul className={classList}
+                onScroll={this.onScroll}
+                onTouchMove={this.onTouchMove}
+                onWheel={this.onWheel}
+                ref={(portfolio) => { this.portfolioRef = portfolio }} >
                 {projects}
             </ul>
         )

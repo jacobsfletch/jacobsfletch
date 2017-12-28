@@ -50,7 +50,7 @@ class ProjectCard extends React.Component {
     onMove() {
         const isInViewport = this.isInViewport(this.cardRef)
         const ratioInViewport = isInViewport.ratioInViewport
-        const weightedRatio = .25
+        const weightedRatio = .75
         if (isInViewport.status && !this.props.isFullyScrolled) {
             this.cardRef.classList.add('active')
             if (!this.props.isTouchDevice) {

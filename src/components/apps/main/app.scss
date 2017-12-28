@@ -1,8 +1,12 @@
 @import "../../../sassafras/index.scss";
 
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+}
 html, body {
     height: 100%;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -13,10 +17,12 @@ body {
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
+
 a {
     text-decoration: none;
     color: inherit;
 }
+
 ul {
     margin: 0;
     padding: 0;
@@ -37,9 +43,11 @@ button {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+
     @include breakpoint(xs) {
         padding: size(s);
     };
+
     .app-body {
         flex-grow: 1;
         overflow: hidden;

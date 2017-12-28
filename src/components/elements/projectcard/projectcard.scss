@@ -52,9 +52,7 @@
     }
 
     .card-client {
-        @include type(p);
-        text-transform: uppercase;
-        letter-spacing: line(xs);
+        @include type(label);
     }
 
     .card-title {

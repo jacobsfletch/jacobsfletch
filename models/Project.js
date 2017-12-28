@@ -50,6 +50,7 @@ Project.add({
         type: Types.Relationship,
         label: 'Client',
         ref: 'Client',
+        initial: true
     },
     tags: {
         type: Types.Relationship,

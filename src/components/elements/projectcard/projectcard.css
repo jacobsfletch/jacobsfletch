@@ -44,7 +44,8 @@
     line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 2px; }
+    letter-spacing: 3px;
+    font-weight: 900; }
   .project-card .card-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.5rem;

@@ -29,7 +29,7 @@ export default class HomeScreen extends React.Component {
                         i am a designer and web developer.
                         this is my website.
                         it is a place to <Link to={"/Portfolio"}>see</Link> my work,
-                        a place to <Link to={"/"}>read</Link> my thoughts,
+                        a place to <Link to={"/blog"}>read</Link> my thoughts,
                         and somewhere to <Link to={"/"}>buy</Link> my stuff.
                         <br /><br />
                         Feel free to <Link to={"/doodle"}>draw</Link> me a picture, by all means.

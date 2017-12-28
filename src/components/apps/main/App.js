@@ -7,7 +7,7 @@ import Header from '../../layouts/header/header'
 import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
-import { getPortfolio, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
+import { getPortfolio, getBlog, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
 import offlinePortfolio from '../../offlineData/offlinePortfolio'
 
 import './app.css'
@@ -48,6 +48,12 @@ class App extends React.Component {
                 }).then(data => {
                     this.props.getPortfolio(data)
                 })
+            fetch('/api/blog')
+                .then(results => {
+                    return results.json()
+                }).then(data => {
+                    this.props.getBlog(data)
+                })
             fetch('/api/globals')
                 .then(results => {
                     return results.json()
@@ -83,6 +89,9 @@ function mapDispatchToProps(dispatch) {
     return {
         getPortfolio: (data) => {
             dispatch(getPortfolio(data))
+        },
+        getBlog: (data) => {
+            dispatch(getBlog(data))
         },
         getGlobals: (data) => {
             dispatch(getGlobals(data))
