@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import './field.css';
+import './field.css';
 
 export default class Field extends React.Component {
     constructor() {

@@ -1,0 +1,130 @@
+@import "../../../sassafras/index.scss";
+
+.input {
+    position: relative;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.error-message {
+    @include type(fine);
+    margin: 0;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    background-color: black;
+    color: white;
+    padding: size(xxs);
+    white-space: nowrap;
+
+    &:after {
+        position: absolute;
+        content: '';
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        transform: translate(-50%, 100%);
+        border-left: line(m) solid transparent;
+        border-right: line(m) solid transparent;
+        border-top: line(l) solid black;
+    }
+}
+
+.input-ruler {
+    position: absolute;
+    visibility: hidden;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+input, select, .input-ruler {
+    @include type(h3);
+    margin: 0;
+    padding: 0;
+    font-weight: 900;
+    border-radius: 0;
+}
+
+input,
+select {
+    color: inherit;
+    border: 0;
+    outline: none;
+    border-bottom: dashed 2px currentColor;
+    background-color: transparent;
+    &::placeholder {
+        color: grey;
+    }
+    &.invalid {
+        color: red;
+        border-color: red;
+        & ~ .error-message {
+            display: block;
+        }
+    }
+}
+
+.input-select {
+    padding-right: size(s);
+    &:after {
+        position: absolute;
+        content: '';
+        right: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-left: line(m) solid transparent;
+        border-right: line(m) solid transparent;
+        border-top: line(l) solid black;
+    }
+    select {
+        background-color: transparent;
+        border-radius: 0;
+        appearance: none;
+        position: relative;
+    }
+}
+
+.form-footer {
+    display: block;
+}
+
+.form-button {
+    @include type(h4);
+    display: block;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: solid currentColor 1px;
+    color: inherit;
+    text-transform: uppercase;
+    padding: size(xxs) size(xs);
+    margin: 0;
+    letter-spacing: line(xxs);
+    cursor: pointer;
+
+    &.sending {}
+
+    &.sent {
+        color: green;
+        border-color: green;
+        &::before {
+            content: '';
+            margin-right: size(xs);
+            display: inline-block;
+            width: line(m);
+            height: size(xxs);
+            border: solid green;
+            border-width: 0 line(s) line(s) 0;
+            transform: rotate(45deg);
+        }
+    }
+
+    &.simple {
+        border: none;
+        padding: 0;
+    }
+}

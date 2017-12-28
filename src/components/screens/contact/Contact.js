@@ -11,6 +11,8 @@ export default class Contact extends React.Component {
         this.handleChange =  this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.state = {
+            isDisabled: false,
+            sent: false,
             firstName: {
                 value: '',
                 isValid: false,
@@ -55,6 +57,7 @@ export default class Contact extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
+        this.setState({isDisabled: true})
         let formData = {}
         for (var i in this.state) {
             const value = this.state[i].value
@@ -66,16 +69,22 @@ export default class Contact extends React.Component {
                 headers: {'Content-Type':'application/json'}
             })
             .then(response => {
-                this.props.history.push('/contact/confirmation')
+                this.setState({
+                    isDisabled: false,
+                    sent: true
+                })
             })
         return false
     }
 
     render() {
-        //const disabled = false
-        const disabled = (this.state.firstName.isValid && this.state.lastName.isValid && this.state.emailAddress.isValid && this.state.phoneNumber.isValid) ? false : true
+        const formClasses = this.state.isDisabled ? 'screen-contact disabled' : 'screen-contact'
+        const buttonClasses = this.state.isDisabled ? 'form-button sending' : this.state.sent ? 'form-button sent' : 'form-button'
+        const buttonText = this.state.isDisabled ? 'sending...' : this.state.sent ? 'sent successfully' : 'send off'
+        const signatureFirst = this.state.firstName.value ? this.state.firstName.value : 'your'
+        const signatureLast = this.state.lastName.value ? this.state.lastName.value : 'name'
         return (
-            <article className="screen-contact" ref={(contact) => { this.screenRef = contact }} onWheel={this.onWheel} onTouchMove={this.onTouchMove}>
+            <article className={formClasses} ref={(contact) => { this.screenRef = contact }} onWheel={this.onWheel} onTouchMove={this.onTouchMove}>
                 <form id='contact' className='form-contact' onSubmit={this.handleSubmit} noValidate >
                     <h2 className="screen-title">dear jacobsfletch,</h2>
                     <br/><br/>
@@ -92,10 +101,10 @@ export default class Contact extends React.Component {
                     <br/><br/>
                     <footer className="form-footer">
                         <p>regards,</p>
-                        <br/>
-                        <p>{this.state.firstName.value} {this.state.lastName.value}</p>
+                        <p>{signatureFirst} {signatureLast}</p>
                     </footer>
-                    <button type="submit" className='form-button' disabled={disabled} >Send Off</button>
+                    <br/>
+                    <button type="submit" className={buttonClasses} disabled={this.state.isDisabled}>{buttonText}</button>
                 </form>
             </article>
         )
