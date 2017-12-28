@@ -9,23 +9,19 @@
         display: none;
     }
 
-    .board-blockquote {
+    .screen-blockquote {
         margin: 0;
     }
 
-    .board-quoteAuthor {
+    .screen-quoteAuthor {
         @include type(p);
         text-transform: uppercase;
-        font-weight: 900;
         font-style: normal;
         display: block;
-
-        &::before {
-            content: '-'
-        }
+        margin-top: size(xxs);
     }
 
-    .board-quote {
+    .screen-quote {
         @include type(p);
         text-transform: uppercase;
         background-color: yellow;
@@ -40,7 +36,7 @@
         }
     }
 
-    .board-header {
+    .screen-header {
         display: flex;
         flex-direction: column;
         background-color: white;
@@ -48,7 +44,7 @@
         align-items: center;
     }
 
-    .board-featured {
+    .screen-featured {
         width: 50%;
         height: 100%;
         padding-bottom: size(xxl);
@@ -59,38 +55,41 @@
         margin-top: size(xxl);
     }
 
-    .board-title,
-    .board-client,
-    .board-categories {
+    .screen-title,
+    .screen-client,
+    .screen-categories {
         font-weight: 900;
     }
 
-    .board-title {
+    .screen-title {
         @include type(h1);
         text-transform: lowercase;
         margin-bottom: size(xl);
         margin-top: size(xl);
     }
 
-    .board-client,
-    .board-team {
+    .screen-client,
+    .screen-team {
         @include type(label);
         &::before {
             font-weight: 300;
         }
     }
 
-    .board-client {
+    .screen-client {
         margin-bottom: size(xxs);
         &::before {
-            content: 'client: '
+            content: 'client: ';
+            letter-spacing: normal;
+            font-weight: 400;
         }
     }
 
-    .board-team {
+    .screen-team {
         &::before {
             content: 'team: ';
-            font-weight: 300;
+            letter-spacing: normal;
+            font-weight: 400;
         }
 
         a {
@@ -115,7 +114,7 @@
         }
     }
 
-    .board-brief {
+    .screen-brief {
         @include type(h3);
         margin: size(xl) 0;
     }
@@ -129,14 +128,14 @@
         }
     }
 
-    .board-categories {
+    .screen-categories {
         display: flex;
         list-style: none;
         flex-wrap: wrap;
         align-items: center;
     }
 
-    .board-category {
+    .screen-category {
         @include type(label);
         position: relative;
         margin-right: size(xxs);
@@ -173,14 +172,14 @@
         }
     }
 
-    .board-tags {
+    .screen-tags {
         @include type(h4);
         display: flex;
         list-style: none;
         text-transform: uppercase;
         flex-wrap: wrap;
         align-items: center;
-        .board-tag {
+        .screen-tag {
             &::after {
                 content: ', ';
                 white-space: pre;
@@ -193,54 +192,66 @@
         }
     }
 
-    .board-body {
+    .screen-body {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: size(xxl);
     }
 
-    .board-gallery {
+    .screen-gallery {
         width: 50%;
         .gallery-item {
             list-style: none;
         }
-        .board-image {
+        .screen-image {
             width: 100%;
         }
     }
 
-    .board-footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-top: solid line(m) black;
-        margin-top: size(m);
-        padding-top: size(m);
-    }
-
-    .board-hashtags {
+    .screen-hashtags {
         @include type(label);
+        margin: auto;
         width: 75%;
         font-weight: 100;
         list-style: none;
         display: flex;
         flex-wrap: wrap;
-
-        &::after {
-            content: ', ';
-            white-space: pre;
-        }
-
-        &:last-child {
-            &::after {
-                content: '';
-            }
-        }
+        padding: size(xxl) 0;
 
         .list-title {
             @include type(label);
             font-weight: 900;
         }
+
+        .list-item {
+            &::after {
+                content: ', ';
+                white-space: pre;
+            }
+
+            &:last-child {
+                &::after {
+                    content: '';
+                }
+            }
+        }
     }
+
+    .form-subscribe {
+        &.disabled {
+            opacity: .5;
+        }
+    }
+
+    .screen-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: size(m);
+        padding: size(xxl);
+        background-color: black;
+        color: white;
+    }
+
 }

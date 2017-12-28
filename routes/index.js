@@ -18,10 +18,12 @@ exports = module.exports = function(app) {
 
     // REST API CONTROLLER
     app.get('/api/portfolio', routes.api.portfolio.getAllPublished)
-    app.post('/api/email/contact', routes.api.email.contact)
-    app.post('/api/email/doodle', routes.api.email.doodle)
+    app.get('/api/blog', routes.api.blog.getAllPublished)
     app.get('/api/globals', routes.api.global.getGlobals)
     app.get('/api/resume', routes.api.resume.getResume)
+    app.post('/api/email/contact', routes.api.email.contact)
+    app.post('/api/email/doodle', routes.api.email.doodle)
+    app.post('/api/email/subscribe', routes.api.email.subscribe)
 
     app.use('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../build/index.html'))

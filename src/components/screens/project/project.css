@@ -5,20 +5,18 @@
   -webkit-overflow-scrolling: touch; }
   .screen-project::-webkit-scrollbar {
     display: none; }
-  .screen-project .board-blockquote {
+  .screen-project .screen-blockquote {
     margin: 0; }
-  .screen-project .board-quoteAuthor {
+  .screen-project .screen-quoteAuthor {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
-    font-weight: 900;
     font-style: normal;
-    display: block; }
-    .screen-project .board-quoteAuthor::before {
-      content: '-'; }
-  .screen-project .board-quote {
+    display: block;
+    margin-top: 0.5625rem; }
+  .screen-project .screen-quote {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
@@ -26,57 +24,60 @@
     text-transform: uppercase;
     background-color: yellow;
     display: inline; }
-    .screen-project .board-quote::before {
+    .screen-project .screen-quote::before {
       content: open-quote; }
-    .screen-project .board-quote::after {
+    .screen-project .screen-quote::after {
       content: close-quote; }
-  .screen-project .board-header {
+  .screen-project .screen-header {
     display: flex;
     flex-direction: column;
     background-color: white;
     padding-bottom: 3rem;
     align-items: center; }
-  .screen-project .board-featured {
+  .screen-project .screen-featured {
     width: 50%;
     height: 100%;
     padding-bottom: 3rem; }
   .screen-project .header-body {
     width: 75%;
     margin-top: 3rem; }
-  .screen-project .board-title,
-  .screen-project .board-client,
-  .screen-project .board-categories {
+  .screen-project .screen-title,
+  .screen-project .screen-client,
+  .screen-project .screen-categories {
     font-weight: 900; }
-  .screen-project .board-title {
+  .screen-project .screen-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.875rem;
     line-height: 1.875rem;
     text-transform: lowercase;
     margin-bottom: 1.875rem;
     margin-top: 1.875rem; }
-  .screen-project .board-client,
-  .screen-project .board-team {
+  .screen-project .screen-client,
+  .screen-project .screen-team {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     font-weight: 900; }
-    .screen-project .board-client::before,
-    .screen-project .board-team::before {
+    .screen-project .screen-client::before,
+    .screen-project .screen-team::before {
       font-weight: 300; }
-  .screen-project .board-client {
+  .screen-project .screen-client {
     margin-bottom: 0.5625rem; }
-    .screen-project .board-client::before {
-      content: 'client: '; }
-  .screen-project .board-team::before {
+    .screen-project .screen-client::before {
+      content: 'client: ';
+      letter-spacing: normal;
+      font-weight: 400; }
+  .screen-project .screen-team::before {
     content: 'team: ';
-    font-weight: 300; }
-  .screen-project .board-team a {
+    letter-spacing: normal;
+    font-weight: 400; }
+  .screen-project .screen-team a {
     position: relative;
     padding-left: 1.125rem; }
-  .screen-project .board-team .team-icon {
+  .screen-project .screen-team .team-icon {
     width: 0.75rem;
     height: 0.75rem;
     position: absolute;
@@ -84,11 +85,11 @@
     top: 50%;
     transform: translateY(-50%);
     overflow: visible; }
-    .screen-project .board-team .team-icon line, .screen-project .board-team .team-icon polyline {
+    .screen-project .screen-team .team-icon line, .screen-project .screen-team .team-icon polyline {
       stroke: black;
       fill: none;
       stroke-width: 2px; }
-  .screen-project .board-brief {
+  .screen-project .screen-brief {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.125rem;
     line-height: 1.875rem;
@@ -101,18 +102,18 @@
     .screen-project .list-title::after {
       content: ': ';
       white-space: pre; }
-  .screen-project .board-categories {
+  .screen-project .screen-categories {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
     align-items: center; }
-  .screen-project .board-category {
+  .screen-project .screen-category {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     font-weight: 900;
     position: relative;
     margin-right: 0.5625rem;
@@ -123,14 +124,14 @@
     text-transform: uppercase;
     border: 1px solid black;
     cursor: pointer; }
-    .screen-project .board-category:hover {
+    .screen-project .screen-category:hover {
       background-color: black;
       color: white; }
-      .screen-project .board-category:hover::after {
+      .screen-project .screen-category:hover::after {
         background-color: white; }
-    .screen-project .board-category:last-child {
+    .screen-project .screen-category:last-child {
       margin-right: 0; }
-    .screen-project .board-category::after {
+    .screen-project .screen-category::after {
       content: '';
       position: absolute;
       left: 0.5625rem;
@@ -140,7 +141,7 @@
       width: 5px;
       height: 5px;
       border-radius: 100%; }
-  .screen-project .board-tags {
+  .screen-project .screen-tags {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.9375rem;
     line-height: 1.125rem;
@@ -149,53 +150,58 @@
     text-transform: uppercase;
     flex-wrap: wrap;
     align-items: center; }
-    .screen-project .board-tags .board-tag::after {
+    .screen-project .screen-tags .screen-tag::after {
       content: ', ';
       white-space: pre; }
-    .screen-project .board-tags .board-tag:last-child::after {
+    .screen-project .screen-tags .screen-tag:last-child::after {
       content: ''; }
-  .screen-project .board-body {
+  .screen-project .screen-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 3rem; }
-  .screen-project .board-gallery {
+  .screen-project .screen-gallery {
     width: 50%; }
-    .screen-project .board-gallery .gallery-item {
+    .screen-project .screen-gallery .gallery-item {
       list-style: none; }
-    .screen-project .board-gallery .board-image {
+    .screen-project .screen-gallery .screen-image {
       width: 100%; }
-  .screen-project .board-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top: solid 4px black;
-    margin-top: 1.125rem;
-    padding-top: 1.125rem; }
-  .screen-project .board-hashtags {
+  .screen-project .screen-hashtags {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     font-weight: 900;
+    margin: auto;
     width: 75%;
     font-weight: 100;
     list-style: none;
     display: flex;
-    flex-wrap: wrap; }
-    .screen-project .board-hashtags::after {
-      content: ', ';
-      white-space: pre; }
-    .screen-project .board-hashtags:last-child::after {
-      content: ''; }
-    .screen-project .board-hashtags .list-title {
+    flex-wrap: wrap;
+    padding: 3rem 0; }
+    .screen-project .screen-hashtags .list-title {
       font-family: "Source Code Pro", sans-serif;
       font-size: 0.75rem;
       line-height: 0.9375rem;
       margin: 0;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 3px;
       font-weight: 900;
       font-weight: 900; }
+    .screen-project .screen-hashtags .list-item::after {
+      content: ', ';
+      white-space: pre; }
+    .screen-project .screen-hashtags .list-item:last-child::after {
+      content: ''; }
+  .screen-project .form-subscribe.disabled {
+    opacity: .5; }
+  .screen-project .screen-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.125rem;
+    padding: 3rem;
+    background-color: black;
+    color: white; }
