@@ -24,6 +24,7 @@ exports = module.exports = function(app) {
     app.post('/api/email/contact', routes.api.email.contact)
     app.post('/api/email/doodle', routes.api.email.doodle)
     app.post('/api/email/subscribe', routes.api.email.subscribe)
+    app.post('/api/subscribe', routes.api.subscriber.create)
 
     app.use('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../build/index.html'))

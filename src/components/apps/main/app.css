@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
-html, body {
-  height: 100%;
+html {
   -webkit-font-smoothing: antialiased; }
+
+html, body {
+  height: 100%; }
 
 body {
   font-family: "Source Code Pro", sans-serif;

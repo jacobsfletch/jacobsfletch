@@ -52,6 +52,11 @@ class ProjectScreen extends React.Component {
             const value = this.state[i].value
             formData[i] = value
         }
+        fetch('/api/subscribe', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {'Content-Type':'application/json'}
+            })
         fetch('/api/email/subscribe', {
                 method: 'POST',
                 body: JSON.stringify(formData),
