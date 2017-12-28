@@ -1,0 +1,21 @@
+@import "../../../sassafras/index.scss";
+
+.article-card {
+    position: relative;
+    display: inline-flex;
+    color: black;
+    background-color: white;
+    
+    .card-title {
+        @include type(h2);
+        position: relative;
+        display: inline-block;
+        margin-top: size(xs);
+        margin-bottom: size(s);
+        white-space: normal;
+        text-transform: lowercase;
+        @include breakpoint($size:xs) {
+            @include type(h3);
+        }
+    }
+}

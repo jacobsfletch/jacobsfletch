@@ -22,63 +22,60 @@ Article.add({
     publishedDate: {
         type: Types.Date,
         index: true,
-        dependsOn: {
-            state: 'published'
-        },
         parseFormat: 'MM-DD-YYYY',
         format: 'MM-DD-YYYY'
-    },
-    author: {
-        type: Types.Relationship,
-        ref: 'User',
-        index: true
     },
     title: {
         type: String,
         required: true,
-        initial: true,
+        initial: true
+    },
+    author: {
+        type: Types.Relationship,
+        ref: 'User',
+        index: true,
+        required: true,
+        initial: true
     },
     categories: {
         type: Types.Relationship,
         ref: 'Category',
-        many: true,
-        initial: true,
+        many: true
     },
     tags: {
         type: Types.Relationship,
         ref: 'Tag',
-        many: true,
-        initial: true,
+        many: true
     },
-    hashtags: {
-        type: Types.Relationship,
-        ref: 'Hashtag',
-        many: true,
-        initial: true,
-    },
-    backlinks: {
+    related: {
         project: {
             type: Types.Relationship,
-            ref: 'Project',
-            initial: true,
+            ref: 'Project'
         },
         product: {
             type: Types.Relationship,
-            ref: 'Product',
-            initial: true,
+            ref: 'Product'
         }
     },
+    quote: {
+        type: String
+    },
+    quoteAuthor: {
+        type: String
+    },
     featuredImage: {
-        type: Types.CloudinaryImage
+        type: Types.Text
     },
     images: {
-        type: Types.CloudinaryImages
+        type: Types.TextArray
     },
     content: {
         excerpt: {
             type: Types.Html,
             wysiwyg: false,
-            height: 150
+            height: 75,
+            initial: true,
+            required: true
         },
         full: {
             type: Types.Html,
@@ -86,15 +83,10 @@ Article.add({
             height: 400
         }
     },
-    quote: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
-    },
-    quoteAuthor: {
-        type: Types.Html,
-        wysiwyg: false,
-        height: 150
+    hashtags: {
+        type: Types.Relationship,
+        ref: 'Hashtag',
+        many: true
     }
 });
 

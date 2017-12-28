@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
+.article-card {
+  position: relative;
+  display: inline-flex;
+  color: black;
+  background-color: white; }
+  .article-card .card-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+    position: relative;
+    display: inline-block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.9375rem;
+    white-space: normal;
+    text-transform: lowercase; }
+    @media only screen and (max-width: 319px) {
+      .article-card .card-title {
+        font-family: "Source Code Pro", sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.875rem; } }

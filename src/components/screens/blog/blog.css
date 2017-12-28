@@ -1,0 +1,8 @@
+.screen-blog {
+  flex-grow: 1;
+  overflow: hidden;
+  overflow-y: scroll;
+  position: relative;
+  -webkit-overflow-scrolling: touch; }
+  .screen-blog::-webkit-scrollbar {
+    display: none; }

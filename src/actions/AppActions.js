@@ -5,6 +5,13 @@ export function getPortfolio(data) {
     }
 }
 
+export function getBlog(data) {
+    return {
+        type: 'BLOG_LOADED',
+        payload: data
+    }
+}
+
 export function getGlobals(data) {
     return {
         type: 'GLOBALS_LOADED',

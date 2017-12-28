@@ -7,6 +7,8 @@ import HomeScreen from './home/Home'
 import DoodleScreen from './doodle/Doodle'
 import PortfolioScreen from './portfolio/Portfolio'
 import ProjectScreen from './project/Project'
+import BlogScreen from './blog/Blog'
+import ArticleScreen from './article/Article'
 import Contact from './contact/Contact'
 import ContactConfirmation from './contact/Contact'
 import PageNotFound from './404/PageNotFound'
@@ -29,6 +31,8 @@ class ScreenController extends React.Component {
                     <Route exact path='/doodle' component={DoodleScreen} />
                     <Route exact path='/portfolio' component={PortfolioScreen}/>
                     <Route exact path='/portfolio/:projectName' component={ProjectScreen} />
+                    <Route exact path='/blog' component={BlogScreen}/>
+                    <Route exact path='/blog/:articleName' component={ArticleScreen} />
                     <Route exact path='/contact' component={Contact} />
                     <Route exact path='/contact/confirmation' component={ContactConfirmation} />
                     <Route path='/404' component={PageNotFound} />
