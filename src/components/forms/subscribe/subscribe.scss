@@ -1,0 +1,12 @@
+@import "../../../sassafras/index.scss";
+
+.form-subscribe {
+    &.disabled {
+        opacity: .5;
+    }
+    &.error {
+        .error-message {
+            display: block;
+        }
+    }
+}

@@ -8,27 +8,33 @@
   font-family: "Source Code Pro", sans-serif;
   font-size: 0.5625rem;
   line-height: 0.5625rem;
+  text-transform: uppercase;
   margin: 0;
   display: none;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, -150%);
-  background-color: black;
-  color: white;
+  background-color: white;
+  border: solid white 1px;
   padding: 0.5625rem;
-  white-space: nowrap; }
-  .error-message:after {
+  padding-left: 1.875rem;
+  white-space: nowrap;
+  color: red; }
+  .error-message::before, .error-message::after {
     position: absolute;
     content: '';
-    left: 50%;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    transform: translate(-50%, 100%);
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 5px solid black; }
+    left: 0.5625rem;
+    top: 50%;
+    width: 0.75rem;
+    height: 2px;
+    background-color: red; }
+  .error-message::before {
+    transform: rotate(45deg) translate(-1px, -50%); }
+  .error-message::after {
+    transform: rotate(-45deg) translate(1px, -50%); }
+  .error-message.active {
+    display: block; }
 
 .input-ruler {
   position: absolute;
@@ -60,9 +66,6 @@ select {
   select.invalid {
     color: red;
     border-color: red; }
-    input.invalid ~ .error-message,
-    select.invalid ~ .error-message {
-      display: block; }
 
 .input-select {
   padding-right: 0.9375rem; }
@@ -99,9 +102,13 @@ select {
   margin: 0;
   letter-spacing: 1px;
   cursor: pointer; }
+  .form-button.simple {
+    border: none;
+    padding: 0; }
+  .form-button.sending {
+    color: yellow; }
   .form-button.sent {
-    color: green;
-    border-color: green; }
+    color: green; }
     .form-button.sent::before {
       content: '';
       margin-right: 0.75rem;
@@ -111,6 +118,10 @@ select {
       border: solid green;
       border-width: 0 3px 3px 0;
       transform: rotate(45deg); }
-  .form-button.simple {
-    border: none;
-    padding: 0; }
+  .form-button.error {
+    color: red; }
+
+.form-subscribe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }

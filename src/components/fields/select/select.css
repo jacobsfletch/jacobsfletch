@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
+.input-select {
+  padding-right: 0.9375rem; }
+  .input-select:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid black; }
+  .input-select select {
+    background-color: transparent;
+    border-radius: 0;
+    appearance: none;
+    position: relative; }

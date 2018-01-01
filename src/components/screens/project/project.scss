@@ -53,6 +53,30 @@
     .header-body {
         width: 75%;
         margin-top: size(xxl);
+        position: relative;
+    }
+
+    .screen-arrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 50%;
+        width: line(m);
+        background-color: black;
+        padding-bottom: size(l);
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: size(m);
+            height: size(m);
+            border: solid black line(m);
+            border-right: 0;
+            border-top: 0;
+            transform-origin: center center;
+            transform: rotate(-45deg) translate(calc(-100% - #{line(m) / 2}), 50%);
+        }
     }
 
     .screen-title,
@@ -141,19 +165,11 @@
         margin-right: size(xxs);
         background-color: white;
         color: black;
-        padding: line(m) size(xs);
-        padding-left: size(l);
+        padding-left: size(s);
         text-transform: uppercase;
-        border: line(xxs) solid black;
         cursor: pointer;
 
-        &:hover {
-            background-color: black;
-            color: white;
-            &::after {
-                background-color: white;
-            }
-        }
+        &:hover {}
 
         &:last-child {
             margin-right: 0;
@@ -162,7 +178,7 @@
         &::after {
             content: '';
             position: absolute;
-            left: size(xxs);
+            left: 0;
             top: 50%;
             transform: translateY(-50%);
             background-color: black;
@@ -235,12 +251,6 @@
                     content: '';
                 }
             }
-        }
-    }
-
-    .form-subscribe {
-        &.disabled {
-            opacity: .5;
         }
     }
 

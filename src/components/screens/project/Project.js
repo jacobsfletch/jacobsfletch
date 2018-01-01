@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Field from '../../modules/field/Field';
+import Form from '../../modules/form/Form';
 
 import './project.css';
 
@@ -11,17 +11,6 @@ class ProjectScreen extends React.Component {
         super(props)
         this.onTouchMove = this.onTouchMove.bind(this)
         this.onWheel = this.onWheel.bind(this)
-        this.handleChange =  this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.state = {
-            disabled: true,
-            sent: false,
-            emailAddress: {
-                value: '',
-                isValid: false,
-                errorMessage: ''
-            }
-        }
     }
 
     componentWillMount() {
@@ -40,37 +29,6 @@ class ProjectScreen extends React.Component {
         e.stopPropagation()
     }
 
-    handleChange(props) {
-        this.setState(props)
-    }
-
-    handleSubmit(e) {
-        e.preventDefault()
-        this.setState({isDisabled: true})
-        let formData = {}
-        for (var i in this.state) {
-            const value = this.state[i].value
-            formData[i] = value
-        }
-        fetch('/api/subscribe', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {'Content-Type':'application/json'}
-            })
-        fetch('/api/email/subscribe', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {'Content-Type':'application/json'}
-            })
-            .then(response => {
-                this.setState({
-                    isDisabled: false,
-                    sent: true
-                })
-            })
-        return false
-    }
-
     render() {
         var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
         if(!project) { project = {} }
@@ -81,10 +39,6 @@ class ProjectScreen extends React.Component {
 
         const images = !project.images ? 'loading' : project.images.map(function(image){return <li className="gallery-item" key={image}><img className="screen-image" src={image} alt={image}/></li>})
         const hashtags = !project.hashtags ? 'loading' : project.hashtags.map(function(hashtag){return <li key={hashtag.name} className="list-item">{hashtag.name}</li>})
-
-        const formClasses = this.state.isDisabled ? 'form-subscribe disabled' : 'form-subscribe'
-        const buttonClasses = this.state.isDisabled ? 'form-button simple sending' : this.state.sent ? 'form-button simple sent' : 'form-button simple'
-        const buttonText = this.state.isDisabled ? 'subscribing...' : this.state.sent ? 'subscribed' : 'subscribe'
 
         return (
             <section className="screen-project"
@@ -112,6 +66,7 @@ class ProjectScreen extends React.Component {
                             <p className="screen-quote">{project.quote || "loading"}</p>
                             <cite className="screen-quoteAuthor">{project.quoteAuthor || "loading"}</cite>
                         </blockquote>
+                        <span className="screen-arrow" />
                     </section>
                 </header>
                 <section className="screen-body">
@@ -122,11 +77,7 @@ class ProjectScreen extends React.Component {
                     {hashtags}
                 </section>
                 <footer className="screen-footer">
-                    <form id='subscribe' className={formClasses} onSubmit={this.handleSubmit} noValidate>
-                        <Field placeholder="you@email.com" name='emailAddress' type='email' handleChange={this.handleChange} />
-                        <br /><br />
-                        <button type="submit" className={buttonClasses} disabled={this.state.isDisabled}>{buttonText}</button>
-                    </form>
+                    <Form name="subscribe" />
                 </footer>
             </section>
         )

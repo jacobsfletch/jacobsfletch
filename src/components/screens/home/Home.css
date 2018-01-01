@@ -25,12 +25,13 @@
       line-height: 0.9375rem;
       margin: 0;
       text-transform: uppercase;
-      font-weight: 400;
+      letter-spacing: 3px;
+      font-weight: 900;
       background-color: black;
       outline: black 1px solid;
       color: white;
-      letter-spacing: 2px;
-      padding: 4px 0.75rem; }
+      padding: 4px 0.75rem;
+      position: relative; }
       .screen-home .screen-body a:hover {
         background-color: transparent;
         color: black; }

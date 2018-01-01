@@ -25,14 +25,12 @@
         }
 
         a {
-            @include type(p);
-            text-transform: uppercase;
-            font-weight: 400;
+            @include type(label);
             background-color: black;
             outline: black line(xxs) solid;
             color: white;
-            letter-spacing: line(xs);
             padding: line(m) size(xs);
+            position: relative;
 
             &:hover {
                 background-color: transparent;

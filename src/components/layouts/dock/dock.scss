@@ -130,11 +130,9 @@
             }
 
             a {
-                @include type(p);
+                @include type(label);
                 color: inherit;
                 background-color: inherit;
-                letter-spacing: line(xxs);
-                text-transform: uppercase;
                 padding: line(m) size(xs);
                 cursor: pointer;
                 outline: solid line(xxs);

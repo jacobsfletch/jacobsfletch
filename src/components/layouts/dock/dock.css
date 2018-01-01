@@ -94,10 +94,11 @@
         font-size: 0.75rem;
         line-height: 0.9375rem;
         margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 900;
         color: inherit;
         background-color: inherit;
-        letter-spacing: 1px;
-        text-transform: uppercase;
         padding: 4px 0.75rem;
         cursor: pointer;
         outline: solid 1px; }

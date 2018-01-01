@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './field.css';
+import './input.css';
 
-export default class Field extends React.Component {
+export default class Input extends React.Component {
     constructor() {
         super()
         this.handleChange = this.handleChange.bind(this)
@@ -74,8 +74,7 @@ export default class Field extends React.Component {
         if (isValid !== true) {
             e.target.classList.add('invalid')
             stateProp.isValid = false
-        }
-        else {
+        } else {
             e.target.classList.remove('invalid')
             stateProp.isValid = true
         }
@@ -93,10 +92,6 @@ export default class Field extends React.Component {
                 this.updateField('lastName', e)
                 this.props.handleChange({lastName: this.state.lastName})
                 break
-            case 'subject':
-                this.updateField('subject', e)
-                this.props.handleChange({subject: this.state.subject})
-                break
             case 'emailAddress':
                 this.updateField('emailAddress', e)
                 this.props.handleChange({emailAddress: this.state.emailAddress})
@@ -105,12 +100,15 @@ export default class Field extends React.Component {
                 this.updateField('phoneNumber', e)
                 this.props.handleChange({phoneNumber: this.state.phoneNumber})
                 break
+            default:
+                break
             }
         this.useRuler(e)
     }
 
     render() {
-        const errorMessage = this.state[this.props.name].errorMessage
+        const errorClasses = this.props.showError ? 'error-message active' : 'error-message'
+        const errorMessage = this.state[this.props.name].errorMessage ? this.state[this.props.name].errorMessage : 'field required'
         const value = this.state[this.props.name].value
         return (
             <span className="input input-text">
@@ -123,7 +121,7 @@ export default class Field extends React.Component {
                     value={value}
                     onChange={this.handleChange.bind(this)}
                 />
-                <p className="error-message">{errorMessage}</p>
+                <p className={errorClasses}>{errorMessage}</p>
                 <p className="input-ruler" />
             </span>
         )
