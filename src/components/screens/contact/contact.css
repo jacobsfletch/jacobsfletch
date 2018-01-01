@@ -5,6 +5,8 @@
   flex-direction: column;
   width: 100%;
   overflow-y: scroll; }
+  .screen-contact.error .error-message {
+    display: block; }
   .screen-contact.disabled {
     opacity: .25; }
   .screen-contact::-webkit-scrollbar {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Form from '../../modules/form/Form';
+import Subscribe from '../../forms/subscribe/Subscribe';
 
 import './project.css';
 
@@ -77,7 +77,7 @@ class ProjectScreen extends React.Component {
                     {hashtags}
                 </section>
                 <footer className="screen-footer">
-                    <Form name="subscribe" />
+                    <Subscribe name="subscribe" />
                 </footer>
             </section>
         )
