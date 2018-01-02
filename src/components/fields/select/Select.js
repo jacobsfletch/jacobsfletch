@@ -1,4 +1,5 @@
 import React from 'react';
+import Ruler from '../../tools/ruler/Ruler'
 
 import './select.css';
 
@@ -16,15 +17,7 @@ export default class Select extends React.Component {
     }
 
     componentDidMount() {
-        this.useRuler(this.subjectRef)
-    }
-
-    useRuler(e) {
-        let element = e.target ? e.target : e
-        const ruler = element.parentNode.lastChild
-        ruler.innerHTML = element.value ? element.value : element.placeholder
-        const rulerWidth = ruler.offsetWidth
-        element.style.width = rulerWidth + 8 + 'px'
+        Ruler(this.subjectRef)
     }
 
     handleChange(e) {
@@ -32,7 +25,7 @@ export default class Select extends React.Component {
         this.setState({
             value
         })
-        this.useRuler(e)
+        Ruler(e)
     }
 
     render() {

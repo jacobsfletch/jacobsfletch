@@ -1,6 +1,7 @@
-import React from 'react';
+import React from 'react'
+import Ruler from '../../tools/ruler/Ruler'
 
-import './input.css';
+import './input.css'
 
 export default class Input extends React.Component {
     constructor() {
@@ -36,15 +37,7 @@ export default class Input extends React.Component {
     }
 
     componentDidMount() {
-        this.useRuler(this.fieldRef)
-    }
-
-    useRuler(e) {
-        let element = e.target ? e.target : e
-        const ruler = element.parentNode.lastChild
-        ruler.innerHTML = element.value ? element.value : element.placeholder
-        const rulerWidth = ruler.offsetWidth
-        element.style.width = rulerWidth + 8 + 'px'
+        Ruler(this.fieldRef)
     }
 
     validateField(fieldName, value) {
@@ -103,7 +96,7 @@ export default class Input extends React.Component {
             default:
                 break
             }
-        this.useRuler(e)
+        Ruler(e)
     }
 
     render() {
