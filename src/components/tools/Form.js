@@ -21,15 +21,19 @@ function HandleSubmit(e) {
         if (!this.state.form[key].isValid) {
             this.state.form[key].showError = true
             this.setState(this.state.form[key])
+            this.setState({'isValid': false})
         }
     }
-    this.setState({inProgress: true})
-    let formData = {}
-    for (var i in this.state) {
-        const value = this.state[i].value
-        formData[i] = value
-    }
-    return formData
+    if (this.state.isValid) {
+        console.log('valid')
+        this.setState({inProgress: true})
+        let formData = {}
+        for (var i in this.state) {
+            const value = this.state[i].value
+            formData[i] = value
+        }
+        return formData
+    } else { return false }
 }
 
 export { HandleChange, HandleSubmit }

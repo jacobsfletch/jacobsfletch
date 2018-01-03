@@ -15,9 +15,9 @@ export default class Form extends React.Component {
         this.state = {
             status: 200,
             isValid: false,
+            inProgress: false,
             showError: false,
             errorMessage: '',
-            isDisabled: false,
             sent: false,
             form: {
                 firstName: {
@@ -65,7 +65,7 @@ export default class Form extends React.Component {
             })
             .then(response => {
                 this.setState({
-                    isDisabled: false,
+                    inProgress: false,
                     sent: true
                 })
             })
@@ -73,10 +73,10 @@ export default class Form extends React.Component {
     }
 
     render() {
-        const formClasses = this.state.isProgress ? 'form-contact progress' : 'form-contact'
+        const formClasses = this.state.inProgress ? 'form-contact disabled' : 'form-contact'
         const button = 'form-button'
         const buttonClasses = this.state.inProgress ? button + ' sending' : this.state.sent ? button + ' sent' : this.state.status != 200 ? button + ' error' : button
-        const buttonText = this.state.isDisabled ? 'sending...' : this.state.sent ? 'sent successfully' : 'send'
+        const buttonText = this.state.inProgress ? 'sending...' : this.state.sent ? 'sent successfully' : 'send'
         const signatureFirst = this.state.form.firstName.value ? this.state.form.firstName.value : 'your'
         const signatureLast = this.state.form.lastName.value ? this.state.form.lastName.value : 'name'
         const selectOptions = ['just say hi', 'hire you', 'meet up', 'spam your inbox']
@@ -130,7 +130,7 @@ export default class Form extends React.Component {
                     <p>{signatureFirst} {signatureLast}</p>
                 </footer>
                 <br/>
-                <Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.isDisabled} />
+                <Button buttonClasses={buttonClasses} buttonText={buttonText} />
             </form>
         )
     }

@@ -14,6 +14,7 @@ export default class Subscribe extends React.Component {
         this.state = {
             status: 200,
             isValid: false,
+            inProgress: false,
             showError: false,
             errorMessage: '',
             sent: false,
@@ -81,7 +82,7 @@ export default class Subscribe extends React.Component {
                     showError={this.state.form.emailAddress.showError}
                 />
                 <br />
-                <Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.inProgress} />
+                <Button buttonClasses={buttonClasses} buttonText={buttonText} />
             </form>
         )
     }
