@@ -1,5 +1,7 @@
 import React from 'react'
-import Ruler from '../../tools/ruler/Ruler'
+
+import Ruler from '../../tools/Ruler'
+import Validate from '../../tools/Validate'
 
 import './input.css'
 
@@ -40,29 +42,9 @@ export default class Input extends React.Component {
         Ruler(this.fieldRef)
     }
 
-    validateField(fieldName, value) {
-        if (value.length === 0) { return true }
-        if (fieldName === 'firstName' || fieldName === 'lastName') {
-            const isAlphabetical = /^[a-zA-Z]+$/.test(value)
-            if (isAlphabetical) { return true }
-            else { return 'alphabet only' }
-        } else if (fieldName === 'emailAddress') {
-            const emailValidator = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            const addressValid = emailValidator.test(value)
-            if (addressValid) { return true }
-            else { return 'invalid email' }
-        } else if (fieldName === 'phoneNumber') {
-            const phoneValidator = /^[(]{0,1}[0-9]{3}[).\- ]{0,1}[0-9]{3}[.\- ]{0,1}[0-9]{4}$/
-            const phoneValid = phoneValidator.test(value)
-            if (phoneValid) { return true }
-            else { return 'invalid phone' }
-        }
-        else { return true }
-    }
-
     updateField(fieldName, e) {
         let stateProp = this.state[fieldName]
-        const isValid = this.validateField(fieldName, e.target.value)
+        const isValid = Validate(fieldName, e.target.value)
         stateProp.errorMessage = isValid
         if (isValid !== true) {
             e.target.classList.add('invalid')
@@ -101,7 +83,7 @@ export default class Input extends React.Component {
 
     render() {
         const errorClasses = this.props.showError ? 'error-message active' : 'error-message'
-        const errorMessage = this.state[this.props.name].errorMessage ? this.state[this.props.name].errorMessage : 'field required'
+        const errorMessage = this.state[this.props.name].errorMessage ? this.state[this.props.name].errorMessage : 'required'
         const value = this.state[this.props.name].value
         return (
             <span className="input input-text">

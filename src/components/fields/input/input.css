@@ -13,20 +13,17 @@
   display: none;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, -150%);
-  background-color: white;
-  border: solid white 1px;
-  padding: 0.5625rem;
-  padding-left: 1.875rem;
+  left: 0;
+  transform: translateY(-100%);
+  padding-left: 0.9375rem;
   white-space: nowrap;
   color: red; }
   .error-message::before, .error-message::after {
     position: absolute;
     content: '';
-    left: 0.5625rem;
+    left: 0;
     top: 50%;
-    width: 0.75rem;
+    width: 0.5625rem;
     height: 2px;
     background-color: red; }
   .error-message::before {
@@ -87,39 +84,6 @@ select {
 
 .form-footer {
   display: block; }
-
-.form-button {
-  font-family: "Source Code Pro", sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.125rem;
-  display: block;
-  text-transform: uppercase;
-  background-color: transparent;
-  border: solid currentColor 1px;
-  color: inherit;
-  text-transform: uppercase;
-  padding: 0.5625rem 0.75rem;
-  margin: 0;
-  letter-spacing: 1px;
-  cursor: pointer; }
-  .form-button.simple {
-    border: none;
-    padding: 0; }
-  .form-button.sending {
-    color: yellow; }
-  .form-button.sent {
-    color: green; }
-    .form-button.sent::before {
-      content: '';
-      margin-right: 0.75rem;
-      display: inline-block;
-      width: 4px;
-      height: 0.5625rem;
-      border: solid green;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg); }
-  .form-button.error {
-    color: red; }
 
 .form-subscribe {
   display: flex;

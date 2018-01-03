@@ -8,16 +8,6 @@
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 
-    &.error {
-        .error-message {
-            display: block;
-        }
-    }
-
-    &.disabled {
-        opacity: .25;
-    }
-
     &::-webkit-scrollbar {
         display: none;
     }
@@ -27,18 +17,4 @@
         margin-bottom: 0;
     }
 
-    .form-contact {
-        @include type(h3);
-        width: 75%;
-        margin: auto;
-        padding: size(l) 0;
-
-        @include breakpoint($size: s, $inherit: down) {
-            width: 100%;
-        }
-
-        > * {
-            display: inline;
-        }
-    }
 }

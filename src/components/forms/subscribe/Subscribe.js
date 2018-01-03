@@ -1,13 +1,16 @@
-import React from 'react';
+import React from 'react'
+
+import { HandleChange, HandleSubmit } from '../../tools/Form'
+import Input from '../../fields/input/Input'
+import Button from '../../elements/button/Button'
 
 import './subscribe.css';
-import Input from '../../fields/input/Input';
 
 export default class Subscribe extends React.Component {
     constructor() {
         super()
-        this.handleChange =  this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = HandleChange.bind(this)
+        this.handleSubmit = HandleSubmit.bind(this)
         this.state = {
             status: 200,
             isValid: false,
@@ -24,32 +27,9 @@ export default class Subscribe extends React.Component {
         }
     }
 
-    handleChange(props) {
-        const newState = {}
-        const form = {...this.state.form}
-        const key = Object.keys(props)[0]
-        form[key] = props[key]
-        newState.form = form
-        newState.showError = false
-        newState.sent = false
-        newState.status = 200
-        this.setState(newState)
-    }
-
     handleSubmit(e) {
-        e.preventDefault()
-        for (const key in this.state.form) {
-            if (!this.state.form[key].isValid) {
-                this.state.form[key].showError = true
-                this.setState(this.state.form[key])
-            }
-        }
-        this.setState({inProgress: true})
-        let formData = {}
-        for (var i in this.state.form) {
-            const value = this.state.form[i].value
-            formData[i] = value
-        }
+        const formData = HandleSubmit(e)
+        return
         fetch('/api/subscribe', {
                 method: 'POST',
                 body: JSON.stringify(formData),
@@ -82,13 +62,17 @@ export default class Subscribe extends React.Component {
     }
 
     render() {
-        const formClasses = this.state.inProgress ? 'form-subscribe disabled' : this.state.showError ? 'form-subscribe error' : 'form-subscribe'
+        const formClasses = this.state.inProgress ? 'form-subscribe disabled' : 'form-subscribe'
         const button = 'form-button simple'
         const buttonClasses = this.state.inProgress ? button + ' sending' : this.state.sent ? button + ' sent' : this.state.status != 200 ? button + ' error' : button
         const buttonText = this.state.inProgress ? 'subscribing...' : this.state.sent ? 'subscribed' : this.state.status != 200 ? this.state.errorMessage : 'subscribe'
 
         return (
-            <form id='subscribe' className={formClasses} onSubmit={this.handleSubmit} noValidate>
+            <form id='subscribe'
+            className={formClasses}
+            onSubmit={this.handleSubmit}
+            ref={(form) => { this.formRef = form }}
+            noValidate >
                 <Input
                     placeholder="you@email.com"
                     name='emailAddress'
@@ -97,7 +81,7 @@ export default class Subscribe extends React.Component {
                     showError={this.state.form.emailAddress.showError}
                 />
                 <br />
-                <button type="submit" className={buttonClasses} disabled={this.state.inProgress}>{buttonText}</button>
+                <Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.inProgress} />
             </form>
         )
     }

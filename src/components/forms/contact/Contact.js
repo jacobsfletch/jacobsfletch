@@ -1,15 +1,17 @@
 import React from 'react'
 
+import { HandleChange, HandleSubmit } from '../../tools/Form'
 import Input from '../../fields/input/Input'
 import Select from '../../fields/select/Select'
+import Button from '../../elements/button/Button'
 
 import './contact.css'
 
 export default class Form extends React.Component {
     constructor() {
         super()
-        this.handleChange =  this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = HandleChange.bind(this)
+        this.handleSubmit = HandleSubmit.bind(this)
         this.state = {
             status: 200,
             isValid: false,
@@ -52,37 +54,10 @@ export default class Form extends React.Component {
         }
     }
 
-    handleChange(props) {
-        const newState = {}
-        const form = {...this.state.form}
-        const key = Object.keys(props)[0]
-        form[key] = props[key]
-        newState.form = form
-        newState.showError = false
-        newState.sent = false
-        newState.status = 200
-        this.setState(newState)
-    }
-
     handleSubmit(e) {
-        e.preventDefault()
-        for (const key in this.state.form) {
-            if (!this.state.form[key].isValid) {
-                this.state.form[key].showError = true
-                this.setState(this.state.form[key])
-            }
-        }
-        for (const key in this.state.form) {
-            if (!this.state.form[key].isValid) {
-                return
-            }
-        }
-        this.setState({inProgress: true})
-        let formData = {}
-        for (var i in this.state) {
-            const value = this.state[i].value
-            formData[i] = value
-        }
+        const formData = HandleSubmit(e)
+        console.log('sent')
+        return
         fetch('/api/email/contact', {
                 method: 'POST',
                 body: JSON.stringify(formData),
@@ -98,14 +73,19 @@ export default class Form extends React.Component {
     }
 
     render() {
-        const formClasses = this.state.isProgress ? 'form-contact disabled' : 'form-contact'
-        const buttonClasses = this.state.isDisabled ? 'form-button sending' : this.state.sent ? 'form-button sent' : 'form-button'
-        const buttonText = this.state.isDisabled ? 'sending...' : this.state.sent ? 'sent successfully' : 'send off'
+        const formClasses = this.state.isProgress ? 'form-contact progress' : 'form-contact'
+        const button = 'form-button'
+        const buttonClasses = this.state.inProgress ? button + ' sending' : this.state.sent ? button + ' sent' : this.state.status != 200 ? button + ' error' : button
+        const buttonText = this.state.isDisabled ? 'sending...' : this.state.sent ? 'sent successfully' : 'send'
         const signatureFirst = this.state.form.firstName.value ? this.state.form.firstName.value : 'your'
         const signatureLast = this.state.form.lastName.value ? this.state.form.lastName.value : 'name'
         const selectOptions = ['just say hi', 'hire you', 'meet up', 'spam your inbox']
         return (
-            <form id='contact' className={formClasses} onSubmit={this.handleSubmit} noValidate >
+            <form id='contact'
+            className={formClasses}
+            onSubmit={this.handleSubmit}
+            ref={(form) => { this.formRef = form }}
+            noValidate >
                 <h2 className="screen-title">dear jacobsfletch,</h2>
                 <br/><br/>
                 <p>hello, my name is&nbsp;</p>
@@ -150,7 +130,7 @@ export default class Form extends React.Component {
                     <p>{signatureFirst} {signatureLast}</p>
                 </footer>
                 <br/>
-                <button type="submit" className={buttonClasses} disabled={this.state.isDisabled}>{buttonText}</button>
+                <Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.isDisabled} />
             </form>
         )
     }

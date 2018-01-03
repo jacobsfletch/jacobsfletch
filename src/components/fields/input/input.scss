@@ -13,12 +13,9 @@
     display: none;
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translate(-50%, -150%);
-    background-color: white;
-    border: solid white line(xxs);
-    padding: size(xxs);
-    padding-left: size(xl);
+    left: 0;
+    transform: translateY(-100%);
+    padding-left: size(s);
     white-space: nowrap;
     color: red;
 
@@ -26,9 +23,9 @@
     &::after {
         position: absolute;
         content: '';
-        left: size(xxs);
+        left: 0;
         top: 50%;
-        width: size(xs);
+        width: size(xxs);
         height: line(xs);
         background-color: red;
     }
@@ -38,7 +35,6 @@
     &::after {
         transform: rotate(-45deg) translate(#{line(xs) / 2}, -50%);
     }
-
     &.active {
         display: block;
     }
@@ -99,47 +95,6 @@ select {
 
 .form-footer {
     display: block;
-}
-
-.form-button {
-    @include type(h4);
-    display: block;
-    text-transform: uppercase;
-    background-color: transparent;
-    border: solid currentColor 1px;
-    color: inherit;
-    text-transform: uppercase;
-    padding: size(xxs) size(xs);
-    margin: 0;
-    letter-spacing: line(xxs);
-    cursor: pointer;
-
-    &.simple {
-        border: none;
-        padding: 0;
-    }
-
-    &.sending {
-        color: yellow;
-    }
-
-    &.sent {
-        color: green;
-        &::before {
-            content: '';
-            margin-right: size(xs);
-            display: inline-block;
-            width: line(m);
-            height: size(xxs);
-            border: solid green;
-            border-width: 0 line(s) line(s) 0;
-            transform: rotate(45deg);
-        }
-    }
-
-    &.error {
-        color: red;
-    }
 }
 
 .form-subscribe {

@@ -77,7 +77,10 @@ class ProjectScreen extends React.Component {
                     {hashtags}
                 </section>
                 <footer className="screen-footer">
-                    <Subscribe name="subscribe" />
+                    <div className="footer-header" >
+                        <Subscribe name="subscribe" />
+                    </div>
+                    <div className="footer-body" />
                 </footer>
             </section>
         )

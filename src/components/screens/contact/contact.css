@@ -6,10 +6,6 @@
   width: 100%;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch; }
-  .screen-contact.error .error-message {
-    display: block; }
-  .screen-contact.disabled {
-    opacity: .25; }
   .screen-contact::-webkit-scrollbar {
     display: none; }
   .screen-contact .screen-title {
@@ -17,15 +13,3 @@
     font-size: 1.125rem;
     line-height: 1.875rem;
     margin-bottom: 0; }
-  .screen-contact .form-contact {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.875rem;
-    width: 75%;
-    margin: auto;
-    padding: 1.5rem 0; }
-    @media only screen and (max-width: 463px) {
-      .screen-contact .form-contact {
-        width: 100%; } }
-    .screen-contact .form-contact > * {
-      display: inline; }

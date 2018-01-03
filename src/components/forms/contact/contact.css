@@ -1,6 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
-.form-contact.disabled {
-  opacity: .5; }
-
-.form-contact.error .error-message {
-  display: block; }
+.form-contact {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  width: 75%;
+  margin: auto;
+  padding: 1.5rem 0; }
+  @media only screen and (max-width: 463px) {
+    .form-contact {
+      width: 100%; } }
+  .form-contact.progress {
+    opacity: .5; }
+  .form-contact.error .error-message {
+    display: block; }
+  .form-contact > * {
+    display: inline; }
