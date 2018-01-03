@@ -8,7 +8,7 @@ import Footer from '../../layouts/footer/footer'
 import ScreenController from '../../screens/ScreenController'
 
 import { getPortfolio, getBlog, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
-import offlinePortfolio from '../../offlineData/offlinePortfolio'
+import offlinePortfolio from '../../../data/portfolio'
 
 import './app.css'
 
