@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
-.form-subscribe.disabled {
-  opacity: .5; }
-
-.form-subscribe.error .error-message {
-  display: block; }
+.form-subscribe {
+  margin: 1.875rem 0;
+  text-align: center; }
+  .form-subscribe.disabled {
+    opacity: .5; }
+  .form-subscribe.error .error-message {
+    display: block; }

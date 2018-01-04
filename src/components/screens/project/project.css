@@ -223,14 +223,22 @@
     flex-direction: column;
     color: white;
     background-color: black;
-    height: 400px;
-    width: 100%; }
-  .screen-project .screen-footer .footer-menu ul {
-    list-style: none;
-    flex-wrap: wrap;
-    text-align: center; }
-    .screen-project .screen-footer .footer-menu ul .menu-item {
-      display: inline-flex;
-      margin-right: 0.5625rem; }
-      .screen-project .screen-footer .footer-menu ul .menu-item:last-child {
-        margin-right: 0; }
+    padding: 0 1.875rem;
+    width: 100%;
+    box-sizing: border-box; }
+  .screen-project .screen-footer hr {
+    margin: 0;
+    border-style: dashed;
+    border-width: 0 0 1px 0;
+    border-color: white; }
+  .screen-project .screen-footer .footer-menu {
+    padding: 1.5rem 0 1.875rem 0; }
+    .screen-project .screen-footer .footer-menu ul {
+      list-style: none;
+      flex-wrap: wrap;
+      text-align: center; }
+      .screen-project .screen-footer .footer-menu ul .menu-item {
+        display: inline-flex;
+        margin-right: 0.5625rem; }
+        .screen-project .screen-footer .footer-menu ul .menu-item:last-child {
+          margin-right: 0; }

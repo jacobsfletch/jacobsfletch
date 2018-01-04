@@ -32,7 +32,7 @@ Project.add({
         index: true,
     },
     claps: {
-        type: Number
+        type: Types.Number
     },
     team: {
         type: Types.Relationship,

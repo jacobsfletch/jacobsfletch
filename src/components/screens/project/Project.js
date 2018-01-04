@@ -110,10 +110,11 @@ class ProjectScreen extends React.Component {
                 <footer className="screen-footer">
                     <div className="footer-header" >
                         <p>if you liked this project, clap once, twice, or thirty times.</p>
-                        <Clapper id={project._id} claps={project.claps || 10}/>
+                        <Clapper id={project._id} claps={project.claps || 0}/>
                     </div>
                     <div className="footer-body">
                         <Subscribe name="subscribe" />
+                        <hr />
                         <nav className="footer-menu">
                             <ul>
                                 <li className="menu-item">

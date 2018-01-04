@@ -1,6 +1,8 @@
 @import "../../../sassafras/index.scss";
 
 .form-subscribe {
+    margin: size(xl) 0;
+    text-align: center;
     &.disabled {
         opacity: .5;
     }

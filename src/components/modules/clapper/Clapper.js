@@ -12,42 +12,31 @@ export default class Clapper extends React.Component {
         }
     }
 
-    componentWillReveiveProps(prevProps, nextProps) {
-        if(prevProps.claps !== nextProps.claps) {
-            this.setState({
-                claps: nextProps.claps
-            })
-        }
-        if(prevProps.id !== nextProps.id) {
-            this.setState({
-                id: nextProps.id
-            })
-        }
-    }
-
     componentDidMount() {
-        console.log(this.props)
         this.setState({
             claps: this.props.claps,
             id: this.props.id
         })
     }
 
-    handleSubmit(e) {
+    handleSubmit(e, id) {
+        console.log(id)
         const newClapCount = this.state.claps + 1
+        const data = { newClapCount, id }
         this.setState({claps: newClapCount})
         return
         fetch('/api/project/clap', {
                 method: 'POST',
-                body: JSON.stringify(newClapCount),
+                body: JSON.stringify(data),
                 headers: {'Content-Type':'application/json'}
             })
         return false
     }
 
     render() {
+        const id = this.props.id ? this.props.id : null
         return (
-            <button className="button-clapper" onClick={(e) => this.handleSubmit(e)} >
+            <button className="button-clapper" onClick={(e) => this.handleSubmit(e, id)} >
                 <svg className="button-icon" width="32" height="32" viewBox="0 0 32 32">
                     <path className="hand-back" d="M24,20.6c0.2,1.3,0.4,4.7-3,8.1c-4.3,4.3-9.8,1.3-12.3-1.3s-6.8-6.8-6.8-6.8c-0.7-0.7-0.7-1.8,0-2.6l0,0
                         c0.7-0.7,1.8-0.7,2.6,0l4.3,4.3l-6-6c-0.7-0.7-0.7-1.8,0-2.6l0,0c0.7-0.7,1.8-0.7,2.6,0l5.1,5.1l-6.8-6.8c-0.7-0.7-0.7-1.8,0-2.6
@@ -62,7 +51,6 @@ export default class Clapper extends React.Component {
                     <line x1="28.4" y1="9.3" x2="30.1" y2="7.6"/>
                 </svg>
                 <p className="button-count">{this.state.claps}</p>
-                <p className="button-count">{this.state.id}</p>
             </button>
         )
     }
