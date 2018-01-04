@@ -3,6 +3,7 @@
 .dock {
     display: none;
     box-sizing: border-box;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -101,6 +102,7 @@
     .dock-menu {
         color: inherit;
         text-transform: lowercase;
+        margin-bottom: size(m);
 
         ul {
             list-style: none;
@@ -142,5 +144,9 @@
                 }
             }
         }
+    }
+
+    .dock-submenu {
+
     }
 }

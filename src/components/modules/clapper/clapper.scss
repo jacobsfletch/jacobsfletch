@@ -1,0 +1,48 @@
+@import "../../../sassafras/index.scss";
+
+.button-clapper {
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    .button-icon {
+        width: size(xxl);
+        height: size(xxl);
+        margin-bottom: size(s);
+        overflow: visible;
+        cursor: pointer;
+
+        &:hover {
+            .hand-front {
+                transform: translateX(-#{line(s)});
+            }
+
+            .hand-back {
+                transform: translateX(#{line(s)});
+            }
+        }
+
+        .hand-front {
+            transform: translateX(-#{line(xs)});
+        }
+
+        .hand-back {
+            transform: translateX(#{line(xs)});
+        }
+
+        path,
+        line {
+            stroke: black;
+            stroke-width: line(xs);
+            fill: white;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            vector-effect: non-scaling-stroke;
+        }
+    }
+
+    .button-count {
+        @include type(h3);
+    }
+}

@@ -9,6 +9,7 @@ import ScreenController from '../../screens/ScreenController'
 
 import { getPortfolio, getBlog, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
 import offlinePortfolio from '../../../data/portfolio'
+import offlineBlog from '../../../data/blog'
 
 import './app.css'
 
@@ -68,6 +69,7 @@ class App extends React.Component {
                 })
         } else {
             this.props.getPortfolio(offlinePortfolio)
+            this.props.getBlog(offlineBlog)
             // this.props.getGlobals(data)
             // this.props.getResume(data)
         }

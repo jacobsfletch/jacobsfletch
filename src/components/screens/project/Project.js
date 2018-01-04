@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Subscribe from '../../forms/subscribe/Subscribe';
+import Clapper from '../../modules/clapper/Clapper';
 
 import './project.css';
 
@@ -32,13 +33,41 @@ class ProjectScreen extends React.Component {
     render() {
         var project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
         if(!project) { project = {} }
-        const categories = !project.categories ? 'loading' : project.categories.map(function(category){return <li key={category.name} className="screen-category">{category.name}</li>})
-        const tags = !project.tags ? 'loading' : project.tags.map(function(tag){return <li key={tag.name} className="screen-tag">{tag.name}</li>})
+
+        const categories = !project.categories ? 'loading' : project.categories.map(function(category){
+            return (
+                <li key={category.name} className="screen-category">
+                    {category.name}
+                </li>
+            )
+        })
+
+        const tags = !project.tags ? 'loading' : project.tags.map(function(tag){
+            return (
+                <li key={tag.name} className="screen-tag">
+                    {tag.name}
+                </li>
+            )
+        })
+
         const client = project.client ? project.client : 'personal project'
         const team = project.team ? project.team : 'loading'
 
-        const images = !project.images ? 'loading' : project.images.map(function(image){return <li className="gallery-item" key={image}><img className="screen-image" src={image} alt={image}/></li>})
-        const hashtags = !project.hashtags ? 'loading' : project.hashtags.map(function(hashtag){return <li key={hashtag.name} className="list-item">{hashtag.name}</li>})
+        const images = !project.images ? 'loading' : project.images.map(function(image){
+            return (
+                <li className="gallery-item" key={image}>
+                    <img className="screen-image" src={image} alt={image}/>
+                </li>
+            )
+        })
+
+        const hashtags = !project.hashtags ? 'loading' : project.hashtags.map(function(hashtag) {
+            return (
+                <li key={hashtag.name} className="list-item">
+                    {hashtag.name}
+                </li>
+            )
+        })
 
         return (
             <section className="screen-project"
@@ -70,7 +99,9 @@ class ProjectScreen extends React.Component {
                     </section>
                 </header>
                 <section className="screen-body">
-                    <ul className="screen-gallery">{images}</ul>
+                    <ul className="screen-gallery">
+                        {images}
+                    </ul>
                 </section>
                 <section className="screen-hashtags">
                     <h3 className="list-title">hashtags</h3>
@@ -78,9 +109,31 @@ class ProjectScreen extends React.Component {
                 </section>
                 <footer className="screen-footer">
                     <div className="footer-header" >
-                        <Subscribe name="subscribe" />
+                        <p>if you liked this project, clap once, twice, or thirty times.</p>
+                        <Clapper id={project._id} claps={project.claps || 10}/>
                     </div>
-                    <div className="footer-body" />
+                    <div className="footer-body">
+                        <Subscribe name="subscribe" />
+                        <nav className="footer-menu">
+                            <ul>
+                                <li className="menu-item">
+                                    <a href="http://github.com/jacobsfletch">github</a>
+                                </li>
+                                <li className="menu-item">
+                                    <a href="http://instagram.com/jacobsfletch">instagram</a>
+                                </li>
+                                <li className="menu-item">
+                                    <a href="http://dribbble.com/jacobsfletch">dribbble</a>
+                                </li>
+                                <li className="menu-item">
+                                    <a href="http://behance.com/jacobsfletch">behance</a>
+                                </li>
+                                <li className="menu-item">
+                                    <a href="http://steemit.com/@jacobsfletch">steemit</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </footer>
             </section>
         )

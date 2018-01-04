@@ -2,10 +2,16 @@
 
 .article-card {
     position: relative;
-    display: inline-flex;
+    display: block;
     color: black;
     background-color: white;
-    
+
+    hr {
+        margin: size(m) 0;
+        border-style: dashed;
+        border-width: 0 0 line(xxs) 0;
+    }
+
     .card-title {
         @include type(h2);
         position: relative;

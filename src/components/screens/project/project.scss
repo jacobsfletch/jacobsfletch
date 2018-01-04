@@ -270,9 +270,26 @@
             width: 100%;
         }
         .footer-body {
+            display: flex;
+            flex-direction: column;
+            color: white;
             background-color: black;
             height: 400px;
             width: 100%;
+        }
+        .footer-menu {
+            ul {
+                list-style: none;
+                flex-wrap: wrap;
+                text-align: center;
+                .menu-item {
+                    display: inline-flex;
+                    margin-right: size(xxs);
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
         }
     }
 

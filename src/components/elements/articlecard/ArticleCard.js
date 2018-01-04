@@ -17,11 +17,13 @@ export default class ArticleCard extends React.Component {
                     <Link to={slug} />
                 </div>
                 <div className="card-meta">
-                    <h5 className="card-client">Me</h5>
+                    <time className="card-date">{this.props.data.publishedDate}</time>
                     <Link to={slug}>
-                        <h5 className="card-title">{this.props.data.title}</h5>
+                        <h2 className="card-title">{this.props.data.title}</h2>
                     </Link>
+                    <p className="card-caption">{this.props.data.caption}</p>
                 </div>
+                <hr />
             </li>
         )
     }

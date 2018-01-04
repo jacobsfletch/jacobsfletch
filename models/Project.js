@@ -31,6 +31,9 @@ Project.add({
         default: 'draft',
         index: true,
     },
+    claps: {
+        type: Number
+    },
     team: {
         type: Types.Relationship,
         required: true,

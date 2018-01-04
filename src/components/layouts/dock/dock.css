@@ -2,6 +2,7 @@
 .dock {
   display: none;
   box-sizing: border-box;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -68,7 +69,8 @@
           border: white 4px solid; }
   .dock .dock-menu {
     color: inherit;
-    text-transform: lowercase; }
+    text-transform: lowercase;
+    margin-bottom: 1.125rem; }
     .dock .dock-menu ul {
       list-style: none; }
       @media only screen and (max-height: 320px) {
