@@ -10,9 +10,9 @@ import App from './components/apps/main/App';
 const mount = document.querySelector('.mount')
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
-    </Provider>, mount
+	<Provider store={store}>
+		<Router>
+			<App />
+		</Router>
+	</Provider>, mount
 );

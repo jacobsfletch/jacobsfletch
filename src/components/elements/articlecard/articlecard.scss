@@ -1,27 +1,27 @@
 @import "../../../sassafras/index.scss";
 
 .article-card {
-    position: relative;
-    display: block;
-    color: black;
-    background-color: white;
+	position: relative;
+	display: block;
+	color: black;
+	background-color: white;
 
-    hr {
-        margin: size(m) 0;
-        border-style: dashed;
-        border-width: 0 0 line(xxs) 0;
-    }
+	hr {
+		margin: size(m) 0;
+		border-style: dashed;
+		border-width: 0 0 line(xxs) 0;
+	}
 
-    .card-title {
-        @include type(h2);
-        position: relative;
-        display: inline-block;
-        margin-top: size(xs);
-        margin-bottom: size(s);
-        white-space: normal;
-        text-transform: lowercase;
-        @include breakpoint($size:xs) {
-            @include type(h3);
-        }
-    }
+	.card-title {
+		@include type(h2);
+		position: relative;
+		display: inline-block;
+		margin-top: size(xs);
+		margin-bottom: size(s);
+		white-space: normal;
+		text-transform: lowercase;
+		@include breakpoint($size:xs) {
+			@include type(h3);
+		}
+	}
 }

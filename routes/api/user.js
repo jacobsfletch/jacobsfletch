@@ -93,8 +93,8 @@ exports.create = function(req, res) {
 	data.canAccessKeystone = false;
 	data.name = userdata.name;
 
-    data['name.first'] = userdata['name.first'];
-    data['name.last'] = userdata['name.last'];
+	data['name.first'] = userdata['name.first'];
+	data['name.last'] = userdata['name.last'];
 	User.model.findOne({ email: data.email }).exec(function(err, result) {
 		if (result) {
 			res.apiError('A user with this email already exists.');
@@ -104,17 +104,17 @@ exports.create = function(req, res) {
 	});
 
 	function addUser() {
-        // Create new user
-        var newUser = new User.model(data);
+		// Create new user
+		var newUser = new User.model(data);
 
-        // Save new user to db
+		// Save new user to db
 		newUser.save(function(err) {
 			if (err) {
-                // Return create error if there was an error
+				// Return create error if there was an error
 				return res.apiError('create error', err);
 			}else {
-                // Return user if succesfully saved
-                return res.apiResponse(newUser);
+				// Return user if succesfully saved
+				return res.apiResponse(newUser);
 			}
 
 		});
@@ -126,10 +126,10 @@ exports.create = function(req, res) {
  */
 exports.update = function(req, res) {
 	User.model.findById(req.params.id).exec(function(err, item) {
-        if(process.env.ENVIORNMENT != 'development') {
-		    if (req.user._id.toString() !== item._id.toString() && req.user._id.toString() !== item.adminUser.toString() && !req.user.canAccessKeystone) return res.apiError('You don\'t have permissions to edit this user');
-        }
-        if (err) return res.apiError('database error', err);
+		if(process.env.ENVIORNMENT != 'development') {
+			if (req.user._id.toString() !== item._id.toString() && req.user._id.toString() !== item.adminUser.toString() && !req.user.canAccessKeystone) return res.apiError('You don\'t have permissions to edit this user');
+		}
+		if (err) return res.apiError('database error', err);
 		if (!item) return res.apiError('not found');
 
 		var userdata = (req.method == 'POST') ? req.body : req.query;
@@ -192,26 +192,26 @@ exports.login = function(req, res) {
  * Remove User by ID
  */
 exports.remove = function(req, res) {
-    var data = (req.method == 'POST') ? req.body : req.query;
-    var id = data.id;
+	var data = (req.method == 'POST') ? req.body : req.query;
+	var id = data.id;
 	User.model.findById(id)
-    .exec(function(err, item) {
-    	if(item) {
-            if(process.env.ENVIORNMENT != 'development') {
-    		    var canEdit = req.user._id.toString() == item._id.toString() || req.user.canAccessKeystone;
-    		    if (!canEdit) return res.apiError('You don\'t have edit priviliages of this player', 'no permissions');
-            }
-    		User.model.remove({
-    			_id: id
-    		},function(err){
-    			if (err) return res.apiError('Sorry, there was an issue removing this player.', err);
-    			res.apiResponse({
-    				success: true,
-    				user: item
-    			});
-    		});
-    	}else {
-            return res.apiError('This player doesn\'t exists', 'player doesn\'t exist');
-        }
+	.exec(function(err, item) {
+		if(item) {
+			if(process.env.ENVIORNMENT != 'development') {
+				var canEdit = req.user._id.toString() == item._id.toString() || req.user.canAccessKeystone;
+				if (!canEdit) return res.apiError('You don\'t have edit priviliages of this player', 'no permissions');
+			}
+			User.model.remove({
+				_id: id
+			},function(err){
+				if (err) return res.apiError('Sorry, there was an issue removing this player.', err);
+				res.apiResponse({
+					success: true,
+					user: item
+				});
+			});
+		}else {
+			return res.apiError('This player doesn\'t exists', 'player doesn\'t exist');
+		}
 	});
 };

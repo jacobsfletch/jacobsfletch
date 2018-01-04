@@ -1,41 +1,41 @@
 @import "../../../sassafras/index.scss";
 
 .footer-breadcrumbs {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    height: 100%;
-    align-items: center;
-    padding-left: size(m);
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	transform: rotate(-90deg);
+	transform-origin: left top;
+	height: 100%;
+	align-items: center;
+	padding-left: size(m);
 
-    ul {
-        display: flex;
+	ul {
+		display: flex;
 
-        .list-item {
-            display: inline-flex;
+		.list-item {
+			display: inline-flex;
 
-            a:hover {
-                font-weight: 200;
-            }
+			a:hover {
+				font-weight: 200;
+			}
 
-            @include breakpoint($size: short) {
-                display: none;
-                &:first-child {
-                    display: inline-flex;
-                }
-            }
+			@include breakpoint($size: short) {
+				display: none;
+				&:first-child {
+					display: inline-flex;
+				}
+			}
 
-            &::before {
-                content: ' / ';
-                white-space: pre;
-            }
+			&::before {
+				content: ' / ';
+				white-space: pre;
+			}
 
-            &:first-child::before {
-                content: ''
-            }
-        }
-    }
+			&:first-child::before {
+				content: ''
+			}
+		}
+	}
 }

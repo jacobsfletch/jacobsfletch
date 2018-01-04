@@ -1,13 +1,13 @@
 @import "../../../sassafras/index.scss";
 
 .backtotop {
-    cursor: pointer;
-    text-transform: inherit;
-    display: none;
-    &:hover {
-        font-weight: 200;
-    }
-    &.active {
-        display: block;
-    }
+	cursor: pointer;
+	text-transform: inherit;
+	display: none;
+	&:hover {
+		font-weight: 200;
+	}
+	&.active {
+		display: block;
+	}
 }

@@ -1,26 +1,26 @@
 @import "../../../sassafras/index.scss";
 
 .form-contact {
-    @include type(h3);
-    width: 75%;
-    margin: auto;
-    padding: size(l) 0;
+	@include type(h3);
+	width: 75%;
+	margin: auto;
+	padding: size(l) 0;
 
-    @include breakpoint($size: s, $inherit: down) {
-        width: 100%;
-    }
+	@include breakpoint($size: s, $inherit: down) {
+		width: 100%;
+	}
 
-    &.disabled {
-        opacity: .5;
-    }
+	&.disabled {
+		opacity: .5;
+	}
 
-    &.error {
-        .error-message {
-            display: block;
-        }
-    }
+	&.error {
+		.error-message {
+			display: block;
+		}
+	}
 
-    > * {
-        display: inline;
-    }
+	> * {
+		display: inline;
+	}
 }

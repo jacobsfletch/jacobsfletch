@@ -10,14 +10,14 @@ import WindowReducer from './reducers/WindowReducer'
 import PortfolioReducer from './reducers/PortfolioReducer'
 
 const allReducers = combineReducers({
-    route: RouteReducer,
-    portfolio: PortfolioDataReducer,
-    blog: BlogDataReducer,
-    dock: DockReducer,
-    globals: GlobalDataReducer,
-    resume: ResumeReducer,
-    viewportSize: WindowReducer,
-    portfolioSize: PortfolioReducer
+	route: RouteReducer,
+	portfolio: PortfolioDataReducer,
+	blog: BlogDataReducer,
+	dock: DockReducer,
+	globals: GlobalDataReducer,
+	resume: ResumeReducer,
+	viewportSize: WindowReducer,
+	portfolioSize: PortfolioReducer
 })
 
 export default allReducers

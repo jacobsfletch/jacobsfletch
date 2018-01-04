@@ -8,32 +8,32 @@ import ArticleCard from '../../elements/articlecard/ArticleCard'
 import './blog.css'
 
 class BlogScreen extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+	constructor(props) {
+		super(props)
+	}
 
-    render() {
-        let articles = this.props.blog.map((article, index) =>
-            <ArticleCard
-                key={article._id}
-                data={article}
-                index={index}
-            />
-        )
-        return (
-            <div className="screen-blog">
-                <ul className="blog-list">
-                    {articles}
-                </ul>
-            </div>
-        )
-    }
+	render() {
+		let articles = this.props.blog.map((article, index) =>
+			<ArticleCard
+				key={article._id}
+				data={article}
+				index={index}
+			/>
+		)
+		return (
+			<div className="screen-blog">
+				<ul className="blog-list">
+					{articles}
+				</ul>
+			</div>
+		)
+	}
 }
 
 function mapStateToProps(state) {
-    return {
-        blog: state.blog
-    }
+	return {
+		blog: state.blog
+	}
 }
 
 export default withRouter(connect(mapStateToProps)(BlogScreen))

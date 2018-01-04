@@ -1,19 +1,19 @@
 .screen-portfolio {
-    flex-grow: 1;
-    overflow: hidden;
-    overflow-x: scroll;
-    position: relative;
-    -webkit-overflow-scrolling: touch;
+	flex-grow: 1;
+	overflow: hidden;
+	overflow-x: scroll;
+	position: relative;
+	-webkit-overflow-scrolling: touch;
 
-    &.touchable {
-        overflow: hidden;
-        overflow-y: scroll;
-        > * {
-            display: flex;
-        }
-    }
+	&.touchable {
+		overflow: hidden;
+		overflow-y: scroll;
+		> * {
+			display: flex;
+		}
+	}
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }

@@ -17,45 +17,45 @@ import { routeChanged } from '../../actions/ScreenActions'
 import { deactivateDock } from '../../actions/DockActions'
 
 class ScreenController extends React.Component {
-    componentDidMount() {
-        this.props.history.listen((location, action) => {
-            this.props.routeChanged(location.pathname)
-            this.props.deactivateDock()
-        })
-    }
-    render() {
-        return (
-            <div className="app-body">
-                <Switch>
-                    <Route exact path='/' component={HomeScreen} />
-                    <Route exact path='/doodle' component={DoodleScreen} />
-                    <Route exact path='/portfolio' component={PortfolioScreen}/>
-                    <Route exact path='/portfolio/:projectName' component={ProjectScreen} />
-                    <Route exact path='/blog' component={BlogScreen}/>
-                    <Route exact path='/blog/:articleName' component={ArticleScreen} />
-                    <Route exact path='/contact' component={Contact} />
-                    <Route exact path='/contact/confirmation' component={ContactConfirmation} />
-                    <Route path='/404' component={PageNotFound} />
-                    <Redirect to='/404' />
-                </Switch>
-            </div>
-        )
-    }
+	componentDidMount() {
+		this.props.history.listen((location, action) => {
+			this.props.routeChanged(location.pathname)
+			this.props.deactivateDock()
+		})
+	}
+	render() {
+		return (
+			<div className="app-body">
+				<Switch>
+					<Route exact path='/' component={HomeScreen} />
+					<Route exact path='/doodle' component={DoodleScreen} />
+					<Route exact path='/portfolio' component={PortfolioScreen}/>
+					<Route exact path='/portfolio/:projectName' component={ProjectScreen} />
+					<Route exact path='/blog' component={BlogScreen}/>
+					<Route exact path='/blog/:articleName' component={ArticleScreen} />
+					<Route exact path='/contact' component={Contact} />
+					<Route exact path='/contact/confirmation' component={ContactConfirmation} />
+					<Route path='/404' component={PageNotFound} />
+					<Redirect to='/404' />
+				</Switch>
+			</div>
+		)
+	}
 }
 
 function mapStateToProps(state) {
-    return state
+	return state
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        routeChanged: (route) => {
-            dispatch(routeChanged(route))
-        },
-        deactivateDock: () => {
-            dispatch(deactivateDock())
-        }
-    }
+	return {
+		routeChanged: (route) => {
+			dispatch(routeChanged(route))
+		},
+		deactivateDock: () => {
+			dispatch(deactivateDock())
+		}
+	}
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScreenController))

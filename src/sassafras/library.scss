@@ -65,12 +65,12 @@ $layers: (
 
 
 $breakpoints: (
-    'xs': 320px,
-    's': 464px,
-    'm': 768px,
-    'l': 1024px,
-    'xl': 1280px,
-    'sitewidth': 1400px,
+	'xs': 320px,
+	's': 464px,
+	'm': 768px,
+	'l': 1024px,
+	'xl': 1280px,
+	'sitewidth': 1400px,
 );
 
 //////////////////////////////////////////////////////////
@@ -81,60 +81,60 @@ $breakpoints: (
 
 // Fonts
 $fonts: (
-    body: ('Source Code Pro', sans-serif),
-    heading: ('Source Code Pro', sans-serif)
+	body: ('Source Code Pro', sans-serif),
+	heading: ('Source Code Pro', sans-serif)
 );
 
 // Typography
 $typography: (
-    p: (
-        font-family: font(body),
-        font-size: size(xs),
-        line-height: size(s),
-        margin: 0
-    ),
-    fine: (
-        font-family: font(body),
-        font-size: size(xxs),
-        line-height: size(xxs)
-    ),
-    label: (
-        font-family: font(body),
-        font-size: size(xs),
-        line-height: size(s),
-        margin: 0,
-        text-transform: uppercase,
-        letter-spacing: line(s),
-        font-weight: 900
-    ),
-    h1: (
-        font-family: font(heading),
-        font-size: size(xl),
-        line-height: size(xl)
-    ),
-    h2: (
-        font-family: font(heading),
-        font-size: size(l),
-        line-height: size(xl)
-    ),
-    h3: (
-        font-family: font(heading),
-        font-size: size(m),
-        line-height: size(xl)
-    ),
-    h4: (
-        font-family: font(heading),
-        font-size: size(s),
-        line-height: size(m)
-    ),
-    h5: (
-        font-family: font(heading),
-        font-size: size(xs),
-        line-height: size(xs)
-    ),
-    h6: (
-        font-family: font(heading),
-        font-size: size(xxs),
-        line-height: size(xxs)
-    ),
+	p: (
+		font-family: font(body),
+		font-size: size(xs),
+		line-height: size(s),
+		margin: 0
+	),
+	fine: (
+		font-family: font(body),
+		font-size: size(xxs),
+		line-height: size(xxs)
+	),
+	label: (
+		font-family: font(body),
+		font-size: size(xs),
+		line-height: size(s),
+		margin: 0,
+		text-transform: uppercase,
+		letter-spacing: line(s),
+		font-weight: 900
+	),
+	h1: (
+		font-family: font(heading),
+		font-size: size(xl),
+		line-height: size(xl)
+	),
+	h2: (
+		font-family: font(heading),
+		font-size: size(l),
+		line-height: size(xl)
+	),
+	h3: (
+		font-family: font(heading),
+		font-size: size(m),
+		line-height: size(xl)
+	),
+	h4: (
+		font-family: font(heading),
+		font-size: size(s),
+		line-height: size(m)
+	),
+	h5: (
+		font-family: font(heading),
+		font-size: size(xs),
+		line-height: size(xs)
+	),
+	h6: (
+		font-family: font(heading),
+		font-size: size(xxs),
+		line-height: size(xxs)
+	),
 );

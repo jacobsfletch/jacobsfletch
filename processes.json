@@ -1,10 +1,10 @@
 {
-  "apps" : [{
-    "name"        : "keystone",
-    "script"      : "keystone.js",
-    "ignoreWatch" : ["node_modules", "templates", "public"],
-    "watch"       : "true",
-    "instances"   : "2",
-    "exec_mode"   : "cluster",
-  }]
+	"apps" : [{
+		"name": "keystone",
+		"script": "keystone.js",
+		"ignoreWatch": ["node_modules", "templates", "public"],
+		"watch": "true",
+		"instances": "2",
+		"exec_mode": "cluster",
+	}]
 }

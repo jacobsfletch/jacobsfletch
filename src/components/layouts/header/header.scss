@@ -2,79 +2,79 @@
 
 .app-header,
 .app-footer {
-    @include type(label);
-    min-height: size(m);
-    display: flex;
-    align-items: center;
-    z-index: layer(tippy-top);
-    align-items: center;
-    white-space: nowrap;
-    position: relative;
+	@include type(label);
+	min-height: size(m);
+	display: flex;
+	align-items: center;
+	z-index: layer(tippy-top);
+	align-items: center;
+	white-space: nowrap;
+	position: relative;
 
-    .header-title a:hover {
-        font-weight: 200;
-    }
+	.header-title a:hover {
+		font-weight: 200;
+	}
 
-    .header-menu {
-        flex-grow: 1;
-        height: 100%;
-    }
+	.header-menu {
+		flex-grow: 1;
+		height: 100%;
+	}
 
-    .header-menu {
-        margin: 0 size(m);
-        display: flex;
-        justify-content: flex-end;
+	.header-menu {
+		margin: 0 size(m);
+		display: flex;
+		justify-content: flex-end;
 
-        p {
-            cursor: pointer;
-            text-align: right;
-        }
-    }
+		p {
+			cursor: pointer;
+			text-align: right;
+		}
+	}
 }
 
 .app-header .cropmark {
-    &.tl {
-        border-left: 0;
-        border-top: 0;
-    }
-    &.tr{
-        border-right: 0;
-        border-top: 0;
-    }
+	&.tl {
+		border-left: 0;
+		border-top: 0;
+	}
+	&.tr{
+		border-right: 0;
+		border-top: 0;
+	}
 }
 
 .app-footer .cropmark {
-    &.bl {
-        border-left: 0;
-        border-bottom: 0;
-    }
-    &.br {
-        border-right: 0;
-        border-bottom: 0;
-    }
+	&.bl {
+		border-left: 0;
+		border-bottom: 0;
+	}
+	&.br {
+		border-right: 0;
+		border-bottom: 0;
+	}
 }
 
 .cropmark {
-    box-sizing: border-box;
-    border: solid currentColor;
-    border-width: line(m);
-    width: size(m);
-    height: size(m);
+	box-sizing: border-box;
+	border: solid currentColor;
+	border-width: line(m);
+	width: size(m);
+	height: size(m);
 
-    @include breakpoint(xs) {
-        width: size(s);
-        height: size(s);
-        border-width: line(s);
-    };
+	@include breakpoint(xs) {
+		width: size(s);
+		height: size(s);
+		border-width: line(s);
+	};
 }
 
 .header-after {
-    position: absolute;
-    bottom: - size(m);
-    right: size(m);
+	position: absolute;
+	bottom: - size(m);
+	right: size(m);
 
-    @include breakpoint(xs) {
-        right: size(s);
-        bottom: - size(s);
-    };
+	@include breakpoint(xs) {
+		right: size(s);
+		bottom: - size(s);
+	};
 }

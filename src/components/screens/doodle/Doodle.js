@@ -4,9 +4,9 @@ import SketchPad from '../../modules/sketchpad/SketchPad';
 import './Doodle.css'
 
 export default class HomeScreen extends React.Component {
-    render() {
-        return (
-            <SketchPad />
-        )
-    }
+	render() {
+		return (
+			<SketchPad />
+		)
+	}
 }

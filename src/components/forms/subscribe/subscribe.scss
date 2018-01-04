@@ -1,14 +1,14 @@
 @import "../../../sassafras/index.scss";
 
 .form-subscribe {
-    margin: size(xl) 0;
-    text-align: center;
-    &.disabled {
-        opacity: .5;
-    }
-    &.error {
-        .error-message {
-            display: block;
-        }
-    }
+	margin: size(xl) 0;
+	text-align: center;
+	&.disabled {
+		opacity: .5;
+	}
+	&.error {
+		.error-message {
+			display: block;
+		}
+	}
 }

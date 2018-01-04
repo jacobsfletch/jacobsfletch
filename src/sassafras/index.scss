@@ -16,22 +16,22 @@ $base-line-height: $base-font-size * $baseline-ratio;
 
 @mixin output($props, $defaults: false) {
 
-    @if type-of($defaults) == map {
-        $props: map-merge($defaults, $props);
-    }
+	@if type-of($defaults) == map {
+		$props: map-merge($defaults, $props);
+	}
 
-    // Conditionals
-    @each $prop, $style in $props {
-        @if(type-of($style) != map) {
-            #{$prop} : $style;
-        }
-    }
+	// Conditionals
+	@each $prop, $style in $props {
+		@if(type-of($style) != map) {
+			#{$prop} : $style;
+		}
+	}
 }
 
 @mixin type($type, $overrides: null) {
-    @if $overrides and type-of($overrides) == map {
-        @include output($overrides, typography($type));
-    } @else {
-        @include output(typography($type));
-    }
+	@if $overrides and type-of($overrides) == map {
+		@include output($overrides, typography($type));
+	} @else {
+		@include output(typography($type));
+	}
 }
