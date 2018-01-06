@@ -45,8 +45,26 @@ Global.add({
 	startupImg: {
 		type: Types.CloudinaryImage
 	},
-	doodles: {
-		type: Types.TextArray
+	github: {
+		type: Types.Url
+	},
+	instagram: {
+		type: Types.Url
+	},
+	dribbble: {
+		type: Types.Url
+	},
+	behance: {
+		type: Types.Url
+	},
+	instagram: {
+		type: Types.Url
+	},
+	steemit: {
+		type: Types.Url
+	},
+	medium: {
+		type: Types.Url
 	}
 });
 

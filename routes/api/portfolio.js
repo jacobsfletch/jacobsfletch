@@ -8,8 +8,8 @@ exports.getAllPublished = function(req, res) {
 	.populate('team clients hashtags categories tags')
 	.sort('sortOrder')
 	.exec(function(err, items) {
-		if (err) return res.apiError('database error', err);
-		if (!items) return res.apiError('No project was found.');
-		res.apiResponse(items);
-	});
-};
+		if (err) return res.apiError('database error', err)
+		if (!items) return res.apiError('No project was found.')
+		res.apiResponse(items)
+	})
+}

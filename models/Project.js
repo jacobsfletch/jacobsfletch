@@ -1,5 +1,5 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+var keystone = require('keystone')
+var Types = keystone.Field.Types
 
 var Project = new keystone.List('Project', {
 	sortable: true,
@@ -11,7 +11,7 @@ var Project = new keystone.List('Project', {
 		from: 'name',
 		unique: true
 	},
-});
+})
 
 Project.add({
 	name: {
@@ -31,8 +31,13 @@ Project.add({
 		default: 'draft',
 		index: true,
 	},
+	publishedDate: {
+		type: Types.Date,
+		format: 'MMM DD YYYY',
+	},
 	claps: {
-		type: Types.Number
+		type: Types.Number,
+		default: 0
 	},
 	team: {
 		type: Types.Relationship,
@@ -103,7 +108,7 @@ Project.add({
 		ref: 'Hashtag',
 		many: true,
 	},
-});
+})
 
-Project.defaultColumns = 'name, state|25%';
-Project.register();
+Project.defaultColumns = 'name, state|25%'
+Project.register()

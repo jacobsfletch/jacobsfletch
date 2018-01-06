@@ -1,39 +1,77 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import './article.css';
+import ScreenFooter from '../../layouts/screenFooter/ScreenFooter'
+import { updateId } from '../../../actions/AppActions'
 
-class ProjectScreen extends React.Component {
+import './article.css'
+
+class ArticleScreen extends React.Component {
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			articleTitle: '',
+			article: {
+				title: 'loading',
+				publishedDate: 'loading',
+				content: {
+					excerpt: 'loading',
+					full: 'loading'
+				},
+				quote: 'loading',
+				quoteAuthor: 'loading',
+				categories: [{name:'loading'}],
+				tags: [{name:'loading'}],
+				hashtags: [{name:'loading'}]
+			}
+		}
+	}
+
 	componentWillMount() {
 		this.setState({
 			articleTitle: this.props.match.params.articleName
 		})
 	}
 
+	componentDidMount() {
+		let article = this.props.blog.find(article => article.slug === this.state.articleTitle)
+		this.setState({ article })
+		this.props.updateId(article._id)
+	}
+
 	render() {
-		var article = this.props.blog.find(article => article.slug === this.state.articleTitle)
-		if(!article) { article = {} }
-		const title = article.title ? article.title : 'loading'
-		const excerpt = article.content.excerpt ? article.content.excerpt : 'loading'
+		const article = this.state.article
+		const categories = article.categories.map(function(category) {
+			return (
+				<li key={category.name} className="screen-category">
+					{category.name}
+				</li>
+			)
+		})
+
+		const hashtags = article.hashtags.map(function(hashtag) {
+			return (
+				<li key={hashtag.name} className="list-item">
+					{hashtag.name}
+				</li>
+			)
+		})
 		return (
 			<section className="screen-article" >
 				<header className="board-header">
-					<img alt="alt text" className="board-featured" src={article.featuredImage || "loading"} />
+					<img alt="alt text" className="board-featured" src={article.featuredImage} />
 					<section className="header-body">
-						<h1 className="board-title">{title}</h1>
-						<ul className="board-categories">{article.categories || "loading"}</ul>
-						<p className="board-brief">{excerpt}</p>
+						<h1 className="board-title">{article.title}</h1>
+						<ul className="board-categories">{categories}</ul>
+						<p className="board-brief">{article.excerpt}</p>
 						<blockquote className="board-blockquote">
-							<p className="board-quote">{article.quote || "loading"}</p>
-							<cite className="board-quoteAuthor">{article.quoteAuthor || "loading"}</cite>
+							<p className="board-quote">{article.quote}</p>
+							<cite className="board-quoteAuthor">{article.quoteAuthor}</cite>
 						</blockquote>
 					</section>
 				</header>
-				<footer className="board-footer">
-					<div className="board-hashtags">
-						<h3 className="list-title">hashtags</h3>
-					</div>
-				</footer>
+				<ScreenFooter />
 			</section>
 		)
 	}
@@ -44,4 +82,13 @@ function mapStateToProps(state) {
 		blog: state.blog
 	}
 }
-export default connect(mapStateToProps)(ProjectScreen)
+
+function mapDispatchToProps(dispatch) {
+	return {
+		updateId: (id) => {
+			dispatch(updateId(id))
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleScreen)

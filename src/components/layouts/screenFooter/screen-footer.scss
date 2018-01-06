@@ -1,0 +1,30 @@
+@import "../../../sassafras/index.scss";
+
+.screen-footer {
+	.footer-header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		box-sizing: border-box;
+		border: solid black line(xs);
+		padding: size(xxl);
+		width: 100%;
+	}
+
+	.footer-body {
+		display: flex;
+		flex-direction: column;
+		color: white;
+		background-color: black;
+		padding: 0 size(xl);
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	hr {
+		margin: 0;
+		border-style: dashed;
+		border-width: 0 0 line(xxs) 0;
+		border-color: white;
+	}
+}

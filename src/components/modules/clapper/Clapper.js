@@ -1,42 +1,51 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import './clapper.css';
 
-export default class Clapper extends React.Component {
+class Clapper extends React.Component {
 	constructor() {
 		super()
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.state = {
-			claps: 0,
-			id: ''
+			id: '',
+			claps: 0
 		}
 	}
 
-	componentDidMount() {
-		this.setState({
-			claps: this.props.claps,
-			id: this.props.id
-		})
+	componentWillReceiveProps(nextProps) {
+		const project = nextProps.projects.find(project => project._id === nextProps.id)
+		const article = nextProps.articles.find(article => article._id === nextProps.id)
+		const id = nextProps.id
+		const claps = project ? project.claps : article ? article.claps : null
+		this.setState({ id, claps })
 	}
 
-	handleSubmit(e, id) {
-		console.log(id)
-		const newClapCount = this.state.claps + 1
-		const data = { newClapCount, id }
-		this.setState({claps: newClapCount})
+	handleSubmit(e) {
+		this.setState({claps: this.state.claps + 1})
+		const id = this.state.id
 		return
-		fetch('/api/project/clap', {
-				method: 'POST',
-				body: JSON.stringify(data),
+		fetch('/api/clap/get', {
+				method: 'GET',
+				body: id,
 				headers: {'Content-Type':'application/json'}
+			})
+			.then(response => {
+				fetch('/api/clap/post', {
+						method: 'POST',
+						body: id,
+						headers: {'Content-Type':'application/json'}
+					})
+					.then(response => {
+						console.log('hootya')
+					})
 			})
 		return false
 	}
 
 	render() {
-		const id = this.props.id ? this.props.id : null
 		return (
-			<button className="button-clapper" onClick={(e) => this.handleSubmit(e, id)} >
+			<button className="button-clapper" onClick={(e) => this.handleSubmit(e)} >
 				<svg className="button-icon" width="32" height="32" viewBox="0 0 32 32">
 					<path className="hand-back" d="M24,20.6c0.2,1.3,0.4,4.7-3,8.1c-4.3,4.3-9.8,1.3-12.3-1.3s-6.8-6.8-6.8-6.8c-0.7-0.7-0.7-1.8,0-2.6l0,0
 						c0.7-0.7,1.8-0.7,2.6,0l4.3,4.3l-6-6c-0.7-0.7-0.7-1.8,0-2.6l0,0c0.7-0.7,1.8-0.7,2.6,0l5.1,5.1l-6.8-6.8c-0.7-0.7-0.7-1.8,0-2.6
@@ -55,3 +64,13 @@ export default class Clapper extends React.Component {
 		)
 	}
 }
+
+function mapStateToProps(state) {
+	return {
+		id: state.id,
+		projects: state.portfolio,
+		articles: state.blog
+	}
+}
+
+export default connect(mapStateToProps)(Clapper)

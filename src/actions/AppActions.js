@@ -45,3 +45,10 @@ export function resizePortfolio(portfolioSize) {
 		}
 	}
 }
+
+export function updateId(id) {
+	return {
+		type: 'ID_UPDATED',
+		payload: id
+	}
+}

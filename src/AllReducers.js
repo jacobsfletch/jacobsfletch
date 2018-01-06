@@ -8,9 +8,11 @@ import ResumeReducer from './reducers/ResumeReducer'
 import RouteReducer from './reducers/RouteReducer'
 import WindowReducer from './reducers/WindowReducer'
 import PortfolioReducer from './reducers/PortfolioReducer'
+import IdReducer from './reducers/IdReducer'
 
 const allReducers = combineReducers({
 	route: RouteReducer,
+	id: IdReducer,
 	portfolio: PortfolioDataReducer,
 	blog: BlogDataReducer,
 	dock: DockReducer,
