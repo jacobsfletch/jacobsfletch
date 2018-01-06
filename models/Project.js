@@ -37,7 +37,7 @@ Project.add({
 	},
 	claps: {
 		type: Types.Number,
-		default: 0
+		default: '0'
 	},
 	team: {
 		type: Types.Relationship,

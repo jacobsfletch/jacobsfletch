@@ -18,6 +18,7 @@ class Clapper extends React.Component {
 		const article = nextProps.articles.find(article => article._id === nextProps.id)
 		const id = nextProps.id
 		const claps = project ? project.claps : article ? article.claps : null
+		console.log(id)
 		this.setState({ id, claps })
 	}
 

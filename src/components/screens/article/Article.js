@@ -28,16 +28,23 @@ class ArticleScreen extends React.Component {
 		}
 	}
 
-	componentWillMount() {
-		this.setState({
-			articleTitle: this.props.match.params.articleName
-		})
+	componentWillReceiveProps(nextProps) {
+		if (this.props.blog !== nextProps.blog) {
+			this.updateData(nextProps.blog)
+		}
+	}
+
+	updateData(blog) {
+		if (blog && blog.length > 0) {
+			const articleTitle = this.props.match.params.articleName
+			const article = blog.find(i => i.slug === articleTitle)
+			this.setState({ article })
+			this.props.updateId(article._id)
+		} else { return }
 	}
 
 	componentDidMount() {
-		let article = this.props.blog.find(article => article.slug === this.state.articleTitle)
-		this.setState({ article })
-		this.props.updateId(article._id)
+		this.updateData(this.props.blog)
 	}
 
 	render() {
@@ -79,7 +86,8 @@ class ArticleScreen extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		blog: state.blog
+		blog: state.blog,
+		route: state.route
 	}
 }
 

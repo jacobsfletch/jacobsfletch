@@ -25,6 +25,10 @@ Article.add({
 		parseFormat: 'MM-DD-YYYY',
 		format: 'MM-DD-YYYY'
 	},
+	claps: {
+		type: Types.Number,
+		default: '0'
+	},
 	title: {
 		type: String,
 		required: true,

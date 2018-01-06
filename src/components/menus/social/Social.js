@@ -18,7 +18,6 @@ class Social extends React.Component {
 		}
 	}
 	componentWillReceiveProps() {
-		console.log(this.props)
 		this.setState({
 			github: this.props.globals.github,
 			instagram: this.props.globals.instagram,

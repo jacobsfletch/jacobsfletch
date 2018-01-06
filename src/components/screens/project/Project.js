@@ -13,7 +13,6 @@ class ProjectScreen extends React.Component {
 		this.onTouchMove = this.onTouchMove.bind(this)
 		this.onWheel = this.onWheel.bind(this)
 		this.state = {
-			projectTitle: '',
 			project: {
 				client: 'loading',
 				title: 'loading',
@@ -29,16 +28,23 @@ class ProjectScreen extends React.Component {
 		}
 	}
 
-	componentWillMount() {
-		this.setState({
-			projectTitle: this.props.match.params.projectName
-		})
+	componentWillReceiveProps(nextProps) {
+		if (this.props.portfolio !== nextProps.portfolio) {
+			this.updateData(nextProps.portfolio)
+		}
+	}
+
+	updateData(portfolio) {
+		if (portfolio && portfolio.length > 0) {
+			const projectTitle = this.props.match.params.projectName
+			const project = portfolio.find(i => i.slug === projectTitle)
+			this.setState({ project })
+			this.props.updateId(project._id)
+		} else { return }
 	}
 
 	componentDidMount() {
-		let project = this.props.portfolio.find(project => project.slug === this.state.projectTitle)
-		this.setState({ project })
-		this.props.updateId(project._id)
+		this.updateData(this.props.portfolio)
 	}
 
 	onWheel(e) {
@@ -131,7 +137,8 @@ class ProjectScreen extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		portfolio: state.portfolio
+		portfolio: state.portfolio,
+		route: state.route
 	}
 }
 

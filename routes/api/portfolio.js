@@ -1,15 +1,15 @@
 const keystone = require('keystone')
-const Project = keystone.list('Project').model
+const Projects = keystone.list('Project').model
 
 exports.getAllPublished = function(req, res) {
-	Project.find({
+	Projects.find({
 		state: 'published',
 	})
 	.populate('team clients hashtags categories tags')
 	.sort('sortOrder')
-	.exec(function(err, items) {
+	.exec(function(err, result) {
 		if (err) return res.apiError('database error', err)
-		if (!items) return res.apiError('No project was found.')
-		res.apiResponse(items)
+		if (!result) return res.apiError('No project was found.')
+		res.apiResponse(result)
 	})
 }
