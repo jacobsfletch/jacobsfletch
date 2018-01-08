@@ -10,7 +10,7 @@ export default class Subscribe extends React.Component {
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)
-		this.handleSubmit = HandleSubmit.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 		this.state = {
 			status: 200,
 			isValid: false,
@@ -22,6 +22,7 @@ export default class Subscribe extends React.Component {
 				emailAddress: {
 					value: '',
 					isValid: false,
+					showError: false,
 					errorMessage: ''
 				}
 			}
@@ -29,8 +30,8 @@ export default class Subscribe extends React.Component {
 	}
 
 	handleSubmit(e) {
-		const formData = HandleSubmit(e)
-		return
+		const formData = HandleSubmit(e).bind(this)
+		console.log(formData)
 		fetch('/api/subscribe', {
 				method: 'POST',
 				body: JSON.stringify(formData),
@@ -63,15 +64,25 @@ export default class Subscribe extends React.Component {
 	}
 
 	render() {
-		const formClasses = this.state.inProgress ? 'form-subscribe disabled' : 'form-subscribe'
+		const classes =  'form-subscribe ' + this.props.color
+		const formClasses = this.state.inProgress
+			? classes +  ' disabled'
+			: classes
 		const button = 'form-button simple'
-		const buttonClasses = this.state.inProgress ? button + ' sending' : this.state.sent ? button + ' sent' : this.state.status != 200 ? button + ' error' : button
+		const buttonClasses = this.state.inProgress
+			? button + ' sending'
+			: this.state.sent
+			? button + ' sent'
+			: this.state.status != 200
+			? button + ' error'
+			: button
 		const buttonText = this.state.inProgress ? 'subscribing...' : this.state.sent ? 'subscribed' : this.state.status != 200 ? this.state.errorMessage : 'subscribe'
+		const overlayClasses = this.state.inProgress ? 'overlay' : 'overlay hidden'
 
 		return (
 			<form id='subscribe'
 			className={formClasses}
-			onSubmit={this.handleSubmit}
+			onSubmit={(e) => this.handleSubmit(e)}
 			ref={(form) => { this.formRef = form }}
 			noValidate >
 				<Input
@@ -82,7 +93,8 @@ export default class Subscribe extends React.Component {
 					showError={this.state.form.emailAddress.showError}
 				/>
 				<br />
-				<Button buttonClasses={buttonClasses} buttonText={buttonText} />
+				<Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.inProgress} />
+				<div className={overlayClasses} />
 			</form>
 		)
 	}

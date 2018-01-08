@@ -15,8 +15,10 @@
     transform: translateX(-3px); }
   .button-clapper .button-icon:hover .hand-back {
     transform: translateX(3px); }
+  .button-clapper .button-icon.clapping .hand-front,
   .button-clapper .button-icon .hand-front {
     transform: translateX(-2px); }
+  .button-clapper .button-icon.clapping .hand-back,
   .button-clapper .button-icon .hand-back {
     transform: translateX(2px); }
   .button-clapper .button-icon path,

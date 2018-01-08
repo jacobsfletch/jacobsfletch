@@ -12,10 +12,11 @@ export default class ScreenFooter extends React.Component {
 			<footer className="screen-footer">
 				<div className="footer-header" >
 					<p>if you liked this project, clap once, twice, or thirty times.</p>
+					<hr />
 					<Clapper />
 				</div>
 				<div className="footer-body">
-					<Subscribe name="subscribe" />
+					<Subscribe name="subscribe" color="white" />
 					<hr />
 					<Social />
 				</div>

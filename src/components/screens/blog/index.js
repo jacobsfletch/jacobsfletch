@@ -23,7 +23,7 @@ class BlogScreen extends React.Component {
 		return (
 			<div className="screen-blog">
 				<ul className="blog-list">
-					//{articles}
+					{articles}
 				</ul>
 			</div>
 		)

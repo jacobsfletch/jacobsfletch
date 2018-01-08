@@ -8,8 +8,8 @@ function HandleChange(props) {
 	newState.status = 200
 	this.setState(newState)
 	for (const thisKey in this.state.form) {
-		if (key !== thisKey) {
-			this.state.form[key].showError = false
+		if (key === thisKey) {
+			this.state.form[thisKey].showError = false
 			this.setState(this.state.form[thisKey])
 		}
 	}
@@ -25,7 +25,6 @@ function HandleSubmit(e) {
 		}
 	}
 	if (this.state.isValid) {
-		console.log('valid')
 		this.setState({inProgress: true})
 		let formData = {}
 		for (var i in this.state) {

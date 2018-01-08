@@ -2,14 +2,21 @@
 
 .article-card {
 	position: relative;
-	display: block;
+	display: flex;
 	color: black;
 	background-color: white;
+	margin: size(m) 0;
 
-	hr {
-		margin: size(m) 0;
-		border-style: dashed;
-		border-width: 0 0 line(xxs) 0;
+	.card-image {
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		width: 33%;
+		height: 100%;
+	}
+
+	.card-date {
+		display: block;
 	}
 
 	.card-title {

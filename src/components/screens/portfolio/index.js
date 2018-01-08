@@ -89,10 +89,16 @@ class PortfolioScreen extends React.Component {
 	}
 
 	render() {
-		let projects = this.props.portfolio.map((project, index) =>
-			<ProjectCard key={project._id} data={project} index={index} move={this.state.move} portfolioOffsetLeft={this.state.portfolioOffsetLeft} isTouchDevice={this.isTouchDevice} isFullyScrolled={this.state.isFullyScrolled} />
-		)
 		const classList = this.isTouchDevice ? 'screen-portfolio touchable' : 'screen-portfolio'
+		let projects = this.props.portfolio.map((project, index) =>
+			<ProjectCard key={project._id}
+				data={project} index={index}
+				move={this.state.move}
+				portfolioOffsetLeft={this.state.portfolioOffsetLeft}
+				isTouchDevice={this.isTouchDevice}
+				isFullyScrolled={this.state.isFullyScrolled}
+			/>
+		)
 		return (
 			<ul className={classList}
 				onScroll={this.onScroll}

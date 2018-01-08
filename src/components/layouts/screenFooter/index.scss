@@ -9,6 +9,13 @@
 		border: solid black line(xs);
 		padding: size(xxl);
 		width: 100%;
+		hr {
+			margin: size(xxl) 0;
+			border-style: solid;
+			border-width: 0 0 line(xs) 0;
+			border-color: black;
+			width: size(xxl);
+		}
 	}
 
 	.footer-body {
@@ -19,6 +26,10 @@
 		padding: 0 size(xl);
 		width: 100%;
 		box-sizing: border-box;
+		padding-top: size(xxl);
+		> *:first-child {
+			margin-bottom: size(xxl);
+		}
 	}
 
 	hr {

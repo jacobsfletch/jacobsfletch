@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
 .article-card {
   position: relative;
-  display: block;
+  display: flex;
   color: black;
-  background-color: white; }
-  .article-card hr {
-    margin: 1.125rem 0;
-    border-style: dashed;
-    border-width: 0 0 1px 0; }
+  background-color: white;
+  margin: 1.125rem 0; }
+  .article-card .card-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 33%;
+    height: 100%; }
+  .article-card .card-date {
+    display: block; }
   .article-card .card-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.5rem;

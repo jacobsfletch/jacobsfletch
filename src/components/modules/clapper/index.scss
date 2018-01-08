@@ -25,10 +25,12 @@
 			}
 		}
 
+		&.clapping .hand-front,
 		.hand-front {
 			transform: translateX(-#{line(xs)});
 		}
 
+		&.clapping .hand-back,
 		.hand-back {
 			transform: translateX(#{line(xs)});
 		}

@@ -1,14 +1,56 @@
 @import "../../../sassafras/index.scss";
 
 .form-subscribe {
-	margin: size(xl) 0;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+
 	&.disabled {
 		opacity: .5;
 	}
+
+	&.white {
+		color: white;
+		.error-message {
+			color: white;
+			&::before,
+			&::after {
+				background-color: white;
+			}
+		}
+		input, select {
+			&:-webkit-autofill,
+			&:-webkit-autofill:hover,
+			&:-webkit-autofill:focus {
+				-webkit-text-fill-color: white;
+			}
+		}
+		.invalid {
+			color: white;
+			border-color: white;
+		}
+	}
+	
 	&.error {
 		.error-message {
 			display: block;
 		}
 	}
+
+	.overlay {
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+
+		&.hidden {
+			display: none;
+		}
+	}
+
 }

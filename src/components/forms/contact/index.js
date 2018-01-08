@@ -11,7 +11,7 @@ export default class Form extends React.Component {
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)
-		this.handleSubmit = HandleSubmit.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 		this.state = {
 			status: 200,
 			isValid: false,
@@ -55,9 +55,7 @@ export default class Form extends React.Component {
 	}
 
 	handleSubmit(e) {
-		const formData = HandleSubmit(e)
-		console.log('sent')
-		return
+		const formData = HandleSubmit.bind(this)
 		fetch('/api/email/contact', {
 				method: 'POST',
 				body: JSON.stringify(formData),
@@ -80,6 +78,7 @@ export default class Form extends React.Component {
 		const signatureFirst = this.state.form.firstName.value ? this.state.form.firstName.value : 'your'
 		const signatureLast = this.state.form.lastName.value ? this.state.form.lastName.value : 'name'
 		const selectOptions = ['just say hi', 'hire you', 'meet up', 'spam your inbox']
+		const overlayClasses = this.state.inProgress ? 'overlay' : 'overlay hidden'
 		return (
 			<form id='contact'
 			className={formClasses}
@@ -109,7 +108,7 @@ export default class Form extends React.Component {
 				<br/><br/>
 				<p>my email address is&nbsp;</p>
 				<Input
-					placeholder="email"
+					placeholder="sexybeast@aol.com"
 					name='emailAddress'
 					type='email'
 					handleChange={this.handleChange}
@@ -130,7 +129,8 @@ export default class Form extends React.Component {
 					<p>{signatureFirst} {signatureLast}</p>
 				</footer>
 				<br/>
-				<Button buttonClasses={buttonClasses} buttonText={buttonText} />
+				<Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.inProgress} />
+				<div className={overlayClasses} />
 			</form>
 		)
 	}
