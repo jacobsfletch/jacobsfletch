@@ -4,8 +4,6 @@ var async = require('async'),
 	Subscriber = keystone.list('Subscriber')
 
 exports.create = function(req, res) {
-	var locals = res.locals
-
 	var item = new Subscriber.model(),
 		userdata = (req.method == 'POST') ? req.body : req.query
 
@@ -18,10 +16,7 @@ exports.create = function(req, res) {
 	})
 
 	function addSubscriber() {
-		// Create new user
 		var newSubscriber = new Subscriber.model(data)
-
-		// Save new user to db
 		newSubscriber.save(function(err) {
 			if (err) { return res.apiError('Something went wrong!', err) }
 			return res.apiResponse(newSubscriber)

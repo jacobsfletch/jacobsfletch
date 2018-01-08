@@ -1,5 +1,5 @@
-const keystone = require('keystone')
-const Projects = keystone.list('Project').model
+var keystone = require('keystone')
+	Projects = keystone.list('Project').model
 
 exports.getAllPublished = function(req, res) {
 	Projects.find({

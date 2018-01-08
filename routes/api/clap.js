@@ -1,31 +1,39 @@
-const async = require('async'),
-const keystone = require('keystone'),
-const ObjectId = require('mongoose').Types.ObjectId,
-const Projects = keystone.list('Project').model
+var async = require('async'),
+	keystone = require('keystone'),
+	ObjectId = require('mongoose').Types.ObjectId,
+	Projects = keystone.list('Project').model
+	Articles = keystone.list('Article').model
 
-exports.get = function(req, res) {
-	var locals = res.locals
-
-	var req = (req.method == 'GET') ? req.body : req.query
-
-	Projects.model.findOne({
-		id: req.id
-	})
+exports.project = function(req, res) {
+	var data = (req.method == 'POST') ? req.body : req.query
+	var id = data.id
+	Projects.findById(id)
 	.exec(function(err, result) {
 		if (err) return res.apiError('database error', err)
 		if (!result) { return res.status(406).send('Project Not Found!') }
-		res.apiResponse(result)
+		if(result) {
+			result.claps = result.claps + 1
+			result.getUpdateHandler(req).process(result, function(err) {
+				if (err) return res.apiError('there was an error:', error)
+				res.apiResponse('success: ' + result.claps)
+			})
+		}
 	})
-
 }
 
-exports.post = function(req, res) {
-	var locals = res.locals
-
+exports.article = function(req, res) {
 	var data = (req.method == 'POST') ? req.body : req.query
-
-	Projects.model.findOne({ id: data.id }).exec(function(err, result) {
-		if (!result) { return res.status(406).send('Project Not Found!') }
-		return
+	var id = data.id
+	Articles.findById(id)
+	.exec(function(err, result) {
+		if (err) return res.apiError('database error', err)
+		if (!result) { return res.status(406).send('Article Not Found!') }
+		if(result) {
+			result.claps = result.claps + 1
+			result.getUpdateHandler(req).process(result, function(err) {
+				if (err) return res.apiError('there was an error:', error)
+				res.apiResponse('success: ' + result.claps)
+			})
+		}
 	})
 }
