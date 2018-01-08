@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './timer.css';
+import './index.css';
 
 export default class ProjectThumbnail extends React.Component {
 	constructor(props) {

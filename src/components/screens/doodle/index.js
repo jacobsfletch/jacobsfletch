@@ -1,7 +1,7 @@
 import React from 'react';
-import SketchPad from '../../modules/sketchpad/SketchPad';
+import SketchPad from '../../modules/sketchpad/';
 
-import './Doodle.css'
+import './index.css'
 
 export default class HomeScreen extends React.Component {
 	render() {

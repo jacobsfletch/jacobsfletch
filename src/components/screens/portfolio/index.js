@@ -3,11 +3,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import ProjectCard from '../../elements/projectcard/ProjectCard'
+import ProjectCard from '../../elements/projectcard/'
 
 import { resizePortfolio } from '../../../actions/AppActions'
 
-import './portfolio.css'
+import './index.css'
 
 class PortfolioScreen extends React.Component {
 	constructor(props) {

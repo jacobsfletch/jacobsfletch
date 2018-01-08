@@ -1,8 +1,8 @@
 import React from 'react'
-import Timer from '../../modules/timer/Timer'
-import Breadcrumbs from '../../modules/breadcrumbs/Breadcrumbs'
+import Timer from '../../modules/timer/'
+import Breadcrumbs from '../../modules/breadcrumbs/'
 
-import './footer.css'
+import './index.css'
 
 class Footer extends React.Component {
 	render() {

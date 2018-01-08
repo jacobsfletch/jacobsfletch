@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './projectcard.css';
+import './index.css';
 
 class ProjectCard extends React.Component {
 	constructor(props) {

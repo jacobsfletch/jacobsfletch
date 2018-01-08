@@ -3,15 +3,14 @@ import { Route, Switch} from 'react-router-dom'
 import { Redirect, withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
-import HomeScreen from './home/Home'
-import DoodleScreen from './doodle/Doodle'
-import PortfolioScreen from './portfolio/Portfolio'
-import ProjectScreen from './project/Project'
-import BlogScreen from './blog/Blog'
-import ArticleScreen from './article/Article'
-import Contact from './contact/Contact'
-import ContactConfirmation from './contact/Contact'
-import PageNotFound from './404/PageNotFound'
+import HomeScreen from './home/'
+import DoodleScreen from './doodle/'
+import PortfolioScreen from './portfolio/'
+import ProjectScreen from './project/'
+import BlogScreen from './blog/'
+import ArticleScreen from './article/'
+import Contact from './contact/'
+import PageNotFound from './404/'
 
 import { routeChanged } from '../../actions/ScreenActions'
 import { deactivateDock } from '../../actions/DockActions'
@@ -34,7 +33,6 @@ class ScreenController extends React.Component {
 					<Route exact path='/blog' component={BlogScreen}/>
 					<Route exact path='/blog/:articleName' component={ArticleScreen} />
 					<Route exact path='/contact' component={Contact} />
-					<Route exact path='/contact/confirmation' component={ContactConfirmation} />
 					<Route path='/404' component={PageNotFound} />
 					<Redirect to='/404' />
 				</Switch>

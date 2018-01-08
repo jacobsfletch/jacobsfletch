@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { activateDock, deactivateDock } from '../../../actions/DockActions'
 
-import './swatch.css';
+import './index.css';
 
 class Swatch extends React.Component {
 	toggleDock(color) {

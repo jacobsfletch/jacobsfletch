@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Clapper from '../../modules/clapper/Clapper'
-import Subscribe from '../../forms/subscribe/Subscribe'
-import Social from '../../menus/social/Social'
+import Clapper from '../../modules/clapper/'
+import Subscribe from '../../forms/subscribe/'
+import Social from '../../menus/social/'
 
-import './screen-footer.css'
+import './index.css'
 
 export default class ScreenFooter extends React.Component {
 	render() {

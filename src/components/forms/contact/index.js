@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { HandleChange, HandleSubmit } from '../../tools/Form'
-import Input from '../../fields/input/Input'
-import Select from '../../fields/select/Select'
-import Button from '../../elements/button/Button'
+import Input from '../../fields/input/'
+import Select from '../../fields/select/'
+import Button from '../../elements/button/'
 
-import './contact.css'
+import './index.css'
 
 export default class Form extends React.Component {
 	constructor() {

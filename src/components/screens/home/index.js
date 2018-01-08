@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './Home.css'
+import './index.css'
 
 export default class HomeScreen extends React.Component {
 

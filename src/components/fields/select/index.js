@@ -1,7 +1,7 @@
 import React from 'react';
 import Ruler from '../../tools/Ruler'
 
-import './select.css';
+import './index.css';
 
 export default class Select extends React.Component {
 	constructor() {

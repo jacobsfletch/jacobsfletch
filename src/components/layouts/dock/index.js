@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-import './dock.css';
+import './index.css';
 
 class Dock extends React.Component {
 	render() {

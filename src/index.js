@@ -5,7 +5,7 @@ import store from './store'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import App from './components/apps/main/App';
+import App from './components/apps/main/';
 
 const mount = document.querySelector('.mount')
 

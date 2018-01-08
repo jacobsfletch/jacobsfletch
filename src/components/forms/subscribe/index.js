@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { HandleChange, HandleSubmit } from '../../tools/Form'
-import Input from '../../fields/input/Input'
-import Button from '../../elements/button/Button'
+import Input from '../../fields/input/'
+import Button from '../../elements/button/'
 
-import './subscribe.css';
+import './index.css';
 
 export default class Subscribe extends React.Component {
 	constructor() {

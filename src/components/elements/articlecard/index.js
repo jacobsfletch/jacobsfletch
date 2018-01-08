@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './articlecard.css';
+import './index.css';
 
 export default class ArticleCard extends React.Component {
 	constructor(props) {

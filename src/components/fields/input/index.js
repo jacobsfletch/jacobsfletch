@@ -3,7 +3,7 @@ import React from 'react'
 import Ruler from '../../tools/Ruler'
 import Validate from '../../tools/Validate'
 
-import './input.css'
+import './index.css'
 
 export default class Input extends React.Component {
 	constructor() {

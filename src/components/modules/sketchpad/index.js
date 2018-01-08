@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import './sketchpad.css'
+import './index.css'
 
 class SketchPad extends Component {
 

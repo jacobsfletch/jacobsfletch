@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import './clapper.css';
+import './index.css';
 
 class Clapper extends React.Component {
 	constructor() {

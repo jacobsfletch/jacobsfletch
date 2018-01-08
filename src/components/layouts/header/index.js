@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Swatch from '../../elements/swatch/Swatch'
-import Progress from '../../modules/progress/Progress'
+import Swatch from '../../elements/swatch/'
+import Progress from '../../modules/progress/'
 
 import { connect } from 'react-redux'
 import { activateDock, deactivateDock } from '../../../actions/DockActions'
 
-import './header.css';
+import './index.css';
 
 class Header extends React.Component {
 	toggleDock(color) {

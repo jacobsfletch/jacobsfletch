@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 
-import './backtotop.css'
+import './index.css'
 
 class BackToTop extends React.Component {
 	constructor() {

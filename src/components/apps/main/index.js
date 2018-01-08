@@ -2,16 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import Dock from '../../layouts/dock/Dock'
-import Header from '../../layouts/header/header'
-import Footer from '../../layouts/footer/footer'
+import Dock from '../../layouts/dock/'
+import Header from '../../layouts/header/'
+import Footer from '../../layouts/footer/'
 import ScreenController from '../../screens/ScreenController'
 
 import { getPortfolio, getBlog, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
 import offlinePortfolio from '../../../data/portfolio'
 import offlineBlog from '../../../data/blog'
 
-import './app.css'
+import './index.css'
 
 class App extends React.Component {
 

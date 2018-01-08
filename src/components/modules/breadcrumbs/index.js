@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
-import './breadcrumbs.css';
+import './index.css';
 
 class Breadcrumbs extends React.Component {
 	render() {

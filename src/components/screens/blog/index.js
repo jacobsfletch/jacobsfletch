@@ -3,9 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import ArticleCard from '../../elements/articlecard/ArticleCard'
+import ArticleCard from '../../elements/articlecard/'
 
-import './blog.css'
+import './index.css'
 
 class BlogScreen extends React.Component {
 	constructor(props) {

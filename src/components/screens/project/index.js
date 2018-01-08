@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ScreenFooter from '../../layouts/screenFooter/ScreenFooter'
+import ScreenFooter from '../../layouts/screenFooter/'
 import { updateId } from '../../../actions/AppActions'
 
-import './project.css';
+import './index.css';
 
 class ProjectScreen extends React.Component {
 
