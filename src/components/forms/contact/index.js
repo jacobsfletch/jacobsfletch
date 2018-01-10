@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { HandleChange, HandleSubmit } from '../../tools/Form'
+import { HandleChange, BuildReqBody, ValidateForm } from '../../tools/Form'
 import Input from '../../fields/input/'
 import Select from '../../fields/select/'
 import Button from '../../elements/button/'
@@ -11,6 +11,8 @@ export default class Form extends React.Component {
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)
+		this.buildReqBody = BuildReqBody.bind(this)
+		this.validateForm = ValidateForm.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.state = {
 			status: 200,
@@ -19,6 +21,7 @@ export default class Form extends React.Component {
 			showError: false,
 			errorMessage: '',
 			sent: false,
+			reqBody: {},
 			form: {
 				firstName: {
 					value: '',
@@ -55,18 +58,22 @@ export default class Form extends React.Component {
 	}
 
 	handleSubmit(e) {
-		const formData = HandleSubmit.bind(this)
-		fetch('/api/email/contact', {
-				method: 'POST',
-				body: JSON.stringify(formData),
-				headers: {'Content-Type':'application/json'}
-			})
-			.then(response => {
-				this.setState({
-					inProgress: false,
-					sent: true
+		e.preventDefault()
+		this.validateForm()
+		this.buildReqBody()
+		if (this.state.isValid) {
+			fetch('/api/email/contact', {
+					method: 'POST',
+					body: JSON.stringify(this.state.reqBody),
+					headers: {'Content-Type':'application/json'}
 				})
+				.then(response => {
+					this.setState({
+						inProgress: false,
+						sent: true
+					})
 			})
+		}
 		return false
 	}
 

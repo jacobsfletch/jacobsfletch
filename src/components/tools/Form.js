@@ -15,8 +15,7 @@ function HandleChange(props) {
 	}
 }
 
-function HandleSubmit(e) {
-	e.preventDefault()
+function ValidateForm() {
 	for (const key in this.state.form) {
 		if (!this.state.form[key].isValid) {
 			this.state.form[key].showError = true
@@ -24,15 +23,19 @@ function HandleSubmit(e) {
 			this.setState({'isValid': false})
 		}
 	}
-	if (this.state.isValid) {
-		this.setState({inProgress: true})
-		let formData = {}
-		for (var i in this.state) {
-			const value = this.state[i].value
-			formData[i] = value
-		}
-		return formData
-	} else { return false }
 }
 
-export { HandleChange, HandleSubmit }
+function BuildReqBody() {
+	if (this.state.isValid) {
+		this.setState({ inProgress: true })
+		for (var i in this.state.form) {
+			const key = i
+			const value = this.state.form[i].value
+			this.state.reqBody[i] = value
+			const reqBody = this.state.reqBody
+			this.setState({ reqBody })
+		}
+	} else { return }
+}
+
+export { HandleChange, BuildReqBody, ValidateForm }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { HandleChange, HandleSubmit } from '../../tools/Form'
+import { HandleChange, BuildReqBody, ValidateForm } from '../../tools/Form'
 import Input from '../../fields/input/'
 import Button from '../../elements/button/'
 
@@ -10,7 +10,8 @@ export default class Subscribe extends React.Component {
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
+		this.buildReqBody = BuildReqBody.bind(this)
+		this.validateForm = ValidateForm.bind(this)
 		this.state = {
 			status: 200,
 			isValid: false,
@@ -18,6 +19,7 @@ export default class Subscribe extends React.Component {
 			showError: false,
 			errorMessage: '',
 			sent: false,
+			reqBody: {},
 			form: {
 				emailAddress: {
 					value: '',
@@ -30,36 +32,39 @@ export default class Subscribe extends React.Component {
 	}
 
 	handleSubmit(e) {
-		const formData = HandleSubmit(e).bind(this)
-		console.log(formData)
-		fetch('/api/subscribe', {
-				method: 'POST',
-				body: JSON.stringify(formData),
-				headers: {'Content-Type':'application/json'}
-			})
-			.then(response => {
-				if (response.status == 406) {
-					this.setState({
-						status: response.status,
-						errorMessage: 'Already subscribed!',
-						inProgress: false
-					})
-					return
-				} else if (response.status == 200) {
-					fetch('/api/email/subscribe', {
-							method: 'POST',
-							body: JSON.stringify(formData),
-							headers: {'Content-Type':'application/json'}
+		e.preventDefault()
+		this.validateForm()
+		this.buildReqBody()
+		if (this.state.isValid) {
+			fetch('/api/subscribe', {
+					method: 'POST',
+					body: JSON.stringify(this.state.reqBody),
+					headers: {'Content-Type':'application/json'}
+				})
+				.then(response => {
+					if (response.status == 406) {
+						this.setState({
+							status: response.status,
+							errorMessage: 'Already subscribed!',
+							inProgress: false
 						})
-						.then(response => {
-							this.setState({
-								status: response.status,
-								inProgress: false,
-								sent: true
+						return
+					} else if (response.status == 200) {
+						fetch('/api/email/subscribe', {
+								method: 'POST',
+								body: JSON.stringify(this.state.reqBody),
+								headers: {'Content-Type':'application/json'}
 							})
-						})
+							.then(response => {
+								this.setState({
+									status: response.status,
+									inProgress: false,
+									sent: true
+								})
+							})
 					}
-			})
+				})
+		}
 		return false
 	}
 
