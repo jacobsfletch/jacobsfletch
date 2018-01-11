@@ -3,9 +3,12 @@
 .form-subscribe {
 	text-align: center;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
 	position: relative;
+	align-items: center;
+
+	> *:first-child {
+		margin-right: size(m);
+	}
 
 	&.disabled {
 		opacity: .5;
@@ -32,7 +35,7 @@
 			border-color: white;
 		}
 	}
-	
+
 	&.error {
 		.error-message {
 			display: block;

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { HandleChange, BuildReqBody, ValidateForm } from '../../tools/Form'
-import Input from '../../fields/input/'
-import Select from '../../fields/select/'
-import Button from '../../elements/button/'
+import { HandleChange, BuildReqBody, ValidateFields, ValidateForm } from '../../tools/Form'
+import Input from '../../fields/input'
+import Select from '../../fields/select'
+import Button from '../../buttons/main'
 
 import './index.css'
 
@@ -12,6 +12,7 @@ export default class Form extends React.Component {
 		super()
 		this.handleChange = HandleChange.bind(this)
 		this.buildReqBody = BuildReqBody.bind(this)
+		this.validateFields = ValidateFields.bind(this)
 		this.validateForm = ValidateForm.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.state = {
@@ -21,6 +22,7 @@ export default class Form extends React.Component {
 			showError: false,
 			errorMessage: '',
 			sent: false,
+			validityArray: [],
 			reqBody: {},
 			form: {
 				firstName: {
@@ -59,6 +61,7 @@ export default class Form extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault()
+		this.validateFields()
 		this.validateForm()
 		this.buildReqBody()
 		if (this.state.isValid) {
@@ -79,7 +82,7 @@ export default class Form extends React.Component {
 
 	render() {
 		const formClasses = this.state.inProgress ? 'form-contact disabled' : 'form-contact'
-		const button = 'form-button'
+		const button = 'button-form'
 		const buttonClasses = this.state.inProgress ? button + ' sending' : this.state.sent ? button + ' sent' : this.state.status != 200 ? button + ' error' : button
 		const buttonText = this.state.inProgress ? 'sending...' : this.state.sent ? 'sent successfully' : 'send'
 		const signatureFirst = this.state.form.firstName.value ? this.state.form.firstName.value : 'your'

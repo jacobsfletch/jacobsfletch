@@ -15,14 +15,27 @@ function HandleChange(props) {
 	}
 }
 
-function ValidateForm() {
+function ValidateFields() {
 	for (const key in this.state.form) {
 		if (!this.state.form[key].isValid) {
 			this.state.form[key].showError = true
 			this.setState(this.state.form[key])
-			this.setState({'isValid': false})
+			const validityArray = this.state.validityArray
+			validityArray.push(false)
+			this.setState({ validityArray })
 		}
 	}
+}
+
+function ValidateForm() {
+	for (const i in this.state.validityArray) {
+		if (!this.state.validityArray[i]) {
+			this.setState({'isValid': false})
+		} else {
+			this.setState({'isValid': true})
+		}
+	}
+	this.setState({ 'validityArray': [] })
 }
 
 function BuildReqBody() {
@@ -38,4 +51,4 @@ function BuildReqBody() {
 	} else { return }
 }
 
-export { HandleChange, BuildReqBody, ValidateForm }
+export { HandleChange, BuildReqBody, ValidateFields, ValidateForm }

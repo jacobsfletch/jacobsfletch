@@ -47,7 +47,9 @@
 		margin: 0;
 	}
 
-	input, select, .input-ruler {
+	input,
+	select,
+	.input-ruler {
 		@include type(h3);
 		margin: 0;
 		padding: 0;
@@ -60,8 +62,8 @@
 		color: inherit;
 		border: 0;
 		outline: none;
-		border-bottom: dashed 2px currentColor;
 		background-color: transparent;
+		border-bottom: dashed 2px currentColor;
 
 		&:-webkit-autofill,
 		&:-webkit-autofill:hover,
@@ -107,6 +109,13 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+	}
+
+	&.simple {
+		input,
+		select {
+			border-bottom: none;
+		}
 	}
 
 }

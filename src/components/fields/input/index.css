@@ -37,7 +37,9 @@
     left: 0;
     top: 0;
     margin: 0; }
-  .input input, .input select, .input .input-ruler {
+  .input input,
+  .input select,
+  .input .input-ruler {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.125rem;
     line-height: 1.875rem;
@@ -50,8 +52,8 @@
     color: inherit;
     border: 0;
     outline: none;
-    border-bottom: dashed 2px currentColor;
-    background-color: transparent; }
+    background-color: transparent;
+    border-bottom: dashed 2px currentColor; }
     .input input:-webkit-autofill, .input input:-webkit-autofill:hover, .input input:-webkit-autofill:focus,
     .input select:-webkit-autofill,
     .input select:-webkit-autofill:hover,
@@ -88,3 +90,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center; }
+  .input.simple input,
+  .input.simple select {
+    border-bottom: none; }

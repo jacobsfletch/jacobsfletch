@@ -85,8 +85,11 @@ export default class Input extends React.Component {
 		const errorClasses = this.props.showError ? 'error-message active' : 'error-message'
 		const errorMessage = this.state[this.props.name].errorMessage ? this.state[this.props.name].errorMessage : 'required'
 		const value = this.state[this.props.name].value
+		const originalClasses = "input input-text"
+		const additionalClasses = this.props.classes
+		const classes = additionalClasses ? `${originalClasses} ${additionalClasses}` : originalClasses
 		return (
-			<span className="input input-text">
+			<span className={classes} >
 				<input
 					placeholder={this.props.placeholder}
 					name={this.props.name}

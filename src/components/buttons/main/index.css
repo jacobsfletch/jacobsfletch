@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
-.form-button {
+.button-form {
   font-family: "Source Code Pro", sans-serif;
   font-size: 0.9375rem;
   line-height: 1.125rem;
-  display: block;
+  display: flex;
   font-weight: 700;
   text-transform: uppercase;
   background-color: transparent;
@@ -14,16 +14,17 @@
   padding: 0.5625rem 0.75rem;
   margin: 0;
   letter-spacing: 1px;
-  cursor: pointer; }
-  .form-button.simple {
+  cursor: pointer;
+  align-items: center; }
+  .button-form.simple {
     border: none;
     padding: 0; }
-  .form-button.sending {
+  .button-form.sending {
     color: grey;
     border-color: grey; }
-  .form-button.sent {
+  .button-form.sent {
     color: green; }
-    .form-button.sent::before {
+    .button-form.sent::after {
       content: '';
       margin-right: 0.75rem;
       display: inline-block;
@@ -32,5 +33,5 @@
       border: solid green;
       border-width: 0 3px 3px 0;
       transform: rotate(45deg); }
-  .form-button.error {
+  .button-form.error {
     color: red; }

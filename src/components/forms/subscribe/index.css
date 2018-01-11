@@ -2,9 +2,10 @@
 .form-subscribe {
   text-align: center;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative; }
+  position: relative;
+  align-items: center; }
+  .form-subscribe > *:first-child {
+    margin-right: 1.125rem; }
   .form-subscribe.disabled {
     opacity: .5; }
   .form-subscribe.white {

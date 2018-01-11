@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { HandleChange, BuildReqBody, ValidateForm } from '../../tools/Form'
-import Input from '../../fields/input/'
-import Button from '../../elements/button/'
+import { HandleChange, BuildReqBody, ValidateFields, ValidateForm } from '../../tools/Form'
+import Input from '../../fields/input'
+import Button from '../../buttons/main'
 
 import './index.css';
 
@@ -11,6 +11,7 @@ export default class Subscribe extends React.Component {
 		super()
 		this.handleChange = HandleChange.bind(this)
 		this.buildReqBody = BuildReqBody.bind(this)
+		this.validateFields = ValidateFields.bind(this)
 		this.validateForm = ValidateForm.bind(this)
 		this.state = {
 			status: 200,
@@ -20,6 +21,7 @@ export default class Subscribe extends React.Component {
 			errorMessage: '',
 			sent: false,
 			reqBody: {},
+			validityArray: ["false", "false"],
 			form: {
 				emailAddress: {
 					value: '',
@@ -33,6 +35,7 @@ export default class Subscribe extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault()
+		this.validateFields()
 		this.validateForm()
 		this.buildReqBody()
 		if (this.state.isValid) {
@@ -69,11 +72,11 @@ export default class Subscribe extends React.Component {
 	}
 
 	render() {
-		const classes =  'form-subscribe ' + this.props.color
+		const classes =  this.props.color ? 'form-subscribe ' + this.props.color : 'form-subscribe'
 		const formClasses = this.state.inProgress
-			? classes +  ' disabled'
+			? classes + ' disabled'
 			: classes
-		const button = 'form-button simple'
+		const button = 'button-form simple'
 		const buttonClasses = this.state.inProgress
 			? button + ' sending'
 			: this.state.sent
@@ -96,6 +99,7 @@ export default class Subscribe extends React.Component {
 					type='email'
 					handleChange={this.handleChange}
 					showError={this.state.form.emailAddress.showError}
+					classes="simple"
 				/>
 				<br />
 				<Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.inProgress} />
