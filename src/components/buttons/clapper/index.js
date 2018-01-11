@@ -25,7 +25,6 @@ class Clapper extends React.Component {
 	}
 
 	handleSubmit(e) {
-		console.log(this.state.status)
 		if (this.state.status === 'clapping') { return }
 		const id = this.state.id
 		const slug = this.state.identity
@@ -38,10 +37,10 @@ class Clapper extends React.Component {
 				headers: {'Content-Type':'application/json'}
 			})
 			.then(response => {
-				if (response.status == 406) {
+				if (response.status === 406) {
 					this.setState({status: "failed", claps: claps})
 					return
-				} else if (response.status == 200) {
+				} else if (response.status === 200) {
 					this.setState({status: "clapped", claps: claps + 1})
 				}
 			})

@@ -29,7 +29,6 @@ function ValidateFields() {
 function BuildReqBody() {
 	this.setState({ inProgress: true })
 	for (var i in this.state.form) {
-		const key = i
 		const value = this.state.form[i].value
 		this.state.reqBody[i] = value
 		const reqBody = this.state.reqBody

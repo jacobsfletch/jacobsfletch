@@ -26,17 +26,7 @@
 		}
 
 		a {
-			@include type(label);
-			background-color: black;
-			outline: black line(xxs) solid;
-			color: white;
-			padding: line(m) size(xs);
-			position: relative;
-
-			&:hover {
-				background-color: transparent;
-				color: black;
-			}
+			font-weight: 800;
 		}
 	}
 }

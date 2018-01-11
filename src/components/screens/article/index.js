@@ -64,6 +64,7 @@ class ArticleScreen extends React.Component {
 				</li>
 			)
 		})
+
 		return (
 			<section className="screen-article" >
 				<header className="board-header">
@@ -78,6 +79,10 @@ class ArticleScreen extends React.Component {
 						</blockquote>
 					</section>
 				</header>
+				<section className="screen-hashtags">
+					<h3 className="list-title">hashtags</h3>
+					{hashtags}
+				</section>
 				<ScreenFooter />
 			</section>
 		)

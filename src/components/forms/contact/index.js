@@ -81,14 +81,32 @@ export default class Form extends React.Component {
 	}
 
 	render() {
-		const formClasses = this.state.inProgress ? 'form-contact disabled' : 'form-contact'
+		const formClasses = this.state.inProgress
+			? 'form-contact disabled'
+			: 'form-contact'
 		const button = 'button-form'
-		const buttonClasses = this.state.inProgress ? button + ' sending' : this.state.sent ? button + ' sent' : this.state.status != 200 ? button + ' error' : button
-		const buttonText = this.state.inProgress ? 'sending...' : this.state.sent ? 'sent successfully' : 'send'
-		const signatureFirst = this.state.form.firstName.value ? this.state.form.firstName.value : 'your'
-		const signatureLast = this.state.form.lastName.value ? this.state.form.lastName.value : 'name'
+		const buttonClasses = this.state.inProgress
+			? button + ' sending'
+			: this.state.sent
+			? button + ' sent'
+			: this.state.status !== 200
+			? button + ' error'
+			: button
+		const buttonText = this.state.inProgress
+			? 'sending...'
+			: this.state.sent
+			? 'sent successfully'
+			: 'send'
+		const signatureFirst = this.state.form.firstName.value
+			? this.state.form.firstName.value
+			: 'your'
+		const signatureLast = this.state.form.lastName.value
+			? this.state.form.lastName.value
+			: 'name'
 		const selectOptions = ['just say hi', 'hire you', 'meet up', 'spam your inbox']
-		const overlayClasses = this.state.inProgress ? 'overlay' : 'overlay hidden'
+		const overlayClasses = this.state.inProgress
+			? 'overlay'
+			: 'overlay hidden'
 		return (
 			<form id='contact'
 				className={formClasses}

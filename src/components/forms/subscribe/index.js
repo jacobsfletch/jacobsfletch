@@ -43,14 +43,14 @@ export default class Subscribe extends React.Component {
 					headers: {'Content-Type':'application/json'}
 				})
 				.then(response => {
-					if (response.status == 406) {
+					if (response.status === 406) {
 						this.setState({
 							status: response.status,
 							errorMessage: 'Already subscribed!',
 							inProgress: false
 						})
 						return
-					} else if (response.status == 200) {
+					} else if (response.status === 200) {
 						fetch('/api/email/subscribe', {
 								method: 'POST',
 								body: JSON.stringify(this.state.reqBody),
@@ -81,10 +81,10 @@ export default class Subscribe extends React.Component {
 			? button + ' sending'
 			: this.state.sent
 			? button + ' sent'
-			: this.state.status != 200
+			: this.state.status !== 200
 			? button + ' error'
 			: button
-		const buttonText = this.state.inProgress ? 'subscribing...' : this.state.sent ? 'subscribed' : this.state.status != 200 ? this.state.errorMessage : 'subscribe'
+		const buttonText = this.state.inProgress ? 'subscribing...' : this.state.sent ? 'subscribed' : this.state.status !== 200 ? this.state.errorMessage : 'subscribe'
 		const overlayClasses = this.state.inProgress ? 'overlay' : 'overlay hidden'
 
 		return (

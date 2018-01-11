@@ -1,19 +1,12 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import './index.css';
 
 export default class ArticleCard extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-
 	render() {
 		const slug = `/blog/${this.props.data.slug}`
 		const data = this.props.data
-		const dateOptions = { year: 'numeric', month: 'numeric', day: 'numeric' }
 		const date = new Date(data.publishedDate).toISOString().slice(0,10).replace(/-/g," ")
 		const backgroundImage = { backgroundImage: "url(" + data.featuredImage.toString() + ")" }
 		return (

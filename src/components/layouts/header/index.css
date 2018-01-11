@@ -27,10 +27,21 @@
     margin: 0 1.125rem;
     display: flex;
     justify-content: flex-end; }
-    .app-header .header-menu p,
-    .app-footer .header-menu p {
+    .app-header .header-menu button,
+    .app-footer .header-menu button {
+      font-family: "Source Code Pro", sans-serif;
+      font-size: 0.75rem;
+      line-height: 0.9375rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 900;
+      color: inherit;
       cursor: pointer;
-      text-align: right; }
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background-color: transparent; }
 
 .app-header .cropmark.tl {
   border-left: 0;

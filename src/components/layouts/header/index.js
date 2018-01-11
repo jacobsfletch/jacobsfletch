@@ -27,8 +27,8 @@ class Header extends React.Component {
 					<Swatch color="yellow"/>
 					<Swatch color="black"/>
 				</div>
-				<div className="header-menu" onClick={() => { this.toggleDock("black") }}>
-					<p>{menu}</p>
+				<div className="header-menu">
+					<button onClick={() => { this.toggleDock("black") }}>{menu}</button>
 				</div>
 				<div className="cropmark tr"></div>
 				<div className="header-after">

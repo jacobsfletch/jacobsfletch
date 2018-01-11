@@ -25,9 +25,14 @@
 		display: flex;
 		justify-content: flex-end;
 
-		p {
+		button {
+			@include type(label);
+			color: inherit;
 			cursor: pointer;
-			text-align: right;
+			padding: 0;
+			margin: 0;
+			border: 0;
+			background-color: transparent;
 		}
 	}
 }

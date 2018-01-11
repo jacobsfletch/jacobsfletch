@@ -68,14 +68,6 @@ class ProjectScreen extends React.Component {
 			)
 		})
 
-		const tags = project.tags.map(function(tag){
-			return (
-				<li key={tag.name} className="screen-tag">
-					{tag.name}
-				</li>
-			)
-		})
-
 		const images = project.images.map(function(image) {
 			return (
 				<li className="gallery-item" key={image}>

@@ -8,10 +8,6 @@ import ArticleCard from '../../elements/articlecard/'
 import './index.css'
 
 class BlogScreen extends React.Component {
-	constructor(props) {
-		super(props)
-	}
-
 	render() {
 		let articles = this.props.blog.map((article, index) =>
 			<ArticleCard
