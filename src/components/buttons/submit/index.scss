@@ -28,7 +28,7 @@
 
 	&.sent {
 		color: green;
-		&::after {
+		&::before {
 			content: '';
 			margin-right: size(xs);
 			display: inline-block;

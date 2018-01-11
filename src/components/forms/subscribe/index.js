@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { HandleChange, BuildReqBody, ValidateFields, ValidateForm } from '../../tools/Form'
+import { HandleChange, BuildReqBody, ValidateFields } from '../../tools/Form'
 import Input from '../../fields/input'
-import Button from '../../buttons/main'
+import SubmitButton from '../../buttons/submit'
 
 import './index.css';
 
@@ -12,7 +12,6 @@ export default class Subscribe extends React.Component {
 		this.handleChange = HandleChange.bind(this)
 		this.buildReqBody = BuildReqBody.bind(this)
 		this.validateFields = ValidateFields.bind(this)
-		this.validateForm = ValidateForm.bind(this)
 		this.state = {
 			status: 200,
 			isValid: false,
@@ -36,9 +35,8 @@ export default class Subscribe extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault()
 		this.validateFields()
-		this.validateForm()
-		this.buildReqBody()
-		if (this.state.isValid) {
+		if (this.state.validityArray.length === 0) {
+			this.buildReqBody()
 			fetch('/api/subscribe', {
 					method: 'POST',
 					body: JSON.stringify(this.state.reqBody),
@@ -67,8 +65,10 @@ export default class Subscribe extends React.Component {
 							})
 					}
 				})
+		} else {
+			this.setState({ validityArray: [] })
+			return
 		}
-		return false
 	}
 
 	render() {
@@ -89,10 +89,11 @@ export default class Subscribe extends React.Component {
 
 		return (
 			<form id='subscribe'
-			className={formClasses}
-			onSubmit={(e) => this.handleSubmit(e)}
-			ref={(form) => { this.formRef = form }}
-			noValidate >
+				className={formClasses}
+				onSubmit={(e) => this.handleSubmit(e)}
+				ref={(form) => { this.formRef = form }}
+				noValidate
+			>
 				<Input
 					placeholder="you@email.com"
 					name='emailAddress'
@@ -102,7 +103,11 @@ export default class Subscribe extends React.Component {
 					classes="simple"
 				/>
 				<br />
-				<Button buttonClasses={buttonClasses} buttonText={buttonText} disabled={this.state.inProgress} />
+				<SubmitButton
+					buttonClasses={buttonClasses}
+					buttonText={buttonText}
+					disabled={this.state.inProgress}
+				/>
 				<div className={overlayClasses} />
 			</form>
 		)

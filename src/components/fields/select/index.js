@@ -10,21 +10,21 @@ export default class Select extends React.Component {
 		this.state = {
 			subject: {
 				value: '',
-				isValid: false,
+				isValid: true,
 				errorMessage: ''
 			}
 		}
 	}
 
 	componentDidMount() {
+		this.props.handleChange({subject: this.state.subject})
 		Ruler(this.subjectRef)
 	}
 
 	handleChange(e) {
 		const value = e.target.value
-		this.setState({
-			value
-		})
+		this.setState({ value })
+		this.props.handleChange({subject: this.state.subject})
 		Ruler(e)
 	}
 
@@ -38,7 +38,10 @@ export default class Select extends React.Component {
 		})
 		return (
 			<span className="input input-select">
-				<select ref={(subject) => { this.subjectRef = subject }} onChange={this.handleChange}>
+				<select
+					ref={(subject) => { this.subjectRef = subject }}
+					onChange={this.handleChange}
+				>
 					{options}
 				</select>
 				<p className="input-ruler" />

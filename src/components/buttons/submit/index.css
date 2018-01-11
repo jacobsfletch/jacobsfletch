@@ -24,7 +24,7 @@
     border-color: grey; }
   .button-form.sent {
     color: green; }
-    .button-form.sent::after {
+    .button-form.sent::before {
       content: '';
       margin-right: 0.75rem;
       display: inline-block;

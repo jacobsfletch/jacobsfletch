@@ -2,7 +2,7 @@ import React from 'react'
 
 import './index.css'
 
-const Button = (props) => {
+const SubmitButton = (props) => {
 	return (
 		<button type="submit"
 		className={props.buttonClasses}
@@ -12,4 +12,4 @@ const Button = (props) => {
 	)
 }
 
-export default Button
+export default SubmitButton
