@@ -25,6 +25,8 @@ class Clapper extends React.Component {
 	}
 
 	handleSubmit(e) {
+		console.log(this.state.status)
+		if (this.state.status === 'clapping') { return }
 		const id = this.state.id
 		const slug = this.state.identity
 		const url = '/api/clap/' + slug
@@ -43,7 +45,6 @@ class Clapper extends React.Component {
 					this.setState({status: "clapped", claps: claps + 1})
 				}
 			})
-		return false
 	}
 
 	render() {
