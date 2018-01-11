@@ -47,7 +47,7 @@
     right: 0;
     bottom: 0;
     height: 50%;
-    width: 2px;
+    width: 4px;
     background-color: black;
     padding-bottom: 1.5rem;
     transform: translateY(25%); }
@@ -58,7 +58,7 @@
       bottom: 0;
       width: 1.125rem;
       height: 1.125rem;
-      border: solid black 2px;
+      border: solid black 4px;
       border-right: 0;
       border-top: 0;
       transform-origin: center center;
@@ -175,6 +175,8 @@
     flex-direction: column;
     align-items: center;
     padding-top: 3rem; }
+    .screen-project .screen-body > *:last-child {
+      padding: 3rem 0; }
   .screen-project .screen-gallery {
     width: 50%; }
     .screen-project .screen-gallery .gallery-item {
@@ -195,7 +197,8 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    padding: 3rem 0; }
+    padding: 3rem 0;
+    border-top: solid 1px black; }
     .screen-project .screen-hashtags .list-title {
       font-family: "Source Code Pro", sans-serif;
       font-size: 0.75rem;

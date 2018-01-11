@@ -17,7 +17,7 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.offline = false
+		this.offline = true
 		this.setViewportSize = this.setViewportSize.bind(this)
 	}
 

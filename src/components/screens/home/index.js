@@ -59,8 +59,8 @@ export default class HomeScreen extends React.Component {
 						a place to <Link to={"/blog"}>read</Link> my thoughts,
 						and somewhere to <Link to={"/"}>buy</Link> my stuff.
 						<br /><br />
-						Feel free to <Link to={"/doodle"}>draw</Link> me a picture, by all means.
-						Or, <Link to={"/contact"}>write</Link> me a letter if you feel so inclined.
+						Feel free to <Link to={"/contact"}>write</Link> me a letter, by all means
+						- or even <Link to={"/doodle"}>draw</Link> me a picture.
 					</h1>
 				</article>
 			</section>

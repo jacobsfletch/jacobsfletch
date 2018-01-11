@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ScreenFooter from '../../layouts/screenFooter/'
+import Clapper from '../../buttons/clapper/'
 import { updateId } from '../../../actions/AppActions'
 
 import './index.css';
@@ -124,6 +125,7 @@ class ProjectScreen extends React.Component {
 					<ul className="screen-gallery">
 						{images}
 					</ul>
+					<Clapper />
 				</section>
 				<section className="screen-hashtags">
 					<h3 className="list-title">hashtags</h3>

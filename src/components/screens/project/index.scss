@@ -61,7 +61,7 @@
 		right: 0;
 		bottom: 0;
 		height: 50%;
-		width: line(xs);
+		width: line(m);
 		background-color: black;
 		padding-bottom: size(l);
 		transform: translateY(25%);
@@ -72,7 +72,7 @@
 			bottom: 0;
 			width: size(m);
 			height: size(m);
-			border: solid black line(xs);
+			border: solid black line(m);
 			border-right: 0;
 			border-top: 0;
 			transform-origin: center center;
@@ -214,6 +214,9 @@
 		flex-direction: column;
 		align-items: center;
 		padding-top: size(xxl);
+		> *:last-child {
+			padding: size(xxl) 0;
+		}
 	}
 
 	.screen-gallery {
@@ -235,6 +238,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		padding: size(xxl) 0;
+		border-top: solid line(xxs) black;
 
 		.list-title {
 			@include type(label);
