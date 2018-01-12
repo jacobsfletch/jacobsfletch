@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ScreenFooter from '../../layouts/screenFooter'
 import Clapper from '../../buttons/clapper'
 import { updateId } from '../../../SharedActions'
+import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
 
 import './index.css';
 
@@ -11,8 +12,11 @@ class ProjectScreen extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.onTouchMove = this.onTouchMove.bind(this)
-		this.onWheel = this.onWheel.bind(this)
+		this.onTouchMove = OnTouchMove.bind(this)
+		this.onWheel = OnWheel.bind(this)
+		this.state = {
+			lastScrollY: 0
+		}
 		this.state = {
 			project: {
 				client: 'loading',
@@ -48,16 +52,6 @@ class ProjectScreen extends React.Component {
 		this.updateData(this.props.portfolio)
 	}
 
-	onWheel(e) {
-		const scrollY = e.deltaY
-		const scrollTop = this.screenRef.scrollTop
-		this.screenRef.scrollTop = scrollTop + scrollY
-	}
-
-	onTouchMove(e) {
-		e.stopPropagation()
-	}
-
 	render() {
 		const project = this.state.project
 		const categories = project.categories.map(function(category) {
@@ -88,7 +82,8 @@ class ProjectScreen extends React.Component {
 			<section className="screen-project"
 				onWheel={this.onWheel}
 				onTouchMove={this.onTouchMove}
-				ref={(project) => { this.screenRef = project }}>
+				ref={(project) => { this.screenRef = project }}
+			>
 				<header className="screen-header">
 					<img alt="alt text" className="screen-featured" src={project.featuredImage} />
 					<section className="header-body">

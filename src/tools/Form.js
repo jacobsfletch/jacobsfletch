@@ -1,4 +1,4 @@
-function HandleChange(fieldObject) {
+export function HandleChange(fieldObject) {
 	const newState = {...this.state}
 	const form = newState.form
 	const key = Object.keys(fieldObject)[0]
@@ -14,7 +14,7 @@ function HandleChange(fieldObject) {
 	};
 };
 
-function ValidateFields() {
+export function ValidateFields() {
 	for (const key in this.state.form) {
 		if (!this.state.form[key].isValid) {
 			this.state.form[key].showError = true
@@ -26,7 +26,7 @@ function ValidateFields() {
 	};
 };
 
-function BuildReqBody() {
+export function BuildReqBody() {
 	this.setState({ inProgress: true })
 	for (var i in this.state.form) {
 		const value = this.state.form[i].value
@@ -35,5 +35,3 @@ function BuildReqBody() {
 		this.setState({ reqBody })
 	};
 };
-
-export { HandleChange, BuildReqBody, ValidateFields }

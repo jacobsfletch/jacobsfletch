@@ -1,43 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
+
 import './index.css'
 
 export default class HomeScreen extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.onTouchMove = this.onTouchMove.bind(this)
-		this.onTouchStart = this.onTouchStart.bind(this)
-		this.onWheel = this.onWheel.bind(this)
+		this.onTouchMove = OnTouchMove.bind(this)
+		this.onWheel = OnWheel.bind(this)
 		this.state = {
 			lastScrollY: 0
 		}
-	}
-
-	onWheel(e) {
-		const scrollY = e.deltaY
-		const scrollTop = this.screenRef.scrollTop
-		const nextScroll = scrollTop + scrollY
-		this.screenRef.scrollTop = nextScroll
-	}
-
-	onTouchStart(e) {
-		this.setState({
-			lastScrollY: e.touches[0].pageY
-		})
-	}
-
-	onTouchMove(e) {
-		const scrollTop = this.screenRef.scrollTop
-		const thisScroll = this.state.lastScrollY - e.touches[0].pageY
-		const isBeyondContainer = scrollTop + thisScroll < 0
-		if (!isBeyondContainer) {
-			e.stopPropagation()
-		}
-		this.setState({
-			lastScrollY: e.touches[0].pageY
-		})
 	}
 
 	render() {
@@ -45,9 +21,8 @@ export default class HomeScreen extends React.Component {
 			<section className="screen-home"
 				ref={(home) => { this.screenRef = home }}
 				onWheel={this.onWheel}
-				onTouchStart={this.onTouchStart}
-				onTouchMove={this.onTouchMove}>
-
+				onTouchMove={this.onTouchMove}
+			>
 				<article className="screen-body">
 					<h1 className="screen-title">
 						hello, my name is jacob fletcher and this is my website.

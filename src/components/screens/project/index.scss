@@ -48,12 +48,21 @@
 		width: 50%;
 		height: 100%;
 		padding-bottom: size(xxl);
+		@include breakpoint($size: m, $inherit: down) {
+			width: 75%;
+		}
+		@include breakpoint($size: s, $inherit: down) {
+			width: 100%;
+		}
 	}
 
 	.header-body {
 		width: 75%;
 		margin-top: size(xxl);
 		position: relative;
+		@include breakpoint($size: s, $inherit: down) {
+			width: 100%;
+		}
 	}
 
 	.screen-arrow {
@@ -61,10 +70,11 @@
 		right: 0;
 		bottom: 0;
 		height: 50%;
-		width: line(m);
+		width: line(xxs);
 		background-color: black;
 		padding-bottom: size(l);
 		transform: translateY(25%);
+
 		&::before {
 			content: '';
 			position: absolute;
@@ -72,7 +82,7 @@
 			bottom: 0;
 			width: size(m);
 			height: size(m);
-			border: solid black line(m);
+			border: solid black line(xxs);
 			border-right: 0;
 			border-top: 0;
 			transform-origin: center center;
@@ -221,6 +231,12 @@
 
 	.screen-gallery {
 		width: 50%;
+		@include breakpoint($size: m, $inherit: down) {
+			width: 75%;
+		}
+		@include breakpoint($size: s, $inherit: down) {
+			width: 100%;
+		}
 		.gallery-item {
 			list-style: none;
 		}

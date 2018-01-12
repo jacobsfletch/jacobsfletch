@@ -1,12 +1,14 @@
 @import "../../../sassafras/index.scss";
 
 .button-clapper {
+	overflow: visible;
 
 	button {
 		background-color: transparent;
 		border: 0;
 		margin: 0;
 		padding: 0;
+		overflow: visible;
 	}
 
 	.button-icon {
@@ -38,6 +40,7 @@
 
 		path,
 		line {
+		overflow: visible;
 			stroke: black;
 			stroke-width: line(xs);
 			fill: white;

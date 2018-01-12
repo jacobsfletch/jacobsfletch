@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import ScreenFooter from '../../layouts/screenFooter'
 import { updateId } from '../../../SharedActions'
+import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
 
 import './index.css'
 
@@ -10,7 +11,10 @@ class ArticleScreen extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.onTouchMove = OnTouchMove.bind(this)
+		this.onWheel = OnWheel.bind(this)
 		this.state = {
+			lastScrollY: 0,
 			articleTitle: '',
 			article: {
 				title: 'loading',
@@ -48,6 +52,7 @@ class ArticleScreen extends React.Component {
 	}
 
 	render() {
+
 		const article = this.state.article
 		const categories = article.categories.map(function(category) {
 			return (
@@ -66,7 +71,11 @@ class ArticleScreen extends React.Component {
 		})
 
 		return (
-			<section className="screen-article" >
+			<section className="screen-article"
+				onWheel={this.onWheel}
+				onTouchMove={this.onTouchMove}
+				ref={(article) => { this.screenRef = article }}
+			>
 				<header className="board-header">
 					<img alt="alt text" className="board-featured" src={article.featuredImage} />
 					<section className="header-body">

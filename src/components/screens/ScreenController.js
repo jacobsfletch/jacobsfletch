@@ -27,7 +27,7 @@ class ScreenController extends React.Component {
 		return (
 			<div className="app-body">
 				<Switch>
-					<Route exact path='/' component={HomeScreen} />
+					<Route exact path='/' component={HomeScreen}  />
 					<Route exact path='/doodle' component={DoodleScreen} />
 					<Route exact path='/portfolio' component={PortfolioScreen}/>
 					<Route exact path='/portfolio/:projectName' component={ProjectScreen} />
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		routeChanged: (route) => {
-			dispatch({ type: 'ROUTE_CHANGED', payload: route })
+			dispatch({ type: 'CHANGE_ROUTE', payload: route })
 		},
 		deactivateDock: () => {
 			dispatch(deactivateDock())
