@@ -1,5 +1,5 @@
 import React from 'react';
-import Ruler from '../../tools/Ruler'
+import Ruler from '../../../tools/Ruler'
 
 import './index.css';
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Ruler from '../../tools/Ruler'
-import Validate from '../../tools/Validate'
+import Ruler from '../../../tools/Ruler'
+import Validate from '../../../tools/Validate'
 
 import './index.css'
 

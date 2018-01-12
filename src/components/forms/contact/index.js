@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { HandleChange, BuildReqBody, ValidateFields } from '../../tools/Form'
+import { HandleChange, BuildReqBody, ValidateFields } from '../../../tools/Form'
 import Input from '../../fields/input'
 import Select from '../../fields/select'
 import SubmitButton from '../../buttons/submit'
