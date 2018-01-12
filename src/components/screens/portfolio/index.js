@@ -5,8 +5,6 @@ import { withRouter } from 'react-router'
 
 import ProjectCard from '../../elements/projectcard/'
 
-import { resizePortfolio } from '../../../actions/AppActions'
-
 import './index.css'
 
 class PortfolioScreen extends React.Component {
@@ -121,7 +119,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		resizePortfolio: (portfolioSize) => {
-			dispatch(resizePortfolio(portfolioSize))
+			dispatch({
+				type: 'RESIZE_PORTFOLIO',
+				payload: {
+					width: portfolioSize.width,
+					height: portfolioSize.height
+				}
+			})
 		}
 	}
 }

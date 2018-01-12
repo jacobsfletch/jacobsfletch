@@ -7,7 +7,6 @@ import Header from '../../layouts/header/'
 import Footer from '../../layouts/footer/'
 import ScreenController from '../../screens/ScreenController'
 
-import { getPortfolio, getBlog, getGlobals, getResume, setViewportSize } from '../../../actions/AppActions'
 import offlinePortfolio from '../../../data/portfolio'
 import offlineBlog from '../../../data/blog'
 
@@ -90,19 +89,25 @@ class App extends React.Component {
 function mapDispatchToProps(dispatch) {
 	return {
 		getPortfolio: (data) => {
-			dispatch(getPortfolio(data))
+			dispatch({ type: 'LOAD_PORTFOLIO', payload: data })
 		},
 		getBlog: (data) => {
-			dispatch(getBlog(data))
+			dispatch({ type: 'LOAD_BLOG', payload: data })
 		},
 		getGlobals: (data) => {
-			dispatch(getGlobals(data))
+			dispatch({ type: 'LOAD_GLOBALS', payload: data })
 		},
 		getResume: (data) => {
-			dispatch(getResume(data))
+			dispatch({ type: 'LOAD_RESUME', payload: data })
 		},
 		setViewportSize: (viewportSize) => {
-			dispatch(setViewportSize(viewportSize))
+			dispatch({
+				type: 'MEASURE_VIEWPORT',
+				payload: {
+					width: viewportSize.width,
+					height: viewportSize.height
+				}
+			})
 		}
 	}
 }

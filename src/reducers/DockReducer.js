@@ -1,8 +1,8 @@
 export default function(state=false, action) {
 	switch (action.type) {
-		case 'DOCK_ACTIVATED':
+		case 'ACTIVATE_DOCK':
 			return action.payload
-		case 'DOCK_DEACTIVATED':
+		case 'DEACTIVATE_DOCK':
 			return action.payload
 		default:
 			return state

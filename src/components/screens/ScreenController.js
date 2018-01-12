@@ -12,16 +12,17 @@ import ArticleScreen from './article/'
 import Contact from './contact/'
 import PageNotFound from './404/'
 
-import { routeChanged } from '../../actions/ScreenActions'
-import { deactivateDock } from '../../actions/DockActions'
+import { deactivateDock } from '../../SharedActions'
 
 class ScreenController extends React.Component {
+
 	componentDidMount() {
 		this.props.history.listen((location, action) => {
 			this.props.routeChanged(location.pathname)
 			this.props.deactivateDock()
 		})
 	}
+
 	render() {
 		return (
 			<div className="app-body">
@@ -48,7 +49,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		routeChanged: (route) => {
-			dispatch(routeChanged(route))
+			dispatch({ type: 'ROUTE_CHANGED', payload: route })
 		},
 		deactivateDock: () => {
 			dispatch(deactivateDock())

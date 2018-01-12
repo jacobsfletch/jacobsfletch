@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ScreenFooter from '../../layouts/screenFooter/'
-import { updateId } from '../../../actions/AppActions'
+import ScreenFooter from '../../layouts/screenFooter'
+import { updateId } from '../../../SharedActions'
 
 import './index.css'
 

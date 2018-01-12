@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { activateDock, deactivateDock } from '../../../actions/DockActions'
+
+import { activateDock, deactivateDock } from '../../../SharedActions'
 
 import './index.css';
 

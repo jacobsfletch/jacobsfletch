@@ -1,10 +1,10 @@
 import React from 'react';
-
-import Swatch from '../../elements/swatch/'
-import Progress from '../../modules/progress/'
-
 import { connect } from 'react-redux'
-import { activateDock, deactivateDock } from '../../../actions/DockActions'
+
+import Swatch from '../../elements/swatch'
+import Progress from '../../modules/progress'
+
+import { activateDock, deactivateDock } from '../../../SharedActions'
 
 import './index.css';
 

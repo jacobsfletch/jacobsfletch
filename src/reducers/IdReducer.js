@@ -1,6 +1,6 @@
 export default function(state=false, action) {
 	switch (action.type) {
-		case 'ID_UPDATED':
+		case 'UPDATE_ID':
 			return action.payload
 		default:
 			return state
