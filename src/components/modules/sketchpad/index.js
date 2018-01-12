@@ -37,12 +37,7 @@ class SketchPad extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		if (this.props.viewportSize !== nextProps.viewportSize) {
-			this.setState({
-				viewportSize: {
-					width: nextProps.viewportSize.width,
-					height: nextProps.viewportSize.height
-				}
-			})
+			this.setState({ viewportSize: nextProps.viewportSize })
 			this.setCanvasSize()
 		}
 	}
@@ -62,6 +57,7 @@ class SketchPad extends Component {
 	}
 
 	componentDidMount() {
+		this.setState({ viewportSize: this.props.viewportSize })
 		this.setCanvasSize()
 		this.ctx = this.canvasRef.getContext('2d')
 	}
@@ -117,9 +113,17 @@ class SketchPad extends Component {
 	}
 
 	render() {
-		const toolbeltClasses = this.state.canvasActive ? 'sketchpad-toolbelt active' : 'sketchpad-toolbelt'
-		const titleClasses = (this.state.canvasActive && !this.state.doodleSent) ? 'sketchpad-title deactive' : 'sketchpad-title'
-		const confirmClasses = this.state.doodleSent ? 'sketchpad-confirm' : 'sketchpad-confirm deactive'
+
+		const toolbeltClasses = this.state.canvasActive
+			? 'sketchpad-toolbelt active'
+			: 'sketchpad-toolbelt'
+		const titleClasses = (this.state.canvasActive && !this.state.doodleSent)
+			? 'sketchpad-title deactive'
+			: 'sketchpad-title'
+		const confirmClasses = this.state.doodleSent
+			? 'sketchpad-confirm'
+			: 'sketchpad-confirm deactive'
+
 		return (
 			<div className='sketchpad'>
 				<canvas
@@ -150,7 +154,6 @@ class SketchPad extends Component {
 
 function mapStateToProps(state) {
 	return {
-		doodles: state.globals.doodles,
 		viewportSize: state.viewportSize
 	}
 }

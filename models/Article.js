@@ -83,7 +83,7 @@ Article.add({
 		},
 		full: {
 			type: Types.Html,
-			wysiwyg: false,
+			wysiwyg: true,
 			height: 400
 		}
 	},

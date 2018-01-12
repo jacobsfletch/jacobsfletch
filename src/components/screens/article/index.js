@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ScreenFooter from '../../layouts/screenFooter'
+import Clapper from '../../buttons/clapper'
 import { updateId } from '../../../SharedActions'
 import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
 
@@ -88,6 +89,12 @@ class ArticleScreen extends React.Component {
 						</blockquote>
 					</section>
 				</header>
+				<section className="screen-body">
+					<div className="screen-content">
+						  <div dangerouslySetInnerHTML={{ __html: article.content.full }} />
+					</div>
+					<Clapper />
+				</section>
 				<section className="screen-hashtags">
 					<h3 className="list-title">hashtags</h3>
 					{hashtags}
