@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ScreenFooter from '../../layouts/screenFooter'
 import Clapper from '../../buttons/clapper'
 import { updateId } from '../../../SharedActions'
-import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
+import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css';
 
@@ -13,11 +13,10 @@ class ProjectScreen extends React.Component {
 	constructor(props) {
 		super(props)
 		this.onTouchMove = OnTouchMove.bind(this)
+		this.onTouchStart = OnTouchStart.bind(this)
 		this.onWheel = OnWheel.bind(this)
 		this.state = {
-			lastScrollY: 0
-		}
-		this.state = {
+			lastScrollY: 0,
 			project: {
 				client: 'loading',
 				title: 'loading',
@@ -82,6 +81,7 @@ class ProjectScreen extends React.Component {
 			<section className="screen-project"
 				onWheel={this.onWheel}
 				onTouchMove={this.onTouchMove}
+				onTouchStart={this.onTouchStart}
 				ref={(project) => { this.screenRef = project }}
 			>
 				<header className="screen-header">

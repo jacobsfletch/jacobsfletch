@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
+import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 import ArticleCard from '../../elements/articlecard/'
 
 import './index.css'
@@ -12,6 +12,7 @@ class BlogScreen extends React.Component {
 	constructor() {
 		super()
 		this.onTouchMove = OnTouchMove.bind(this)
+		this.onTouchStart = OnTouchStart.bind(this)
 		this.onWheel = OnWheel.bind(this)
 		this.state = {
 			lastScrollY: 0
@@ -33,6 +34,7 @@ class BlogScreen extends React.Component {
 				ref={(blog) => { this.screenRef = blog }}
 				onWheel={this.onWheel}
 				onTouchMove={this.onTouchMove}
+				onTouchStart={this.onTouchStart}
 			>
 				<ul className="blog-list">
 					{articles}

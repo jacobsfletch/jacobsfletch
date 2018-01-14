@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { OnWheel, OnTouchMove } from '../../../tools/Scroll'
+import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css'
 
@@ -10,6 +10,7 @@ export default class HomeScreen extends React.Component {
 	constructor(props) {
 		super(props)
 		this.onTouchMove = OnTouchMove.bind(this)
+		this.onTouchStart = OnTouchStart.bind(this)
 		this.onWheel = OnWheel.bind(this)
 		this.state = {
 			lastScrollY: 0
@@ -22,6 +23,7 @@ export default class HomeScreen extends React.Component {
 				ref={(home) => { this.screenRef = home }}
 				onWheel={this.onWheel}
 				onTouchMove={this.onTouchMove}
+				onTouchStart={this.onTouchStart}
 			>
 				<article className="screen-body">
 					<h1 className="screen-title">
