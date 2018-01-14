@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
+.form-doodle {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.75); }
+  .form-doodle.hidden {
+    display: none; }
+  .form-doodle.disabled {
+    opacity: .5; }
+  .form-doodle.error .error-message {
+    display: block; }
+  .form-doodle .overlay {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; }
+    .form-doodle .overlay.hidden {
+      display: none; }
+  .form-doodle > * {
+    display: inline; }

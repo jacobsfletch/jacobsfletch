@@ -79,7 +79,7 @@ class App extends React.Component {
 			<div className="app">
 				<Dock />
 				<Header />
-				<ScreenController className="screen" />
+				<ScreenController screenRef={this.props.screenRef} className="screen" />
 				<Footer />
 			</div>
 		)

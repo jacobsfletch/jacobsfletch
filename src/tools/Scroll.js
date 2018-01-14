@@ -6,16 +6,26 @@ export function OnWheel(e) {
 }
 
 export function OnTouchMove(e) {
-	e.stopPropagation()
-	// const scrollTop = this.screenRef.scrollTop
-	// const thisScroll = this.state.lastScrollY - e.touches[0].pageY
-	// const isBeyondContainer = scrollTop + thisScroll < 0
+	const scrollTop = this.screenRef.scrollTop
+	const thisScroll = e.touches[0].pageY
+	const nextScroll = this.state.lastScrollY - thisScroll
+	const fullyUp = scrollTop + nextScroll < 0
+	const fullyDown = this.screenRef.scrollHeight - nextScroll <= this.screenRef.offsetHeight
+	const isBeyondContainer = fullyUp || fullyDown
 
-	// if (!isBeyondContainer) {
-	//	e.stopPropagation()
-	// }
+	console.log(scrollTop + nextScroll)
 
-	// this.setState({
-	//	lastScrollY: e.touches[0].pageY
-	// })
+	if (fullyUp) {
+		console.log('fully up')
+	}
+
+	if (fullyDown) {
+		console.log('fully down')
+	}
+
+	if (!isBeyondContainer) {
+		e.stopPropagation()
+	}
+
+	this.setState({lastScrollY: thisScroll})
 }

@@ -7,7 +7,8 @@ import SubmitButton from '../../buttons/submit'
 
 import './index.css'
 
-export default class ContactForm extends React.Component {
+export default class DoodleForm extends React.Component {
+
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)
@@ -61,6 +62,7 @@ export default class ContactForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault()
 		this.validateFields()
+		return
 		if (this.state.validityArray.length === 0) {
 			this.buildReqBody()
 			fetch('/api/email/contact', {
@@ -81,9 +83,11 @@ export default class ContactForm extends React.Component {
 	}
 
 	render() {
-		const formClasses = this.state.inProgress
-			? 'form-contact disabled'
-			: 'form-contact'
+		const formClasses = !this.props.formActive
+			? 'form-doodle hidden'
+			: this.state.inProgress
+			? 'form-doodle disabled'
+			: 'form-doodle'
 		const button = 'button-form'
 		const buttonClasses = this.state.inProgress
 			? button + ' sending'
@@ -93,74 +97,37 @@ export default class ContactForm extends React.Component {
 			? button + ' error'
 			: button
 		const buttonText = this.state.inProgress
-			? 'sending...'
+			? 'folding, stamping, and mailing...'
 			: this.state.sent
-			? 'sent successfully'
+			? 'got it!'
 			: 'send'
-		const signatureFirst = this.state.form.firstName.value
-			? this.state.form.firstName.value
-			: 'your'
-		const signatureLast = this.state.form.lastName.value
-			? this.state.form.lastName.value
-			: 'name'
-		const selectOptions = ['just say hi', 'hire you', 'meet up', 'spam your inbox']
 		const overlayClasses = this.state.inProgress
 			? 'overlay'
 			: 'overlay hidden'
+
 		return (
-			<form id='contact'
+			<form id='doodle'
 				className={formClasses}
 				onSubmit={this.handleSubmit}
 				ref={(form) => { this.formRef = form }}
 				noValidate
 			>
-				<h2 className="screen-title">dear jacobsfletch,</h2>
+				<h2 className="screen-title">send me oodles of doodles</h2>
 				<br/><br/>
-				<p>hello, my name is&nbsp;</p>
 				<Input
-					placeholder="first"
+					placeholder="Young Joc"
 					name='firstName'
 					type='text'
 					handleChange={this.handleChange}
 					showError={this.state.form.firstName.showError}
 				/>
-				<p> </p>
 				<Input
-					placeholder="last"
-					name='lastName'
-					type='text'
-					handleChange={this.handleChange}
-					showError={this.state.form.lastName.showError}
-				/>
-				<p>&nbsp;.&nbsp;i am reaching out to you because i would like to&nbsp;</p>
-				<Select
-					options={selectOptions}
-					handleChange={this.handleChange}
-				/>
-				<br/><br/>
-				<p>my email address is&nbsp;</p>
-				<Input
-					placeholder="sexybeast@aol.com"
+					placeholder="meetme@themall.com"
 					name='emailAddress'
 					type='email'
 					handleChange={this.handleChange}
 					showError={this.state.form.emailAddress.showError}
 				/>
-				<p>&nbsp;- or you can reach me at&nbsp;</p>
-				<Input
-					placeholder="(555)555-5555"
-					name='phoneNumber'
-					type='tel'
-					maxLength="13"
-					handleChange={this.handleChange}
-					showError={this.state.form.phoneNumber.showError}
-				/>
-				<br/><br/>
-				<footer className="form-footer">
-					<p>regards,</p>
-					<p>{signatureFirst} {signatureLast}</p>
-				</footer>
-				<br/>
 				<SubmitButton
 					buttonClasses={buttonClasses}
 					buttonText={buttonText}

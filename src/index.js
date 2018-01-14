@@ -12,7 +12,7 @@ const mount = document.querySelector('.mount')
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>
-			<App />
+			<App screenRef={screen => this.screenRef = screen} />
 		</Router>
 	</Provider>, mount
 );

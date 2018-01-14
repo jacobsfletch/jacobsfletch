@@ -27,7 +27,7 @@ class ScreenController extends React.Component {
 		return (
 			<div className="app-body">
 				<Switch>
-					<Route exact path='/' component={HomeScreen}  />
+					<Route exact path='/' component={HomeScreen} />
 					<Route exact path='/doodle' component={DoodleScreen} />
 					<Route exact path='/portfolio' component={PortfolioScreen}/>
 					<Route exact path='/portfolio/:projectName' component={ProjectScreen} />
