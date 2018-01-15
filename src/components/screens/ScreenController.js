@@ -8,6 +8,7 @@ import DoodleScreen from './doodle/'
 import PortfolioScreen from './portfolio/'
 import ProjectScreen from './project/'
 import BlogScreen from './blog/'
+import ShopScreen from './shop/'
 import ArticleScreen from './article/'
 import Contact from './contact/'
 import PageNotFound from './404/'
@@ -29,6 +30,7 @@ class ScreenController extends React.Component {
 				<Switch>
 					<Route exact path='/' component={HomeScreen} />
 					<Route exact path='/doodle' component={DoodleScreen} />
+					<Route exact path='/shop' component={ShopScreen}/>
 					<Route exact path='/portfolio' component={PortfolioScreen}/>
 					<Route exact path='/portfolio/:projectName' component={ProjectScreen} />
 					<Route exact path='/blog' component={BlogScreen}/>

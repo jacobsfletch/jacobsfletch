@@ -31,7 +31,7 @@ export default class HomeScreen extends React.Component {
 						<br /><br />
 						it is a place to <Link to={"/Portfolio"}>see</Link> my work,
 						a place to <Link to={"/blog"}>read</Link> my thoughts,
-						and somewhere to <Link to={"/"}>buy</Link> my stuff.
+						and somewhere to <Link to={"/shop"}>buy</Link> my stuff.
 						Feel free to <Link to={"/contact"}>write</Link> me a letter
 						- or even <Link to={"/doodle"}>draw</Link> me a picture.
 					</h1>

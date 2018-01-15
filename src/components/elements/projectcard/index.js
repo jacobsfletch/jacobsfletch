@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import './index.css';
 
 class ProjectCard extends React.Component {
+
 	constructor(props) {
 		super(props)
 		this.getCardSize = this.getCardSize.bind(this)
@@ -19,6 +20,7 @@ class ProjectCard extends React.Component {
 			cardHeight: null
 		}
 	}
+
 	componentWillReceiveProps(nextProps) {
 		if (this.props.move !== nextProps.move) {
 			this.onMove()
@@ -36,9 +38,11 @@ class ProjectCard extends React.Component {
 			portfolioOffsetLeft: this.props.portfolioOffsetLeft
 		})
 	}
+
 	componentDidMount() {
 		this.getCardSize()
 	}
+
 	getCardSize() {
 		const cardStyles = window.getComputedStyle(this.cardRef)
 		this.setState({
@@ -47,6 +51,7 @@ class ProjectCard extends React.Component {
 		})
 		this.onMove()
 	}
+
 	onMove() {
 		const isInViewport = this.isInViewport(this.cardRef)
 		const ratioInViewport = isInViewport.ratioInViewport
@@ -64,6 +69,7 @@ class ProjectCard extends React.Component {
 			this.cardRef.classList.remove('active')
 		}
 	}
+
 	isInViewport(el) {
 		let rect = el.getBoundingClientRect()
 		const offsetLeft = rect.left - this.state.portfolioOffsetLeft
@@ -79,14 +85,15 @@ class ProjectCard extends React.Component {
 			ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
 		}
 		return {
-		   status:
-			   (offsetBottom >= 0 &&
-			   offsetRight >= 0 &&
-			   offsetTop <= this.state.portfolioHeight &&
-			   offsetLeft <= this.state.portfolioWidth),
-		   ratioInViewport: ratio
+			status:
+				(offsetBottom >= 0 &&
+				offsetRight >= 0 &&
+				offsetTop <= this.state.portfolioHeight &&
+				offsetLeft <= this.state.portfolioWidth),
+				ratioInViewport: ratio
 		}
 	}
+
 	render() {
 		const slug = `/portfolio/${this.props.data.slug}`
 		const indexCount = this.props.index + 1

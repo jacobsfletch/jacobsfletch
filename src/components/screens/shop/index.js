@@ -4,7 +4,7 @@ import './index.css';
 
 import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
-export default class PageNotFound extends React.Component {
+export default class ShopScreen extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -15,13 +15,13 @@ export default class PageNotFound extends React.Component {
 
 	render() {
 		return (
-			<section className="screen-404"
+			<section className="screen-shop"
 				ref={(home) => { this.screenRef = home }}
 				onWheel={this.onWheel}
 				onTouchMove={this.onTouchMove}
 				onTouchStart={this.onTouchStart}
 			>
-				<p>404 Page Not Found</p>
+				<p>Shop is under construction</p>
 			</section>
 		)
 	}
