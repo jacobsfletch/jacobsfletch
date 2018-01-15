@@ -3,7 +3,8 @@
   overflow: hidden;
   overflow-x: scroll;
   position: relative;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap; }
   .screen-portfolio.touchable {
     overflow: hidden;
     overflow-y: scroll; }

@@ -100,20 +100,20 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 
-			&:hover,
-			&:focus {
-				animation: glitchImage 5s infinite;
-			}
+		//	&:hover,
+		//	&:focus {
+		//		animation: glitchImage 5s infinite;
+		//	}
 
-			&:hover ~ .image-glitch .cyan,
-			&:focus ~ .image-glitch .cyan {
-				animation: glitchCyan 5s infinite;
-			}
+		//	&:hover ~ .image-glitch .cyan,
+		//	&:focus ~ .image-glitch .cyan {
+		//		animation: glitchCyan 5s infinite;
+		//	}
 
-			&:hover ~ .image-glitch .magenta,
-			&:focus ~ .image-glitch .magenta {
-				animation: glitchMagenta 5s infinite;
-			}
+		//	&:hover ~ .image-glitch .magenta,
+		//	&:focus ~ .image-glitch .magenta {
+		//		animation: glitchMagenta 5s infinite;
+		//	}
 		}
 
 		.image-glitch {

@@ -132,14 +132,6 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat; }
-      .project-card .card-image a:hover, .project-card .card-image a:focus {
-        animation: glitchImage 5s infinite; }
-      .project-card .card-image a:hover ~ .image-glitch .cyan,
-      .project-card .card-image a:focus ~ .image-glitch .cyan {
-        animation: glitchCyan 5s infinite; }
-      .project-card .card-image a:hover ~ .image-glitch .magenta,
-      .project-card .card-image a:focus ~ .image-glitch .magenta {
-        animation: glitchMagenta 5s infinite; }
     .project-card .card-image .image-glitch {
       position: absolute;
       width: 100%;

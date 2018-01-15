@@ -4,6 +4,7 @@
 	overflow-x: scroll;
 	position: relative;
 	-webkit-overflow-scrolling: touch;
+	white-space: nowrap;
 
 	&.touchable {
 		overflow: hidden;

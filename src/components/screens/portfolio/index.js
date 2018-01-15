@@ -2,20 +2,24 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import { OnTouchMove, OnTouchStart, CheckIfFullyScrolled, SetScrollContainerSize } from '../../../tools/Scroll'
 
 import ProjectCard from '../../elements/projectcard/'
 
 import './index.css'
 
 class PortfolioScreen extends React.Component {
+
 	constructor(props) {
 		super(props)
-		this.onTouchMove = this.onTouchMove.bind(this)
+		this.onTouchMove = OnTouchMove.bind(this)
+		this.onTouchStart = OnTouchStart.bind(this)
 		this.onWheel = this.onWheel.bind(this)
 		this.onScroll = this.onScroll.bind(this)
 		this.isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints
-		this.setPortfolioSize = this.setPortfolioSize.bind(this)
 		this.resizePortfolio = this.props.resizePortfolio.bind(this)
+		this.checkIfFullyScrolled = CheckIfFullyScrolled.bind(this)
+		this.setScrollContainerSize = SetScrollContainerSize.bind(this)
 		this.state = {
 			coords: {},
 			move: 0,
@@ -31,29 +35,12 @@ class PortfolioScreen extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		if (this.props.viewportSize !== nextProps.viewportSize) {
-			this.setPortfolioSize()
+			this.setScrollContainerSize()
 		}
 	}
 
 	componentDidMount() {
-		this.setPortfolioSize()
-	}
-
-	setPortfolioSize() {
-		this.setState ({
-			portfolioHeight: this.portfolioRef.offsetHeight,
-			portfolioWidth: this.portfolioRef.offsetWidth,
-			portfolioOffsetLeft: this.portfolioRef.getBoundingClientRect().x,
-			portfolioOffsetTop: this.portfolioRef.getBoundingClientRect().y,
-			scrollHeight: this.portfolioRef.scrollHeight,
-			scrollWidth: this.portfolioRef.scrollWidth
-		})
-		const portfolioSize = {
-			height: this.portfolioRef.offsetHeight,
-			width: this.portfolioRef.offsetWidth
-		}
-		this.resizePortfolio(portfolioSize)
-		this.checkIfFullyScrolled()
+		this.setScrollContainerSize()
 	}
 
 	onScroll() {
@@ -62,35 +49,18 @@ class PortfolioScreen extends React.Component {
 
 	onWheel(e) {
 		const scrollY = e.deltaY
-		const scrollLeft = this.portfolioRef.scrollLeft
-		this.portfolioRef.scrollLeft = scrollLeft + scrollY
+		const scrollLeft = this.screenRef.scrollLeft
+		this.screenRef.scrollLeft = scrollLeft + scrollY
 		this.checkIfFullyScrolled()
-	}
-
-	onTouchMove(e) {
-		e.stopPropagation()
-	}
-
-	checkIfFullyScrolled() {
-		let scrollTop = this.portfolioRef.scrollTop
-		let scrollLeft = this.portfolioRef.scrollLeft
-		let check = false
-		if (this.isTouchDevice) {
-			check = scrollTop <= 0 || this.state.scrollHeight - scrollTop <= -this.state.portfolioHeight
-		} else {
-			check = scrollLeft <= 0 || this.state.scrollWidth - scrollLeft <= -this.state.portfolioWidth + 1
-		}
-		this.setState({
-			move: this.state.move + 1,
-			isFullyScrolled: check
-		})
 	}
 
 	render() {
 		const classList = this.isTouchDevice ? 'screen-portfolio touchable' : 'screen-portfolio'
 		let projects = this.props.portfolio.map((project, index) =>
-			<ProjectCard key={project._id}
-				data={project} index={index}
+			<ProjectCard
+				key={project._id}
+				data={project}
+				index={index}
 				move={this.state.move}
 				portfolioOffsetLeft={this.state.portfolioOffsetLeft}
 				isTouchDevice={this.isTouchDevice}
@@ -98,11 +68,14 @@ class PortfolioScreen extends React.Component {
 			/>
 		)
 		return (
-			<ul className={classList}
+			<ul
+				ref={(screen) => { this.screenRef = screen }}
+				className={classList}
 				onScroll={this.onScroll}
 				onTouchMove={this.onTouchMove}
+				onTouchStart={this.onTouchStart}
 				onWheel={this.onWheel}
-				ref={(portfolio) => { this.portfolioRef = portfolio }} >
+			>
 				{projects}
 			</ul>
 		)
