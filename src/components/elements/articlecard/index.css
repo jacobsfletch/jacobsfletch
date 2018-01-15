@@ -4,13 +4,19 @@
   display: flex;
   color: black;
   background-color: white;
-  margin: 1.125rem 0; }
-  .article-card .card-image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 33%;
-    height: 100%; }
+  padding: 1.5rem 0;
+  border-bottom: black 1px dashed;
+  flex-direction: column; }
+  .article-card > * {
+    margin-bottom: 1.125rem;
+    align-self: flex-start; }
+    .article-card > *:last-child {
+      margin-bottom: 0; }
+  .article-card:first-child {
+    padding-top: 0; }
+  .article-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0; }
   .article-card .card-date {
     display: block; }
   .article-card .card-title {
@@ -19,8 +25,6 @@
     line-height: 1.875rem;
     position: relative;
     display: inline-block;
-    margin-top: 0.75rem;
-    margin-bottom: 0.9375rem;
     white-space: normal;
     text-transform: lowercase; }
     @media only screen and (max-width: 319px) {

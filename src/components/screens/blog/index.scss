@@ -19,9 +19,13 @@
 	.blog-list {
 		@include type(h3);
 		display: block;
-		width: 75%;
 		margin: auto;
 		margin-top: 0;
 		padding: size(l) 0;
+		width: 75%;
+
+		@include breakpoint($size: s, $inherit: down) {
+			width: 100%;
+		}
 	}
 }

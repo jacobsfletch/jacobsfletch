@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
+.icon-arrow {
+  stroke-width: 2px;
+  fill: none;
+  stroke: black;
+  width: 1.5rem;
+  cursor: pointer;
+  overflow: visible;
+  align-self: flex-start; }
+  .icon-arrow:hover .arrow-head {
+    transform: translateX(1.125rem); }
+  .icon-arrow line,
+  .icon-arrow polyline {
+    vector-effect: non-scaling-stroke; }

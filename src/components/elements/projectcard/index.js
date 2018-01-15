@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import ArrowIcon from '../../icons/arrow'
 
-import './index.css';
+import './index.css'
 
 class ProjectCard extends React.Component {
 
@@ -114,6 +115,7 @@ class ProjectCard extends React.Component {
 					<h5 className="card-client">{client}</h5>
 					<Link to={slug}>
 						<h5 className="card-title">{this.props.data.title}</h5>
+						<ArrowIcon />
 					</Link>
 				</div>
 			</li>

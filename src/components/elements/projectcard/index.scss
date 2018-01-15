@@ -1,59 +1,5 @@
 @import "../../../sassafras/index.scss";
 
-@keyframes glitchImage {
-	0% {transform: none;}
-	1% {transform: translateX(3px);}
-	3% {transform: none;}
-	11% {transform: none;}
-	12% {transform: skew(-2deg) translateX(-1px);}
-	16% {transform: none;}
-	61% {transform: none;}
-	62% {transform: skew(-4deg);}
-	63% {transform: none;}
-	70% {transform: none;}
-	71% {transform: skew(-3deg);}
-	72% {transform: none;}
-	76% {transform: none;}
-	77% {transform: skew(-1deg) translateX(2px);}
-	78% {transform: none;}
-	100% {transform: none;}
-}
-
-@keyframes glitchCyan {
-	1% {transform: none;}
-	2% {transform: skew(5deg);}
-	3% {transform: none;}
-	11% {transform: none;}
-	12% {transform: skew(4deg);}
-	16% {transform: none;}
-	54% {transform: none;}
-	62% {transform: skew(-6deg);}
-	63% {transform: none;}
-	70% {transform: none;}
-	71% {transform: skew(-6deg);}
-	72% {transform: none;}
-	100% {transform: none;}
-}
-
-@keyframes glitchMagenta {
-	1% {transform: none;}
-	2% {transform: skew(-5deg);}
-	3% {transform: none;}
-	11% {transform: none;}
-	12% {transform: skew(-4deg);}
-	16% {transform: none;}
-	58% {transform: none;}
-	63% {transform: skew(4deg);}
-	64% {transform: none;}
-	70% {transform: none;}
-	71% {transform: skew(-3deg);}
-	72% {transform: none;}
-	76% {transform: none;}
-	77% {transform: skew(-5deg);}
-	78% {transform: none;}
-	100% {transform: none;}
-}
-
 .project-card {
 	width: 100%;
 	height: 100%;
@@ -63,12 +9,17 @@
 	flex-direction: column;
 	color: black;
 	z-index: layer(mid-bottom);
+	white-space: normal;
 
 	@include breakpoint($size: m, $inherit: down) {
 		width: 100%;
 		&:nth-child(odd) {
 			margin-right: 0 !important;
 		}
+	}
+
+	> * {
+		align-self: flex-start;
 	}
 
 	&:hover {
@@ -155,12 +106,12 @@
 	.card-title {
 		@include type(h2);
 		position: relative;
-		display: inline-block;
+		display: block;
 		margin-top: size(xs);
 		margin-bottom: size(s);
-		white-space: normal;
 		text-transform: lowercase;
-		padding-right: size(l);
+		padding-right: size(xxl);
+
 		@include breakpoint($size: xs) {
 			@include type(h3);
 		}
@@ -184,4 +135,58 @@
 			content: '';
 		}
 	}
+}
+
+@keyframes glitchImage {
+	0% {transform: none;}
+	1% {transform: translateX(3px);}
+	3% {transform: none;}
+	11% {transform: none;}
+	12% {transform: skew(-2deg) translateX(-1px);}
+	16% {transform: none;}
+	61% {transform: none;}
+	62% {transform: skew(-4deg);}
+	63% {transform: none;}
+	70% {transform: none;}
+	71% {transform: skew(-3deg);}
+	72% {transform: none;}
+	76% {transform: none;}
+	77% {transform: skew(-1deg) translateX(2px);}
+	78% {transform: none;}
+	100% {transform: none;}
+}
+
+@keyframes glitchCyan {
+	1% {transform: none;}
+	2% {transform: skew(5deg);}
+	3% {transform: none;}
+	11% {transform: none;}
+	12% {transform: skew(4deg);}
+	16% {transform: none;}
+	54% {transform: none;}
+	62% {transform: skew(-6deg);}
+	63% {transform: none;}
+	70% {transform: none;}
+	71% {transform: skew(-6deg);}
+	72% {transform: none;}
+	100% {transform: none;}
+}
+
+@keyframes glitchMagenta {
+	1% {transform: none;}
+	2% {transform: skew(-5deg);}
+	3% {transform: none;}
+	11% {transform: none;}
+	12% {transform: skew(-4deg);}
+	16% {transform: none;}
+	58% {transform: none;}
+	63% {transform: skew(4deg);}
+	64% {transform: none;}
+	70% {transform: none;}
+	71% {transform: skew(-3deg);}
+	72% {transform: none;}
+	76% {transform: none;}
+	77% {transform: skew(-5deg);}
+	78% {transform: none;}
+	100% {transform: none;}
 }

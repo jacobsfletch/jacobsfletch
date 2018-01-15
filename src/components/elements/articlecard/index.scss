@@ -5,14 +5,26 @@
 	display: flex;
 	color: black;
 	background-color: white;
-	margin: size(m) 0;
+	padding: size(l) 0;
+	border-bottom: black line(xxs) dashed;
+	flex-direction: column;
 
-	.card-image {
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		width: 33%;
-		height: 100%;
+	> * {
+		margin-bottom: size(m);
+		align-self: flex-start;
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+	}
+
+	&:first-child {
+		padding-top: 0;
+	}
+
+	&:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
 	}
 
 	.card-date {
@@ -23,11 +35,10 @@
 		@include type(h2);
 		position: relative;
 		display: inline-block;
-		margin-top: size(xs);
-		margin-bottom: size(s);
 		white-space: normal;
 		text-transform: lowercase;
-		@include breakpoint($size:xs) {
+
+		@include breakpoint($size: xs) {
 			@include type(h3);
 		}
 	}
