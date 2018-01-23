@@ -7,5 +7,6 @@
   box-sizing: border-box;
   padding: 9rem 0;
   flex-direction: column; }
-  .screen-footer > *:first-child {
-    margin-bottom: 1.125rem; }
+  @media only screen and (max-width: 463px) {
+    .screen-footer {
+      width: 100%; } }

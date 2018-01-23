@@ -9,7 +9,7 @@
 	padding: baseline(6) 0;
 	flex-direction: column;
 
-	> *:first-child {
-		margin-bottom: size(m);
+	@include breakpoint($size: s, $inherit: down) {
+		width: 100%;
 	}
 }

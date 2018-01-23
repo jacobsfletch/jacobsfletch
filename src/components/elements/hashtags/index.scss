@@ -1,0 +1,35 @@
+@import "../../../sassafras/index.scss";
+
+.screen-hashtags {
+	@include type(label);
+	margin: auto;
+	width: 75%;
+	font-weight: 100;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	padding: size(xxl) 0;
+	border-top: solid line(xxs) black;
+
+	@include breakpoint($size: s, $inherit: down) {
+		width: 100%;
+	}
+
+	.list-title {
+		@include type(label);
+		font-weight: 900;
+	}
+
+	.list-item {
+		&::after {
+			content: ', ';
+			white-space: pre;
+		}
+
+		&:last-child {
+			&::after {
+				content: '';
+			}
+		}
+	}
+}

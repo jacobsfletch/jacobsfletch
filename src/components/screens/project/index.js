@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import ScreenFooter from '../../layouts/screenFooter'
 import Clapper from '../../buttons/clapper'
+import Hashtags from '../../elements/hashtags'
+import Categories from '../../elements/categories'
 import { updateId } from '../../../SharedActions'
 import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
@@ -53,26 +55,11 @@ class ProjectScreen extends React.Component {
 
 	render() {
 		const project = this.state.project
-		const categories = project.categories.map(function(category) {
-			return (
-				<li key={category.name} className="screen-category">
-					{category.name}
-				</li>
-			)
-		})
 
 		const images = project.images.map(function(image) {
 			return (
 				<li className="gallery-item" key={image}>
 					<img className="screen-image" src={image} alt={image}/>
-				</li>
-			)
-		})
-
-		const hashtags = project.hashtags.map(function(hashtag) {
-			return (
-				<li key={hashtag.name} className="list-item">
-					{hashtag.name}
 				</li>
 			)
 		})
@@ -99,7 +86,7 @@ class ProjectScreen extends React.Component {
 							</a>
 						</h5>
 						<h1 className="screen-title">{project.title}</h1>
-						<ul className="screen-categories">{categories}</ul>
+						<Categories data={project.categories} />
 						<p className="screen-brief">{project.content}</p>
 						<blockquote className="screen-blockquote">
 							<p className="screen-quote">{project.quote}</p>
@@ -114,10 +101,7 @@ class ProjectScreen extends React.Component {
 					</ul>
 					<Clapper />
 				</section>
-				<section className="screen-hashtags">
-					<h3 className="list-title">hashtags</h3>
-					{hashtags}
-				</section>
+				<Hashtags data={project.hashtags} />
 				<ScreenFooter />
 			</section>
 		)

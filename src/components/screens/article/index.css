@@ -5,9 +5,9 @@
   -webkit-overflow-scrolling: touch; }
   .screen-article::-webkit-scrollbar {
     display: none; }
-  .screen-article .board-blockquote {
+  .screen-article .screen-blockquote {
     margin: 0; }
-  .screen-article .board-quoteAuthor {
+  .screen-article .screen-quoteAuthor {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
@@ -16,9 +16,9 @@
     font-weight: 900;
     font-style: normal;
     display: block; }
-    .screen-article .board-quoteAuthor::before {
+    .screen-article .screen-quoteAuthor::before {
       content: '-'; }
-  .screen-article .board-quote {
+  .screen-article .screen-quote {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
@@ -26,36 +26,36 @@
     text-transform: uppercase;
     background-color: yellow;
     display: inline; }
-    .screen-article .board-quote::before {
+    .screen-article .screen-quote::before {
       content: open-quote; }
-    .screen-article .board-quote::after {
+    .screen-article .screen-quote::after {
       content: close-quote; }
-  .screen-article .board-header {
+  .screen-article .screen-header {
     display: flex;
     flex-direction: column;
     background-color: white;
     padding-bottom: 3rem;
     align-items: center; }
-  .screen-article .board-featured {
+  .screen-article .screen-featured {
     width: 50%;
     height: 100%;
     padding-bottom: 3rem; }
   .screen-article .header-body {
     width: 75%;
     margin-top: 3rem; }
-  .screen-article .board-title,
-  .screen-article .board-client,
-  .screen-article .board-categories {
+  .screen-article .screen-title,
+  .screen-article .screen-client,
+  .screen-article .screen-categories {
     font-weight: 900; }
-  .screen-article .board-title {
+  .screen-article .screen-title {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.875rem;
     line-height: 1.875rem;
     text-transform: lowercase;
     margin-bottom: 1.875rem;
     margin-top: 1.875rem; }
-  .screen-article .board-client,
-  .screen-article .board-team {
+  .screen-article .screen-client,
+  .screen-article .screen-team {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.75rem;
     line-height: 0.9375rem;
@@ -63,20 +63,20 @@
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 900; }
-    .screen-article .board-client::before,
-    .screen-article .board-team::before {
+    .screen-article .screen-client::before,
+    .screen-article .screen-team::before {
       font-weight: 300; }
-  .screen-article .board-client {
+  .screen-article .screen-client {
     margin-bottom: 0.5625rem; }
-    .screen-article .board-client::before {
+    .screen-article .screen-client::before {
       content: 'client: '; }
-  .screen-article .board-team::before {
+  .screen-article .screen-team::before {
     content: 'team: ';
     font-weight: 300; }
-  .screen-article .board-team a {
+  .screen-article .screen-team a {
     position: relative;
     padding-left: 1.125rem; }
-  .screen-article .board-team .team-icon {
+  .screen-article .screen-team .team-icon {
     width: 0.75rem;
     height: 0.75rem;
     position: absolute;
@@ -84,11 +84,11 @@
     top: 50%;
     transform: translateY(-50%);
     overflow: visible; }
-    .screen-article .board-team .team-icon line, .screen-article .board-team .team-icon polyline {
+    .screen-article .screen-team .team-icon line, .screen-article .screen-team .team-icon polyline {
       stroke: black;
       fill: none;
       stroke-width: 2px; }
-  .screen-article .board-brief {
+  .screen-article .screen-brief {
     font-family: "Source Code Pro", sans-serif;
     font-size: 1.125rem;
     line-height: 1.875rem;
@@ -101,46 +101,7 @@
     .screen-article .list-title::after {
       content: ': ';
       white-space: pre; }
-  .screen-article .board-categories {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    align-items: center; }
-  .screen-article .board-category {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 0.75rem;
-    line-height: 0.9375rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 900;
-    position: relative;
-    margin-right: 0.5625rem;
-    background-color: white;
-    color: black;
-    padding: 4px 0.75rem;
-    padding-left: 1.5rem;
-    text-transform: uppercase;
-    border: 1px solid black;
-    cursor: pointer; }
-    .screen-article .board-category:hover {
-      background-color: black;
-      color: white; }
-      .screen-article .board-category:hover::after {
-        background-color: white; }
-    .screen-article .board-category:last-child {
-      margin-right: 0; }
-    .screen-article .board-category::after {
-      content: '';
-      position: absolute;
-      left: 0.5625rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: black;
-      width: 5px;
-      height: 5px;
-      border-radius: 100%; }
-  .screen-article .board-tags {
+  .screen-article .screen-tags {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.9375rem;
     line-height: 1.125rem;
@@ -149,53 +110,24 @@
     text-transform: uppercase;
     flex-wrap: wrap;
     align-items: center; }
-    .screen-article .board-tags .board-tag::after {
+    .screen-article .screen-tags .screen-tag::after {
       content: ', ';
       white-space: pre; }
-    .screen-article .board-tags .board-tag:last-child::after {
+    .screen-article .screen-tags .screen-tag:last-child::after {
       content: ''; }
-  .screen-article .board-body {
+  .screen-article .screen-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 3rem; }
-  .screen-article .board-gallery {
-    width: 50%; }
-    .screen-article .board-gallery .gallery-item {
-      list-style: none; }
-    .screen-article .board-gallery .board-image {
-      width: 100%; }
-  .screen-article .board-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top: solid 4px black;
-    margin-top: 1.125rem;
-    padding-top: 1.125rem; }
-  .screen-article .board-hashtags {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 0.75rem;
-    line-height: 0.9375rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 900;
+    padding-top: 3rem;
     width: 75%;
-    font-weight: 100;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap; }
-    .screen-article .board-hashtags::after {
-      content: ', ';
-      white-space: pre; }
-    .screen-article .board-hashtags:last-child::after {
-      content: ''; }
-    .screen-article .board-hashtags .list-title {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 0.75rem;
-      line-height: 0.9375rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-weight: 900;
-      font-weight: 900; }
+    margin: auto; }
+    @media only screen and (max-width: 463px) {
+      .screen-article .screen-body {
+        width: 100%; } }
+  .screen-article .screen-gallery {
+    width: 50%; }
+    .screen-article .screen-gallery .gallery-item {
+      list-style: none; }
+    .screen-article .screen-gallery .screen-image {
+      width: 100%; }

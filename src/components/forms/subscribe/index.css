@@ -4,8 +4,14 @@
   display: flex;
   position: relative;
   align-items: center; }
+  @media only screen and (max-width: 463px) {
+    .form-subscribe {
+      flex-direction: column; } }
   .form-subscribe > *:first-child {
     margin-right: 1.125rem; }
+    @media only screen and (max-width: 463px) {
+      .form-subscribe > *:first-child {
+        margin-right: 0; } }
   .form-subscribe.disabled {
     opacity: .5; }
   .form-subscribe.white {

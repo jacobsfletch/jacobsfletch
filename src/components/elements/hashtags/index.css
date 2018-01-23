@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
+.screen-hashtags {
+  font-family: "Source Code Pro", sans-serif;
+  font-size: 0.75rem;
+  line-height: 0.9375rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 900;
+  margin: auto;
+  width: 75%;
+  font-weight: 100;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3rem 0;
+  border-top: solid 1px black; }
+  @media only screen and (max-width: 463px) {
+    .screen-hashtags {
+      width: 100%; } }
+  .screen-hashtags .list-title {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+    font-weight: 900; }
+  .screen-hashtags .list-item::after {
+    content: ', ';
+    white-space: pre; }
+  .screen-hashtags .list-item:last-child::after {
+    content: ''; }

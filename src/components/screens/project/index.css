@@ -60,6 +60,9 @@
     background-color: black;
     padding-bottom: 1.5rem;
     transform: translateY(25%); }
+    @media only screen and (max-width: 463px) {
+      .screen-project .screen-arrow {
+        display: none; } }
     .screen-project .screen-arrow::before {
       content: '';
       position: absolute;
@@ -133,38 +136,6 @@
     .screen-project .list-title::after {
       content: ': ';
       white-space: pre; }
-  .screen-project .screen-categories {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    align-items: center; }
-  .screen-project .screen-category {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 0.75rem;
-    line-height: 0.9375rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 900;
-    position: relative;
-    margin-right: 0.5625rem;
-    background-color: white;
-    color: black;
-    padding-left: 0.9375rem;
-    text-transform: uppercase;
-    cursor: pointer; }
-    .screen-project .screen-category:last-child {
-      margin-right: 0; }
-    .screen-project .screen-category::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: black;
-      width: 5px;
-      height: 5px;
-      border-radius: 100%; }
   .screen-project .screen-tags {
     font-family: "Source Code Pro", sans-serif;
     font-size: 0.9375rem;
@@ -198,33 +169,3 @@
       list-style: none; }
     .screen-project .screen-gallery .screen-image {
       width: 100%; }
-  .screen-project .screen-hashtags {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 0.75rem;
-    line-height: 0.9375rem;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 900;
-    margin: auto;
-    width: 75%;
-    font-weight: 100;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3rem 0;
-    border-top: solid 1px black; }
-    .screen-project .screen-hashtags .list-title {
-      font-family: "Source Code Pro", sans-serif;
-      font-size: 0.75rem;
-      line-height: 0.9375rem;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-weight: 900;
-      font-weight: 900; }
-    .screen-project .screen-hashtags .list-item::after {
-      content: ', ';
-      white-space: pre; }
-    .screen-project .screen-hashtags .list-item:last-child::after {
-      content: ''; }

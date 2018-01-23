@@ -5,9 +5,16 @@
 	display: flex;
 	position: relative;
 	align-items: center;
+	
+	@include breakpoint($size: s, $inherit: down) {
+		flex-direction: column;
+	}
 
 	> *:first-child {
 		margin-right: size(m);
+		@include breakpoint($size: s, $inherit: down) {
+			margin-right: 0;
+		}
 	}
 
 	&.disabled {
