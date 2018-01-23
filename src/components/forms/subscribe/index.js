@@ -4,9 +4,10 @@ import { HandleChange, BuildReqBody, ValidateFields } from '../../../tools/Form'
 import Input from '../../fields/input'
 import SubmitButton from '../../buttons/submit'
 
-import './index.css';
+import './index.css'
 
 export default class Subscribe extends React.Component {
+
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)

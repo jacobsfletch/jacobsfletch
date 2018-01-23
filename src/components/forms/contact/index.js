@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import { HandleChange, BuildReqBody, ValidateFields } from '../../../tools/Form'
 import Input from '../../fields/input'
@@ -7,7 +7,8 @@ import SubmitButton from '../../buttons/submit'
 
 import './index.css'
 
-export default class ContactForm extends React.Component {
+class ContactForm extends Component {
+
 	constructor() {
 		super()
 		this.handleChange = HandleChange.bind(this)
@@ -170,3 +171,5 @@ export default class ContactForm extends React.Component {
 		)
 	}
 }
+
+export default ContactForm

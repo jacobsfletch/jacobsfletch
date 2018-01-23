@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 
 import './index.css'
 
-class BackToTop extends React.Component {
+class BackToTop extends React {
+
 	constructor() {
 		super()
 		this.onScroll = this.onScroll.bind(this)

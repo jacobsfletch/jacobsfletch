@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import ScreenFooter from '../../layouts/screenFooter'
@@ -10,7 +10,7 @@ import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css';
 
-class ProjectScreen extends React.Component {
+class ProjectScreen extends Component {
 
 	constructor(props) {
 		super(props)

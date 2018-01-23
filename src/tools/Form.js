@@ -10,9 +10,9 @@ export function HandleChange(fieldObject) {
 		if (key === thisKey) {
 			newState.form[thisKey].showError = false
 			this.setState( newState )
-		};
-	};
-};
+		}
+	}
+}
 
 export function ValidateFields() {
 	for (const key in this.state.form) {
@@ -22,9 +22,9 @@ export function ValidateFields() {
 			const validityArray = this.state.validityArray
 			validityArray.push(false)
 			this.setState({ validityArray })
-		};
-	};
-};
+		}
+	}
+}
 
 export function BuildReqBody() {
 	this.setState({ inProgress: true })
@@ -33,5 +33,5 @@ export function BuildReqBody() {
 		this.state.reqBody[i] = value
 		const reqBody = this.state.reqBody
 		this.setState({ reqBody })
-	};
-};
+	}
+}

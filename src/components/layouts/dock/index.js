@@ -4,33 +4,31 @@ import { connect } from 'react-redux'
 
 import './index.css';
 
-class Dock extends React.Component {
-	render() {
-		const classes = this.props.status ? `dock docked ${this.props.color}` : `dock`
-		return (
-			<section className={classes}>
-				<nav className="dock-menu">
-					<ul>
-						<li className="menu-item">
-							<NavLink to="/portfolio">look at stuff</NavLink>
-						</li>
-						<li className="menu-item">
-							<NavLink to="/blog">read stuff</NavLink>
-						</li>
-						<li className="menu-item">
-							<NavLink to="/shop">buy stuff</NavLink>
-						</li>
-						<li className="menu-item">
-							<NavLink to="/doodle">draw things</NavLink>
-						</li>
-						<li className="menu-item">
-							<NavLink to="/contact">say things</NavLink>
-						</li>
-					</ul>
-				</nav>
-			</section>
-		)
-	}
+const Dock = (props) => {
+	const classes = this.props.status ? `dock docked ${this.props.color}` : `dock`
+	return (
+		<section className={classes}>
+			<nav className="dock-menu">
+				<ul>
+					<li className="menu-item">
+						<NavLink to="/portfolio">look at stuff</NavLink>
+					</li>
+					<li className="menu-item">
+						<NavLink to="/blog">read stuff</NavLink>
+					</li>
+					<li className="menu-item">
+						<NavLink to="/shop">buy stuff</NavLink>
+					</li>
+					<li className="menu-item">
+						<NavLink to="/doodle">draw things</NavLink>
+					</li>
+					<li className="menu-item">
+						<NavLink to="/contact">say things</NavLink>
+					</li>
+				</ul>
+			</nav>
+		</section>
+	)
 }
 
 function mapStateToProps(state) {

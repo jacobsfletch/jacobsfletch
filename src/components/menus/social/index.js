@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
 import './index.css'
 
-class Social extends React.Component {
+class Social extends React {
+
 	constructor() {
 		super()
 		this.state = {
@@ -17,6 +18,7 @@ class Social extends React.Component {
 			medium: ''
 		}
 	}
+
 	componentWillReceiveProps() {
 		this.setState({
 			github: this.props.globals.github,
@@ -27,6 +29,7 @@ class Social extends React.Component {
 			medium: this.props.globals.medium
 		})
 	}
+
 	render() {
 		return (
 			<nav className="menu-social">

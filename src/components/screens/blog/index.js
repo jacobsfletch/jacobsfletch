@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
@@ -7,7 +7,7 @@ import ArticleCard from '../../elements/articlecard/'
 
 import './index.css'
 
-class BlogScreen extends React.Component {
+class BlogScreen extends Component {
 
 	constructor() {
 		super()

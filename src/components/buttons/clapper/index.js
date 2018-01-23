@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import './index.css';
+import './index.css'
 
 class Clapper extends Component {
+
 	constructor() {
 		super()
 		this.handleSubmit = this.handleSubmit.bind(this)

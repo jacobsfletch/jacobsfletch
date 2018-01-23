@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css'
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends Component {
 
 	constructor(props) {
 		super(props)
@@ -40,3 +40,5 @@ export default class HomeScreen extends React.Component {
 		)
 	}
 }
+
+export default HomeScreen

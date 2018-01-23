@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
@@ -8,7 +8,7 @@ import ProjectCard from '../../elements/projectcard/'
 
 import './index.css'
 
-class PortfolioScreen extends React.Component {
+class PortfolioScreen extends Component {
 
 	constructor(props) {
 		super(props)

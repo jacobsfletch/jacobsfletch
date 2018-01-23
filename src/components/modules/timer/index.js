@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react'
 
-import './index.css';
+import './index.css'
 
-export default class ProjectThumbnail extends React.Component {
+class ProjectThumbnail extends Component {
+
 	constructor(props) {
 		super()
 		this.tick = this.tick.bind(this)
@@ -11,18 +12,22 @@ export default class ProjectThumbnail extends React.Component {
 			time: new Date().toLocaleTimeString()
 		}
 	}
+
 	tick() {
 		const time = new Date().toLocaleTimeString()
 		this.setState({
 			time: time
 		})
 	}
+
 	componentDidMount() {
 		this.intervalId = setInterval(this.tick, 1000)
 	}
+
 	componentWillUnmount() {
 		clearInterval(this.intervalID);
 	}
+
 	render() {
 		return (
 			<div className="module-timer">
@@ -33,3 +38,5 @@ export default class ProjectThumbnail extends React.Component {
 		)
 	}
 }
+
+export default ProjectThumbnail

@@ -6,12 +6,10 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-class Breadcrumbs extends React.Component {
-	render() {
-		return (
-			<Crumb pathname={this.props.location.pathname}/>
-		)
-	}
+const Breadcrumbs = (props) => {
+	return (
+		<Crumb pathname={props.location.pathname}/>
+	)
 }
 
 function Crumb(pathname) {

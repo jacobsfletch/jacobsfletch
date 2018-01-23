@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import ContactForm from '../../forms/contact/'
 
@@ -6,7 +6,7 @@ import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css'
 
-export default class Contact extends React.Component {
+class Contact extends Component {
 
 	constructor() {
 		super()
@@ -31,3 +31,5 @@ export default class Contact extends React.Component {
 		)
 	}
 }
+
+export default Contact

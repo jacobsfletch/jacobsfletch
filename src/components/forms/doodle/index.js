@@ -7,7 +7,7 @@ import SubmitButton from '../../buttons/submit'
 
 import './index.css'
 
-export default class DoodleForm extends React.Component {
+class DoodleForm extends React.Component {
 
 	constructor() {
 		super()
@@ -137,3 +137,5 @@ export default class DoodleForm extends React.Component {
 		)
 	}
 }
+
+export default DoodleForm

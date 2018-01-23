@@ -5,19 +5,19 @@ import { activateDock, deactivateDock } from '../../../SharedActions'
 
 import './index.css';
 
-class Swatch extends React.Component {
-	toggleDock(color) {
-		if (this.props.dock.color !== color) {
-			this.props.activateDock(color)
-		} else {
-			this.props.deactivateDock()
-		}
-	}
-	render() {
-		return (
-			<button className={"swatch-" + this.props.color} onClick={() => { this.toggleDock(this.props.color) }}/>
-		)
-	}
+const Swatch = (props) => {
+	return (
+		<button
+			className={"swatch-" + props.color}
+			onClick={() => {
+				if (props.dock.color !== props.color) {
+					props.activateDock(props.color)
+				} else {
+					props.deactivateDock()
+				}
+			}}
+		/>
+	)
 }
 
 function mapStateToProps(state) {

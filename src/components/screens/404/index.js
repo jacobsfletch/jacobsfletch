@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component } from 'react';
 
 import './index.css';
 
 import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
-export default class PageNotFound extends React.Component {
+class PageNotFound extends Component {
 
 	constructor(props) {
 		super(props)
@@ -26,3 +26,5 @@ export default class PageNotFound extends React.Component {
 		)
 	}
 }
+
+export default PageNotFound

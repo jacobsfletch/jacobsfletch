@@ -73,11 +73,12 @@ class ProjectCard extends React.Component {
 
 	isInViewport(el) {
 		let rect = el.getBoundingClientRect()
+		let ratio = 0
 		const offsetLeft = rect.left - this.state.portfolioOffsetLeft
 		const offsetRight = rect.right - this.state.portfolioOffsetLeft
 		const offsetTop = rect.top - this.state.portfolioOffsetLeft
 		const offsetBottom = rect.bottom - this.state.portfolioOffsetLeft
-		let ratio = 0
+
 		if (!this.props.isTouchDevice && offsetLeft <= this.state.portfolioWidth && offsetRight >= 0) {
 			let computedRatio = Math.round((1 - (offsetLeft / this.state.portfolioWidth)) * 100) / 100
 			ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
@@ -85,6 +86,7 @@ class ProjectCard extends React.Component {
 			let computedRatio = Math.round((1 - (offsetTop / this.state.portfolioHeight)) * 100) / 100
 			ratio = (computedRatio > 1) ? (2 - computedRatio) - 1 : 1 - computedRatio
 		}
+
 		return {
 			status:
 				(offsetBottom >= 0 &&
