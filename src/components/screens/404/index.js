@@ -1,4 +1,5 @@
-import React, {Component } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 import './index.css';
 
@@ -27,4 +28,12 @@ class PageNotFound extends Component {
 	}
 }
 
-export default PageNotFound
+function mapDispatchToProps(dispatch) {
+	return {
+		userScrolled: (ratio) => {
+			dispatch({ type: 'USER_SCROLLED', payload: ratio })
+		}
+	}
+}
+
+export default connect(null, mapDispatchToProps)(PageNotFound)

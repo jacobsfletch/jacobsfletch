@@ -5,9 +5,11 @@
 	width: size(m);
 	display: flex;
 	position: absolute;
+
 	@include breakpoint(xs) {
 		width: size(s);
-	};
+	}
+
 	.measure-inner {
 		position: relative;
 		display: flex;
@@ -15,8 +17,8 @@
 		justify-content: space-between;
 		flex-direction: column;
 	}
-	.measure-index,
-	.measure-index-b {
+
+	.measure-index {
 		cursor: row-resize;
 		border-radius: 100%;
 		background-color: color(dark, 3);
@@ -25,9 +27,10 @@
 		position: absolute;
 		top: 0;
 		left: 50%;
-		transform: translateX(-50%) translateY(calc(-50% + #{line(xs) / 2})); /* Translate Y Value in Respect to Scroll Position */
+		transform: translateX(-50%) translateY(calc(-50% + #{line(xs) / 2}));
 		z-index: layer(top);
 	}
+
 	.line {
 		height: line(xxs);
 		background-color: color(dark, 3);

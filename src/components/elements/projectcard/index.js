@@ -108,7 +108,7 @@ class ProjectCard extends React.Component {
 				<p className="card-index">{index}</p>
 				<div className="card-image" ref={(image) => { this.cardImgRef = image }} >
 					<Link to={slug} style={image} />
-					<div className="image-glitch">
+					<div className="image-background">
 						<span className="magenta" />
 						<span className="cyan" />
 					</div>

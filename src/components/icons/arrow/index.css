@@ -5,8 +5,7 @@
   stroke: black;
   width: 1.5rem;
   cursor: pointer;
-  overflow: visible;
-  align-self: flex-start; }
+  overflow: visible; }
   .icon-arrow:hover .arrow-head {
     transform: translateX(1.125rem); }
   .icon-arrow line,

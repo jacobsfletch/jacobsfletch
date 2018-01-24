@@ -3,10 +3,15 @@
 //////////////////////////////////////////////////////
 
 export function OnWheel(e) {
+	const offsetHeight = this.screenRef.offsetHeight
+	const scrollHeight = this.screenRef.scrollHeight
 	const scrollY = e.deltaY
 	const scrollTop = this.screenRef.scrollTop
 	const nextScroll = scrollTop + scrollY
+	const ratioScrolled = (offsetHeight + scrollTop) / scrollHeight
 	this.screenRef.scrollTop = nextScroll
+
+	this.props.userScrolled(ratioScrolled)
 }
 
 //////////////////////////////////////////////////////
@@ -32,9 +37,7 @@ export function OnTouchMove(e) {
 	const fullyUp = scrollTop + nextScroll < 0
 	const fullyDown = offsetHeight + scrollTop + nextScroll > scrollHeight
 	const isBeyondContainer = fullyUp || fullyDown
-
-	// console.log(`offsetHeight: ${offsetHeight} / scrollHeight: ${scrollHeight}`)
-	// console.log(`scrollTop: ${scrollTop} / nextScroll: ${nextScroll}`)
+	const ratioScrolled = ((offsetHeight + scrollTop) / scrollHeight) / offsetHeight
 
 	// if (fullyUp) { console.log('fully up') }
 	// else if (fullyDown) { console.log('fully down') }
@@ -44,7 +47,7 @@ export function OnTouchMove(e) {
 	}
 
 	this.setState({lastScrollY: thisScroll})
-}
+	this.props.userScrolled(ratioScrolled)}
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////

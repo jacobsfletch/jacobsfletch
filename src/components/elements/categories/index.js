@@ -3,7 +3,7 @@ import React from 'react'
 import './index.css'
 
 const Categories = (props) => {
-	const category = this.props.data.map((item, i) => {
+	const category = props.data.map((item, i) => {
 		return (
 			<li key={i} className="list-item">
 				{item.name}

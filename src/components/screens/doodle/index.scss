@@ -17,6 +17,7 @@
 		text-align: center;
 		transform: translate(-50%, -50%);
 		display: block;
+		z-index: -1;
 
 		&.deactive {
 			display: none;
@@ -51,18 +52,17 @@
 		color: black;
 		background-color: transparent;
 		padding: size(xxs) size(xs);
+		display: inline-flex;
+		align-items: center;
 		cursor: pointer;
 
-		&:first-child {
-			margin-right: size(s);
-			border: line(xs) black solid;
+		&:last-child {
 			&:hover {
-				color: white;
-				background-color: black;
+				font-weight: 500;
 			}
 		}
 
-		&:last-child {
+		&:first-child {
 			opacity: .5;
 			border: 0;
 
@@ -77,6 +77,10 @@
 			&::after {
 				content: ' ]';
 			}
+		}
+
+		> *:first-child {
+			margin-right: size(s);
 		}
 	}
 }

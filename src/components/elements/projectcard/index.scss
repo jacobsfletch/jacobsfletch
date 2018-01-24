@@ -67,14 +67,25 @@
 		//	}
 		}
 
-		.image-glitch {
+		.image-background {
 			position: absolute;
 			width: 100%;
 			height: 100%;
 			left: 0;
 			top: 0;
 			z-index: -1;
+			border: dashed black line(xs);
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
 
+			&::after {
+				content: '[...]'
+			}
+
+			/*
 			.cyan,
 			.magenta {
 				width: 100%;
@@ -92,6 +103,7 @@
 			.magenta {
 				background-color: magenta;
 			}
+			*/
 		}
 	}
 

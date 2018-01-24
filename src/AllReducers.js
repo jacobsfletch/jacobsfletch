@@ -9,6 +9,7 @@ import RouteReducer from './reducers/RouteReducer'
 import WindowReducer from './reducers/WindowReducer'
 import PortfolioReducer from './reducers/PortfolioReducer'
 import IdReducer from './reducers/IdReducer'
+import ScrollReducer from './reducers/ScrollReducer'
 
 const allReducers = combineReducers({
 	route: RouteReducer,
@@ -19,7 +20,8 @@ const allReducers = combineReducers({
 	globals: GlobalDataReducer,
 	resume: ResumeReducer,
 	viewportSize: WindowReducer,
-	portfolioSize: PortfolioReducer
+	portfolioSize: PortfolioReducer,
+	ratioScrolled: ScrollReducer
 })
 
 export default allReducers

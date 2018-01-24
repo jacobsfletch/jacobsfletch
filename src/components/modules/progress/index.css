@@ -13,8 +13,7 @@
     flex-grow: 1;
     justify-content: space-between;
     flex-direction: column; }
-  .scroll-progress .measure-index,
-  .scroll-progress .measure-index-b {
+  .scroll-progress .measure-index {
     cursor: row-resize;
     border-radius: 100%;
     background-color: #0d0d0d;
@@ -24,7 +23,6 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%) translateY(calc(-50% + 1px));
-    /* Translate Y Value in Respect to Scroll Position */
     z-index: 8888; }
   .scroll-progress .line {
     height: 1px;

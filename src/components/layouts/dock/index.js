@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import './index.css';
 
 const Dock = (props) => {
-	const classes = this.props.status ? `dock docked ${this.props.color}` : `dock`
+	const classes = props.status ? `dock docked ${props.color}` : `dock`
 	return (
 		<section className={classes}>
 			<nav className="dock-menu">

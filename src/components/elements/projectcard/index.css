@@ -39,25 +39,40 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat; }
-    .project-card .card-image .image-glitch {
+    .project-card .card-image .image-background {
       position: absolute;
       width: 100%;
       height: 100%;
       left: 0;
       top: 0;
-      z-index: -1; }
-      .project-card .card-image .image-glitch .cyan,
-      .project-card .card-image .image-glitch .magenta {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0; }
-      .project-card .card-image .image-glitch .cyan {
-        background-color: cyan; }
-      .project-card .card-image .image-glitch .magenta {
-        background-color: magenta; }
+      z-index: -1;
+      border: dashed black 2px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /*
+			.cyan,
+			.magenta {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+			}
+
+			.cyan {
+				background-color: cyan;
+			}
+
+			.magenta {
+				background-color: magenta;
+			}
+			*/ }
+      .project-card .card-image .image-background::after {
+        content: '[...]'; }
   .project-card .card-meta a {
     display: block; }
   .project-card .card-client {

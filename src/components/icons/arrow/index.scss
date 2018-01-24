@@ -7,7 +7,7 @@
 	width: size(l);
 	cursor: pointer;
 	overflow: visible;
-	align-self: flex-start;
+	// align-self: flex-start;
 
 	&:hover .arrow-head {
 		transform: translateX(size(m));

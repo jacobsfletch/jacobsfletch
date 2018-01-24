@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import ContactForm from '../../forms/contact/'
 
@@ -32,4 +33,12 @@ class Contact extends Component {
 	}
 }
 
-export default Contact
+function mapDispatchToProps(dispatch) {
+	return {
+		userScrolled: (ratio) => {
+			dispatch({ type: 'USER_SCROLLED', payload: ratio })
+		}
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Contact)

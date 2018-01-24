@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import ArrowIcon from '../../icons/arrow'
+
 import Input from '../../fields/input'
 import DoodleForm from '../../forms/doodle'
 
@@ -129,7 +131,7 @@ class DoodleScreen extends Component {
 			: 'sketchpad-confirm deactive'
 
 		return (
-			<div className='sketchpad'>
+			<div className={this.state.canvasActive ? 'sketchpad active' : 'sketchpad'}>
 				<canvas
 					ref={(canvas) => { this.canvasRef = canvas }}
 					className='sketchpad-canvas'
@@ -142,10 +144,13 @@ class DoodleScreen extends Component {
 					onTouchEnd={this.onUp}
 				/>
 				<p className={confirmClasses}>Your doodle has been sent!</p>
-				<p className={titleClasses}>Draw me something</p>
+				<p className={titleClasses}>Start drawing</p>
 				<div className={toolbeltClasses}>
-					<a onClick={(e) => this.sendSketch(e)}>Send To Me</a>
-					<button onClick={(e) => this.setCanvasSize()}>clear</button>
+					<button onClick={(e) => this.setCanvasSize()}>&nbsp;clear&nbsp;</button>
+					<a onClick={(e) => this.sendSketch(e)}>
+						<p className="button-title">Send To Me</p>
+						<ArrowIcon />
+					</a>
 				</div>
 				<DoodleForm status={this.state.formActive} />
 			</div>
