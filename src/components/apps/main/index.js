@@ -16,7 +16,7 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.offline = false
+		this.offline = true
 		this.setViewportSize = this.setViewportSize.bind(this)
 	}
 
@@ -102,7 +102,7 @@ function mapDispatchToProps(dispatch) {
 		},
 		setViewportSize: (viewportSize) => {
 			dispatch({
-				type: 'MEASURE_VIEWPORT',
+				type: 'WINDOW_RESIZED',
 				payload: {
 					width: viewportSize.width,
 					height: viewportSize.height

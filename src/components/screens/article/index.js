@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import screenComponent from '../ScreenComponent'
 
 import ScreenFooter from '../../layouts/screenFooter'
 import Clapper from '../../buttons/clapper'
 import Categories from '../../elements/categories'
 import Hashtags from '../../elements/hashtags'
-import { updateId } from '../../../SharedActions'
-import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css'
 
@@ -14,11 +13,7 @@ class ArticleScreen extends Component {
 
 	constructor(props) {
 		super(props)
-		this.onTouchMove = OnTouchMove.bind(this)
-		this.onTouchStart = OnTouchStart.bind(this)
-		this.onWheel = OnWheel.bind(this)
 		this.state = {
-			lastScrollY: 0,
 			articleTitle: '',
 			article: {
 				title: 'loading',
@@ -37,9 +32,10 @@ class ArticleScreen extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (this.props.blog !== nextProps.blog) {
-			this.updateData(nextProps.blog)
+		if (this.props.data.blog !== nextProps.data.blog) {
+			this.updateData(nextProps.data.blog)
 		}
+		console.log(nextProps.data.blog)
 	}
 
 	updateData(blog) {
@@ -58,11 +54,9 @@ class ArticleScreen extends Component {
 	render() {
 		const article = this.state.article
 		return (
-			<section className="screen-article"
-				onWheel={this.onWheel}
-				onTouchMove={this.onTouchMove}
-				onTouchStart={this.onTouchStart}
-				ref={(article) => { this.screenRef = article }}
+			<section
+				className="screen-article"
+				ref={(thisScreen) => { this.screenRef = thisScreen }}
 			>
 				<header className="screen-header">
 					<section className="header-body">
@@ -88,19 +82,4 @@ class ArticleScreen extends Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		blog: state.blog,
-		route: state.route
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		updateId: (id) => {
-			dispatch(updateId(id))
-		}
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleScreen)
+export default screenComponent(ArticleScreen)

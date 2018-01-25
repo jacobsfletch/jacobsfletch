@@ -1,23 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
+import screenComponent from '../ScreenComponent'
 
-import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 import ArticleCard from '../../elements/articlecard/'
 
 import './index.css'
 
 class BlogScreen extends Component {
-
-	constructor() {
-		super()
-		this.onTouchMove = OnTouchMove.bind(this)
-		this.onTouchStart = OnTouchStart.bind(this)
-		this.onWheel = OnWheel.bind(this)
-		this.state = {
-			lastScrollY: 0
-		}
-	}
 
 	render() {
 
@@ -30,11 +18,9 @@ class BlogScreen extends Component {
 		)
 
 		return (
-			<article className='screen-blog'
-				ref={(blog) => { this.screenRef = blog }}
-				onWheel={this.onWheel}
-				onTouchMove={this.onTouchMove}
-				onTouchStart={this.onTouchStart}
+			<article
+				className='screen-blog'
+				ref={(thisScreen) => { this.screenRef = thisScreen }}
 			>
 				<ul className="blog-list">
 					{articles}
@@ -44,10 +30,6 @@ class BlogScreen extends Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		blog: state.blog
-	}
-}
+const mapStateToProps = ["blog"]
 
-export default withRouter(connect(mapStateToProps)(BlogScreen))
+export default screenComponent(mapStateToProps, null, BlogScreen)
