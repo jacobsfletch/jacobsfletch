@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 
-import Dock from '../../layouts/dock/'
-import Header from '../../layouts/header/'
-import Footer from '../../layouts/footer/'
-import ScreenController from '../../screens/ScreenController'
+import Dock from './layouts/dock/'
+import Header from './layouts/header/'
+import Footer from './layouts/footer/'
+import ScreenController from './screens/ScreenController'
 
-import offlinePortfolio from '../../../data/portfolio'
-import offlineBlog from '../../../data/blog'
+import Portfolio from '../data/portfolio'
+import Blog from '../data/blog'
 
-import './index.css'
+import './App.css'
 
 class App extends React.Component {
 
@@ -41,37 +41,10 @@ class App extends React.Component {
 	}
 
 	componentWillMount() {
-		if (!this.offline) {
-			fetch('/api/portfolio')
-				.then(results => {
-					return results.json()
-				}).then(data => {
-					this.props.getPortfolio(data)
-				})
-			fetch('/api/blog')
-				.then(results => {
-					return results.json()
-				}).then(data => {
-					this.props.getBlog(data)
-				})
-			fetch('/api/globals')
-				.then(results => {
-					return results.json()
-				}).then(data => {
-					this.props.getGlobals(data)
-				})
-			fetch('/api/resume')
-				.then(results => {
-					return results.json()
-				}).then(data => {
-					this.props.getResume(data)
-				})
-		} else {
-			this.props.getPortfolio(offlinePortfolio)
-			this.props.getBlog(offlineBlog)
-			// this.props.getGlobals(data)
-			// this.props.getResume(data)
-		}
+		this.props.getPortfolio(Portfolio)
+		this.props.getBlog(Blog)
+		// this.props.getGlobals(data)
+		// this.props.getResume(data)
 	}
 
 	render() {
