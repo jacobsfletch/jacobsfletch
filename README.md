@@ -1,19 +1,12 @@
 # jacobsfletch.com
-=======
-# README #
 
 Read me damnit!
 
 ### Technologies ###
 
-* NodeJS (Ecosystem)
-* MongoDB (Database)
-  * Used for Data Storage
-* ExpressJS (Serverside)
-  * KeystoneJS (Content Management System)
-  * MongooseJS (Database Communications)
-  * Used for Server Bootstrapping, Data Modeling, API Handling, Environment Configuration
-* ReactJS (Clientside)
+* ExpressJS Server
+  * erver Bootstrapping, API Handling, Environment Configuration
+* ReactJS Client
   * ReduxJS (State Management System)
-  * Used for Routing, State Management, Rendering
+  * Routing, State Management, Rendering
 * Sass (Stylesheets)
