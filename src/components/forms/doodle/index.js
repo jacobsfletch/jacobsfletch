@@ -2,7 +2,7 @@ import React from 'react'
 
 import { HandleChange, BuildReqBody, ValidateFields } from '../../../tools/Form'
 import Input from '../../fields/input'
-import Select from '../../fields/select'
+//import Select from '../../fields/select'
 import SubmitButton from '../../buttons/submit'
 
 import './index.css'
@@ -63,7 +63,7 @@ class DoodleForm extends React.Component {
 		e.preventDefault()
 		this.validateFields()
 		return
-		if (this.state.validityArray.length === 0) {
+		/*if (this.state.validityArray.length === 0) {
 			this.buildReqBody()
 			fetch('/api/email/contact', {
 					method: 'POST',
@@ -79,7 +79,7 @@ class DoodleForm extends React.Component {
 		} else {
 			this.setState({ validityArray: [] })
 			return
-		}
+		}*/
 	}
 
 	render() {

@@ -3,14 +3,14 @@
 //////////////////////////////////////////////////////
 
 export function OnWheel(e) {
-	const offsetHeight = this.screenRef.offsetHeight
-	const scrollHeight = this.screenRef.scrollHeight
-	const scrollY = e.deltaY
-	const scrollTop = this.screenRef.scrollTop
-	const nextScroll = scrollTop + scrollY
-	const ratioScrolled = (offsetHeight + scrollTop) / scrollHeight
-	this.screenRef.scrollTop = nextScroll
+	const offsetHeight = this.screenRef.offsetHeight,
+		scrollHeight = this.screenRef.scrollHeight,
+		scrollY = e.deltaY,
+		scrollTop = this.screenRef.scrollTop,
+		nextScroll = scrollTop + scrollY,
+		ratioScrolled = (offsetHeight + scrollTop) / scrollHeight
 
+	this.screenRef.scrollTop = nextScroll
 	this.props.userScrolled(ratioScrolled)
 }
 
@@ -58,7 +58,7 @@ export function CheckIfFullyScrolled() {
 	const scrollLeft = this.screenRef.scrollLeft
 	const scrollWidth = this.state.scrollWidth
 	const scrollHeight = this.state.scrollHeight
-	const portfolioWidth = this.state.portfolioWidth
+	//const portfolioWidth = this.state.portfolioWidth
 	const portfolioHeight = this.state.portfolioHeight
 
 	let check = false

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import ArrowIcon from '../../icons/arrow'
 
-import Input from '../../fields/input'
+//import Input from '../../fields/input'
 import DoodleForm from '../../forms/doodle'
 
 import './index.css'

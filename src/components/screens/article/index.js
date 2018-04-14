@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+//import { connect } from 'react-redux'
 import screenComponent from '../ScreenComponent'
 
 import ScreenFooter from '../../layouts/screenFooter'
