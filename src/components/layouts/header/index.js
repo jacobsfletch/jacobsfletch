@@ -8,6 +8,19 @@ import { activateDock, deactivateDock } from '../../../SharedActions'
 
 import './index.css';
 
+const mapStateToProps = state => {
+	return {
+		dock: state.specs.dock
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		activateDock: (color) => { dispatch(activateDock(color)) },
+		deactivateDock: () => { dispatch(deactivateDock()) }
+	}
+}
+
 const Header = (props) => {
 	const menu = props.dock.status ? 'close' : 'menu'
 	return (
@@ -36,23 +49,6 @@ const Header = (props) => {
 			</div>
 		</header>
 	)
-}
-
-function mapStateToProps(state) {
-	return {
-		dock: state.dock
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		activateDock: (color) => {
-			dispatch(activateDock(color))
-		},
-		deactivateDock: () => {
-			dispatch(deactivateDock())
-		}
-	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -5,6 +5,14 @@ import './index.css';
 
 import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
+const mapDispatchToProps = dispatch => {
+	return {
+		userScrolled: (ratio) => {
+			dispatch({ type: 'USER_SCROLLED', payload: ratio })
+		}
+	}
+}
+
 class PageNotFound extends Component {
 
 	constructor(props) {
@@ -25,14 +33,6 @@ class PageNotFound extends Component {
 				<p>404 Page Not Found</p>
 			</section>
 		)
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		userScrolled: (ratio) => {
-			dispatch({ type: 'USER_SCROLLED', payload: ratio })
-		}
 	}
 }
 

@@ -2,22 +2,12 @@ import { applyMiddleware, createStore } from 'redux';
 import { createLogger } from 'redux-logger'
 import { combineReducers } from 'redux'
 
-import DataReducer from './reducers/DataReducer'
-import PortfolioSizeReducer from './reducers/PortfolioSizeReducer'
-import DockReducer from './reducers/DockReducer'
-import RouteReducer from './reducers/RouteReducer'
-import WindowReducer from './reducers/WindowReducer'
-import IdReducer from './reducers/IdReducer'
-import ScrollReducer from './reducers/ScrollReducer'
+import DataReducer from './reducers/data'
+import SpecsReducer from './reducers/specs'
 
 const allReducers = combineReducers({
-	route: RouteReducer,
-	id: IdReducer,
 	data: DataReducer,
-	dock: DockReducer,
-	viewportSize: WindowReducer,
-	portfolioSize: PortfolioSizeReducer,
-	ratioScrolled: ScrollReducer
+	specs: SpecsReducer
 })
 
 const middleware = applyMiddleware(createLogger())

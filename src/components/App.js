@@ -12,6 +12,24 @@ import Blog from '../data/blog'
 
 import './App.css'
 
+const mapDispatchToProps = dispatch => {
+	return {
+		getPortfolio: (data) => { dispatch({ type: 'LOAD_PORTFOLIO', payload: data }) },
+		getBlog: (data) => { dispatch({ type: 'LOAD_BLOG', payload: data }) },
+		getGlobals: (data) => { dispatch({ type: 'LOAD_GLOBALS', payload: data }) },
+		getResume: (data) => { dispatch({ type: 'LOAD_RESUME', payload: data }) },
+		setViewportSize: (viewportSize) => {
+			dispatch({
+				type: 'WINDOW_RESIZED',
+				payload: {
+					width: viewportSize.width,
+					height: viewportSize.height
+				}
+			})
+		}
+	}
+}
+
 class App extends React.Component {
 
 	constructor(props) {
@@ -56,32 +74,6 @@ class App extends React.Component {
 				<Footer />
 			</div>
 		)
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		getPortfolio: (data) => {
-			dispatch({ type: 'LOAD_PORTFOLIO', payload: data })
-		},
-		getBlog: (data) => {
-			dispatch({ type: 'LOAD_BLOG', payload: data })
-		},
-		getGlobals: (data) => {
-			dispatch({ type: 'LOAD_GLOBALS', payload: data })
-		},
-		getResume: (data) => {
-			dispatch({ type: 'LOAD_RESUME', payload: data })
-		},
-		setViewportSize: (viewportSize) => {
-			dispatch({
-				type: 'WINDOW_RESIZED',
-				payload: {
-					width: viewportSize.width,
-					height: viewportSize.height
-				}
-			})
-		}
 	}
 }
 

@@ -35,7 +35,6 @@ class ArticleScreen extends Component {
 		if (this.props.data.blog !== nextProps.data.blog) {
 			this.updateData(nextProps.data.blog)
 		}
-		console.log(nextProps.data.blog)
 	}
 
 	updateData(blog) {

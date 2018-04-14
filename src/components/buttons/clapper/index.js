@@ -3,6 +3,14 @@ import { connect } from 'react-redux'
 
 import './index.css'
 
+const mapStateToProps = state => {
+	return {
+		id: state.specs.id,
+		projects: state.data.portfolio,
+		articles: state.data.blog
+	}
+}
+
 class Clapper extends Component {
 
 	constructor() {
@@ -63,14 +71,6 @@ class Clapper extends Component {
 				<p className="button-count">{this.state.claps}</p>
 			</div>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		id: state.id,
-		projects: state.portfolio,
-		articles: state.blog
 	}
 }
 

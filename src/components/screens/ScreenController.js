@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Switch} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
 import { Redirect, withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
@@ -15,18 +15,36 @@ import PageNotFound from './404/'
 
 import { deactivateDock } from '../../SharedActions'
 
-class ScreenController extends React.Component {
+const mapDispatchToProps = (dispatch) => {
+	return {
+		routeChanged: (route) => { dispatch({ type: 'CHANGE_ROUTE', payload: route }) },
+		deactivateDock: () => { dispatch(deactivateDock()) }
+	}
+}
+
+class ScreenController extends Component {
+
+	constructor(props) {
+		super(props)
+		this.bodyRef = React.createRef()
+	}
+
+	getScreenHeight() {
+		console.log(this.bodyRef.current.firstChild.clientHeight)
+	}
 
 	componentDidMount() {
+		this.getScreenHeight()
 		this.props.history.listen((location, action) => {
 			this.props.routeChanged(location.pathname)
 			this.props.deactivateDock()
+			this.getScreenHeight()
 		})
 	}
 
 	render() {
 		return (
-			<div className="app-body">
+			<div className="app-body" ref={this.bodyRef}>
 				<Switch>
 					<Route exact path='/' component={HomeScreen} />
 					<Route exact path='/doodle' component={DoodleScreen} />
@@ -44,19 +62,4 @@ class ScreenController extends React.Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return state
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		routeChanged: (route) => {
-			dispatch({ type: 'CHANGE_ROUTE', payload: route })
-		},
-		deactivateDock: () => {
-			dispatch(deactivateDock())
-		}
-	}
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScreenController))
+export default withRouter(connect(null, mapDispatchToProps)(ScreenController))

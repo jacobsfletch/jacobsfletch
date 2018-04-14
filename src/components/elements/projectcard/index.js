@@ -6,6 +6,13 @@ import ArrowIcon from '../../icons/arrow'
 
 import './index.css'
 
+const mapStateToProps = state => {
+	return {
+		viewportSize: state.specs.viewportSize,
+		portfolioSize: state.specs.portfolioSize
+	}
+}
+
 class ProjectCard extends React.Component {
 
 	constructor(props) {
@@ -122,13 +129,6 @@ class ProjectCard extends React.Component {
 				</div>
 			</li>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		viewportSize: state.viewportSize,
-		portfolioSize: state.portfolioSize
 	}
 }
 

@@ -2,13 +2,25 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import ScreenFooter from '../../layouts/screenFooter'
-import Clapper from '../../buttons/clapper'
 import Hashtags from '../../elements/hashtags'
 import Categories from '../../elements/categories'
 import { updateId } from '../../../SharedActions'
 import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
-import './index.css';
+import './index.css'
+
+const mapStateToProps = state => {
+	return {
+		portfolio: state.data.portfolio,
+		route: state.specs.route
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		updateId: (id) => { dispatch(updateId(id)) }
+	}
+}
 
 class ProjectScreen extends Component {
 
@@ -99,27 +111,11 @@ class ProjectScreen extends Component {
 					<ul className="screen-gallery">
 						{images}
 					</ul>
-					<Clapper />
 				</section>
 				<Hashtags data={project.hashtags} />
 				<ScreenFooter />
 			</section>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		portfolio: state.portfolio,
-		route: state.route
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		updateId: (id) => {
-			dispatch(updateId(id))
-		}
 	}
 }
 

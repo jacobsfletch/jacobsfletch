@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 
 import './index.css';
 
+const mapStateToProps = state => {
+	return {
+		ratioScrolled: state.specs.ratioScrolled
+	}
+}
+
 const Progress = (props) => {
 	const transform = props.ratioScrolled * 100 + "%"
 	return (
@@ -17,12 +23,6 @@ const Progress = (props) => {
 			</div>
 		</div>
 	)
-}
-
-function mapStateToProps(state) {
-	return {
-		ratioScrolled: state.ratioScrolled
-	}
 }
 
 export default connect(mapStateToProps)(Progress)

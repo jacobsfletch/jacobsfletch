@@ -5,6 +5,10 @@ import ArticleCard from '../../elements/articlecard/'
 
 import './index.css'
 
+const mapStateToProps = state => {
+	return state
+}
+
 class BlogScreen extends Component {
 
 	render() {
@@ -29,7 +33,5 @@ class BlogScreen extends Component {
 		)
 	}
 }
-
-const mapStateToProps = ["blog"]
 
 export default screenComponent(mapStateToProps, null, BlogScreen)

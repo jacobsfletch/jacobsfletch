@@ -2,9 +2,13 @@ import React from 'react';
 
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-import './index.css';
+import './index.css'
+
+const mapStateToProps = state => {
+	return state
+}
 
 const Breadcrumbs = (props) => {
 	return (
@@ -31,10 +35,6 @@ function Crumb(pathname) {
 			{listItems}
 		</ul>
 	)
-}
-
-function mapStateToProps(state) {
-	return state
 }
 
 export default withRouter(connect(mapStateToProps)(Breadcrumbs))

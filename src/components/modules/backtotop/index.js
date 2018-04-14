@@ -5,6 +5,12 @@ import { withRouter } from 'react-router'
 
 import './index.css'
 
+const = mapStateToProps = state => {
+	return {
+		route: state.specs.route
+	}
+}
+
 class BackToTop extends React {
 
 	constructor() {
@@ -66,13 +72,6 @@ class BackToTop extends React {
 		return (
 			<button className={classList} onClick={(e) => this.onClick(e)}>back to top ^</button>
 		)
-	}
-}
-
-
-function mapStateToProps(state) {
-	return {
-		route: state.route
 	}
 }
 

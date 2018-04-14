@@ -5,6 +5,19 @@ import { activateDock, deactivateDock } from '../../../SharedActions'
 
 import './index.css';
 
+const mapStateToProps = state => {
+	return {
+		dock: state.specs.dock
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		activateDock: (color) => { dispatch(activateDock(color)) },
+		deactivateDock: () => { dispatch(deactivateDock()) }
+	}
+}
+
 const Swatch = (props) => {
 	return (
 		<button
@@ -18,23 +31,6 @@ const Swatch = (props) => {
 			}}
 		/>
 	)
-}
-
-function mapStateToProps(state) {
-	return {
-		dock: state.dock
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		activateDock: (color) => {
-			dispatch(activateDock(color))
-		},
-		deactivateDock: () => {
-			dispatch(deactivateDock())
-		}
-	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Swatch)

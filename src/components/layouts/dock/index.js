@@ -4,6 +4,13 @@ import { connect } from 'react-redux'
 
 import './index.css';
 
+const mapStateToProps = state => {
+	return {
+		color: state.specs.dock.color,
+		status: state.specs.dock.status
+	}
+}
+
 const Dock = (props) => {
 	const classes = props.status ? `dock docked ${props.color}` : `dock`
 	return (
@@ -29,13 +36,6 @@ const Dock = (props) => {
 			</nav>
 		</section>
 	)
-}
-
-function mapStateToProps(state) {
-	return {
-		color: state.dock.color,
-		status: state.dock.status
-	}
 }
 
 export default connect(mapStateToProps)(Dock)

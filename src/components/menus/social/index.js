@@ -5,6 +5,12 @@ import { withRouter } from 'react-router'
 
 import './index.css'
 
+const mapStateToProps = state => {
+	return {
+		globals: state.data.globals
+	}
+}
+
 class Social extends React {
 
 	constructor() {
@@ -55,12 +61,6 @@ class Social extends React {
 				</ul>
 			</nav>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		globals: state.globals
 	}
 }
 

@@ -8,6 +8,27 @@ import ProjectCard from '../../elements/projectcard/'
 
 import './index.css'
 
+const mapStateToProps = state => {
+	return {
+		portfolio: state.data.portfolio,
+		viewportSize: state.specs.viewportSize
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		resizePortfolio: (portfolioSize) => {
+			dispatch({
+				type: 'RESIZE_PORTFOLIO',
+				payload: {
+					width: portfolioSize.width,
+					height: portfolioSize.height
+				}
+			})
+		}
+	}
+}
+
 class PortfolioScreen extends Component {
 
 	constructor(props) {
@@ -56,6 +77,7 @@ class PortfolioScreen extends Component {
 
 	render() {
 		const classList = this.isTouchDevice ? 'screen-portfolio touchable' : 'screen-portfolio'
+		console.log(this.props)
 		let projects = this.props.portfolio.map((project, index) =>
 			<ProjectCard
 				key={project._id}
@@ -79,27 +101,6 @@ class PortfolioScreen extends Component {
 				{projects}
 			</ul>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		portfolio: state.portfolio,
-		viewportSize: state.viewportSize
-	}
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		resizePortfolio: (portfolioSize) => {
-			dispatch({
-				type: 'RESIZE_PORTFOLIO',
-				payload: {
-					width: portfolioSize.width,
-					height: portfolioSize.height
-				}
-			})
-		}
 	}
 }
 

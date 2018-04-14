@@ -6,6 +6,20 @@ import { updateId } from '../../SharedActions'
 
 const screenComponent = (PassedComponent) => {
 
+	const mapStateToProps = state => {
+		return {
+			blog: state.data.blog,
+			route: state.specs.route
+		}
+	}
+
+	const mapDispatchToProps = dispatch => {
+		return {
+			userScrolled: (ratio) => { dispatch({ type: 'USER_SCROLLED', payload: ratio }) },
+			updateId: (id) => { dispatch(updateId(id)) }
+		}
+	}
+
 	class ScreenComponent extends Component {
 
 		constructor() {
@@ -121,24 +135,6 @@ const screenComponent = (PassedComponent) => {
 					/>
 				</React.Fragment>
 			)
-		}
-	}
-
-	function mapStateToProps(state) {
-		return {
-			blog: state.blog,
-			route: state.route
-		}
-	}
-
-	function mapDispatchToProps(dispatch) {
-		return {
-			userScrolled: (ratio) => {
-				dispatch({ type: 'USER_SCROLLED', payload: ratio })
-			},
-			updateId: (id) => {
-				dispatch(updateId(id))
-			}
 		}
 	}
 

@@ -8,6 +8,12 @@ import DoodleForm from '../../forms/doodle'
 
 import './index.css'
 
+const mapStateToProps = state => {
+	return {
+		viewportSize: state.viewportSize
+	}
+}
+
 class DoodleScreen extends Component {
 
 	constructor(props) {
@@ -155,12 +161,6 @@ class DoodleScreen extends Component {
 				<DoodleForm status={this.state.formActive} />
 			</div>
 		)
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		viewportSize: state.viewportSize
 	}
 }
 
