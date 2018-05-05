@@ -5,7 +5,6 @@ import ScreenFooter from '../../layouts/screenFooter'
 import Hashtags from '../../elements/hashtags'
 import Categories from '../../elements/categories'
 import { updateId } from '../../../SharedActions'
-import { OnWheel, OnTouchMove, OnTouchStart } from '../../../tools/Scroll'
 
 import './index.css'
 
@@ -26,11 +25,7 @@ class ProjectScreen extends Component {
 
 	constructor(props) {
 		super(props)
-		this.onTouchMove = OnTouchMove.bind(this)
-		this.onTouchStart = OnTouchStart.bind(this)
-		this.onWheel = OnWheel.bind(this)
 		this.state = {
-			lastScrollY: 0,
 			project: {
 				client: 'loading',
 				title: 'loading',
@@ -77,12 +72,7 @@ class ProjectScreen extends Component {
 		})
 
 		return (
-			<section className="screen-project"
-				onWheel={this.onWheel}
-				onTouchMove={this.onTouchMove}
-				onTouchStart={this.onTouchStart}
-				ref={(project) => { this.screenRef = project }}
-			>
+			<section className="screen-project">
 				<header className="screen-header">
 					<img alt="alt text" className="screen-featured" src={project.featuredImage} />
 					<section className="header-body">

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-//import { connect } from 'react-redux'
-import screenComponent from '../ScreenComponent'
 
 import ScreenFooter from '../../layouts/screenFooter'
 import Clapper from '../../buttons/clapper'
@@ -81,4 +79,4 @@ class ArticleScreen extends Component {
 	}
 }
 
-export default screenComponent(ArticleScreen)
+export default ArticleScreen

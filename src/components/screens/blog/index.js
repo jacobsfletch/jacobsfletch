@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import screenComponent from '../ScreenComponent'
+import { connect } from 'react-redux'
 
 import ArticleCard from '../../elements/articlecard/'
 
@@ -34,4 +34,4 @@ class BlogScreen extends Component {
 	}
 }
 
-export default screenComponent(mapStateToProps, null, BlogScreen)
+export default connect(mapStateToProps)(BlogScreen)

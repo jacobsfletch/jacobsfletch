@@ -9,25 +9,25 @@ export default (state = defaultState, action) => {
 
 	switch (action.type) {
 
-		case 'LOAD_PORTFOLIO':
+		case 'PORTFOLIO_LOADED':
 			return {
 				...state,
 				portfolio: action.payload
 			}
 
-		case 'LOAD_BLOG':
+		case 'BLOG_LOADED':
 			return {
 				...state,
 				blog: action.payload
 			}
 
-		case 'LOAD_GLOBALS':
+		case 'GLOBALS_LOADED':
 			return {
 				...state,
 				globals: action.payload
 			}
 
-		case 'LOAD_RESUME':
+		case 'RESUME_LOADED':
 			return {
 				...state,
 				resume: action.payload
@@ -35,6 +35,6 @@ export default (state = defaultState, action) => {
 
 		default:
 			return state
-			
+
 	}
 }

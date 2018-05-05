@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import screenComponent from '../ScreenComponent'
 import ContactForm from '../../forms/contact/'
 
 import './index.css'
@@ -9,10 +8,7 @@ class Contact extends Component {
 
 	render() {
 		return (
-			<article
-				className='screen-contact'
-				ref={(thisScreen) => { this.screenRef = thisScreen }}
-			>
+			<article className='screen-contact'>
 				<ContactForm />
 			</article>
 		)
@@ -20,4 +16,4 @@ class Contact extends Component {
 
 }
 
-export default screenComponent(null, null, Contact)
+export default Contact

@@ -1,13 +1,13 @@
 export function updateId(id) {
 	return {
-		type: 'UPDATE_ID',
+		type: 'ID_UPDATED',
 		payload: id
 	}
 }
 
 export function activateDock(color) {
 	return {
-		type: 'ACTIVATE_DOCK',
+		type: 'DOCK_ACTIVATED',
 		payload: {
 			status: true,
 			color
@@ -17,7 +17,7 @@ export function activateDock(color) {
 
 export function deactivateDock() {
 	return {
-		type: 'DEACTIVATE_DOCK',
+		type: 'DOCK_DEACTIVATED',
 		payload: {
 			status: false,
 			color: null
@@ -27,7 +27,7 @@ export function deactivateDock() {
 
 export function selectProject(id) {
 	return {
-		type: 'SELECT_PROJECT',
+		type: 'PROJECT_SELECTED',
 		payload: {
 			selectedProject: id
 		}

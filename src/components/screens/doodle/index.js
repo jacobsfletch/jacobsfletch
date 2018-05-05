@@ -10,7 +10,7 @@ import './index.css'
 
 const mapStateToProps = state => {
 	return {
-		viewportSize: state.viewportSize
+		viewportSize: state.specs.viewportSize
 	}
 }
 
