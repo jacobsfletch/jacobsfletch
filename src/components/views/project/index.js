@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import ScreenFooter from '../../layouts/screenFooter'
+import ViewFooter from '../../layouts/screenFooter'
 import Hashtags from '../../elements/hashtags'
 import Categories from '../../elements/categories'
 import { updateId } from '../../../SharedActions'
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-class ProjectScreen extends Component {
+class ProjectView extends Component {
 
 	constructor(props) {
 		super(props)
@@ -103,10 +103,10 @@ class ProjectScreen extends Component {
 					</ul>
 				</section>
 				<Hashtags data={project.hashtags} />
-				<ScreenFooter />
+				<ViewFooter />
 			</section>
 		)
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectView)

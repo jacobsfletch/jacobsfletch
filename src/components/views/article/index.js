@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import ScreenFooter from '../../layouts/screenFooter'
+import ViewFooter from '../../layouts/screenFooter'
 import Clapper from '../../buttons/clapper'
 import Categories from '../../elements/categories'
 import Hashtags from '../../elements/hashtags'
 
 import './index.css'
 
-class ArticleScreen extends Component {
+class ArticleView extends Component {
 
 	constructor(props) {
 		super(props)
@@ -53,7 +53,7 @@ class ArticleScreen extends Component {
 		return (
 			<section
 				className="screen-article"
-				ref={(thisScreen) => { this.screenRef = thisScreen }}
+				ref={(thisView) => { this.screenRef = thisView }}
 			>
 				<header className="screen-header">
 					<section className="header-body">
@@ -73,10 +73,10 @@ class ArticleScreen extends Component {
 					<Clapper />
 				</section>
 				<Hashtags data={article.hashtags} />
-				<ScreenFooter />
+				<ViewFooter />
 			</section>
 		)
 	}
 }
 
-export default ArticleScreen
+export default ArticleView

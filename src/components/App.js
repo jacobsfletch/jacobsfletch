@@ -5,7 +5,7 @@ import { withRouter } from 'react-router'
 import Dock from './layouts/dock/'
 import Header from './layouts/header/'
 import Footer from './layouts/footer/'
-import ScreenComponent from './screens/ScreenComponent'
+import ViewComponent from './views/ViewComponent'
 
 import Portfolio from '../data/portfolio'
 import Blog from '../data/blog'
@@ -14,23 +14,15 @@ import Globals from '../data/globals'
 
 import './App.css'
 
-const mapStateToProps = state => {
-	return {
-		scrollTicker: state.specs.scrollTicker,
-		orientationTicker: state.specs.orientationTicker,
-		touchMoveTicker: state.specs.touchMoveTicker,
-		wheelTicker: state.specs.wheelTicker,
-		lastScrollY: state.specs.lastScrollY
-	}
-}
-
 const mapDispatchToProps = dispatch => {
 	return {
+		// load sitewide data into redux store
 		getPortfolio: (data) => { dispatch({ type: 'PORTFOLIO_LOADED', payload: data }) },
 		getBlog: (data) => { dispatch({ type: 'BLOG_LOADED', payload: data }) },
 		getGlobals: (data) => { dispatch({ type: 'GLOBALS_LOADED', payload: data }) },
 		getResume: (data) => { dispatch({ type: 'RESUME_LOADED', payload: data }) },
-		viewportResized: (size) => { dispatch({ type: 'VIEWPORT_RESIZED', payload: size }) },
+		// connect user events to redux store
+		viewportMeasured: (size) => { dispatch({ type: 'VIEWPORT_MEASURED', payload: size }) },
 		userScrolled: (tick) => { dispatch({ type: 'USER_SCROLLED', payload: tick })},
 		userWheeled: (specs) => { dispatch({ type: 'USER_WHEELED', payload: specs })},
 		userTouchMoved: (tick) => { dispatch({ type: 'USER_TOUCH_MOVED', payload: tick })},
@@ -43,19 +35,30 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props)
+		// bind the context of user events to their event handlers
 		this.setViewportSize = this.setViewportSize.bind(this)
 		this.onOrientationChange = this.onOrientationChange.bind(this)
 		this.onWheel = this.onWheel.bind(this)
 		this.onTouchMove = this.onTouchMove.bind(this)
+		// initialize global variables
+		this.viewportSpecs = {}
+		this.orientationTicker = 0
+		this.wheelTicker = 0
+		this.touchMoveTicker = 0
+		this.lastScrollY = 0
 	}
 
 	componentDidMount() {
-		window.addEventListener('resize', this.setViewportSize, false)
-		window.addEventListener('orientationchange', this.onOrientationChange, false)
-		window.addEventListener('wheel', this.onWheel, false)
-		window.addEventListener('touchmove', this.onTouchMove, {passive: false})
 		this.checkIfTouchDevice()
 		this.setViewportSize()
+		window.addEventListener('resize', this.setViewportSize, false)
+		window.addEventListener('orientationchange', this.onOrientationChange, false)
+		// Unfortunately must bind these two event listeners to the window object
+		// in order to prevent the default behaviour of browsers.
+		// The ViewComponent also has these events and more, so that the scroll
+		// is constrained to the view's dom node and excludes the border.
+		window.addEventListener('wheel', this.onWheel, false)
+		window.addEventListener('touchmove', this.onTouchMove, {passive: false})
 	}
 
 	checkIfTouchDevice() {
@@ -64,14 +67,25 @@ class App extends React.Component {
 		}
 	}
 
+	setViewportSize(e) {
+		const viewportSpecs = {
+			width: document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth,
+			height: document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight
+		}
+		this.props.viewportMeasured(viewportSpecs)
+		this.viewportSpecs = viewportSpecs
+	}
+
 	onOrientationChange(e) {
-		this.props.deviceRotated(this.props.orientationTicker + 1)
+		this.orientationTicker++
+		this.props.deviceRotated(this.orientationTicker)
 		e.preventDefault()
 	}
 
 	onWheel(e) {
+		this.wheelTicker++
 		this.props.userWheeled({
-			ticker: this.props.wheelTicker + 1,
+			ticker: this.wheelTicker,
 			deltaY: e.deltaY
 		})
 		e.preventDefault()
@@ -79,22 +93,19 @@ class App extends React.Component {
 
 	onTouchMove(e) {
 		e.preventDefault()
+		this.touchMoveTicker++
+		const scrollY = e.touches[0].pageY
 		this.props.userTouchMoved({
-			ticker: this.props.touchMoveTicker + 1,
+			ticker: this.touchMoveTicker,
 			thisScroll: e.touches[0].pageY,
-			nextScroll: this.props.lastScrollY - e.touches[0].pageY,
-			lastScrollY: e.touches[0].pageY
+			nextScroll: this.lastScrollY - scrollY,
+			lastScrollY: scrollY
 		})
-	}
-
-	setViewportSize(e) {
-		this.props.viewportResized({
-			width: document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth,
-			height: document.documentElement.clientHeight || document.body.clientHeight || window.innerHeight
-		})
+		this.lastScrollY = scrollY
 	}
 
 	componentWillMount() {
+		// fire redux actions to load sitewide data into global store
 		this.props.getPortfolio(Portfolio)
 		this.props.getBlog(Blog)
 		this.props.getGlobals(Globals)
@@ -106,11 +117,11 @@ class App extends React.Component {
 			<div className="app">
 				<Dock />
 				<Header />
-				<ScreenComponent className="screen" />
+				<ViewComponent className="screen" />
 				<Footer />
 			</div>
 		)
 	}
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(connect(null, mapDispatchToProps)(App))

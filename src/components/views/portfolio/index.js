@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 	}
 }
 
-class PortfolioScreen extends Component {
+class PortfolioView extends Component {
 
 	render() {
 		const classList = this.props.isTouchDevice ? 'screen-portfolio horizontal touchable' : 'screen-portfolio horizontal'
@@ -34,4 +34,4 @@ class PortfolioScreen extends Component {
 	}
 }
 
-export default withRouter(connect(mapStateToProps)(PortfolioScreen))
+export default withRouter(connect(mapStateToProps)(PortfolioView))

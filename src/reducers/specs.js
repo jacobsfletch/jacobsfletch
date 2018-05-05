@@ -62,7 +62,7 @@ export default (state=defaultState, action) => {
 				isTouchDevice: action.payload
 			}
 
-		case 'VIEWPORT_RESIZED':
+		case 'VIEWPORT_MEASURED':
 			return {
 				...state,
 				viewportSize: action.payload

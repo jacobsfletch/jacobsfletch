@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './index.css';
 
-class ShopScreen extends Component {
+class ShopView extends Component {
 	render() {
 		return (
 			<section className="screen-shop">
@@ -12,4 +12,4 @@ class ShopScreen extends Component {
 	}
 }
 
-export default ShopScreen
+export default ShopView

@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 	return state
 }
 
-class BlogScreen extends Component {
+class BlogView extends Component {
 
 	render() {
 
@@ -24,7 +24,7 @@ class BlogScreen extends Component {
 		return (
 			<article
 				className='screen-blog'
-				ref={(thisScreen) => { this.screenRef = thisScreen }}
+				ref={(thisView) => { this.screenRef = thisView }}
 			>
 				<ul className="blog-list">
 					{articles}
@@ -34,4 +34,4 @@ class BlogScreen extends Component {
 	}
 }
 
-export default connect(mapStateToProps)(BlogScreen)
+export default connect(mapStateToProps)(BlogView)

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
-class HomeScreen extends Component {
+class HomeView extends Component {
 	render() {
 		return (
 			<section className="screen-home">
@@ -23,4 +23,4 @@ class HomeScreen extends Component {
 	}
 }
 
-export default HomeScreen
+export default HomeView

@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 	}
 }
 
-class DoodleScreen extends Component {
+class DoodleView extends Component {
 
 	constructor(props) {
 		super(props)
@@ -164,4 +164,4 @@ class DoodleScreen extends Component {
 	}
 }
 
-export default connect(mapStateToProps)(DoodleScreen)
+export default connect(mapStateToProps)(DoodleView)
