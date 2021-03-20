@@ -8,7 +8,7 @@ const HomePage: React.FC = () => (
       width: '100%',
       height: '100%',
       textAlign: 'center',
-      maxWidth: '540px',
+      maxWidth: '850px',
       padding: '0 40px',
       lineHeight: 1.25,
       boxSizing: 'border-box',
@@ -28,23 +28,36 @@ const HomePage: React.FC = () => (
         fontSize: '22px',
       }}
     >
-      {'I am a designer and developer at '}
+      {'Hello, my name is Jacob Fletcher and I am a designer and developer at '}
       <a href="https://trbl.design">
         Trouble
         </a>
-      {'. I am also the creator and maintainer of '}
+      {'. I am also creator and maintainer of '}
       <a href="https://github.com/faceless-ui">
         Faceless UI
         </a>
-      {'. Another project of mine is '}
+      {' and '}
       <a href="https://rhtml.io">
-        rhtml
-        </a>
-      {', but there\'s more on '}
+        Rasterize HTML
+      </a>
+      {'. I have worked with brands and products from small to enterprise. Here is my '}
       <a href="https://github.com/jacobsfletch">
         GitHub
         </a>
+      {' and my '}
+      <a
+        href="mailto:jacobsfletch@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Email
+      </a>
       {'.'}
+      <br />
+      <br />
+      <p>
+        P.S.
+      </p>
     </p>
   </div>
 );
