@@ -29,7 +29,7 @@ const HomePage: React.FC = () => (
         width: '100%',
         height: '100%',
         textAlign: 'center',
-        maxWidth: '850px',
+        maxWidth: '900px',
         padding: '0 40px',
         lineHeight: 1.25,
         boxSizing: 'border-box',
@@ -49,20 +49,36 @@ const HomePage: React.FC = () => (
           fontSize: '22px',
         }}
       >
-        {'Hello, my name is Jacob Fletcher and I am a designer and developer at '}
-        <a href="https://trbl.design">
+        {'I am a designer and developer at '}
+        <a
+          href="https://trbl.design"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Trouble
         </a>
-        {'. I am also creator and maintainer of '}
-        <a href="https://github.com/faceless-ui">
+        {'. I am also the creator and maintainer of '}
+        <a
+          href="https://github.com/faceless-ui"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Faceless UI
         </a>
         {' and '}
-        <a href="https://rhtml.io">
+        <a
+          href="https://rhtml.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Rasterize HTML
         </a>
-        {'. I have worked with brands and businesses from small to enterprise. Here is my '}
-        <a href="https://github.com/jacobsfletch">
+        {'. I have worked on projects from small to enterprise. Here is my '}
+        <a
+          href="https://github.com/jacobsfletch"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </a>
         {' and my '}
@@ -73,6 +89,7 @@ const HomePage: React.FC = () => (
         >
           Email
         </a>
+        .
       </p>
     </div>
   </Fragment>
