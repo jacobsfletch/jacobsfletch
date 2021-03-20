@@ -22,11 +22,6 @@ class MyDocument extends Document {
         }}
       >
         <Head />
-        <link
-          rel="icon"
-          type="image/x-icon"
-          href="/favicon.svg"
-        />
         <body
           style={{
             margin: 0,
