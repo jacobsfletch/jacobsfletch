@@ -1,6 +1,0 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700");
-.module-timer .timer-date {
-  margin-right: 0.75rem; }
-  @media only screen and (max-width: 319px) {
-    .module-timer .timer-date {
-      display: none; } }
