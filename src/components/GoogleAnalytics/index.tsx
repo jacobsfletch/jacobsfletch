@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
+import React, { Fragment, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script'
 
@@ -24,14 +23,13 @@ const GoogleAnalytics: React.FC = () => {
 
   if (gaMeasurementID) {
     return (
-      <Head>
+      <Fragment>
         <Script
-          strategy="afterInteractive"
-          async
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementID}`}
         />
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -39,7 +37,7 @@ gtag('js', new Date());
 gtag('config', '${gaMeasurementID}');`,
           }}
         />
-      </Head>
+      </Fragment>
     );
   }
   return null;
