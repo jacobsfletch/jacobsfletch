@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script'
 
 const gaMeasurementID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -24,16 +25,19 @@ const GoogleAnalytics: React.FC = () => {
   if (gaMeasurementID) {
     return (
       <Head>
-        <script
+        <Script
+          strategy="afterInteractive"
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementID}`}
         />
-        <script dangerouslySetInnerHTML={{
-          __html: `window.dataLayer = window.dataLayer || [];
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaMeasurementID}');`,
-        }}
+          }}
         />
       </Head>
     );

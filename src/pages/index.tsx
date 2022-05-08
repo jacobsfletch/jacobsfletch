@@ -41,9 +41,9 @@ const HomePage: React.FC = () => (
         }}
       >
         &#128075;
-      <br />
-      You found me
-    </h1>
+        <br />
+        You found me
+      </h1>
       <p
         style={{
           fontSize: '22px',
@@ -55,23 +55,15 @@ const HomePage: React.FC = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          Trouble
+          TRBL
         </a>
         {'. I am also the creator and maintainer of '}
         <a
-          href="https://github.com/faceless-ui"
+          href="https://faceless-ui.com"
           target="_blank"
           rel="noopener noreferrer"
         >
           Faceless UI
-        </a>
-        {' and '}
-        <a
-          href="https://rhtml.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Rasterize HTML
         </a>
         {'. I have worked on projects from small to enterprise. Here is my '}
         <a
