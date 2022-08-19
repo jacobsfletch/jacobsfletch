@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { AppProps } from 'next/app';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+import './_app.css';
 
 type Props = {
   pageProps: Record<string, unknown>

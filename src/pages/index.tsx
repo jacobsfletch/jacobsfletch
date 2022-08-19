@@ -20,69 +20,58 @@ const HomePage: React.FC = () => (
         content="ui, ux, javascript, front-end, developer, designer, react, trouble, trbl, payload, software, saas, product, branding, web design, graphic design"
       />
     </Head>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        height: '100%',
-        textAlign: 'center',
-        maxWidth: '900px',
-        padding: '0 40px',
-        lineHeight: 1.25,
-        boxSizing: 'border-box',
-      }}
-    >
-      <h1
-        style={{
-          fontSize: '36px',
-        }}
+    <div className="wrapper">
+      <div className="content">
+        <div className="wave">
+          &#128075;
+        </div>
+        <h1 className="heading">
+          You found me
+        </h1>
+        <p>
+          {'I am a designer and web developer from Grand Rapids, Michigan. I am the creator and maintainer of '}
+          <a
+            href="https://faceless-ui.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Faceless UI
+          </a>
+          {' and other open-source software. I currently work at '}
+          <a
+            href="https://trbl.design"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TRBL
+          </a>
+          {'. I have worked on projects from small to enterprise. Here is my '}
+          <a
+            href="https://github.com/jacobsfletch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          {' and my '}
+          <a
+            href="mailto:jacobsfletch@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            email
+          </a>
+          {'.'}
+        </p>
+      </div>
+      <a
+        href="https://github.com/sponsors/jacobsfletch"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="sponsor"
       >
-        &#128075;
-        <br />
-        You found me
-      </h1>
-      <p
-        style={{
-          fontSize: '22px',
-        }}
-      >
-        {'I am a designer and developer at '}
-        <a
-          href="https://trbl.design"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          TRBL
-        </a>
-        {'. I am also the creator and maintainer of '}
-        <a
-          href="https://faceless-ui.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Faceless UI
-        </a>
-        {'. I have worked on projects from small to enterprise. Here is my '}
-        <a
-          href="https://github.com/jacobsfletch"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-        {' and my '}
-        <a
-          href="mailto:jacobsfletch@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Email
-        </a>
-        .
-      </p>
+        Sponsor my work
+      </a>
     </div>
   </Fragment>
 );

@@ -16,23 +16,9 @@ class MyDocument extends Document {
 
   render(): JSX.Element { // eslint-disable-line class-methods-use-this
     return (
-      <Html
-        style={{
-          height: '100%',
-        }}
-      >
+      <Html>
         <Head />
-        <body
-          style={{
-            margin: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%',
-          }}
-        >
+        <body>
           <Main />
           <NextScript />
         </body>
