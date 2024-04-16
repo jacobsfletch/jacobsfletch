@@ -29,15 +29,15 @@ const HomePage: React.FC = () => (
           You found me
         </h1>
         <p>
-          {'I am a designer and software developer from Michigan (EST). I currently work at '}
+          {'I am a designer and software engineer from Grand Rapids, Michigan (EST). I am currently working on '}
           <a
             href="https://payloadcms.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Payload CMS
+            Payload
           </a>
-          {' and '}
+          {' and formerly '}
           <a
             href="https://trbl.design"
             target="_blank"
@@ -47,13 +47,13 @@ const HomePage: React.FC = () => (
           </a>
           {'. I am the creator and maintainer of '}
           <a
-            href="https://faceless-ui.com"
+            href="https://facelessui.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             Faceless UI
           </a>
-          {' and other OSS. I have worked on projects from small to enterprise. Here is my '}
+          {' and other OSS. I have worked on projects and teams from small to enterprise. Here is my '}
           <a
             href="https://github.com/jacobsfletch"
             target="_blank"
