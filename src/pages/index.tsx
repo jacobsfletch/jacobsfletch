@@ -9,7 +9,7 @@ const HomePage: React.FC = () => (
       </title>
       <link
         rel="icon"
-        href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/271/waving-hand_1f44b.png"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128075;</text></svg>"
       />
       <meta
         name="description"
