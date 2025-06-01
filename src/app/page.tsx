@@ -1,31 +1,14 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
+import styles from "./page.module.css";
+import { Metadata } from "next";
 
-const HomePage: React.FC = () => (
-  <Fragment>
-    <Head>
-      <title>
-        Jacob Fletcher
-      </title>
-      <link
-        rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128075;</text></svg>"
-      />
-      <meta
-        name="description"
-        content="Grand Rapids creative designer and developer building software for brands and businesses."
-      />
-      <meta
-        name="keywords"
-        content="ui, ux, javascript, front-end, developer, designer, react, trouble, trbl, payload, software, saas, product, branding, web design, graphic design"
-      />
-    </Head>
-    <div className="wrapper">
-      <div className="content">
-        <div className="wave">
+export default function Home() {
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.content}>
+        <div className={styles.wave}>
           &#128075;
         </div>
-        <h1 className="heading">
+        <h1 className={styles.heading}>
           You found me
         </h1>
         <p>
@@ -76,12 +59,19 @@ const HomePage: React.FC = () => (
         href="https://github.com/sponsors/jacobsfletch"
         target="_blank"
         rel="noopener noreferrer"
-        className="sponsor"
+        className={styles.sponsor}
       >
         Sponsor my work
       </a>
     </div>
-  </Fragment>
-);
+  );
+}
 
-export default HomePage;
+export const metadata: Metadata = {
+    title: "Jacob Fletcher",
+    description:
+      "Grand Rapids based designer and software engineer.",
+    keywords:
+      "ui, ux, javascript,typescript, front-end, developer, designer, react, trouble, trbl, payload, software, saas, product, branding, web design, graphic design",
+    icons: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+}

@@ -1,6 +1,7 @@
+'use client'
 import React, { Fragment, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Script from 'next/script'
+import { usePathname } from 'next/navigation';
 
 const gaMeasurementID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -11,15 +12,15 @@ declare global {
 }
 
 const GoogleAnalytics: React.FC = () => {
-  const { asPath } = useRouter();
+  const pathName = usePathname();
 
   useEffect(() => {
-    if (asPath) {
+    if (pathName) {
       if (gaMeasurementID && typeof window.gtag === 'function') {
-        window.gtag('config', gaMeasurementID, { page_path: asPath });
+        window.gtag('config', gaMeasurementID, { page_path: pathName });
       }
     }
-  }, [asPath]);
+  }, [pathName]);
 
   if (gaMeasurementID) {
     return (
@@ -27,6 +28,7 @@ const GoogleAnalytics: React.FC = () => {
         <Script
           strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementID}`}
+          id="google-analytics-script"
         />
         <Script
           strategy="lazyOnload"
@@ -36,6 +38,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaMeasurementID}');`,
           }}
+          id="google-analytics-gtag"
         />
       </Fragment>
     );

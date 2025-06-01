@@ -4,3 +4,4 @@ package-lock.json
 dist
 .env
 .next
+next-env.d.ts
